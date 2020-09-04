@@ -1,0 +1,1 @@
+1. php artisan migrate --path=/database/migrations/2020_08_01_124631_create_identitas_table.php
