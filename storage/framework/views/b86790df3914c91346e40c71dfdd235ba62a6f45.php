@@ -50,7 +50,7 @@
                     <?php echo csrf_field(); ?>
 
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter your username" name="email" />
+                        <input type="text" class="form-control" placeholder="Enter your Email" name="email" />
                     </div>
                     <!-- form-group -->
                     <div class="form-group">
