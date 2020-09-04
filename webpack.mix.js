@@ -21,7 +21,7 @@ mix.webpackConfig({
     },
     output: {
         chunkFilename: 'js/chunks/[name].js',
-        publicPath: ASSET_PATH
+        publicPath: "http://appkepri.com/siJempol/"
     }
 });
 
