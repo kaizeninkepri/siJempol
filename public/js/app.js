@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunks/" + ({"BOValidasi":"BOValidasi","foPermohonan":"foPermohonan","trackBYid":"trackBYid","vendors~BODashboard~dashboard":"vendors~BODashboard~dashboard","BODashboard":"BODashboard","vendors~Pemohondashboard~dashboard":"vendors~Pemohondashboard~dashboard","dashboard":"dashboard","Pemohondashboard":"Pemohondashboard","vendors~modulForm~pemohonPermohonan~roles~surat":"vendors~modulForm~pemohonPermohonan~roles~surat","pemohonPermohonan":"pemohonPermohonan","vendors~roles":"vendors~roles","modulForm":"modulForm","roles":"roles","vendors~surat":"vendors~surat","surat":"surat"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + ({"BOValidasi":"BOValidasi","Ind":"Ind","foPermohonan":"foPermohonan","trackBYid":"trackBYid","vendors~BODashboard~dashboard":"vendors~BODashboard~dashboard","BODashboard":"BODashboard","vendors~Pemohondashboard~dashboard":"vendors~Pemohondashboard~dashboard","dashboard":"dashboard","Pemohondashboard":"Pemohondashboard","vendors~modulForm~pemohonPermohonan~roles~surat":"vendors~modulForm~pemohonPermohonan~roles~surat","pemohonPermohonan":"pemohonPermohonan","vendors~roles":"vendors~roles","modulForm":"modulForm","roles":"roles","vendors~surat":"vendors~surat","surat":"surat"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -21989,6 +21989,10 @@ var passwordGanti = function passwordGanti() {
   return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/password/gantiPassword */ "./resources/js/components/password/gantiPassword.vue"));
 };
 
+var indexKepuasan = function indexKepuasan() {
+  return __webpack_require__.e(/*! import() | Ind */ "Ind").then(__webpack_require__.bind(null, /*! @/js/components/pengaduan/indexKepuasan */ "./resources/js/components/pengaduan/indexKepuasan.vue"));
+};
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
@@ -22032,6 +22036,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/rekomendasi/teknis',
     name: 'bo-surat-rekomendasi-data',
     component: suratrekomendasipermintaanData
+  }, {
+    path: '/indexKepuasan',
+    name: 'indexKepuasan',
+    component: indexKepuasan
   }, {
     path: '/roles/modul',
     name: 'roles-modul',

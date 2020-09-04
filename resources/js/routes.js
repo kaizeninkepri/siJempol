@@ -33,6 +33,8 @@ const suratrekomendasipermintaan = () => import( /* webpackChunkName: "surat" */
 const suratrekomendasipermintaanData = () => import( /* webpackChunkName: "surat" */ '@/js/components/rekomendasi/data')
 
 const passwordGanti = () => import( /* webpackChunkName: "surat" */ '@/js/components/password/gantiPassword')
+
+const indexKepuasan = () => import( /* webpackChunkName: "Ind" */ '@/js/components/pengaduan/indexKepuasan')
 Vue.use(VueRouter);
 
 const router = new VueRouter({
@@ -82,6 +84,11 @@ const router = new VueRouter({
             path: '/rekomendasi/teknis',
             name: 'bo-surat-rekomendasi-data',
             component: suratrekomendasipermintaanData,
+        },
+        {
+            path: '/indexKepuasan',
+            name: 'indexKepuasan',
+            component: indexKepuasan,
         },
         {
             path: '/roles/modul',

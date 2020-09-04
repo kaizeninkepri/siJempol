@@ -3,6 +3,7 @@
     "/css/app.css": "/css/app.css",
     "/js/chunks/BODashboard.js": "/js/chunks/BODashboard.js",
     "/js/chunks/BOValidasi.js": "/js/chunks/BOValidasi.js",
+    "/js/chunks/Ind.js": "/js/chunks/Ind.js",
     "/js/chunks/Pemohondashboard.js": "/js/chunks/Pemohondashboard.js",
     "/js/chunks/dashboard.js": "/js/chunks/dashboard.js",
     "/js/chunks/foPermohonan.js": "/js/chunks/foPermohonan.js",
