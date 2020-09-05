@@ -350,6 +350,32 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -360,23 +386,11 @@ __webpack_require__.r(__webpack_exports__);
       },
       table: {
         search: null,
-        data: [{
-          date: "2016-05-03",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
-        }, {
-          date: "2016-05-02",
-          name: "ran",
-          address: "No. 189, Grove St, Los Angeles"
-        }, {
-          date: "2016-05-04",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
-        }, {
-          date: "2016-05-01",
-          name: "Tom",
-          address: "No. 189, Grove St, Los Angeles"
-        }]
+        data: [],
+        size: 10,
+        page: 1,
+        list: 0,
+        end: 10
       }
     };
   },
@@ -389,15 +403,32 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     user: function user() {
       return this.$store.state.StoreUser.user;
+    },
+    tabledata: function tabledata() {
+      return this.table.data.slice(this.table.list, this.table.end);
     }
   },
   methods: {
+    handleSizeChange: function handleSizeChange(val) {
+      console.log("".concat(val, " items per page"));
+    },
+    handleCurrentChange: function handleCurrentChange(val) {
+      var start = Math.max(0, val - 1);
+      var end = this.table.size;
+      var newstart = Math.max(0, start * end);
+      var newend = val * end;
+      this.table.list = newstart;
+      this.table.end = newend;
+      console.log("current page: ".concat(val));
+    },
     getIzin: function getIzin() {
+      var _this = this;
+
       this.page.isLoading = true;
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/opd", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/opd/izin", {
         type: "namaIzin"
       }).then(function (r) {
-        consoloe.log(r.data);
+        _this.table.data = r.data;
       });
     }
   },
@@ -1140,10 +1171,10 @@ var render = function() {
                         {
                           staticStyle: { width: "100%" },
                           attrs: {
-                            data: _vm.table.data.filter(function(data) {
+                            data: _vm.tabledata.filter(function(data) {
                               return (
                                 !_vm.table.search ||
-                                data.name
+                                data.value
                                   .toLowerCase()
                                   .includes(_vm.table.search.toLowerCase())
                               )
@@ -1156,20 +1187,91 @@ var render = function() {
                           }),
                           _vm._v(" "),
                           _c("el-table-column", {
-                            attrs: { prop: "name", label: "Nama Izin" }
+                            attrs: { prop: "value", label: "Nama Izin" }
                           }),
                           _vm._v(" "),
                           _c("el-table-column", {
-                            attrs: { prop: "address", label: "Jumlah Izin" }
+                            attrs: {
+                              prop: "persyaratan_count",
+                              width: "120",
+                              label: "Jumlah Izin",
+                              align: "center"
+                            }
                           }),
                           _vm._v(" "),
                           _c("el-table-column", {
-                            attrs: { prop: "address", label: "Sektor" }
+                            attrs: { prop: "opd.opd", label: "Sektor" }
                           }),
                           _vm._v(" "),
                           _c("el-table-column", {
-                            attrs: { prop: "address", label: "Aksi" }
+                            attrs: {
+                              prop: "kategori",
+                              label: "Kategori",
+                              width: "180"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("el-table-column", {
+                            attrs: {
+                              prop: "address",
+                              label: "Aksi",
+                              width: "180"
+                            },
+                            scopedSlots: _vm._u([
+                              {
+                                key: "default",
+                                fn: function(scope) {
+                                  return [
+                                    _c(
+                                      "el-button",
+                                      {
+                                        attrs: {
+                                          type: "primary",
+                                          icon: "el-icon-printer"
+                                        }
+                                      },
+                                      [_vm._v("Cetak Persyaratan")]
+                                    )
+                                  ]
+                                }
+                              }
+                            ])
                           })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-row",
+                        { attrs: { justify: "end", type: "flex" } },
+                        [
+                          _c(
+                            "el-col",
+                            { attrs: { md: 10 } },
+                            [
+                              _c("el-pagination", {
+                                staticStyle: { float: "right" },
+                                attrs: {
+                                  background: "",
+                                  "current-page": _vm.table.page,
+                                  "page-size": _vm.table.size,
+                                  layout: "total, prev, pager, next",
+                                  total: _vm.table.data.length
+                                },
+                                on: {
+                                  "size-change": _vm.handleSizeChange,
+                                  "current-change": _vm.handleCurrentChange,
+                                  "update:currentPage": function($event) {
+                                    return _vm.$set(_vm.table, "page", $event)
+                                  },
+                                  "update:current-page": function($event) {
+                                    return _vm.$set(_vm.table, "page", $event)
+                                  }
+                                }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )

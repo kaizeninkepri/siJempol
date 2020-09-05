@@ -126,7 +126,7 @@
                         <div class="dropdown-menu dropdown-menu-header wd-200">
                             <ul class="list-unstyled user-profile-nav">
                                 <li><a href=""><i class="icon ion-ios-person"></i>Identitas</a></li>
-                                <li><a href=""><i class="icon ion-power"></i>Keluar</a></li>
+                                <li><a href="{{ url('logout') }}"><i class="icon ion-power"></i>Keluar</a></li>
                             </ul>
                         </div><!-- dropdown-menu -->
                     </div><!-- dropdown -->

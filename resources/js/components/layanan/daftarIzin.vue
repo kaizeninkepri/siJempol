@@ -25,15 +25,41 @@
           </el-card>
           <el-card>
             <el-table
-              :data="table.data.filter(data => !table.search || data.name.toLowerCase().includes(table.search.toLowerCase()))"
+              :data="tabledata.filter(data => !table.search 
+                  || data.value.toLowerCase().includes(table.search.toLowerCase())
+                )"
               style="width: 100%"
             >
               <el-table-column type="index" label="No" width="50"></el-table-column>
-              <el-table-column prop="name" label="Nama Izin"></el-table-column>
-              <el-table-column prop="address" label="Jumlah Izin"></el-table-column>
-              <el-table-column prop="address" label="Sektor"></el-table-column>
-              <el-table-column prop="address" label="Aksi"></el-table-column>
+              <el-table-column prop="value" label="Nama Izin"></el-table-column>
+              <el-table-column
+                prop="persyaratan_count"
+                width="120"
+                label="Jumlah Izin"
+                align="center"
+              ></el-table-column>
+              <el-table-column prop="opd.opd" label="Sektor"></el-table-column>
+              <el-table-column prop="kategori" label="Kategori" width="180"></el-table-column>
+              <el-table-column prop="address" label="Aksi" width="180">
+                <template slot-scope="scope">
+                  <el-button type="primary" icon="el-icon-printer">Cetak Persyaratan</el-button>
+                </template>
+              </el-table-column>
             </el-table>
+            <el-row justify="end" type="flex">
+              <el-col :md="10">
+                <el-pagination
+                  style="float: right"
+                  background
+                  @size-change="handleSizeChange"
+                  @current-change="handleCurrentChange"
+                  :current-page.sync="table.page"
+                  :page-size="table.size"
+                  layout="total, prev, pager, next"
+                  :total="table.data.length"
+                ></el-pagination>
+              </el-col>
+            </el-row>
           </el-card>
         </div>
       </div>
@@ -51,28 +77,11 @@ export default {
       },
       table: {
         search: null,
-        data: [
-          {
-            date: "2016-05-03",
-            name: "Tom",
-            address: "No. 189, Grove St, Los Angeles",
-          },
-          {
-            date: "2016-05-02",
-            name: "ran",
-            address: "No. 189, Grove St, Los Angeles",
-          },
-          {
-            date: "2016-05-04",
-            name: "Tom",
-            address: "No. 189, Grove St, Los Angeles",
-          },
-          {
-            date: "2016-05-01",
-            name: "Tom",
-            address: "No. 189, Grove St, Los Angeles",
-          },
-        ],
+        data: [],
+        size: 10,
+        page: 1,
+        list: 0,
+        end: 10,
       },
     };
   },
@@ -86,16 +95,33 @@ export default {
     user() {
       return this.$store.state.StoreUser.user;
     },
+    tabledata() {
+      return this.table.data.slice(this.table.list, this.table.end);
+    },
   },
   methods: {
+    handleSizeChange(val) {
+      console.log(`${val} items per page`);
+    },
+    handleCurrentChange(val) {
+      var start = Math.max(0, val - 1);
+      var end = this.table.size;
+      var newstart = Math.max(0, start * end);
+      var newend = val * end;
+
+      this.table.list = newstart;
+      this.table.end = newend;
+
+      console.log(`current page: ${val}`);
+    },
     getIzin() {
       this.page.isLoading = true;
       this.axios
-        .post(urlBase.web + "/master/opd", {
+        .post(urlBase.web + "/opd/izin", {
           type: "namaIzin",
         })
         .then((r) => {
-          consoloe.log(r.data);
+          this.table.data = r.data;
         });
     },
   },

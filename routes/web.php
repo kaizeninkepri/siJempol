@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::GET("/web", "appcontrol@web");
+
 Auth::routes();
 
 Route::post("/login/submit", "appcontrol@login");

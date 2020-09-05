@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\permissionControl;
 use App\model\mdIdentitas;
+use App\model\mdOpd;
 
 class appcontrol extends Controller
 {
@@ -44,5 +45,11 @@ class appcontrol extends Controller
     function getById()
     {
         return mdUsers::with(['role'])->where("id", Auth::user()->id)->first();
+    }
+
+    function web()
+    {
+        $opd = mdOpd::orderBy("opd", "ASC")->get();
+        return view('caliris/master', compact('opd'));
     }
 }

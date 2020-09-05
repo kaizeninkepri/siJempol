@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+
+<head>
+    <title>Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="description" content="Template by CocoBasic" />
+    <meta name="keywords" content="HTML, CSS, JavaScript, PHP" />
+    <meta name="author" content="CocoBasic" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" href="<?php echo e(url('public/caliris/images/favicon.ico')); ?>" />
+    <link
+        href='https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7COpen%20Sans:300,400,700%7CMontserrat:700'
+        rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="<?php echo e(url('public/caliris/style.css')); ?>" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+</head>
+
+<body class=" page-template-onepage">
+
+    <div class="site-wrapper">
+
+        <div class="doc-loader">
+            <img src="<?php echo e(url('public/caliris/images/preloader.gif')); ?>" alt="Caliris">
+        </div>
+
+
+        <header class="header-holder">
+            <div class="menu-wrapper center-relative relative">
+                <div class="header-logo">
+                    <a href="index.html">
+                        <img src="<?php echo e(url('public/caliris/images/logo.png')); ?>" alt="Caliris">
+                    </a>
+                </div>
+
+                <div class="toggle-holder">
+                    <div id="toggle" class="">
+                        <div class="first-menu-line"></div>
+                        <div class="second-menu-line"></div>
+                        <div class="third-menu-line"></div>
+                    </div>
+                </div>
+
+                <div class="menu-holder">
+                    <nav id="header-main-menu">
+                        <ul class="main-menu sm sm-clean">
+                            <li>
+                                <a href="#about">Layanan Izin</a>
+                            </li>
+                            <li>
+                                <a href="#services">Layanan Informasi</a>
+                            </li>
+                            <li>
+                                <a href="#news">FAQ</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </header>
+
+
+
+        <div id="content" class="site-content center-relative">
+
+            <!-- Home Section -->
+            <div id="home" class="section full-width full-screen">
+                <div class="section-wrapper block content-1170 center-relative">
+                    <div class="content-wrapper">
+                        <h4 class="">
+                            Aplikasi Online<br>
+                            Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu <br>
+                            Si Jempol
+                        </h4>
+                        <div class="text-left">
+                            <a href="#footer" class="button scroll top-30">Mulai</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Services Section -->
+            <div id="services" class="section page-split">
+                <div class="section-wrapper block content-1170 center-relative">
+
+                    <div class="bg-holder float-left">
+                        <img src="<?php echo e(url('public/caliris/images/left_obj_01.png')); ?>" alt="">
+                    </div>
+
+                    <div class="section-title-holder float-left" data-background="#a13dd7">
+                        <div class="section-num">
+                            <span class="current-section-num">
+                                15
+                            </span>
+                            <span class="total-section-num">
+                                Sektor
+                            </span>
+                        </div>
+                        <h2 class="entry-title">
+                            Layanan
+                        </h2>
+                        <p class="page-desc">
+                            layanan Perizinan & Non Perizinan
+                        </p>
+                    </div>
+                    <div class="section-content-holder float-right">
+                        <div class="content-wrapper">
+                            <div class="row">
+                                <?php $__currentLoopData = $opd->slice(0,9); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $i => $opd): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <div class="col-md-4 mb-5 animate">
+                                    <div class=" service-item">
+                                        <img class="service-icon" src="<?php echo e(url('public/caliris/images/icon_07.png')); ?>"
+                                            alt="">
+                                        <p class="service-title"><?php echo e($opd->opd); ?></p>
+                                    </div>
+                                </div>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                            </div>
+
+                            <center><a href="#" class="button">Sektor Lainnya</a></center>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+        <!--Footer-->
+        <footer id="footer">
+            <div class="footer-content center-relative content-1170">
+
+                <div class="footer-mail">
+                    <a href="/cdn-cgi/l/email-protection#2a4e450744455e07594f444e07474f6a53455f5859435e4f04494547"><span
+                            class="__cf_email__"
+                            data-cfemail="147c7178787b54777b777b7675677d773a777b79">[email&#160;protected]</span></a>
+                </div>
+                <div class="footer-number">
+                    <a href="tel:987654321">987.654.321</a>
+                </div>
+
+                <img class="footer-logo" src="images/footer_img.png" alt="Caliris">
+
+                <div class="social-holder">
+                    <a href="#">
+                        <span class="fa fa-twitter"></span>
+                    </a>
+                    <a href="#">
+                        <span class="fa fa-facebook"></span>
+                    </a>
+                    <a href="#">
+                        <span class="fa fa-behance"></span>
+                    </a>
+                    <a href="#">
+                        <span class="fa fa-dribbble"></span>
+                    </a>
+                </div>
+
+                <div class="copyright-holder">
+                    © 2018 Caliris HTML Template by <a href="https://cocobasic.com">CocoBasic</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!--Load JavaScript-->
+    <script src="<?php echo e(url('public/caliris/js/jquery.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/jquery.sticky.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/imagesloaded.pkgd.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/jquery.fitvids.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/jquery.smartmenus.min.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/isotope.pkgd.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/jquery.easing.1.3.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/jquery.prettyPhoto.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/owl.carousel.min.js')); ?>"></script>
+    <script src="<?php echo e(url('public/caliris/js/main.js')); ?>"></script>
+</body>
+
+</html>
+<?php /**PATH C:\laragon\www\Lpanel\resources\views/caliris/master.blade.php ENDPATH**/ ?>
