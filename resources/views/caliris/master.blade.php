@@ -134,41 +134,6 @@
 
 
 
-        <!--Footer-->
-        <footer id="footer">
-            <div class="footer-content center-relative content-1170">
-
-                <div class="footer-mail">
-                    <a href="/cdn-cgi/l/email-protection#2a4e450744455e07594f444e07474f6a53455f5859435e4f04494547"><span
-                            class="__cf_email__"
-                            data-cfemail="147c7178787b54777b777b7675677d773a777b79">[email&#160;protected]</span></a>
-                </div>
-                <div class="footer-number">
-                    <a href="tel:987654321">987.654.321</a>
-                </div>
-
-                <img class="footer-logo" src="images/footer_img.png" alt="Caliris">
-
-                <div class="social-holder">
-                    <a href="#">
-                        <span class="fa fa-twitter"></span>
-                    </a>
-                    <a href="#">
-                        <span class="fa fa-facebook"></span>
-                    </a>
-                    <a href="#">
-                        <span class="fa fa-behance"></span>
-                    </a>
-                    <a href="#">
-                        <span class="fa fa-dribbble"></span>
-                    </a>
-                </div>
-
-                <div class="copyright-holder">
-                    © 2018 Caliris HTML Template by <a href="https://cocobasic.com">CocoBasic</a>
-                </div>
-            </div>
-        </footer>
     </div>
 
     <!--Load JavaScript-->

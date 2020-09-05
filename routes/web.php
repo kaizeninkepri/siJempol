@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::GET("/web", "appcontrol@web");
 
 Auth::routes();
-
+Route::middleware(['guest'])->group(function () {
+    Route::GET("/web", "appcontrol@web");
+});
 Route::post("/login/submit", "appcontrol@login");
 
 
