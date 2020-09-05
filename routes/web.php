@@ -16,9 +16,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
-Route::middleware(['guest'])->group(function () {
-    Route::GET("/web", "appcontrol@web");
-});
+Route::GET("/web", "appcontrol@web")->withoutMiddleware(['auth']);;
+
 Route::post("/login/submit", "appcontrol@login");
 
 
