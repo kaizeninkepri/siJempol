@@ -21,7 +21,7 @@ mix.webpackConfig({
     },
     output: {
         chunkFilename: 'js/chunks/[name].js',
-        publicPath: "http://localhost/Lpanel/"
+        publicPath: "http://appkepri.com/siJempol/"
     }
 });
 

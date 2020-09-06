@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://localhost/Lpanel/";
+/******/ 	__webpack_require__.p = "http://appkepri.com/siJempol/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -22195,21 +22195,21 @@ __webpack_require__.r(__webpack_exports__);
 // const api = "http://panel.inilahkepri.id";
 // const base = "";
 // const web = "http://panel.inilahkepri.id";
-var api = "http://localhost/Lpanel";
-var base = "Lpanel";
-var web = "http://localhost/Lpanel";
-var assets = "http://localhost/Resources/perusahaan";
-var publicData = "http://localhost/Lpanel/public"; // const api = "http://192.168.123.37/Lpanel";
+// const api = "http://localhost/Lpanel";
+// const base = "Lpanel";
+// const web = "http://localhost/Lpanel";
+// const assets = "http://localhost/Resources/perusahaan";
+// const publicData = "http://localhost/Lpanel/public";
+// const api = "http://192.168.123.37/Lpanel";
 // const base = "Lpanel";
 // const web = "http://192.168.123.37/Lpanel"
 // const publicData = "http://192.168.123.37/Lpanel/public";
 // const assets = "http://192.168.123.37/Resources/perusahaan";
-// const api = "http://appkepri.com/siJempol";
-// const base = "siJempol";
-// const web = "http://appkepri.com/siJempol"
-// const publicData = "http://appkepri.com/siJempol/public";
-// const assets = "http://appkepri.com/Resources/perusahaan";
-
+var api = "http://appkepri.com/siJempol";
+var base = "siJempol";
+var web = "http://appkepri.com/siJempol";
+var publicData = "http://appkepri.com/siJempol/public";
+var assets = "http://appkepri.com/Resources/perusahaan";
 /* harmony default export */ __webpack_exports__["default"] = ({
   api: api,
   base: base,
