@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunks/" + ({"BOValidasi":"BOValidasi","Ind":"Ind","foPermohonan":"foPermohonan","trackBYid":"trackBYid","vendors~BODashboard~dashboard":"vendors~BODashboard~dashboard","BODashboard":"BODashboard","vendors~Pemohondashboard~dashboard":"vendors~Pemohondashboard~dashboard","dashboard":"dashboard","Pemohondashboard":"Pemohondashboard","vendors~modulForm~pemohonPermohonan~roles~surat":"vendors~modulForm~pemohonPermohonan~roles~surat","pemohonPermohonan":"pemohonPermohonan","vendors~roles":"vendors~roles","modulForm":"modulForm","roles":"roles","vendors~surat":"vendors~surat","surat":"surat"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + ({"BOValidasi":"BOValidasi","Ind":"Ind","foPermohonan":"foPermohonan","trackBYid":"trackBYid","vendors~BODashboard~dashboard":"vendors~BODashboard~dashboard","BODashboard":"BODashboard","vendors~Pemohondashboard~dashboard":"vendors~Pemohondashboard~dashboard","dashboard":"dashboard","vendors~Pemohondashboard":"vendors~Pemohondashboard","Pemohondashboard":"Pemohondashboard","vendors~modulForm~pemohonPermohonan~roles~surat":"vendors~modulForm~pemohonPermohonan~roles~surat","pemohonPermohonan":"pemohonPermohonan","vendors~roles":"vendors~roles","modulForm":"modulForm","roles":"roles","vendors~surat":"vendors~surat","surat":"surat"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -21943,7 +21943,7 @@ var dashboardBo = function dashboardBo() {
 };
 
 var pemohonDashboard = function pemohonDashboard() {
-  return Promise.all(/*! import() | Pemohondashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("Pemohondashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/pemohon */ "./resources/js/components/dashboard/pemohon.vue"));
+  return Promise.all(/*! import() | Pemohondashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard"), __webpack_require__.e("Pemohondashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/pemohon */ "./resources/js/components/dashboard/pemohon.vue"));
 };
 
 var permohonanDetail = function permohonanDetail() {

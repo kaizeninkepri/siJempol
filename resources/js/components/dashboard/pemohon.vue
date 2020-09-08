@@ -120,7 +120,7 @@
               </el-card>
             </el-col>
             <el-col :md="6">
-              <el-card>
+              <el-card class="mg-b-10">
                 <h5 class="tx-bold">DATA PENGAJUAN PERMOHONAN</h5>
                 <el-divider></el-divider>
                 <div
@@ -165,6 +165,7 @@
                 </div>
                 <!-- d-flex -->
               </el-card>
+              <videoPlayer :options="playerOptions"></videoPlayer>
             </el-col>
           </el-row>
         </div>
@@ -177,6 +178,9 @@ import urlBase from "@/js/url";
 import VueContentLoading from "vue-content-loading";
 import skeleton from "@/js/components/dashboard/pemohon_skeleton";
 import { VclFacebook, VclInstagram, VclTable } from "vue-content-loading";
+import "video.js/dist/video-js.css";
+
+import { videoPlayer } from "vue-video-player";
 
 const form = () =>
   import(
@@ -185,6 +189,20 @@ const form = () =>
 export default {
   data() {
     return {
+      playerOptions: {
+        width: "260%",
+        // videojs options
+        muted: true,
+        language: "en",
+        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        sources: [
+          {
+            type: "video/mp4",
+            src: "https://appkepri.com/Resources/tutorial1.mp4",
+          },
+        ],
+        poster: "/static/images/author.jpg",
+      },
       page: {
         title: "DASHBOARD",
         subtitle: "DPMPTSP",
@@ -312,6 +330,7 @@ export default {
     VclFacebook,
     VclTable,
     skeleton,
+    videoPlayer,
   },
 };
 </script>

@@ -58,7 +58,6 @@
                     </div>
                     <!-- form-group -->
                     <button type="submit" class="btn btn-info btn-block">Login</button>
-                    <a href="http://192.168.123.37/ptsp_pemohon/pendaftaran" class="btn btn-info btn-block">Daftar</a>
                 </form>
             </div>
             <!-- login-wrapper -->
