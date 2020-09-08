@@ -29,7 +29,8 @@ Vue.use(ElementUI, {
 })
 
 
-
+const pemohonPendaftaran = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaran')
+const pemohonPendaftaranSelesai = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaranSelesai')
 import Vuelidate from 'vuelidate'
 import VueEvents from 'vue-events'
 Vue.config.ignoredElements = [/^ion-/]
@@ -116,5 +117,9 @@ const app = new Vue({
             });
         }
     },
+    components: {
+        pemohonPendaftaran,
+        pemohonPendaftaranSelesai,
+    }
 
 });

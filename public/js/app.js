@@ -21756,6 +21756,15 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(element_ui_lib__WEBPACK_IMPORTED_
   locale: element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_10___default.a
 });
 
+var pemohonPendaftaran = function pemohonPendaftaran() {
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaran */ "./resources/js/components/pendaftaran/pendaftaran.vue"));
+};
+
+var pemohonPendaftaranSelesai = function pemohonPendaftaranSelesai() {
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaranSelesai */ "./resources/js/components/pendaftaran/pendaftaranSelesai.vue"));
+};
+
+
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.config.ignoredElements = [/^ion-/];
 /**
@@ -21827,6 +21836,10 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
         menuText.removeClass('d-lg-none');
       });
     }
+  },
+  components: {
+    pemohonPendaftaran: pemohonPendaftaran,
+    pemohonPendaftaranSelesai: pemohonPendaftaranSelesai
   }
 });
 
@@ -21970,6 +21983,10 @@ var pemohonPengajuan = function pemohonPengajuan() {
 var pemohonPengajuan2 = function pemohonPengajuan2() {
   return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pemohon/permohonan/pengajuan2 */ "./resources/js/components/pemohon/permohonan/pengajuan2.vue"));
 };
+
+var pemohonPendaftaran = function pemohonPendaftaran() {
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaran */ "./resources/js/components/pendaftaran/pendaftaran.vue"));
+};
 /* --------------------- PEROMOHONAN COMPONEN --------------------------*/
 
 
@@ -22065,6 +22082,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   },
   /* ----------PEMOHON ROUTE---------------*/
   {
+    path: '/pemohon/pendaftaran',
+    name: 'pemohon-pendaftaran',
+    component: pemohonPendaftaran
+  }, {
     path: '/pemohon/dashboard',
     name: 'pemohon-dashboard',
     component: pemohonDashboard

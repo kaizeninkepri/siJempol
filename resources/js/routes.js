@@ -26,6 +26,7 @@ const trackByid = () => import( /* webpackChunkName: "trackBYid" */ '@/js/compon
 
 const pemohonPengajuan = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pemohon/permohonan/pengajuan')
 const pemohonPengajuan2 = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pemohon/permohonan/pengajuan2')
+const pemohonPendaftaran = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaran')
 
 /* --------------------- PEROMOHONAN COMPONEN --------------------------*/
 const suratpermintaan = () => import( /* webpackChunkName: "surat" */ '@/js/components/surat/permintaan')
@@ -116,6 +117,11 @@ const router = new VueRouter({
             component: trackByid,
         },
         /* ----------PEMOHON ROUTE---------------*/
+        {
+            path: '/pemohon/pendaftaran',
+            name: 'pemohon-pendaftaran',
+            component: pemohonPendaftaran,
+        },
         {
             path: '/pemohon/dashboard',
             name: 'pemohon-dashboard',

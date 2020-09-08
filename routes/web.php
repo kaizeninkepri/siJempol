@@ -19,8 +19,10 @@ Auth::routes();
 Route::GET("/web", "appcontrol@web")->withoutMiddleware(['auth']);;
 
 Route::post("/login/submit", "appcontrol@login");
-
-
+Route::post("/master/pendaftaran", "pendaftaranControl@ToSelf");
+Route::get("/pendaftaran", "pendaftaranControl@index");
+Route::get("/pendaftaran/selesai", "pendaftaranControl@pendaftaranSelesai");
+Route::get("/users/getById", "appcontrol@getById");
 // Route::get("/register", "appcontrol@register");
 
 Route::middleware(['auth'])->group(function () {
@@ -36,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
     Route::POST("/perizinan/perusahaan", "perusahaanControl@index");
     Route::POST("/validasi", "validasiControl@index");
 
-    Route::get("/users/getById", "appcontrol@getById");
+
     Route::get("/logout", "appcontrol@logout");
     Route::post("/roles/modul", "rolesModulControl@index");
     Route::get("/roles/modul/data", "rolesModulControl@moduldata");
@@ -45,9 +47,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/roles/role", "rolesControl@index");
     Route::post("/perusahaan/Identitas", "identitasControl@index");
 
-
-    Route::post("/pemohon", "pemohonControl@index");
-
-
     Route::get("/{any}", "appcontrol@index")->where("any", ".*");
+    Route::post("/pemohon", "pemohonControl@index");
 });
