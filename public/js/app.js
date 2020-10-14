@@ -22807,11 +22807,11 @@ __webpack_require__.r(__webpack_exports__);
 // const web = "http://192.168.1.98/siJempol"
 // const publicData = "http://192.168.1.98/siJempol/public";
 // const assets = "http://192.168.1.98/Resources/perusahaan";
-var api = "http://dpmptsp.kepriprov.go.id/siJempol";
+var api = "https://dpmptsp.kepriprov.go.id/siJempol";
 var base = "";
-var web = "http://dpmptsp.kepriprov.go.id/siJempol";
-var publicData = "http://dpmptsp.kepriprov.go.id/siJempol/public";
-var assets = "http://dpmptsp.kepriprov.go.id/Resources/perusahaan";
+var web = "https://dpmptsp.kepriprov.go.id/siJempol";
+var publicData = "https://dpmptsp.kepriprov.go.id/siJempol/public";
+var assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
 /* harmony default export */ __webpack_exports__["default"] = ({
   api: api,
   base: base,

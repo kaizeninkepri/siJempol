@@ -14,11 +14,11 @@
 // const publicData = "http://192.168.1.98/siJempol/public";
 // const assets = "http://192.168.1.98/Resources/perusahaan";
 
-const api = "http://dpmptsp.kepriprov.go.id/siJempol";
+const api = "https://dpmptsp.kepriprov.go.id/siJempol";
 const base = "";
-const web = "http://dpmptsp.kepriprov.go.id/siJempol"
-const publicData = "http://dpmptsp.kepriprov.go.id/siJempol/public";
-const assets = "http://dpmptsp.kepriprov.go.id/Resources/perusahaan";
+const web = "https://dpmptsp.kepriprov.go.id/siJempol"
+const publicData = "https://dpmptsp.kepriprov.go.id/siJempol/public";
+const assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
 
 
 export default {
