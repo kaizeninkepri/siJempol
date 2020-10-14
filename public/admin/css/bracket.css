@@ -2039,6 +2039,7 @@ textarea.form-control.parsley-error,
 input.custom-select.parsley-error,
 textarea.custom-select.parsley-error {
     border-color: #dc3545;
+    background-color: #f6cfcf
 }
 
 .was-validated .form-control:invalid:focus,
@@ -2088,6 +2089,7 @@ textarea.custom-select.parsley-error~.invalid-tooltip {
 input.form-check-input.parsley-error+.form-check-label,
 textarea.form-check-input.parsley-error+.form-check-label {
     color: #dc3545;
+    background-color: #f6cfcf
 }
 
 .was-validated .custom-control-input:invalid~.custom-control-indicator,
@@ -2102,6 +2104,7 @@ textarea.custom-control-input.parsley-error~.custom-control-indicator {
 input.custom-control-input.parsley-error~.custom-control-description,
 textarea.custom-control-input.parsley-error~.custom-control-description {
     color: #dc3545;
+    background-color: #f6cfcf;
 }
 
 .was-validated .custom-file-input:invalid~.custom-file-control,
@@ -2109,6 +2112,7 @@ textarea.custom-control-input.parsley-error~.custom-control-description {
 input.custom-file-input.parsley-error~.custom-file-control,
 textarea.custom-file-input.parsley-error~.custom-file-control {
     border-color: #dc3545;
+    background-color: #f6cfcf
 }
 
 .was-validated .custom-file-input:invalid~.custom-file-control::before,

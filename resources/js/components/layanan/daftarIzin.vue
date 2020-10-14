@@ -42,7 +42,9 @@
               <el-table-column prop="kategori" label="Kategori" width="180"></el-table-column>
               <el-table-column prop="address" label="Aksi" width="180">
                 <template slot-scope="scope">
-                  <el-button type="primary" icon="el-icon-printer">Cetak Persyaratan</el-button>
+                  <a :href="scope.row.linkPDF" target="_blank">
+                    <i class="el-icon-printer"></i> Cetak Persyaratan
+                  </a>
                 </template>
               </el-table-column>
             </el-table>

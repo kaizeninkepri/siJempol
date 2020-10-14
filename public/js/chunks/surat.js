@@ -52,7 +52,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var form = function form() {
-  return Promise.all(/*! import() | modulForm */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("modulForm")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
+  return Promise.all(/*! import() | modulForm */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("modulForm")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1563,6 +1563,329 @@ n;
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1672,47 +1995,174 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      url: {
+        suratpermintaan: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].assets
+      },
       page: {
         isLoading: true
       },
+      wrap: {
+        inbox: true,
+        sent: false
+      },
       permohonan: {},
+      viewSearch: null,
       drawer: {
         isLoading: false,
         show: false,
-        innerDrawer: false
+        innerDrawer: false,
+        pratinjauSurat: false
       },
+      surat: [],
+      petugas: [],
       permintaan: {
         surat_permintaan_id: null,
         nomor: null,
         opd_id: null,
         perihal: null,
         file: null,
-        user_id: null
+        user_id: null,
+        status: "terkirim",
+        permohonan_id: this.$route.params.id,
+        kategori: "1",
+        keterangan: null
       },
+      role_id: null,
       pratinjau: {
         objectURL: null,
-        isLoading: false
+        isLoading: false,
+        progressBar: 0,
+        title: null
       }
     };
   },
   created: function created() {
     this.getPermohonan();
+    this.getsuratpengurusById();
+    this.getSurat();
+  },
+  validations: {
+    permintaan: {
+      nomor: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      perihal: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      keterangan: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      file: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      }
+    }
+  },
+  computed: {
+    inbox: function inbox() {
+      var a = this.surat;
+      var user = this.$store.state.StoreUser.user;
+      this.role_id = user.role.role_id;
+
+      if (user.role.role_id == 4) {
+        var inb = a.filter(function (p) {
+          return p.kategori === "1";
+        });
+
+        if (inb.length > 0) {
+          this.viewSearch = inb[0].surat_permintaan_id;
+        }
+
+        return inb;
+      } else {
+        return a.filter(function (p) {
+          return p.kategori === "2";
+        });
+      }
+    },
+    sent: function sent() {
+      var a = this.surat;
+      var user = this.$store.state.StoreUser.user;
+
+      if (user.role.role_id == 4) {
+        return a.filter(function (p) {
+          return p.kategori === "2";
+        });
+      } else {
+        return a.filter(function (p) {
+          return p.kategori === "1";
+        });
+      }
+    },
+    view: function view() {
+      var _this = this;
+
+      var filter = this.surat.filter(function (p) {
+        return p.surat_permintaan_id == _this.viewSearch;
+      });
+
+      if (this.viewSearch != null) {
+        return filter[0];
+      }
+
+      return null;
+    },
+    user: function user() {
+      var a = this.$store.state.StoreUser.user;
+
+      if (a.role_id == "4") {
+        this.permintaan.kategori = "2";
+        this.permintaan.status = "balas";
+      } else if (a.role_id == "2") {
+        this.permintaan.keterangan = "pengiriman";
+        this.permintaan.status = "terkirim";
+        this.permintaan.kategori = "1";
+      }
+
+      return a;
+    },
+    permission: function permission() {
+      return this.$store.getters["StoreUser/gtrspermissionActive"]("15");
+    }
   },
   mounted: function mounted() {
     this.$parent.justcollpasedmenu();
   },
   methods: {
+    openView: function openView(i) {
+      this.viewSearch = i;
+    },
+    getSurat: function getSurat() {
+      var _this2 = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/surat", {
+        type: "getSurat",
+        id: this.$route.params.id
+      }).then(function (r) {
+        _this2.surat = r.data, _this2.page.isLoading = false;
+      });
+    },
     getPermohonan: function getPermohonan() {
-      var _this = this;
+      var _this3 = this;
 
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/perizinan/permohonan", {
         type: "dataById",
         id: this.$route.params.id
       }).then(function (r) {
-        _this.permohonan = r.data, _this.page.isLoading = false;
+        _this3.permohonan = r.data, _this3.page.isLoading = false;
+      });
+    },
+    getsuratpengurusById: function getsuratpengurusById() {
+      var _this4 = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/surat", {
+        type: "getsuratpengurusById",
+        id: this.$route.params.id
+      }).then(function (r) {
+        _this4.petugas = r.data;
       });
     },
     openDrawer: function openDrawer() {
@@ -1724,18 +2174,79 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (_) {});
     },
     onFilesChange: function onFilesChange(event) {
-      var _this2 = this;
+      var _this5 = this;
+
+      var file = event.target.files[0];
+
+      if (file.size > 2097152) {
+        this.$message.error("File Upload terlalu besar, Maksimal 2 MB");
+        return;
+      }
 
       this.pratinjau.isLoading = true;
-      var file = event.target.files[0];
       this.pratinjau.objectURL = URL.createObjectURL(file);
       var fileReader = new FileReader();
       fileReader.readAsDataURL(event.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this2.permintaan.file = e.target.result;
-        _this2.pratinjau.isLoading = false;
+        _this5.permintaan.file = e.target.result;
+        _this5.pratinjau.isLoading = false;
       };
+    },
+    submit: function submit() {
+      var _this6 = this;
+
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.pratinjau.isLoading = true;
+        this.$Progress.start();
+        this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/surat", {
+          type: "pengirimanSuratTelaah",
+          data: this.permintaan,
+          role: this.role_id
+        }).then(function (r) {
+          _this6.pratinjau.isLoading = false;
+
+          _this6.$Progress.finish();
+
+          _this6.drawer.show = false;
+          _this6.pratinjau.objectURL = null;
+          _this6.permintaan = {
+            surat_permintaan_id: null,
+            nomor: null,
+            opd_id: null,
+            perihal: null,
+            file: null,
+            user_id: null,
+            status: "terkirim",
+            permohonan_id: _this6.$route.params.id
+          };
+
+          _this6.getSurat();
+
+          _this6.wrap.inbox = false;
+          _this6.wrap.sent = true;
+
+          _this6.$nextTick(function () {
+            _this6.$v.$reset();
+          });
+        }, function (response) {
+          _this6.$Progress.fail();
+        });
+      }
+    },
+    pratinjauBerkasPermintaan: function pratinjauBerkasPermintaan() {
+      this.pratinjau.objectURL = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].assets + "/" + this.permohonan.perusahaan.npwp + "/" + this.permohonan.permohonan_code + "/surat/" + this.view.file;
+      this.drawer.title = "Surat Permintaan Telaah " + this.permohonan.perusahaan.fullname + "  -  " + this.permohonan.izin.nama_izin + "";
+      this.drawer.pratinjauSurat = true;
+    },
+    closeDrawer: function closeDrawer(done) {
+      this.pratinjau.objectURL = null;
+      done();
+    },
+    openSuratTrack: function openSuratTrack() {
+      $("#modalShow").modal("show");
     }
   }
 });
@@ -1792,7 +2303,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 80px;\n}\n.wd-100px {\r\n  width: 100px;\n}\ntr.errorUpload td {\r\n  background-color: #d7574a;\r\n  color: white;\n}\n.inputWrapper {\r\n  height: 32px;\r\n  width: 64px;\r\n  overflow: hidden;\r\n  position: relative;\r\n  cursor: pointer;\r\n  /*Using a background color, but you can use a background image to represent a button*/\r\n  background-color: #ddf;\n}\n.fileInput {\r\n  cursor: pointer;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  z-index: 99;\r\n  /*This makes the button huge. If you want a bigger button, increase the font size*/\r\n  font-size: 50px;\r\n  /*Opacity settings for all browsers*/\r\n  opacity: 0;\r\n  -moz-opacity: 0;\r\n  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);\n}\ninput[type=\"file\"] {\r\n  display: none;\n}\n.custom-file-upload {\r\n  background: #1479ff;\r\n  color: white;\r\n  display: inline-block;\r\n  padding: 6px 12px;\r\n  cursor: pointer;\n}\nobject,\r\niframe {\r\n  border: 3px solid #cecece;\r\n  background: #e9e9e9;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: scroll;\n}\r\n", ""]);
+exports.push([module.i, "\n.is-invalid {\r\n  background: #fdd;\n}\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 80px;\n}\n.wd-100px {\r\n  width: 100px;\n}\ntr.errorUpload td {\r\n  background-color: #d7574a;\r\n  color: white;\n}\n.inputWrapper {\r\n  height: 32px;\r\n  width: 64px;\r\n  overflow: hidden;\r\n  position: relative;\r\n  cursor: pointer;\r\n  /*Using a background color, but you can use a background image to represent a button*/\r\n  background-color: #ddf;\n}\n.fileInput {\r\n  cursor: pointer;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  z-index: 99;\r\n  /*This makes the button huge. If you want a bigger button, increase the font size*/\r\n  font-size: 50px;\r\n  /*Opacity settings for all browsers*/\r\n  opacity: 0;\r\n  -moz-opacity: 0;\r\n  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);\n}\ninput[type=\"file\"] {\r\n  display: none;\n}\n.custom-file-upload {\r\n  background: #1479ff;\r\n  color: white;\r\n  display: inline-block;\r\n  padding: 6px 12px;\r\n  cursor: pointer;\n}\nobject,\r\niframe {\r\n  border: 3px solid #cecece;\r\n  background: #e9e9e9;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: scroll;\n}\nembed {\r\n  border: 3px solid #cecece;\r\n  background: #e9e9e9;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: scroll;\n}\n.permintaanTelaah :hover {\r\n  background-color: #ecf5ff;\r\n  cursor: pointer;\n}\r\n", ""]);
 
 // exports
 
@@ -4543,156 +5054,730 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "br-pagebody" },
-    [
-      _c(
+  return _vm.permission
+    ? _c(
         "div",
-        { staticClass: "pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30" },
+        { staticClass: "br-pagebody" },
         [
-          _c("h4", { staticClass: "tx-gray-800 mg-b-5 tx-bold" }, [
-            _vm._v("PENGIRIMAN PERMINTAAN SURAT TELAAH")
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "mg-b-0" }, [_vm._v("Back Office")]),
-          _vm._v(" "),
           _c(
-            "el-row",
-            { staticClass: "mg-t-20 pd-t-20" },
+            "div",
+            { staticClass: "pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30" },
             [
               _c(
-                "el-card",
+                "div",
                 {
-                  directives: [
-                    {
-                      name: "loading",
-                      rawName: "v-loading",
-                      value: _vm.page.isLoading,
-                      expression: "page.isLoading"
-                    }
-                  ],
-                  staticClass: "mg-t-10 pd-t-10",
-                  staticStyle: {
-                    "border-radius": "5px",
-                    "min-height": "300px"
-                  },
-                  attrs: { "body-style": { padding: "0px" } }
+                  staticClass:
+                    "d-flex align-items-center justify-content-between"
                 },
                 [
+                  _vm.user.role && _vm.user.role.role_id == "2"
+                    ? _c("div", [
+                        _c(
+                          "h4",
+                          { staticClass: "tx-gray-800 mg-b-5 tx-bold" },
+                          [
+                            _vm._v(
+                              "\n          PENGIRIMAN PERMINTAAN SURAT TELAAH\n        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mg-b-0" }, [
+                          _vm._v(_vm._s(_vm.user.role.role))
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.user.role && _vm.user.role.role_id == "4"
+                    ? _c("div", [
+                        _c(
+                          "h4",
+                          { staticClass: "tx-gray-800 mg-b-5 tx-bold" },
+                          [
+                            _vm._v(
+                              "\n          PENGIRIMAN SURAT REKOMENDASI\n        "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("p", { staticClass: "mg-b-0" }, [
+                          _vm._v(_vm._s(_vm.user.role.role))
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
                   _c(
                     "div",
+                    { staticClass: "wd-230 tx-right" },
+                    [
+                      _vm.user.role.role_id == 2
+                        ? _c(
+                            "router-link",
+                            { attrs: { to: { name: "bo-dashboard" } } },
+                            [
+                              _c("el-button", { attrs: { type: "primary" } }, [
+                                _vm._v("Dashbord")
+                              ])
+                            ],
+                            1
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.user.role.role_id == 4
+                        ? _c(
+                            "router-link",
+                            { attrs: { to: { name: "opd-dashboard" } } },
+                            [
+                              _c("el-button", { attrs: { type: "primary" } }, [
+                                _vm._v("Dashbord")
+                              ])
+                            ],
+                            1
+                          )
+                        : _vm._e()
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-row",
+                { staticClass: "mg-t-20 pd-t-20" },
+                [
+                  _c(
+                    "el-card",
                     {
-                      staticClass: "clearfix",
-                      attrs: { slot: "header" },
-                      slot: "header"
+                      directives: [
+                        {
+                          name: "loading",
+                          rawName: "v-loading",
+                          value: _vm.page.isLoading,
+                          expression: "page.isLoading"
+                        }
+                      ],
+                      staticClass: "mg-t-10 pd-t-10",
+                      staticStyle: {
+                        "border-radius": "5px",
+                        "min-height": "300px"
+                      },
+                      attrs: { "body-style": { padding: "0px" } }
                     },
                     [
                       _c(
-                        "el-button",
+                        "div",
                         {
-                          staticStyle: { float: "right", padding: "3px 0" },
-                          attrs: { type: "text" }
-                        },
-                        [
-                          _vm.permohonan.perusahaan
-                            ? _c("span", { staticClass: "tx-20 tx-bold" }, [
-                                _vm._v(
-                                  _vm._s(
-                                    _vm.permohonan.perusahaan.fullname.toUpperCase()
-                                  )
-                                )
-                              ])
-                            : _vm._e()
-                        ]
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-row",
-                    [
-                      _c("el-col", { attrs: { md: 8 } }, [
-                        _c(
-                          "div",
-                          {
-                            staticClass:
-                              "pd-30 d-flex align-items-center bd-r bd-3 bd-primary"
-                          },
-                          [
-                            _c("ion-icon", {
-                              staticClass: "tx-50 tx-primary",
-                              attrs: { name: "layers-outline" }
-                            }),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "mg-l-20" }, [
-                              _vm.permohonan.izin
-                                ? _c(
-                                    "p",
-                                    {
-                                      staticClass:
-                                        "tx-24 tx-lato tx-bold mg-b-2 lh-1"
-                                    },
-                                    [
-                                      _vm._v(
-                                        _vm._s(_vm.permohonan.izin.nama_izin)
-                                      )
-                                    ]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _vm.permohonan.opd
-                                ? _c(
-                                    "span",
-                                    {
-                                      staticClass: "tx-11 tx-roboto tx-primary"
-                                    },
-                                    [
-                                      _vm._v(
-                                        "Dinas " +
-                                          _vm._s(_vm.permohonan.opd.opd)
-                                      )
-                                    ]
-                                  )
-                                : _vm._e()
-                            ])
-                          ],
-                          1
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "el-col",
-                        {
-                          staticStyle: {
-                            background: "#f9f9f9",
-                            "min-height": "300px"
-                          },
-                          attrs: { md: 16 }
+                          staticClass: "clearfix",
+                          attrs: { slot: "header" },
+                          slot: "header"
                         },
                         [
                           _c(
-                            "center",
-                            { staticClass: "pd-t-50" },
+                            "el-button",
+                            {
+                              staticStyle: { float: "right", padding: "3px 0" },
+                              attrs: { type: "text" }
+                            },
                             [
-                              _c("h1", [_vm._v("Surat Belum Di Kirim")]),
+                              _vm.permohonan.perusahaan
+                                ? _c("span", { staticClass: "tx-20 tx-bold" }, [
+                                    _vm._v(
+                                      _vm._s(
+                                        _vm.permohonan.perusahaan.fullname.toUpperCase()
+                                      )
+                                    )
+                                  ])
+                                : _vm._e()
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-row",
+                        [
+                          _c(
+                            "el-col",
+                            { attrs: { md: 3 } },
+                            [
+                              _c(
+                                "el-menu",
+                                {
+                                  staticClass: "el-menu-vertical-demo",
+                                  attrs: { "default-active": "1" }
+                                },
+                                [
+                                  _c(
+                                    "el-menu-item",
+                                    {
+                                      attrs: { index: "1" },
+                                      on: {
+                                        click: function($event) {
+                                          ;(_vm.wrap.inbox = true),
+                                            (_vm.wrap.sent = false)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("ion-icon", {
+                                        staticClass: "tx-30",
+                                        attrs: {
+                                          name: "file-tray-full-outline"
+                                        }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "span",
+                                        {
+                                          attrs: { slot: "title" },
+                                          slot: "title"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                  Surat Masuk\n                  "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-menu-item",
+                                    {
+                                      attrs: { index: "2" },
+                                      on: {
+                                        click: function($event) {
+                                          ;(_vm.wrap.inbox = false),
+                                            (_vm.wrap.sent = true)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("ion-icon", {
+                                        staticClass: "tx-30 tx-success",
+                                        attrs: { name: "checkbox-outline" }
+                                      }),
+                                      _vm._v(" "),
+                                      _c(
+                                        "span",
+                                        {
+                                          attrs: { slot: "title" },
+                                          slot: "title"
+                                        },
+                                        [_vm._v("Surat keluar")]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "el-col",
+                            { attrs: { md: 21 } },
+                            [
+                              _vm.sent.length == 0 && _vm.role_id == 2
+                                ? _c(
+                                    "el-row",
+                                    [
+                                      _c(
+                                        "center",
+                                        { staticClass: "pd-t-50" },
+                                        [
+                                          _c("h1", [
+                                            _vm._v("Surat Belum Di Kirim")
+                                          ]),
+                                          _vm._v(" "),
+                                          JSON.parse(_vm.permission.create)
+                                            ? _c(
+                                                "el-button",
+                                                {
+                                                  attrs: {
+                                                    type: "primary",
+                                                    icon: "el-icon-edit",
+                                                    round: ""
+                                                  },
+                                                  on: {
+                                                    click: function($event) {
+                                                      return _vm.openDrawer()
+                                                    }
+                                                  }
+                                                },
+                                                [_vm._v("Tulis Pesan")]
+                                              )
+                                            : _vm._e()
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                : _vm._e(),
                               _vm._v(" "),
                               _c(
-                                "el-button",
+                                "el-row",
                                 {
-                                  attrs: {
-                                    type: "primary",
-                                    icon: "el-icon-edit",
-                                    round: ""
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.openDrawer()
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.wrap.inbox,
+                                      expression: "wrap.inbox"
                                     }
-                                  }
+                                  ]
                                 },
-                                [_vm._v("Tulis Pesan")]
+                                [
+                                  _c(
+                                    "el-col",
+                                    {
+                                      staticClass: "permintaanTelaah",
+                                      attrs: { md: 5 }
+                                    },
+                                    _vm._l(_vm.inbox, function(inbox, ib) {
+                                      return _c(
+                                        "div",
+                                        {
+                                          key: ib,
+                                          staticClass:
+                                            "pd-30 d-flex align-items-center bd-r bd-3 bd-primary",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.openView(
+                                                inbox.surat_permintaan_id
+                                              )
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c("ion-icon", {
+                                            staticClass: "tx-50 tx-primary",
+                                            attrs: { name: "layers-outline" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            { staticClass: "mg-l-20" },
+                                            [
+                                              _vm.role_id == "2"
+                                                ? _c(
+                                                    "p",
+                                                    {
+                                                      staticClass:
+                                                        "tx-20 tx-lato tx-bold mg-b-2 lh-1"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                      Dinas " +
+                                                          _vm._s(
+                                                            inbox.opd.opd
+                                                          ) +
+                                                          "\n                    "
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              _vm.role_id == "4"
+                                                ? _c(
+                                                    "p",
+                                                    {
+                                                      staticClass:
+                                                        "tx-20 tx-lato tx-bold mg-b-2 lh-1"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                      DPMPTSP\n                    "
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e(),
+                                              _vm._v(" "),
+                                              inbox.opd
+                                                ? _c(
+                                                    "span",
+                                                    {
+                                                      staticClass:
+                                                        "tx-11 tx-roboto tx-primary"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(inbox.waktuHuman)
+                                                      )
+                                                    ]
+                                                  )
+                                                : _vm._e()
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    }),
+                                    0
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-col",
+                                    {
+                                      staticStyle: { background: "#f9f9f9" },
+                                      attrs: { md: 19 }
+                                    },
+                                    [
+                                      _vm.view
+                                        ? _c(
+                                            "div",
+                                            {
+                                              staticClass:
+                                                "d-flex align-items-center justify-content-between pd-20"
+                                            },
+                                            [
+                                              _c(
+                                                "div",
+                                                [
+                                                  _c(
+                                                    "h6",
+                                                    {
+                                                      staticClass:
+                                                        "tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                      Nomor   : " +
+                                                          _vm._s(
+                                                            _vm.view.nomor
+                                                          ) +
+                                                          "\n                    "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "p",
+                                                    {
+                                                      staticClass:
+                                                        "mg-b-10 tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                      Perihal : " +
+                                                          _vm._s(
+                                                            _vm.view.perihal
+                                                          ) +
+                                                          "\n                    "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  JSON.parse(
+                                                    _vm.permission.create
+                                                  )
+                                                    ? _c(
+                                                        "el-button",
+                                                        {
+                                                          staticClass:
+                                                            "pd-t-10",
+                                                          attrs: {
+                                                            type: "primary",
+                                                            size: "mini",
+                                                            icon: "el-icon-view"
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              return _vm.pratinjauBerkasPermintaan()
+                                                            }
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm.view.kategori == 2
+                                                            ? _c("span", [
+                                                                _vm._v(
+                                                                  "Berkas Rekomendasi Teknis"
+                                                                )
+                                                              ])
+                                                            : _vm._e(),
+                                                          _vm._v(" "),
+                                                          _vm.view.kategori == 1
+                                                            ? _c("span", [
+                                                                _vm._v(
+                                                                  "Berkas Surat Permintaan"
+                                                                )
+                                                              ])
+                                                            : _vm._e()
+                                                        ]
+                                                      )
+                                                    : _vm._e(),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "router-link",
+                                                    {
+                                                      attrs: {
+                                                        to: {
+                                                          name:
+                                                            "bo-permohonan-detail",
+                                                          params: {
+                                                            id: this.permohonan
+                                                              .permohonan_id
+                                                          }
+                                                        }
+                                                      }
+                                                    },
+                                                    [
+                                                      _c(
+                                                        "span",
+                                                        {
+                                                          staticClass: "mg-l-10"
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "el-button",
+                                                            {
+                                                              attrs: {
+                                                                type: "text"
+                                                              }
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Berkas persyaratan"
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c("i", {
+                                                            staticClass:
+                                                              "icon ion-more tx-18 lh-0"
+                                                          })
+                                                        ],
+                                                        1
+                                                      )
+                                                    ]
+                                                  )
+                                                ],
+                                                1
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "div",
+                                                { staticClass: "wd-230" },
+                                                [
+                                                  _c(
+                                                    "p",
+                                                    {
+                                                      staticClass:
+                                                        "mg-b-0 tx-8 tx-primary tx-uppercase tx-semibold tx-spacing-1"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                      Tanggal Kirim\n                    "
+                                                      )
+                                                    ]
+                                                  ),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "p",
+                                                    {
+                                                      staticClass:
+                                                        "mg-b-0 tx-15 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        "\n                      " +
+                                                          _vm._s(
+                                                            _vm.view.created_at
+                                                          ) +
+                                                          "\n                      "
+                                                      ),
+                                                      _c("el-button", {
+                                                        staticClass: "pd-t-10",
+                                                        attrs: {
+                                                          type: "text",
+                                                          size: "mini",
+                                                          icon: "el-icon-info"
+                                                        },
+                                                        on: {
+                                                          click: function(
+                                                            $event
+                                                          ) {
+                                                            return _vm.openSuratTrack()
+                                                          }
+                                                        }
+                                                      })
+                                                    ],
+                                                    1
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      _vm.view && _vm.sent.length == 0
+                                        ? _c(
+                                            "div",
+                                            [
+                                              _c(
+                                                "el-divider",
+                                                {
+                                                  attrs: {
+                                                    "content-position": "right"
+                                                  }
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "Balasan Surat " +
+                                                      _vm._s(_vm.view.perihal)
+                                                  )
+                                                ]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "center",
+                                                [
+                                                  JSON.parse(
+                                                    _vm.permission.create
+                                                  )
+                                                    ? _c(
+                                                        "el-button",
+                                                        {
+                                                          attrs: {
+                                                            type: "primary",
+                                                            icon:
+                                                              "el-icon-edit",
+                                                            round: ""
+                                                          },
+                                                          on: {
+                                                            click: function(
+                                                              $event
+                                                            ) {
+                                                              return _vm.openDrawer()
+                                                            }
+                                                          }
+                                                        },
+                                                        [_vm._v("Tulis Pesan")]
+                                                      )
+                                                    : _vm._e()
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-row",
+                                {
+                                  directives: [
+                                    {
+                                      name: "show",
+                                      rawName: "v-show",
+                                      value: _vm.wrap.sent,
+                                      expression: "wrap.sent"
+                                    }
+                                  ]
+                                },
+                                [
+                                  _vm.sent.length > 0
+                                    ? _c(
+                                        "el-table",
+                                        {
+                                          staticStyle: { width: "100%" },
+                                          attrs: { data: _vm.sent }
+                                        },
+                                        [
+                                          _c("el-table-column", {
+                                            attrs: {
+                                              type: "index",
+                                              width: "50"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("el-table-column", {
+                                            attrs: {
+                                              prop: "nomor",
+                                              label: "Nomor",
+                                              width: "180"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("el-table-column", {
+                                            attrs: {
+                                              prop: "perihal",
+                                              label: "perihal",
+                                              width: "180"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("el-table-column", {
+                                            attrs: {
+                                              prop: "waktuHuman",
+                                              label: "Tanggal Kirim",
+                                              width: "180"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c("el-table-column", {
+                                            attrs: {
+                                              prop: "berkas",
+                                              label: "Berkas"
+                                            },
+                                            scopedSlots: _vm._u(
+                                              [
+                                                {
+                                                  key: "default",
+                                                  fn: function(scope) {
+                                                    return [
+                                                      _c(
+                                                        "a",
+                                                        {
+                                                          attrs: {
+                                                            href:
+                                                              _vm.url
+                                                                .suratpermintaan +
+                                                              "/" +
+                                                              _vm.permohonan
+                                                                .perusahaan
+                                                                .npwp +
+                                                              "/" +
+                                                              _vm.permohonan
+                                                                .permohonan_code +
+                                                              "/surat/" +
+                                                              scope.row.file,
+                                                            target: "_blank"
+                                                          }
+                                                        },
+                                                        [
+                                                          _vm._v(
+                                                            "Surat Permintaan"
+                                                          )
+                                                        ]
+                                                      )
+                                                    ]
+                                                  }
+                                                }
+                                              ],
+                                              null,
+                                              false,
+                                              1758621763
+                                            )
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
+                                ],
+                                1
                               )
                             ],
                             1
@@ -4708,132 +5793,402 @@ var render = function() {
               )
             ],
             1
-          )
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "el-drawer",
-        {
-          attrs: {
-            title: "Tulis Pesan Pengiriman Permintaan Surat Telaah",
-            size: "70%",
-            visible: _vm.drawer.show,
-            direction: "ttb",
-            "before-close": _vm.handleClose
-          },
-          on: {
-            "update:visible": function($event) {
-              return _vm.$set(_vm.drawer, "show", $event)
-            }
-          }
-        },
-        [
+          ),
+          _vm._v(" "),
           _c(
-            "el-row",
-            { staticClass: "pd-20", attrs: { gutter: 20 } },
+            "div",
+            { staticClass: "modal zoomIn", attrs: { id: "modalShow" } },
             [
-              _c("el-col", { attrs: { md: 4 } }, [
-                _c("div", { staticClass: "form-group" }, [
-                  _c("label", { staticClass: "form-control-label" }, [
-                    _vm._v("\n            Nomor Surat:\n            "),
-                    _c("span", { staticClass: "tx-danger" }, [_vm._v("*")])
-                  ]),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.permintaan.nomor,
-                        expression: "permintaan.nomor"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: {
-                      type: "text",
-                      name: "firstname",
-                      value: "John Paul",
-                      placeholder: "Enter firstname"
-                    },
-                    domProps: { value: _vm.permintaan.nomor },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(_vm.permintaan, "nomor", $event.target.value)
-                      }
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "modal-dialog modal-lg modal-dialog-vertical-center",
+                  attrs: { role: "document" }
+                },
+                [
+                  _c("div", { staticClass: "modal-content bd-0 tx-14" }, [
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "modal-body pd-25" }, [
+                      _c("div", { staticClass: "row" }, [
+                        _c(
+                          "div",
+                          { staticClass: "col-md-12" },
+                          _vm._l(_vm.petugas, function(petugas, index) {
+                            return _c(
+                              "div",
+                              {
+                                key: index,
+                                staticClass:
+                                  "d-flex align-items-center justify-content-between mg-b-5"
+                              },
+                              [
+                                _c("div", [
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "tx-gray-800 tx-12 mg-b-2 tx-bold"
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(
+                                            petugas.kategori.toUpperCase()
+                                          ) +
+                                          "\n                  "
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "p",
+                                    { staticClass: "tx-gray-800 tx-10 mg-b-0" },
+                                    [
+                                      _vm._v(
+                                        "\n                    " +
+                                          _vm._s(petugas.created_at) +
+                                          "\n                  "
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "wd-230 tx-right" },
+                                  [
+                                    _c(
+                                      "el-button",
+                                      { attrs: { type: "text" } },
+                                      [
+                                        _vm._v(
+                                          _vm._s(
+                                            petugas.petugas.name.toUpperCase()
+                                          )
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(1)
+                  ])
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "el-drawer",
+            {
+              attrs: {
+                title: "Tulis Pesan Pengiriman Permintaan Surat Telaah",
+                size: "70%",
+                visible: _vm.drawer.show,
+                direction: "ttb",
+                "before-close": _vm.handleClose
+              },
+              on: {
+                "update:visible": function($event) {
+                  return _vm.$set(_vm.drawer, "show", $event)
+                }
+              }
+            },
+            [
+              _c(
+                "el-row",
+                {
+                  directives: [
+                    {
+                      name: "loading",
+                      rawName: "v-loading",
+                      value: _vm.pratinjau.isLoading,
+                      expression: "pratinjau.isLoading"
                     }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("el-col", { attrs: { md: 4 } }, [
-                _c(
-                  "div",
-                  { staticClass: "form-group" },
-                  [
-                    _c(
-                      "label",
-                      {
+                  ],
+                  staticClass: "pd-20",
+                  attrs: {
+                    gutter: 20,
+                    "element-loading-text":
+                      "Uploading & kirim Surat Permintaan..."
+                  }
+                },
+                [
+                  _c("el-col", { attrs: { md: 4 } }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("\n            Nomor Surat:\n            "),
+                        _c("span", { staticClass: "tx-danger" }, [_vm._v("*")])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
                         directives: [
                           {
-                            name: "loading",
-                            rawName: "v-loading",
-                            value: _vm.pratinjau.isLoading,
-                            expression: "pratinjau.isLoading"
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.permintaan.nomor.$model,
+                            expression: "$v.permintaan.nomor.$model"
                           }
                         ],
-                        staticClass: "form-control-label"
-                      },
-                      [
-                        _vm._v(
-                          "\n            Unggah Surat Permintaan:\n            "
-                        ),
-                        _c("span", { staticClass: "tx-danger" }, [_vm._v("*")])
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "label",
-                      {
-                        staticClass: "custom-file-upload",
-                        attrs: { for: "permintaan" }
-                      },
-                      [
-                        _c("i", { staticClass: "fa fa-cloud-upload" }),
-                        _vm._v(" Unggah Berkas\n          ")
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { id: "permintaan", type: "file" },
-                      on: {
-                        change: function($event) {
-                          return _vm.onFilesChange($event)
+                        staticClass: "form-control",
+                        class: { "is-invalid": _vm.$v.permintaan.nomor.$error },
+                        attrs: {
+                          type: "text",
+                          placeholder: "Ketik Nomor Surat"
+                        },
+                        domProps: { value: _vm.$v.permintaan.nomor.$model },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.permintaan.nomor,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.pratinjau.objectURL
-                      ? _c(
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("el-col", { attrs: { md: 7 } }, [
+                    _c("div", { staticClass: "form-group" }, [
+                      _c("label", { staticClass: "form-control-label" }, [
+                        _vm._v("\n            Perihal:\n            "),
+                        _c("span", { staticClass: "tx-danger" }, [_vm._v("*")])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.permintaan.perihal.$model,
+                            expression: "$v.permintaan.perihal.$model"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        class: {
+                          "is-invalid": _vm.$v.permintaan.perihal.$error
+                        },
+                        attrs: {
+                          type: "text",
+                          placeholder: "ketik Perihal Surat"
+                        },
+                        domProps: { value: _vm.$v.permintaan.perihal.$model },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.permintaan.perihal,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _vm.user.role_id == "4"
+                    ? _c("el-col", { attrs: { md: 4 } }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", { staticClass: "form-control-label" }, [
+                            _vm._v(
+                              "\n            Kategori Balasan Surat:\n            "
+                            ),
+                            _c("span", { staticClass: "tx-danger" }, [
+                              _vm._v("*")
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.$v.permintaan.keterangan.$model,
+                                  expression: "$v.permintaan.keterangan.$model"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid":
+                                  _vm.$v.permintaan.keterangan.$error
+                              },
+                              attrs: {
+                                type: "text",
+                                placeholder: "Ketik Nomor Surat"
+                              },
+                              on: {
+                                input: _vm.$v.permintaan.keterangan.$touch,
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.$v.permintaan.keterangan,
+                                    "$model",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: { value: "", label: "Pilih Kategori" }
+                                },
+                                [_vm._v("pilih Kategori")]
+                              ),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "terima" } }, [
+                                _vm._v("Terima")
+                              ]),
+                              _vm._v(" "),
+                              _c("option", { attrs: { value: "tolak" } }, [
+                                _vm._v("Tolak")
+                              ])
+                            ]
+                          )
+                        ])
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("el-col", { attrs: { md: 4 } }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c(
+                          "label",
+                          {
+                            directives: [
+                              {
+                                name: "loading",
+                                rawName: "v-loading",
+                                value: _vm.pratinjau.isLoading,
+                                expression: "pratinjau.isLoading"
+                              }
+                            ],
+                            staticClass: "form-control-label"
+                          },
+                          [
+                            _vm._v(
+                              "\n            Unggah Surat Permintaan:\n            "
+                            ),
+                            _c("span", { staticClass: "tx-danger" }, [
+                              _vm._v("*")
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "label",
+                          {
+                            staticClass: "custom-file-upload",
+                            attrs: { for: "permintaan" }
+                          },
+                          [
+                            _c("i", { staticClass: "fa fa-cloud-upload" }),
+                            _vm._v(" Unggah Berkas\n          ")
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          attrs: { id: "permintaan", type: "file" },
+                          on: {
+                            change: function($event) {
+                              return _vm.onFilesChange($event)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _vm.pratinjau.objectURL
+                          ? _c(
+                              "el-button",
+                              {
+                                on: {
+                                  click: function($event) {
+                                    _vm.drawer.innerDrawer = true
+                                  }
+                                }
+                              },
+                              [_vm._v("Pratinjau")]
+                            )
+                          : _vm._e()
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("el-col", { attrs: { md: 24 } }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group" },
+                      [
+                        _c(
                           "el-button",
                           {
+                            attrs: { type: "primary" },
                             on: {
                               click: function($event) {
-                                _vm.drawer.innerDrawer = true
+                                return _vm.submit()
                               }
                             }
                           },
-                          [_vm._v("Pratinjau")]
+                          [_vm._v("Kirim Surat")]
                         )
-                      : _vm._e()
-                  ],
-                  1
-                )
-              ])
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-drawer",
+                {
+                  attrs: {
+                    title: "File Surat Permintaan Surat Telaah",
+                    "append-to-body": true,
+                    size: "100%",
+                    visible: _vm.drawer.innerDrawer
+                  },
+                  on: {
+                    "update:visible": function($event) {
+                      return _vm.$set(_vm.drawer, "innerDrawer", $event)
+                    }
+                  }
+                },
+                [_c("embed", { attrs: { src: _vm.pratinjau.objectURL } })]
+              )
             ],
             1
           ),
@@ -4842,27 +6197,68 @@ var render = function() {
             "el-drawer",
             {
               attrs: {
-                title: "I'm inner Drawer",
+                title: _vm.drawer.title,
                 "append-to-body": true,
                 size: "100%",
-                visible: _vm.drawer.innerDrawer
+                "before-close": _vm.closeDrawer,
+                visible: _vm.drawer.pratinjauSurat
               },
               on: {
                 "update:visible": function($event) {
-                  return _vm.$set(_vm.drawer, "innerDrawer", $event)
+                  return _vm.$set(_vm.drawer, "pratinjauSurat", $event)
                 }
               }
             },
-            [_c("iframe", { attrs: { src: _vm.pratinjau.objectURL } })]
+            [_c("embed", { attrs: { src: _vm.pratinjau.objectURL } })]
           )
         ],
         1
       )
-    ],
-    1
-  )
+    : _vm._e()
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header pd-y-20 pd-x-25" }, [
+      _c(
+        "h6",
+        { staticClass: "tx-14 mg-b-0 tx-uppercase tx-inverse tx-bold" },
+        [_vm._v("\n            Informasi Surat\n          ")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass:
+            "btn btn-secondary tx-11 tx-uppercase pd-y-12 pd-x-25 tx-mont tx-medium",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("\n            Tutup\n          ")]
+      )
+    ])
+  }
+]
 render._withStripped = true
 
 

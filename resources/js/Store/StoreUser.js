@@ -5,36 +5,40 @@ import axios from 'axios'
 export default {
     namespaced: true,
     state: {
-        menu: [],
+        permission: [],
         user: []
     },
     getters: {
-        gtrsMenu: state => {
-            return state.menu;
+        gtrspermission: state => {
+            return state.permission;
+        },
+        gtrspermissionActive: (state) => (id) => {
+            var a = state.permission.filter(p => p.role_modul_id == id)
+            return a[0];
         },
         gtrsUser: state => {
             return state.user;
         },
     },
     mutations: {
-        menu(state, data) {
-            state.menu = data
+        permission(state, data) {
+            state.permission = data
         },
         user(state, data) {
             state.user = data
         },
     },
     actions: {
-        async StoreMenu({
+        async StorePermission({
             commit
         }, data) {
             axios
                 .post(urlBase.web + "/roles/permission", {
-                    type: "permissiondataByrolesId",
+                    type: "permissionById",
                 })
                 .then(
                     r => (
-                        commit('fields', r.data)
+                        commit('permission', r.data)
                     )
                 );
         },

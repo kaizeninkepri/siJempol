@@ -10,214 +10,139 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use App\mdPermohonan;
+use App\mdsuratPermintaan;
+use App\model\mdperusahaan;
 use App\model\mdTrack;
+use App\model\mdTrackSurat;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Crypt;
+use File;
+use Illuminate\Support\Facades\DB;
 
 class suratRekomendasiControl extends Controller
 {
     function index(Request $r)
     {
         $type = $r->get("type");
-        if ($type == 'RekomendasiByPermohonanId') {
-            return self::RekomendasiByPermohonanId($r);
-        } elseif ($type == 'UploadSuratTelaah') {
-            return self::UploadSuratTelaah($r);
-        } elseif ($type == 'deleteByid') {
-            return self::deleteByid($r);
-        } elseif ($type == 'kirimPemintaanOpd') {
-            return self::kirimFile($r);
-        } elseif ($type == 'UploadSuratBalasan') {
-            return self::UploadSuratBalasan($r);
-        } elseif ($type == 'toDraft') {
-            return self::toDraft($r);
-        } elseif ($type == 'toTolak') {
-            return self::toTolak($r);
+        if ($type == 'pengirimanSuratTelaah') {
+            return self::pengirimanSuratTelaah($r);
+        } elseif ($type == 'getsuratpengurusById') {
+            return self::getsuratpengurusById($r);
+        } elseif ($type == 'getSuratByOpd') {
+            return self::getSuratByOpd($r);
+        } elseif ($type == 'getSurat') {
+            return self::getSurat($r);
         }
     }
 
-    function toDraft(Request $r)
+
+
+    function pengirimanSuratTelaah(Request $r)
     {
-        $permohonan_id =  $r->get('permohonan_id');
-        $perusahaan_id =  $r->get('perusahaan_id');
-        $todbpermohonan = array("status" => "draft", "updated_at" => \Carbon\Carbon::now());
-        mdPermohonan::where("permohonan_id", $permohonan_id)->update($todbpermohonan);
+        $data = $r->get("data");
+        $permohonan = mdPermohonan::where("permohonan_id", $data['permohonan_id'])->first();
+        $perusahaan = mdperusahaan::where("perusahaan_id", $permohonan->perusahaan_id)->first();
 
-        $totrack = array(
-            "permohonan_id" => $permohonan_id,
-            "perusahaan_id" => $perusahaan_id,
-            "pesan" => "Pembuatan Draft Surat Keputusan",
-            "step" => "5",
-            "user_id" => Auth::user()->user_id
-        );
-        mdTrack::insert($totrack);
-    }
-
-    function toTolak(Request $r)
-    {
-        $permohonan_id =  $r->get('permohonan_id');
-        $perusahaan_id =  $r->get('perusahaan_id');
-        $todbpermohonan = array("status" => "tolak", "updated_at" => \Carbon\Carbon::now());
-        mdPermohonan::where("permohonan_id", $permohonan_id)->update($todbpermohonan);
-
-        $totrack = array(
-            "permohonan_id" => $permohonan_id,
-            "perusahaan_id" => $perusahaan_id,
-            "pesan" => "Penolakan Rekomendasi Teknis",
-            "step" => "selesai",
-            "user_id" => Auth::user()->user_id
-        );
-        mdTrack::insert($totrack);
-    }
-
-    function RekomendasiByPermohonanId(Request $r)
-    {
-        $permohonan_id =  $r->get('permohonan_id');
-        $rekomendasi = mdsuratRekomendasi::with(['opd'])
-            ->where('permohonan_id', $permohonan_id)->get();
-
-        return $rekomendasi;
-    }
-
-
-    /*----------------------=== CRUD ===-----------------------*/
-    function UploadSuratTelaah(Request $r)
-    {
         date_default_timezone_set("Asia/Bangkok");
         $timestamp = date("Y-m-d H:i:s");
 
-
-
-
-        $persyaratan = $r->get("persyaratan");
-        $permohonanCode = $r->get("permohonanCode");
-        $permohonan_id = $r->get("permohonan_id");
-        $perusahaan_id = $r->get("perusahaan_id");
-
-
-        Storage::makeDirectory("permohonan/" . $permohonanCode);
-        Storage::makeDirectory("permohonan/" . $permohonanCode . '/rekomendasi');
-
-        $expoloded = explode(",", $persyaratan["file"]);
+        /* directory */
+        $pathFolder = Storage::disk("ResourcesExternal")->path($perusahaan->npwp . '/' . $permohonan->permohonan_code . '/surat');
+        if (!File::exists($pathFolder)) {
+            File::makeDirectory($pathFolder, $mode = 0777, true, true);
+        }
+        $pos = strpos($data["file"], ';');
+        $filetype = explode('/', substr($data["file"], 0, $pos))[1];
+        $expoloded = explode(",", $data["file"]);
         $decoded = base64_decode($expoloded[1]);
-        $extension =  "pdf";
-        $name = Str::slug($persyaratan["nomor"], '_');
+        $extension =  $filetype;
+        $name = Str::slug($data["nomor"], '_');
         $filename = $name . '.' . $extension;
 
-        $path = storage_path('app/permohonan/' . $permohonanCode . '/rekomendasi') . '/' . $filename;
+        $path = Storage::disk("ResourcesExternal")->path($perusahaan->npwp . '/' . $permohonan->permohonan_code . '/surat' . '/' . $filename);
         file_put_contents($path, $decoded);
 
-        $arPers = array(
-            "file_kajian" => $filename,
-            "nomor_kajian" => $persyaratan['nomor'],
-            "created_at_kajian" => $timestamp,
-            "opd_id" => $persyaratan['opd_id'],
-            "permohonan_id" => $permohonan_id,
-            "status" => "uploaded",
-            "user_idK" => Auth::user()->user_id,
-        );
-        mdsuratRekomendasi::insert($arPers);
-
-        $todbpermohonan = array("updated_at" => \Carbon\Carbon::now());
-        mdPermohonan::where("permohonan_id", $permohonan_id)->update($todbpermohonan);
-
-        $totrack = array(
-            "permohonan_id" => $permohonan_id,
-            "perusahaan_id" => $perusahaan_id,
-            "pesan" => "Pembuatan Surat Telaah Rekomendasi Teknis",
-            "step" => "4",
-            "user_id" => Auth::user()->user_id
-        );
-        mdTrack::insert($totrack);
-    }
-    function deleteByid(Request $r)
-    {
-        $rekom_id = $r->get('stRekom_id');
-        $nomor = $r->get('nomor');
-        $delete = mdsuratRekomendasi::where('stRekom_id', $rekom_id)->delete();
-
-        return array(
-            "title" => "Berhasil",
-            "message" => "Data Surat Dengan Nomor : " . $nomor . "di hapus",
-            "type" => "success",
-        );
-    }
-
-    function kirimFile(Request $r)
-    {
-        date_default_timezone_set("Asia/Bangkok");
-        $timestamp = date("Y-m-d H:i:s");
-        $permohonan_id = $r->get("permohonan_id");
-        $perusahaan_id = $r->get("perusahaan_id");
-        $rekom_id = $r->get('stRekom_id');
-        $nomor = $r->get('nomor');
-        $opd = $r->get('opd');
 
         $toDb = array(
-            "status" => "Delivered",
-            "updated_at_kajian" => $timestamp
+            "nomor" => $data['nomor'],
+            "opd_id" => $permohonan->opd_id,
+            "perihal" => $data['perihal'],
+            "file" => $filename,
+            "user_id" => Auth::user()->user_id,
+            "status" => $data['status'],
+            "permohonan_id" => $data['permohonan_id'],
+            "kategori" => $data['kategori'],
+            "keterangan" => $data['keterangan']
         );
 
-        mdsuratRekomendasi::where('stRekom_id', $rekom_id)->update($toDb);
+        mdsuratPermintaan::insert($toDb);
+        $suratpermintaanId = DB::getPdo()->lastInsertId();
 
-
-
-        $todbpermohonan = array("status" => "tekniskirim", "updated_at" => \Carbon\Carbon::now());
-        mdPermohonan::where("permohonan_id", $permohonan_id)->update($todbpermohonan);
-
-        $totrack = array(
-            "permohonan_id" => $permohonan_id,
-            "perusahaan_id" => $perusahaan_id,
-            "pesan" => "Penandatanganan dan Pengiriman Surat Telaah Rekomendasi Teknis",
-            "step" => "4",
-            "user_id" => Auth::user()->user_id
+        $toTrackarray = array(
+            "surat_permintaan_id" => $suratpermintaanId,
+            "permohonan_id" =>  $data['permohonan_id'],
+            "user_id" => Auth::user()->user_id,
+            "status" => '2',
         );
-        mdTrack::insert($totrack);
-        return array(
-            "title" => "Berhasil",
-            "message" => "Data Surat Dengan Nomor : " . $nomor . " Terkirim Ke OPD : " . $opd,
-            "type" => "success",
-        );
+        mdTrackSurat::insert($toTrackarray);
+        $getpermohonan = mdPermohonan::where('permohonan_id', $data['permohonan_id'])->first();
+        if ($r->get('role') == '4') {
+            $toArray = array(
+                "status" => "selesai"
+            );
+            $tobalasan = array(
+                "status" => "balas"
+            );
+            mdsuratPermintaan::where('permohonan_id', $data['permohonan_id'])->update($toArray);
+            mdsuratPermintaan::where('surat_permintaan_id', $suratpermintaanId)->update($tobalasan);
+            $todbpermohonan = array("status" => "teknisbalas", "updated_at" => \Carbon\Carbon::now());
+
+            mdPermohonan::where('permohonan_id', $data['permohonan_id'])->update($todbpermohonan);
+
+            $totrack = array(
+                "permohonan_id" => $data['permohonan_id'],
+                "perusahaan_id" => $getpermohonan->perusahaan->perusahaan_id,
+                "pesan" => "Balasan Surat Rekomendasi Teknis",
+                "step" => "4",
+                "user_id" => Auth::user()->user_id,
+                "kategori" => "OPD TEKNIS",
+                "ShowOnuser" => true,
+            );
+            mdTrack::insert($totrack);
+        } else {
+            $totrack = array(
+                "permohonan_id" => $data['permohonan_id'],
+                "perusahaan_id" => $getpermohonan->perusahaan->perusahaan_id,
+                "pesan" => "Pengiriman Surat Rekomendasi Teknis",
+                "step" => "5",
+                "user_id" => Auth::user()->user_id,
+                "kategori" => "BACK OFFICE",
+                "ShowOnuser" => true,
+            );
+            mdTrack::insert($totrack);
+        }
     }
 
-
-    /*----------------------=== CRUD ===-----------------------*/
-    function UploadSuratBalasan(Request $r)
+    function getsuratpengurusById(Request $r)
     {
-        date_default_timezone_set("Asia/Bangkok");
-        $timestamp = date("Y-m-d H:i:s");
+        $id  = $r->get("id");
+        $permintaan = mdTrackSurat::with(['petugas'])->where("permohonan_id", $id)->get();
 
-        $persyaratan = $r->get("persyaratan");
-        $permohonanCode = $r->get("permohonanCode");
-        $permohonan_id = $r->get("permohonan_id");
-        $perusahaan_id = $r->get("perusahaan_id");
-        Storage::makeDirectory("permohonan/" . $permohonanCode);
-        Storage::makeDirectory("permohonan/" . $permohonanCode . '/rekomendasi');
+        return $permintaan;
+    }
+    function getSuratByOpd(Request $r)
+    {
+        $surat = mdsuratPermintaan::with(['backoffice', 'permohonan'  => function ($q) {
+            $q->with(['izin']);
+        }])->orderBy("created_at", "DESC")->get();
+        return $surat;
+    }
 
-        $expoloded = explode(",", $persyaratan["file"]);
-        $decoded = base64_decode($expoloded[1]);
-        $extension =  "pdf";
-        $name = Str::slug($persyaratan["nomor"], '_');
-        $filename = $name . '.' . $extension;
-        $path = storage_path('app/permohonan/' . $permohonanCode . '/rekomendasi') . '/' . $filename;
-        file_put_contents($path, $decoded);
+    function getSurat(Request $r)
+    {
+        $id = $r->get("id");
+        $surat = mdsuratPermintaan::with(['opd'])->where('permohonan_id', $id)->get();
 
-        $arPers = array(
-            "file_rekom" => $filename,
-            "nomor_rekom" => $persyaratan['nomor'],
-            "permohonan" => $persyaratan['permohonan'],
-            "created_at_rekom" => $timestamp,
-            "updated_at_rekom" => $timestamp,
-            "status" => "done",
-            "user_idR" => Session::get("user_id"),
-        );
-        mdsuratRekomendasi::where('stRekom_id', $persyaratan['stRekom_id'])->update($arPers);
-
-        $totrack = array(
-            "permohonan_id" => $permohonan_id,
-            "perusahaan_id" => $perusahaan_id,
-            "pesan" => "Proses Kajian dan Pengiriman Surat Telaah Rekomendasi Teknis",
-            "step" => "5",
-            "user_id" => Auth::user()->user_id
-        );
-        mdTrack::insert($totrack);
+        return $surat;
     }
 }

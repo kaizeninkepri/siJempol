@@ -28,6 +28,8 @@ class LoginController extends Controller
             return redirect('fo/dashboard');
         } elseif ($user->role_id == '2') { // do your magic here
             return redirect('bo/dashboard');
+        } elseif ($user->role_id == '4') { // do your magic here
+            return redirect('opd/dashboard');
         }
 
         return redirect('/pemohon/dashboard');

@@ -1,5 +1,214 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["Pemohondashboard"],{
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/opdDashboard.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/opdDashboard.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
+/* harmony import */ var vue_responsive_video_background_player__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-responsive-video-background-player */ "./node_modules/vue-responsive-video-background-player/dist/index.common.js");
+/* harmony import */ var vue_responsive_video_background_player__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_responsive_video_background_player__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      page: {
+        isLoading: true
+      },
+      url: {
+        assets: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/images"
+      },
+      surat: [],
+      table: {
+        title: "Data Surat Masuk",
+        search: ""
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.$parent.justExpand();
+  },
+  created: function created() {
+    this.getpermohonan();
+  },
+  computed: {
+    user: function user() {
+      return this.$store.state.StoreUser.user;
+    },
+    datasurat: function datasurat() {
+      var _this = this;
+
+      return function (salut) {
+        return salut == null ? _this.surat : _this.surat.filter(function (p) {
+          return p.status == salut;
+        });
+      };
+    },
+    tablesurat: function tablesurat() {
+      var v1 = this.table.search;
+
+      var filter = function filter(p) {
+        return p.kategori == v1 || p.nomor.toLowerCase().includes(v1) || p.perihal.toLowerCase().includes(v1) || p.backoffice.name.toLowerCase().includes(v1) || p.status.toLowerCase().includes(v1) || p.permohonan.izin.nama_izin.toLowerCase().includes(v1);
+      };
+
+      return v1 == "" ? this.surat.filter(function (p) {
+        return p.status == "terkirim";
+      }) : this.surat.filter(filter);
+    }
+  },
+  methods: {
+    changeDataSurat: function changeDataSurat(value, title) {
+      this.page.isLoading = true;
+      this.table.search = value;
+      this.table.title = title;
+      this.page.isLoading = false;
+    },
+    getpermohonan: function getpermohonan() {
+      var _this2 = this;
+
+      this.page.isLoading = true;
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/surat", {
+        type: "getSuratByOpd"
+      }).then(function (r) {
+        _this2.surat = r.data;
+        _this2.page.isLoading = false;
+      });
+    }
+  },
+  components: {
+    "video-background": vue_responsive_video_background_player__WEBPACK_IMPORTED_MODULE_1___default.a
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pemohon.vue?vue&type=script&lang=js&":
 /*!****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pemohon.vue?vue&type=script&lang=js& ***!
@@ -192,6 +401,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -200,7 +410,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var form = function form() {
-  return Promise.all(/*! import() | modulForm */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("modulForm")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
+  return Promise.all(/*! import() | modulForm */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("modulForm")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -495,6 +705,500 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/opdDashboard.vue?vue&type=template&id=3ac2fe52&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/opdDashboard.vue?vue&type=template&id=3ac2fe52& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "mg-t-20" }, [
+    _c("div", { staticClass: "br-msg-header d-flex justify-content-between" }, [
+      _c("div", { staticClass: "pd-x-0 pd-t-30" }, [
+        _c("h4", { staticClass: "tx-gray-800 mg-b-5" }, [
+          _vm._v("DATA SURAT MASUK & SURAT KELUAR")
+        ]),
+        _vm._v(" "),
+        _vm.user.role
+          ? _c("p", { staticClass: "mg-b-0" }, [
+              _vm._v(_vm._s(_vm.user.role.role))
+            ])
+          : _vm._e()
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "br-pagebody" },
+      [
+        _c(
+          "el-row",
+          { staticClass: "pd-5", attrs: { gutter: 10 } },
+          [
+            _c(
+              "el-col",
+              { staticClass: "mg-b-20", attrs: { md: 24 } },
+              [
+                _c(
+                  "el-row",
+                  { attrs: { gutter: 10 } },
+                  [
+                    _c(
+                      "el-col",
+                      { attrs: { md: 8 } },
+                      [
+                        _c(
+                          "el-card",
+                          {
+                            directives: [
+                              {
+                                name: "loading",
+                                rawName: "v-loading",
+                                value: _vm.page.isLoading,
+                                expression: "page.isLoading"
+                              }
+                            ]
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "pd-5 d-flex align-items-center" },
+                              [
+                                _c("i", {
+                                  staticClass:
+                                    "el-icon-postcard tx-50 tx-primary",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.changeDataSurat(
+                                        "terkirim",
+                                        "Data Surat Masuk"
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "mg-l-20" }, [
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10"
+                                    },
+                                    [_vm._v("Surat Masuk")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "tx-24 tx-lato tx-bold mg-b-2 lh-1"
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(_vm.datasurat("terkirim").length)
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "tx-11 tx-roboto tx-primary"
+                                    },
+                                    [_vm._v("Permintaan Rekomendasi Teknis")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "el-col",
+                      { attrs: { md: 8 } },
+                      [
+                        _c(
+                          "el-card",
+                          {
+                            directives: [
+                              {
+                                name: "loading",
+                                rawName: "v-loading",
+                                value: _vm.page.isLoading,
+                                expression: "page.isLoading"
+                              }
+                            ]
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "pd-5 d-flex align-items-center" },
+                              [
+                                _c("i", {
+                                  staticClass: "el-icon-message tx-50 tx-info",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.changeDataSurat(
+                                        "balas",
+                                        "Data Surat Keluar"
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "mg-l-20" }, [
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10"
+                                    },
+                                    [_vm._v("Surat Keluar")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "tx-24 tx-lato tx-bold mg-b-2 lh-1"
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(_vm.datasurat("balas").length)
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    { staticClass: "tx-11 tx-roboto tx-info" },
+                                    [_vm._v("Balasan Rekomendasi Teknis")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "el-col",
+                      { attrs: { md: 8 } },
+                      [
+                        _c(
+                          "el-card",
+                          {
+                            directives: [
+                              {
+                                name: "loading",
+                                rawName: "v-loading",
+                                value: _vm.page.isLoading,
+                                expression: "page.isLoading"
+                              }
+                            ]
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "pd-5 d-flex align-items-center" },
+                              [
+                                _c("i", {
+                                  staticClass:
+                                    "el-icon-finished tx-50 tx-success",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.changeDataSurat(
+                                        "selesai",
+                                        "Data Surat Keluar"
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "mg-l-20" }, [
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10"
+                                    },
+                                    [_vm._v("Selesai")]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass:
+                                        "tx-24 tx-lato tx-bold mg-b-2 lh-1"
+                                    },
+                                    [
+                                      _vm._v(
+                                        _vm._s(_vm.datasurat("selesai").length)
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "tx-11 tx-roboto tx-success"
+                                    },
+                                    [_vm._v("Jumlah Rekomendasi Teknis")]
+                                  )
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-row",
+                  { staticClass: "mg-t-10" },
+                  [
+                    _c(
+                      "el-card",
+                      {
+                        directives: [
+                          {
+                            name: "loading",
+                            rawName: "v-loading",
+                            value: _vm.page.isLoading,
+                            expression: "page.isLoading"
+                          }
+                        ]
+                      },
+                      [
+                        _c(
+                          "div",
+                          {
+                            staticClass:
+                              "d-flex align-items-center justify-content-between mg-b-30"
+                          },
+                          [
+                            _c("div", [
+                              _c(
+                                "h6",
+                                {
+                                  staticClass:
+                                    "tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
+                                },
+                                [_vm._v(_vm._s(_vm.table.title))]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "wd-130" }, [
+                              _c("div", { staticClass: "row" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "col-md-4" },
+                                  [
+                                    _c(
+                                      "el-button",
+                                      {
+                                        attrs: { icon: "el-icon-refresh" },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.changeDataSurat(
+                                              "",
+                                              "Data Surat Masuk"
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Muat Ulang")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "col-md-8" },
+                                  [
+                                    _c("el-input", {
+                                      attrs: {
+                                        placeholder: "Cari Data Permohonan ...",
+                                        "prefix-icon": "el-icon-search"
+                                      },
+                                      model: {
+                                        value: _vm.table.search,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.table, "search", $$v)
+                                        },
+                                        expression: "table.search"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            ])
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-table",
+                          {
+                            staticStyle: { width: "100%" },
+                            attrs: { data: _vm.tablesurat }
+                          },
+                          [
+                            _c("el-table-column", {
+                              attrs: { type: "index", width: "50" }
+                            }),
+                            _vm._v(" "),
+                            _c("el-table-column", {
+                              attrs: { prop: "nomor", label: "Nomor Surat" }
+                            }),
+                            _vm._v(" "),
+                            _c("el-table-column", {
+                              attrs: { prop: "perihal", label: "Perihal" }
+                            }),
+                            _vm._v(" "),
+                            _c("el-table-column", {
+                              attrs: {
+                                prop: "permohonan.izin.nama_izin",
+                                label: "Izin"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("el-table-column", {
+                              attrs: {
+                                prop: "backoffice.name",
+                                label: "Petugas"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("el-table-column", {
+                              attrs: {
+                                prop: "waktuHuman",
+                                label: "",
+                                width: "180"
+                              },
+                              scopedSlots: _vm._u([
+                                {
+                                  key: "default",
+                                  fn: function(scope) {
+                                    return [
+                                      _c(
+                                        "el-popover",
+                                        {
+                                          attrs: {
+                                            placement: "top-start",
+                                            title: "Tanggal Masuk Surat",
+                                            width: "200",
+                                            trigger: "hover",
+                                            content: scope.row.created_at
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              attrs: { slot: "reference" },
+                                              slot: "reference"
+                                            },
+                                            [
+                                              _vm._v(
+                                                _vm._s(scope.row.waktuHuman)
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  }
+                                }
+                              ])
+                            }),
+                            _vm._v(" "),
+                            _c("el-table-column", {
+                              attrs: { prop: "created_at", width: "180" },
+                              scopedSlots: _vm._u([
+                                {
+                                  key: "default",
+                                  fn: function(scope) {
+                                    return [
+                                      _c(
+                                        "router-link",
+                                        {
+                                          attrs: {
+                                            to: {
+                                              name: "bo-surat-permintaan",
+                                              params: {
+                                                id:
+                                                  scope.row.permohonan
+                                                    .permohonan_id
+                                              }
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "el-button",
+                                            {
+                                              attrs: {
+                                                icon: "el-icon-document-copy",
+                                                size: "mini",
+                                                type: "primary"
+                                              }
+                                            },
+                                            [_vm._v("Balas Surat")]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  }
+                                }
+                              ])
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/pemohon.vue?vue&type=template&id=3c722cda&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/dashboard/pemohon.vue?vue&type=template&id=3c722cda& ***!
@@ -523,6 +1227,10 @@ var render = function() {
                 [
                   _c("div", { staticClass: "pd-x-0 pd-t-30" }, [
                     _c("h4", { staticClass: "tx-gray-800 mg-b-5" }, [
+                      _vm._v("Halaman Utama Pemohon")
+                    ]),
+                    _vm._v(" "),
+                    _c("p", { staticClass: "mg-b-0" }, [
                       _vm._v(_vm._s(_vm.perusahaan.fullname.toUpperCase()))
                     ]),
                     _vm._v(" "),
@@ -1121,6 +1829,75 @@ var staticRenderFns = [
   }
 ]
 render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/opdDashboard.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/dashboard/opdDashboard.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _opdDashboard_vue_vue_type_template_id_3ac2fe52___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./opdDashboard.vue?vue&type=template&id=3ac2fe52& */ "./resources/js/components/dashboard/opdDashboard.vue?vue&type=template&id=3ac2fe52&");
+/* harmony import */ var _opdDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./opdDashboard.vue?vue&type=script&lang=js& */ "./resources/js/components/dashboard/opdDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _opdDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _opdDashboard_vue_vue_type_template_id_3ac2fe52___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _opdDashboard_vue_vue_type_template_id_3ac2fe52___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/dashboard/opdDashboard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/opdDashboard.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/opdDashboard.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_opdDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./opdDashboard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/opdDashboard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_opdDashboard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/dashboard/opdDashboard.vue?vue&type=template&id=3ac2fe52&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/dashboard/opdDashboard.vue?vue&type=template&id=3ac2fe52& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_opdDashboard_vue_vue_type_template_id_3ac2fe52___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./opdDashboard.vue?vue&type=template&id=3ac2fe52& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/dashboard/opdDashboard.vue?vue&type=template&id=3ac2fe52&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_opdDashboard_vue_vue_type_template_id_3ac2fe52___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_opdDashboard_vue_vue_type_template_id_3ac2fe52___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -18,7 +18,7 @@ Vue.use(Vuex)
 //     Checkbox,
 //     DatePicker,
 // } from 'element-ui';
-
+import VueProgressBar from 'vue-progressbar'
 import 'element-ui/lib/theme-chalk/index.css';
 import wysiwyg from "vue-wysiwyg";
 import "vue-wysiwyg/dist/vueWysiwyg.css";
@@ -34,8 +34,13 @@ const pemohonPendaftaranSelesai = () => import( /* webpackChunkName: "pemohonPer
 import Vuelidate from 'vuelidate'
 import VueEvents from 'vue-events'
 Vue.config.ignoredElements = [/^ion-/]
-
-
+import VueMask from 'v-mask'
+Vue.use(VueMask);
+Vue.use(VueProgressBar, {
+    color: 'rgb(143, 255, 199)',
+    failedColor: 'red',
+    height: '2px'
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -59,6 +64,7 @@ const app = new Vue({
     store: store,
     mounted() {
         this.$store.dispatch("StoreUser/StoreUser");
+        this.$store.dispatch("StoreUser/StorePermission");
     },
     methods: {
         collpasedmenu() {

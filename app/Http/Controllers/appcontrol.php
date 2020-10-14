@@ -44,6 +44,7 @@ class appcontrol extends Controller
 
     function getById()
     {
+
         return mdUsers::with(['role'])->where("id", Auth::user()->id)->first();
     }
 

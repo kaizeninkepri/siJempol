@@ -7,6 +7,7 @@ use App\model\mdTrack;
 use App\model\mdPermohonanPersyaratan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Crypt;
+use Carbon\Carbon;
 
 class trackControl extends Controller
 {
@@ -17,6 +18,8 @@ class trackControl extends Controller
             return self::trackById($r);
         } elseif ($type == 'trackByaccount') {
             return self::trackByaccount($r);
+        } elseif ($type == 'trackForm') {
+            return self::trackForm($r);
         }
     }
 
@@ -31,7 +34,11 @@ class trackControl extends Controller
         return array("track" => $track, "persyaratan" => $permohonan_persyaratan, "izin" => $permohonan);
     }
 
-    function trackByaccount()
+    function trackForm(Request $r)
     {
+        $start = Carbon::now()->subMonth(1)->startOfMonth()->toDateString();
+        $end = Carbon::now()->toDateString();
+        $track = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan'])->where("status", "!=", "selesai")->whereBetween("created_at", [$start, $end])->get();
+        return $track;
     }
 }

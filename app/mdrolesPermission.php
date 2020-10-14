@@ -10,7 +10,12 @@ class mdrolesPermission extends Model
 {
     protected $table = "roles_permission";
     protected $primaryKey = "role_permission_id";
-
+    // protected $casts = [
+    //     'read' => 'boolean',
+    //     'create' => 'boolean',
+    //     'update' => 'boolean',
+    //     'delete' => 'boolean',
+    // ];
     function modul()
     {
         return $this->belongsTo(mdrolesModul::class, "role_modul_id");

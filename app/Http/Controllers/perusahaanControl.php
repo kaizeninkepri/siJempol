@@ -25,13 +25,13 @@ class perusahaanControl extends Controller
         return mdperusahaan::all();
     }
 
-    function dataBynpwp(Request $r)
+    public static function dataBynpwp(Request $r)
     {
         $npwp = $r->get('npwp');
         return mdperusahaan::with(['pengurus', 'permohonan' => function ($p) {
             $p->with(['opd', 'persyaratan', 'izin', 'perusahaan']);
         }])
-            ->where('npwp', $npwp)->get();
+            ->where('npwp', $npwp)->first();
     }
 
     function UpdateById(Request $r)
@@ -61,12 +61,16 @@ class perusahaanControl extends Controller
         $data = $r->get('perusahaan');
         $toDB = array(
             "npwp"  => $data["npwp"],
-            "kategori"  => $data["kategori"],
+            "kategori"  => $data["jenis"],
+            "jenis"  => $data["kategori"],
             "nama"  => $data["nama"],
             "alamat"  => $data["alamat"],
             "email"  => $data["email"],
             "contact"  => $data["contact"],
-            "create_on"  => "walkin",
+            "create_on"  => $data["create_on"],
+            "provinsi"  => $data["provinsi"],
+            "kota"  => $data["kota"],
+            "kode_pos"  => $data["kode_pos"],
         );
 
         mdperusahaan::insert($toDB);

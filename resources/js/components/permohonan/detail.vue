@@ -3,52 +3,78 @@
     <div class="br-subleft">
       <el-card class="verifikasiTolak" v-if="!VerifikasiPermohonan">
         DATA PERMOHONAN BELUM DI VERIFIKASI &nbsp;&nbsp;&nbsp;
-        <el-button size="mini" @click="verifikasiBerkas('tolak')">Tolak</el-button>
+        <el-button size="mini" @click="verifikasiBerkas('tolak')"
+          >Tolak</el-button
+        >
       </el-card>
 
       <el-card class="verifikasiTerima" v-if="VerifikasiPermohonan">
         DATA PERMOHONAN BELUM DI VERIFIKASI &nbsp;&nbsp;&nbsp;
-        <el-button size="mini" @click="verifikasiBerkas('terima')">Terima</el-button>
+        <el-button size="mini" @click="verifikasiBerkas('terima')"
+          >Terima</el-button
+        >
       </el-card>
       <h6
         class="tx-uppercase tx-15 mg-t-40 pd-x-10 bd-b pd-b-10 tx-roboto tx-white-7"
-      >DATA PERUSAHAAN</h6>
+      >
+        DATA PERUSAHAAN
+      </h6>
 
       <nav class="nav br-nav-mailbox flex-column">
-        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom:-10px">NPWP</span>
-        <span class="nav-link mg-b-0">{{permohonan.perusahaan.npwp}}</span>
+        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom: -10px"
+          >NPWP</span
+        >
+        <span class="nav-link mg-b-0">{{ permohonan.perusahaan.npwp }}</span>
         <span class="nav-link mg-b-0 tx-bold">Nama</span>
-        <span class="nav-link mg-b-10">{{permohonan.perusahaan.fullname}}</span>
+        <span class="nav-link mg-b-10">{{
+          permohonan.perusahaan.fullname
+        }}</span>
         <span class="nav-link mg-b-2 tx-bold">Alamat</span>
-        <span class="nav-link mg-b-15">{{permohonan.perusahaan.alamat}}</span>
-        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom:-10px">HP</span>
-        <span class="nav-link mg-b-5">{{permohonan.perusahaan.contact}}</span>
-        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom:-10px">Email</span>
-        <span class="nav-link mg-b-10">{{permohonan.perusahaan.email}}</span>
+        <span class="nav-link mg-b-15">{{ permohonan.perusahaan.alamat }}</span>
+        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom: -10px"
+          >HP</span
+        >
+        <span class="nav-link mg-b-5">{{ permohonan.perusahaan.contact }}</span>
+        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom: -10px"
+          >Email</span
+        >
+        <span class="nav-link mg-b-10">{{ permohonan.perusahaan.email }}</span>
       </nav>
-      <h6 class="tx-uppercase tx-15 mg-t-40 pd-x-10 bd-b pd-b-10 tx-roboto tx-white-7">NARAHUBUNG</h6>
+      <h6
+        class="tx-uppercase tx-15 mg-t-40 pd-x-10 bd-b pd-b-10 tx-roboto tx-white-7"
+      >
+        NARAHUBUNG
+      </h6>
       <nav class="nav br-nav-mailbox flex-column">
-        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom:-10px">Nama</span>
-        <span class="nav-link mg-b-5">{{permohonan.pemohon.nama}}</span>
-        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom:-10px">HP</span>
-        <span class="nav-link mg-b-5">{{permohonan.pemohon.contact}}</span>
-        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom:-10px">Email</span>
-        <span class="nav-link mg-b-10">{{permohonan.pemohon.email}}</span>
+        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom: -10px"
+          >Nama</span
+        >
+        <span class="nav-link mg-b-5">{{ permohonan.pemohon.nama }}</span>
+        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom: -10px"
+          >HP</span
+        >
+        <span class="nav-link mg-b-5">{{ permohonan.pemohon.contact }}</span>
+        <span class="nav-link mg-b-0 tx-bold" style="margin-bottom: -10px"
+          >Email</span
+        >
+        <span class="nav-link mg-b-10">{{ permohonan.pemohon.email }}</span>
       </nav>
     </div>
     <div class="br-contentpanel">
       <div class="br-pageheader pd-y-15 pd-md-l-20">
         <nav class="breadcrumb pd-0 mg-0 tx-12 tx-warning">
           <span class="breadcrumb-item" href="#">
-            <span class="tx-primary tx-bold">FRONT OFFICE PENERIMAAN KELENGKAPAN BERKAS</span>
+            <span class="tx-primary tx-bold"
+              >FRONT OFFICE PENERIMAAN KELENGKAPAN BERKAS</span
+            >
           </span>
         </nav>
       </div>
       <!-- br-pageheader -->
 
       <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
-        <h4 class="tx-gray-800 mg-b-5">{{permohonan.izin.nama_izin}}</h4>
-        <p class="mg-b-0">Sektor {{permohonan.opd.opd}}.</p>
+        <h4 class="tx-gray-800 mg-b-5">{{ permohonan.izin.nama_izin }}</h4>
+        <p class="mg-b-0">Sektor {{ permohonan.opd.opd }}.</p>
       </div>
       <div class="br-pagebody">
         <el-row>
@@ -64,29 +90,39 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="(i,Index) in permohonan.persyaratan" :key="Index">
+                  <tr v-for="(i, Index) in permohonan.persyaratan" :key="Index">
                     <td class="pd-l-0-force tx-center" width="30">
-                      <div class="tx-13 tx-bold mg-b-0">{{Index+1}}</div>
+                      <div class="tx-13 tx-bold mg-b-0">{{ Index + 1 }}</div>
                     </td>
                     <td class="pd-l-0-force">
-                      <div class="tx-13 tx-bold mg-b-0">{{i.persyaratan}}</div>
+                      <div class="tx-13 tx-bold mg-b-0">
+                        {{ i.persyaratan }}
+                      </div>
                     </td>
                     <td class="pd-l-0-force">
-                      <span class="tx-13 tx-bold mg-b-0">{{i.catatan}}</span>
+                      <span class="tx-13 tx-bold mg-b-0">{{ i.catatan }}</span>
                       <ion-icon
                         name="checkmark-done-circle-outline"
                         class="tx-20 tx-bold tx-success"
-                        v-show="i.status =='terima'"
+                        v-show="i.status == 'terima'"
                       ></ion-icon>
                       <ion-icon
                         name="close-circle-outline"
                         class="tx-20 tx-bold tx-danger"
-                        v-show="i.status =='tolak'"
+                        v-show="i.status == 'tolak'"
                       ></ion-icon>
                     </td>
                     <td class="pd-r-0-force tx-center">
-                      <el-button type="primary" size="mini" @click="OpenPratinjau(Index)">
-                        <ion-icon name="newspaper-outline" class="tx-12"></ion-icon>&nbsp;&nbsp;&nbsp;Pratinjau
+                      <el-button
+                        type="primary"
+                        size="mini"
+                        @click="OpenPratinjau(Index)"
+                      >
+                        <ion-icon
+                          name="newspaper-outline"
+                          class="tx-12"
+                        ></ion-icon
+                        >&nbsp;&nbsp;&nbsp;Pratinjau
                       </el-button>
                     </td>
                   </tr>
@@ -108,15 +144,26 @@
     >
       <template slot="title">
         <div>
-          <div class="d-flex align-items-center justify-content-between mg-b-30">
+          <div
+            class="d-flex align-items-center justify-content-between mg-b-30"
+          >
             <div>
               <el-select
                 v-model="pratinjau.persyaratan.catatan"
                 placeholder="Select"
                 v-if="pratinjau.persyaratan"
-                @change="toStatusPersyaratan(pratinjau.indexOnarray, pratinjau.persyaratan)"
+                @change="
+                  toStatusPersyaratan(
+                    pratinjau.indexOnarray,
+                    pratinjau.persyaratan
+                  )
+                "
               >
-                <el-option-group v-for="group in options" :key="group.label" :label="group.label">
+                <el-option-group
+                  v-for="group in options"
+                  :key="group.label"
+                  :label="group.label"
+                >
                   <el-option
                     v-for="item in group.options"
                     :key="item.value"
@@ -135,12 +182,21 @@
               ></el-input>
             </div>
             <div class="wd-130">
-              <h6 class="tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1">{{pratinjau.title}}</h6>
+              <h6
+                class="tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
+              >
+                {{ pratinjau.title }}
+              </h6>
             </div>
           </div>
         </div>
       </template>
-      <iframe v-if="pratinjau.objectURL" :src="pratinjau.objectURL" width="100%" height="100%"></iframe>
+      <iframe
+        v-if="pratinjau.objectURL"
+        :src="pratinjau.objectURL"
+        width="100%"
+        height="100%"
+      ></iframe>
     </el-drawer>
   </div>
 </template>

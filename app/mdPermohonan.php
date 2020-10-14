@@ -29,7 +29,8 @@ class mdPermohonan extends Model
         'idCrypt',
         'BOstatus',
         'statusDataInHuman',
-        'BOActionButton'
+        'BOActionButton',
+        'InhumanMasuk',
     ];
 
 
@@ -38,7 +39,7 @@ class mdPermohonan extends Model
         if ($this->status == 'keabsahan') {
             return array('name' => "Lanjut Step 2", "routerName" => "bo-permohonan-detail", "id" => $this->permohonan_id);
         } else {
-            return array('name' => "Track Permohonan", "routerName" => "bo-surat-rekomendasi-permintaan", "id" => $this->permohonan_id);
+            return array('name' => "Track Permohonan", "routerName" => "bo-surat-permintaan", "id" => $this->permohonan_id);
         }
     }
 
@@ -99,6 +100,10 @@ class mdPermohonan extends Model
     {
         return Carbon::parse($this->updated_at)->diffForHumans();
     }
+    function getInHumanMasukAttribute()
+    {
+        return Carbon::parse($this->created_at)->diffForHumans();
+    }
     function opd()
     {
         return $this->belongsTo(mdOpd::class, 'opd_id');
@@ -122,5 +127,9 @@ class mdPermohonan extends Model
     function petugas()
     {
         return $this->belongsTo(mdUser::class, "user_id", "user_id");
+    }
+    function suratpermintaan()
+    {
+        return $this->hasMany(mdsuratPermintaan::class, "permohonan_id");
     }
 }

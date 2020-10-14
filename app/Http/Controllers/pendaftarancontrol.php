@@ -37,6 +37,8 @@ class pendaftarancontrol extends Controller
             return self::UploadFileKeabsahan($r);
         } elseif ($type == "daftar") {
             return self::daftar($r);
+        } elseif ($type == "UplaodFileSingle") {
+            return self::UplaodFileSingle($r);
         }
     }
 
@@ -77,21 +79,43 @@ class pendaftarancontrol extends Controller
 
         // return $filename;
     }
+    function UplaodFileSingle(Request $r)
+    {
+        date_default_timezone_set("Asia/Bangkok");
+        $timestamp = date("Y-m-d H:i:s");
 
+        $uploadData = $r->get("upload");
+        $perusahaan = $r->get("perusahaan");
+
+
+
+
+        /* directory */
+        $pathFolder = Storage::disk("ResourcesExternal")->path($perusahaan['npwp']);
+        if (!File::exists($pathFolder)) {
+            File::makeDirectory($pathFolder, $mode = 0777, true, true);
+        }
+
+
+        $expoloded = explode(",", $uploadData["files"]);
+        $decoded = base64_decode($expoloded[1]);
+        $extension =  "pdf";
+        $name = Str::slug($uploadData["name"], '_');
+        $filename = $name . '.' . $extension;
+        $path = Storage::disk("ResourcesExternal")->path($perusahaan['npwp'] . '/' . $filename);
+        file_put_contents($path, $decoded);
+    }
     function daftar(Request $r)
     {
         $postperusahaan = $r->get("perusahaan");
-        $postupload = $r->get("upload");
+        $postUser = $r->get("user");
 
 
         $perusahaan = new Request();
         $perusahaan->replace(['perusahaan' => $postperusahaan]);
 
-        $upload = new Request();
-        $upload->replace(['upload' => $postupload, 'perusahaan' => $postperusahaan]);
-
         $perusahaan_id = perusahaanControl::Insertperusahaan($perusahaan);
-        self::UploadFileKeabsahan($upload);
+
 
         $perusahaan = mdPerusahaan::where("perusahaan_id", $perusahaan_id)->first();
 
@@ -101,12 +125,13 @@ class pendaftarancontrol extends Controller
         );
 
         mdperusahaan::where('perusahaan_id', $perusahaan_id)->update($ToDBPerusahaan);
+
         $user_id = mdUsers::max("user_id");
         $ToDBUsers = array(
             "email" => $perusahaan->email,
             "role_id" => "5",
             "username" => $perusahaan->email,
-            "password" => Hash::make($postperusahaan['password']),
+            "password" => Hash::make($postUser['password']),
             "perusahaan_id" => $perusahaan_id,
             "is_active" => "true",
             "user_id" => $user_id + 1,

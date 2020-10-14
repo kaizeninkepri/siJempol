@@ -7,7 +7,8 @@
       <div v-else key="warning">
         <div class="br-msg-header d-flex justify-content-between">
           <div class="pd-x-0 pd-t-30">
-            <h4 class="tx-gray-800 mg-b-5">{{perusahaan.fullname.toUpperCase()}}</h4>
+            <h4 class="tx-gray-800 mg-b-5">Halaman Utama Pemohon</h4>
+            <p class="mg-b-0">{{perusahaan.fullname.toUpperCase()}}</p>
             <p class="mg-b-0">{{perusahaan.badanusaha}}</p>
           </div>
         </div>

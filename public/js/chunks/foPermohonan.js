@@ -156,6 +156,62 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -446,7 +502,7 @@ var render = function() {
               staticClass:
                 "tx-uppercase tx-15 mg-t-40 pd-x-10 bd-b pd-b-10 tx-roboto tx-white-7"
             },
-            [_vm._v("DATA PERUSAHAAN")]
+            [_vm._v("\n      DATA PERUSAHAAN\n    ")]
           ),
           _vm._v(" "),
           _c("nav", { staticClass: "nav br-nav-mailbox flex-column" }, [
@@ -512,7 +568,7 @@ var render = function() {
               staticClass:
                 "tx-uppercase tx-15 mg-t-40 pd-x-10 bd-b pd-b-10 tx-roboto tx-white-7"
             },
-            [_vm._v("NARAHUBUNG")]
+            [_vm._v("\n      NARAHUBUNG\n    ")]
           ),
           _vm._v(" "),
           _c("nav", { staticClass: "nav br-nav-mailbox flex-column" }, [
@@ -629,7 +685,13 @@ var render = function() {
                                   _c(
                                     "div",
                                     { staticClass: "tx-13 tx-bold mg-b-0" },
-                                    [_vm._v(_vm._s(i.persyaratan))]
+                                    [
+                                      _vm._v(
+                                        "\n                      " +
+                                          _vm._s(i.persyaratan) +
+                                          "\n                    "
+                                      )
+                                    ]
                                   )
                                 ]),
                                 _vm._v(" "),
@@ -649,7 +711,7 @@ var render = function() {
                                           name: "show",
                                           rawName: "v-show",
                                           value: i.status == "terima",
-                                          expression: "i.status =='terima'"
+                                          expression: "i.status == 'terima'"
                                         }
                                       ],
                                       staticClass: "tx-20 tx-bold tx-success",
@@ -664,7 +726,7 @@ var render = function() {
                                           name: "show",
                                           rawName: "v-show",
                                           value: i.status == "tolak",
-                                          expression: "i.status =='tolak'"
+                                          expression: "i.status == 'tolak'"
                                         }
                                       ],
                                       staticClass: "tx-20 tx-bold tx-danger",
@@ -833,7 +895,13 @@ var render = function() {
                         staticClass:
                           "tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
                       },
-                      [_vm._v(_vm._s(_vm.pratinjau.title))]
+                      [
+                        _vm._v(
+                          "\n              " +
+                            _vm._s(_vm.pratinjau.title) +
+                            "\n            "
+                        )
+                      ]
                     )
                   ])
                 ]

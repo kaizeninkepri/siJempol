@@ -176,7 +176,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var form = function form() {
-  return Promise.all(/*! import() | modulForm */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("modulForm")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
+  return Promise.all(/*! import() | modulForm */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("modulForm")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -454,7 +454,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var form = function form() {
-  return Promise.all(/*! import() | modulForm */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("modulForm")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
+  return Promise.all(/*! import() | modulForm */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("modulForm")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -684,479 +684,375 @@ var form = function form() {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    var _perusahaan;
-
     return {
-      termLoading: false,
-      widthPratinjau: "0%",
-      objectURL: null,
-      accepts: ["application/pdf"].join(","),
-      perusahaan: (_perusahaan = {
-        password: null,
-        jenis_usaha: null,
-        perusahaan_id: null,
-        perusahaan_code: null,
+      loading: {
+        submit: false
+      },
+      colors: [{
+        color: "#f56c6c",
+        percentage: 20
+      }, {
+        color: "#e6a23c",
+        percentage: 40
+      }, {
+        color: "#6f7ad3",
+        percentage: 60
+      }, {
+        color: "#1989fa",
+        percentage: 80
+      }, {
+        color: "#5cb87a",
+        percentage: 100
+      }],
+      queue: [],
+      url: {
+        assets: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].publicData
+      },
+      perusahaan: {
         npwp: null,
+        perusahaan_code: null,
         kategori: null,
+        jenis: null,
         nama: null,
         alamat: null,
         email: null,
         contact: null,
-        aktif: null,
-        created_on: null,
-        fullname: null,
-        create_on: "online"
-      }, _defineProperty(_perusahaan, "aktif", "false"), _defineProperty(_perusahaan, "pemohon", null), _defineProperty(_perusahaan, "hp", null), _perusahaan),
+        create_on: "mandiri",
+        provinsi: null,
+        kota: null,
+        kode_pos: null
+      },
+      user: {
+        email: null,
+        password: null,
+        is_active: false,
+        role_id: 5,
+        repeatPassword: null
+      },
       upload: [{
         name: "Nomor Pokok Wajib Pajak",
         nameFile: "Unggah Berkas NPWP",
@@ -1168,19 +1064,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         button: false,
         files: null,
         css: null,
-        fileTemp: null
-      }, {
-        name: "Akta Pendirian / Perubahan",
-        nameFile: "Unggah Berkas Akta",
-        praname: "Unggah Berkas Akta",
-        type: null,
-        size: 0,
-        objectURL: null,
-        id: "akta",
-        button: false,
-        files: null,
-        css: null,
-        fileTemp: null
+        fileTemp: null,
+        progressBar: 0
       }, {
         name: "NIB OSS",
         nameFile: "Unggah Berkas NIB",
@@ -1192,7 +1077,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         button: false,
         files: null,
         css: null,
-        fileTemp: null
+        fileTemp: null,
+        progressBar: 0
       }, {
         name: "Izin Usaha / KBLI",
         nameFile: "Unggah Berkas Izin Usaha / KBLI",
@@ -1204,174 +1090,84 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         button: false,
         files: null,
         css: null,
-        fileTemp: null
+        fileTemp: null,
+        progressBar: 0
       }],
-      steps: {
-        active: 1,
-        button: "selanjutnya",
-        body: [true, false, false]
-      },
-      readonly: false,
-      isLoading: false,
-      login: {
-        username: null,
-        password: null
-      },
-      url: {
-        pendaftaran: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/pendaftaran",
-        publicImages: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/public/images"
-      },
-      empty: [],
-      options: {
-        jenis: [{
-          value: "Badan Usaha",
-          label: "Badan Usaha"
-        }, {
-          value: "Perorangan",
-          label: "Perorangan"
-        }],
-        kategori: [{
-          value: "PT",
-          label: "PT"
-        }, {
-          value: "CV",
-          label: "CV"
-        }, {
-          value: "FRIMA",
-          label: "FIRMA"
-        }, {
-          value: "YAYASAN",
-          label: "YAYASAN"
-        }, {
-          value: "KOPERASI",
-          label: "KOPERASI"
-        }, {
-          value: "KELOMPOK MASYARAKAT",
-          label: "KELOMPOK MASYARAKAT"
-        }, {
-          value: "PERSERODA",
-          label: "PERSERODA"
-        }, {
-          value: "PERUMDA",
-          label: "PERUMDA"
-        }]
-      },
-      show: {
-        kategori: false
-      }
+      submitStatus: null
     };
   },
-  mounted: function mounted() {},
+  validations: {
+    perusahaan: {
+      npwp: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["minLength"])(20)
+      },
+      kategori: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      nama: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      alamat: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      email: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      contact: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      provinsi: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      kota: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      jenis: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      kode_pos: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      }
+    },
+    user: {
+      email: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      password: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      repeatPassword: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+        sameAsPassword: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["sameAs"])("password")
+      }
+    }
+  },
+  watch: {
+    // whenever question changes, this function will run
+    "perusahaan.email": function perusahaanEmail(oldQuestion) {
+      this.user.email = oldQuestion;
+    }
+  },
   methods: {
-    term: function term() {
-      $("#TermAndCondition").modal("show");
-    },
-    GetPerusahaan: function GetPerusahaan() {
-      var _this = this;
-
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/perusahaan", {
-        type: "perusahaanById"
-      }).then(function (r) {
-        return _this.perusahaan = r.data[0];
-      });
-    },
-    notif: function notif(s, m, type) {
-      this.$notify({
-        title: s,
-        message: m,
-        type: type
-      });
-    },
-    redirect: function redirect() {
-      window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/dashboard";
-    },
-    jenisusahachange: function jenisusahachange() {
-      if (this.perusahaan.jenis_usaha == "Perorangan") {
-        this.show.kategori = false;
-        this.perusahaan.kategori = "PERORANGAN";
-      } else {
-        this.show.kategori = true;
-        this.perusahaan.kategori = null;
-      }
-    },
-    Submit: function Submit() {
-      var _this2 = this;
-
-      this.$refs["pendaftaranRefs"].validate(function (valid) {
-        if (valid) {
-          _this2.termLoading = true;
-
-          _this2.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/pendaftaran", {
-            type: "daftar",
-            perusahaan: _this2.perusahaan,
-            upload: _this2.upload
-          }).then(function (r) {
-            _this2.termLoading = false;
-            console.log(r);
-            window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/pendaftaran/selesai";
-            _this2.termLoading = false;
-          });
-        } else {
-          console.log("error submit!!");
-          return false;
-        }
-      });
-    },
-    nextStep: function nextStep() {
-      var _this3 = this;
-
-      var next = this.steps.active;
-
-      if (next == 2) {
-        // this.Submit();
-        this.CheckUpload();
-      } else if (next == 3) {
-        this.Submit();
-      } else {
-        this.$refs["pendaftaranRefs"].validate(function (valid) {
-          if (valid) {
-            _this3.stepButton();
-          } else {
-            console.log("error submit!!");
-            return false;
-          }
-        });
-      }
-    },
-    stepButton: function stepButton() {
-      var next = this.steps.active;
-      this.steps.body = [false, false, false];
-      this.steps.active++;
-      this.steps.body[next] = true;
-
-      if (next == 2) {
-        this.steps.button = "Daftar";
-      }
-    },
-    stepButtonPrevious: function stepButtonPrevious() {
-      this.steps.body = [false, false, false];
-
-      if (this.steps.active >= 1) {
-        this.steps.active--;
-      }
-
-      this.steps.body[this.steps.active - 1] = true;
-      console.log(this.steps.active);
-
-      if (this.steps.active > 2) {
-        this.steps.button = "Daftar";
-      } else {
-        this.steps.button = "Selanjutnya";
-      }
+    pushToSelesai: function pushToSelesai() {
+      location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/pendaftaran/selesai?npwp=" + this.perusahaan.npwp;
     },
     changeFile: function changeFile(i, event) {
-      var _this4 = this;
+      var _this = this;
 
       if (this.objectURL) {
         URL.revokeObjectURL(this.objectURL);
       }
 
       var file = event.target.files[0];
+
+      if (file.size > 2097152) {
+        this.$message.error("File Upload terlalu besar, Maksimal 2 MB");
+        return;
+      }
+
+      this.queue.push(i);
       this.upload[i].nameFile = file.name;
       this.upload[i].type = file.type;
       this.upload[i].size = file.size;
@@ -1384,24 +1180,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       fileReader.readAsDataURL(event.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this4.upload[i].files = e.target.result;
+        _this.upload[i].files = e.target.result;
       };
-    },
-    pratinjau: function pratinjau(i) {
-      this.widthPratinjau = "100%";
-      this.objectURL = URL.createObjectURL(this.upload[i].fileTemp);
-    },
-    pratinjauClose: function pratinjauClose() {
-      this.widthPratinjau = "0%";
-    },
-    UploadFIle: function UploadFIle(i) {
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/pendaftaran/form", {
-        type: "UploadFileKeabsahan",
-        upload: this.upload,
-        perusahaan: this.perusahaan
-      }).then(function (r) {
-        return console.log(r.data);
-      });
     },
     CheckUpload: function CheckUpload() {
       this.empty = [];
@@ -1411,10 +1191,86 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           this.empty.push(i);
           this.upload[i].css = "custom-file-upload-error";
         }
-      }
 
-      if (!this.empty.length) {
-        this.stepButton();
+        if (this.queue.length > 0) {
+          this.ExecuteUpload();
+        } else {
+          this.loading.submit = false;
+          setTimeout(this.pushToSelesai(), 20000);
+        }
+      }
+    },
+    ExecuteUpload: function ExecuteUpload() {
+      var que = this.queue;
+      var length = this.queue.length; // console.log(que.length)
+
+      if (length > 0) {
+        this.UploadFIle(que[0]);
+      } else {
+        this.CheckUpload();
+      }
+    },
+    UploadFIle: function UploadFIle(i) {
+      var _this2 = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/pendaftaran", {
+        type: "UplaodFileSingle",
+        upload: this.upload[i],
+        perusahaan: this.perusahaan
+      }, {
+        onUploadProgress: function (progressEvent) {
+          this.upload[i].progressBar = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
+        }.bind(this)
+      }).then(function (r) {
+        _this2.$delete(_this2.queue, 0), _this2.ExecuteUpload();
+      });
+    },
+    CheckNpwp: function CheckNpwp() {
+      var _this3 = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/perizinan/perusahaan", {
+        type: "dataBynpwp",
+        npwp: this.perusahaan.npwp
+      }).then(function (r) {
+        console.log(r);
+        r.data == "" ? "" : (_this3.perusahaan = r.data, _this3.$alert("Perusahaan ini Telah Melakukan Pendaftaran, Silahkan Isi Form yang telah di sediakan.", "Informasi", {
+          confirmButtonText: "OK",
+          callback: function callback(action) {
+            _this3.$message({
+              type: "info",
+              message: "action: ".concat(action)
+            });
+          }
+        }));
+      });
+    },
+    InsertDatabase: function InsertDatabase() {
+      var _this4 = this;
+
+      this.loading.submit = true;
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/pendaftaran", {
+        type: "daftar",
+        perusahaan: this.perusahaan,
+        user: this.user
+      }).then(function (r) {
+        _this4.CheckUpload();
+      });
+    },
+    daftar: function daftar() {
+      this.$v.$touch();
+
+      if (this.$v.$invalid) {
+        this.submitStatus = "ERROR";
+        this.empty = [];
+
+        for (var i = 0; i < this.upload.length; i++) {
+          if (this.upload[i].files == null) {
+            this.empty.push(i);
+            this.upload[i].css = "custom-file-upload-error";
+          }
+        }
+      } else {
+        this.InsertDatabase();
       }
     }
   }
@@ -1469,15 +1325,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      npwp: this.$route.query.npwp,
       url: {
         assets: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].assets,
         web: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web
+      },
+      perusahaan: {
+        npwp: null,
+        perusahaan_code: null,
+        kategori: null,
+        jenis: null,
+        nama: null,
+        alamat: null,
+        email: null,
+        contact: null,
+        create_on: "mandiri",
+        provinsi: null,
+        kota: null,
+        kode_pos: null
       }
     };
+  },
+  created: function created() {
+    this.CheckNpwp();
+  },
+  methods: {
+    CheckNpwp: function CheckNpwp() {
+      var _this = this;
+
+      this.axios.post(url.web + "/perizinan/perusahaan", {
+        type: "dataBynpwp",
+        npwp: this.npwp
+      }).then(function (r) {
+        _this.perusahaan = r.data;
+      });
+    }
   }
 });
 
@@ -1521,10 +1419,10 @@ exports.push([module.i, "\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 8
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css&":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css& ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -1533,7 +1431,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.itemDS {\n  top: -30px !important;\n  width: 100% !important;\n}\n.itemWarp {\n  margin-top: -40px !important;\n  font-size: 9px !important;\n}\ninput[type=\"file\"] {\n  display: none;\n}\n.custom-file-upload {\n  border: 3px dashed #ccc;\n  display: inline-block;\n  padding: 80px 20px 20px 20px;\n  cursor: pointer;\n  width: 100%;\n  text-align: center;\n  vertical-align: middle;\n  min-height: 220px;\n}\n.custom-file-upload-error {\n  border: 3px dashed red;\n}\n.custom-file-upload-success {\n  border: 3px dashed green;\n}\n.overlay-popup {\n  height: 100%;\n  width: 0;\n  position: fixed;\n  z-index: 1;\n  top: 0;\n  left: 0;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.9);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.overlay-popup-content {\n  position: relative;\n  top: 15%;\n  width: 100%;\n  text-align: center;\n  margin-top: 5px;\n  padding: 10px 50px 10px 50px;\n}\n.overlay-popup a {\n  padding: 8px;\n  text-decoration: none;\n  font-size: 36px;\n  color: #818181;\n  display: block;\n  transition: 0.3s;\n}\n.overlay-popup a:hover,\n.overlay-popup a:focus {\n  color: #f1f1f1;\n}\n.overlay-popup .closebtn {\n  position: absolute;\n  top: 20px;\n  right: 45px;\n  font-size: 60px;\n}\n@media screen and (max-height: 450px) {\n.overlay-popup a {\n    font-size: 20px;\n}\n.overlay-popup .closebtn {\n    font-size: 40px;\n    top: 15px;\n    right: 35px;\n}\n}\n@media screen and (max-width: 450px) {\nobject,\n  iframe {\n    border: 3px solid #cecece;\n    background: #e9e9e9;\n    width: 100%;\n    height: 100px;\n    overflow: scroll;\n}\n}\nobject,\niframe {\n  border: 3px solid #cecece;\n  background: #e9e9e9;\n  width: 100%;\n  height: 600px;\n  overflow: scroll;\n}\n#TermContent {\n  height: 400px;\n  overflow: scroll;\n}\n.el-form-item__error {\n  top: 10px !important;\n}\n", ""]);
+exports.push([module.i, "\n.form-control[data-v-4e43400c] {\n  border-radius: 6px;\n}\ninput[type=\"file\"][data-v-4e43400c] {\n  display: none;\n}\n.custom-file-upload[data-v-4e43400c] {\n  border: 3px dashed #ccc;\n  display: inline-block;\n  padding: 40px 5px 5px 5px;\n  cursor: pointer;\n  width: 100%;\n  text-align: center;\n  vertical-align: middle;\n  min-height: 150px;\n}\n.custom-file-upload-error[data-v-4e43400c] {\n  border: 3px dashed red;\n}\n.custom-file-upload-success[data-v-4e43400c] {\n  border: 3px dashed green;\n}\n", ""]);
 
 // exports
 
@@ -1600,15 +1498,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css&":
-/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css& ***!
-  \********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css&");
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -2627,10 +2525,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&":
-/*!**************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c& ***!
-  \**************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2646,1240 +2544,989 @@ var render = function() {
     "div",
     {
       staticClass:
-        "d-flex align-items-center justify-content-center ht-100v pd-l-100 pd-r-100"
+        "align-items-center justify-content-center pd-t-50 ht-100v pd-l-100 pd-r-100",
+      staticStyle: { background: "#d0dcec" }
     },
     [
-      _c("div", { staticClass: "col-lg-12 mx-auto" }, [
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "loading",
-                rawName: "v-loading",
-                value: _vm.termLoading,
-                expression: "termLoading"
-              }
-            ],
-            staticClass: "auto-form-wrapper"
-          },
-          [
-            _c(
-              "el-row",
-              { attrs: { gutter: 5 } },
-              [
-                _c(
-                  "el-col",
-                  { attrs: { md: 2 } },
-                  [
-                    _c(
-                      "center",
-                      [
-                        _c("el-image", {
-                          staticStyle: { width: "75px", height: "100px" },
-                          attrs: {
-                            src: _vm.url.publicImages + "/logo.png",
-                            fit: "fill"
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c("el-col", { attrs: { md: 10 } }, [
-                  _c("h4", { staticClass: "tx-bold" }, [
-                    _vm._v(
-                      "DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU PROVINSI KEPULAUAN RIAU"
-                    )
-                  ]),
+      _c(
+        "el-card",
+        {
+          staticStyle: { "border-radius": "5px", border: "none" },
+          attrs: { "body-style": { padding: "0px" } }
+        },
+        [
+          _c(
+            "el-row",
+            [
+              _c(
+                "el-col",
+                { staticStyle: { padding: "20px" }, attrs: { md: 20 } },
+                [
+                  _c(
+                    "h1",
+                    {
+                      staticClass: "tx-roboto tx-bold tx-20",
+                      staticStyle: { color: "#48a5ea" }
+                    },
+                    [_vm._v("\n          IDENTITAS PERUSAHAAN\n        ")]
+                  ),
                   _vm._v(" "),
-                  _c("div", { staticClass: "font-size-sm text-muted" }, [
-                    _vm._v("Pendaftaran Online Perizinan dan Nonperizinan")
-                  ])
-                ])
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "el-steps",
-              {
-                attrs: { active: _vm.steps.active, "finish-status": "success" }
-              },
-              [
-                _c("el-step", {
-                  attrs: {
-                    title: "Step 1",
-                    description: "Identitas Perusahaan"
-                  }
-                }),
-                _vm._v(" "),
-                _c("el-step", {
-                  attrs: { title: "Step 2", description: "Berkas Perusahaan" }
-                }),
-                _vm._v(" "),
-                _c("el-step", {
-                  attrs: { title: "Step 3", description: "Selesai" }
-                })
-              ],
-              1
-            ),
-            _vm._v(" "),
-            _c(
-              "el-form",
-              {
-                ref: "pendaftaranRefs",
-                staticStyle: { "min-height": "350px" },
-                attrs: { model: _vm.perusahaan, "label-position": "top" }
-              },
-              [
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.steps.body[0],
-                        expression: "steps.body[0]"
-                      }
-                    ]
-                  },
-                  [
-                    _c(
-                      "el-row",
-                      [
-                        _c(
-                          "el-col",
-                          { attrs: { span: 11 } },
-                          [
-                            _c(
-                              "el-form-item",
-                              {
-                                attrs: {
-                                  label: "NPWP",
-                                  prop: "npwp",
-                                  rules: {
-                                    required: true,
-                                    message: "field tidak boleh kosong",
-                                    trigger: "blur"
-                                  }
+                  _c(
+                    "div",
+                    { staticClass: "mg-t-50" },
+                    [
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-lg-3" }, [
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  Nomor Pokok Wajib Pajak:\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.perusahaan.npwp.$model,
+                                  expression: "$v.perusahaan.npwp.$model",
+                                  modifiers: { trim: true }
+                                },
+                                {
+                                  name: "mask",
+                                  rawName: "v-mask",
+                                  value: "##.###.###.#-###.###",
+                                  expression: "'##.###.###.#-###.###'"
                                 }
-                              },
-                              [
-                                _c("el-input", {
-                                  staticClass: "itemDS",
-                                  attrs: {
-                                    size: "small",
-                                    placeholder: "NPWP",
-                                    disabled: _vm.readonly
-                                  },
-                                  model: {
-                                    value: _vm.perusahaan.npwp,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.perusahaan, "npwp", $$v)
-                                    },
-                                    expression: "perusahaan.npwp"
-                                  }
-                                })
                               ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "el-row",
-                      { attrs: { gutter: 10 } },
-                      [
-                        _c(
-                          "el-col",
-                          { attrs: { md: 3 } },
-                          [
-                            _c(
-                              "el-form-item",
-                              {
-                                staticClass: "itemWarp",
-                                attrs: {
-                                  label: "JENIS USAHA",
-                                  prop: "jenis_usaha",
-                                  rules: {
-                                    required: true,
-                                    message: "field tidak boleh kosong",
-                                    trigger: "blur"
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.perusahaan.npwp.$error
+                              },
+                              attrs: {
+                                readonly: _vm.loading.submit,
+                                type: "text"
+                              },
+                              domProps: {
+                                value: _vm.$v.perusahaan.npwp.$model
+                              },
+                              on: {
+                                blur: [
+                                  function($event) {
+                                    return _vm.CheckNpwp()
+                                  },
+                                  function($event) {
+                                    return _vm.$forceUpdate()
                                   }
+                                ],
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.perusahaan.npwp,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
                                 }
-                              },
+                              }
+                            })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-lg-2" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c(
+                              "label",
+                              { staticClass: "form-control-label tx-gray-600" },
                               [
-                                _c(
-                                  "el-select",
+                                _vm._v(
+                                  "\n                  Kategori:\n                  "
+                                ),
+                                _c("span", { staticClass: "tx-danger" }, [
+                                  _vm._v("*")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
                                   {
-                                    staticStyle: { top: "-30px !important" },
-                                    attrs: {
-                                      size: "small",
-                                      placeholder: "Jenis Usaha",
-                                      prop: "jenis_usaha",
-                                      rules: {
-                                        required: true,
-                                        message: "field tidak boleh kosong",
-                                        trigger: "blur"
-                                      }
-                                    },
-                                    on: {
-                                      change: function($event) {
-                                        return _vm.jenisusahachange()
-                                      }
-                                    },
-                                    model: {
-                                      value: _vm.perusahaan.jenis_usaha,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          _vm.perusahaan,
-                                          "jenis_usaha",
-                                          $$v
-                                        )
-                                      },
-                                      expression: "perusahaan.jenis_usaha"
-                                    }
-                                  },
-                                  _vm._l(_vm.options.jenis, function(item) {
-                                    return _c("el-option", {
-                                      key: item.value,
-                                      attrs: {
-                                        label: item.label,
-                                        value: item.value
-                                      }
-                                    })
-                                  }),
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm.show.kategori
-                          ? _c(
-                              "el-col",
-                              { attrs: { md: 3 } },
-                              [
-                                _c(
-                                  "el-form-item",
-                                  {
-                                    staticClass: "itemWarp",
-                                    attrs: {
-                                      label: "KATEGORI",
-                                      prop: "kategori",
-                                      rules: {
-                                        required: true,
-                                        message: "field tidak boleh kosong",
-                                        trigger: "blur"
-                                      }
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "el-select",
-                                      {
-                                        staticStyle: {
-                                          top: "-30px !important"
-                                        },
-                                        attrs: {
-                                          size: "small",
-                                          placeholder: "Jenis Usaha",
-                                          prop: "jenis_usaha",
-                                          rules: {
-                                            required: true,
-                                            message: "field tidak boleh kosong",
-                                            trigger: "blur"
-                                          }
-                                        },
-                                        model: {
-                                          value: _vm.perusahaan.kategori,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.perusahaan,
-                                              "kategori",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "perusahaan.kategori"
-                                        }
-                                      },
-                                      _vm._l(_vm.options.kategori, function(
-                                        item
-                                      ) {
-                                        return _c("el-option", {
-                                          key: item.value,
-                                          attrs: {
-                                            label: item.label,
-                                            value: item.value
-                                          }
-                                        })
-                                      }),
-                                      1
+                                    name: "model",
+                                    rawName: "v-model.trim",
+                                    value: _vm.$v.perusahaan.kategori.$model,
+                                    expression: "$v.perusahaan.kategori.$model",
+                                    modifiers: { trim: true }
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid":
+                                    _vm.$v.perusahaan.kategori.$error
+                                },
+                                attrs: { readonly: _vm.loading.submit },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.$v.perusahaan.kategori,
+                                      "$model",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
                                     )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _c(
-                          "el-col",
-                          { attrs: { md: 11 } },
-                          [
-                            _c(
-                              "el-form-item",
-                              {
-                                staticClass: "itemWarp",
-                                attrs: {
-                                  label: "NAMA",
-                                  prop: "nama",
-                                  rules: {
-                                    required: true,
-                                    message: "field tidak boleh kosong",
-                                    trigger: "blur"
                                   }
                                 }
                               },
-                              [
-                                _c("el-input", {
-                                  staticClass: "itemDS",
-                                  staticStyle: { width: "100% !important" },
-                                  attrs: {
-                                    size: "small",
-                                    placeholder: "Nama Perusahaan",
-                                    disabled: _vm.readonly
-                                  },
-                                  model: {
-                                    value: _vm.perusahaan.nama,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.perusahaan, "nama", $$v)
-                                    },
-                                    expression: "perusahaan.nama"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "el-row",
-                      { attrs: { gutter: 10 } },
-                      [
-                        _c(
-                          "el-col",
-                          { attrs: { md: 9 } },
-                          [
-                            _c(
-                              "el-form-item",
-                              {
-                                staticClass: "itemWarp",
-                                attrs: {
-                                  label: "EMAIL",
-                                  prop: "email",
-                                  rules: [
-                                    {
-                                      required: true,
-                                      message: "field tidak boleh kosong",
-                                      trigger: "blur"
-                                    },
-                                    {
-                                      type: "email",
-                                      message: "Email tidak valid",
-                                      trigger: "blur"
-                                    }
-                                  ]
-                                }
-                              },
-                              [
-                                _c("el-input", {
-                                  staticClass: "itemDS",
-                                  staticStyle: { width: "100% !important" },
-                                  attrs: {
-                                    size: "small",
-                                    placeholder: "xxxxx@xxx.com",
-                                    disabled: _vm.readonly
-                                  },
-                                  model: {
-                                    value: _vm.perusahaan.email,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.perusahaan, "email", $$v)
-                                    },
-                                    expression: "perusahaan.email"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "el-col",
-                          { attrs: { md: 6 } },
-                          [
-                            _c(
-                              "el-form-item",
-                              {
-                                staticClass: "itemWarp",
-                                attrs: {
-                                  label: "PASSWORD",
-                                  prop: "password",
-                                  rules: [
-                                    {
-                                      required: true,
-                                      message: "field tidak boleh kosong",
-                                      trigger: "blur"
-                                    }
-                                  ]
-                                }
-                              },
-                              [
-                                _c("el-input", {
-                                  staticClass: "itemDS",
-                                  staticStyle: { width: "100% !important" },
-                                  attrs: {
-                                    size: "small",
-                                    placeholder: "xxxxx",
-                                    "show-password": "",
-                                    disabled: _vm.readonly
-                                  },
-                                  model: {
-                                    value: _vm.perusahaan.password,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.perusahaan, "password", $$v)
-                                    },
-                                    expression: "perusahaan.password"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "el-col",
-                          { attrs: { md: 5 } },
-                          [
-                            _c(
-                              "el-form-item",
-                              {
-                                staticClass: "itemWarp",
-                                attrs: {
-                                  label: "Telp / Hp",
-                                  prop: "contact",
-                                  rules: {
-                                    required: true,
-                                    message: "field tidak boleh kosong",
-                                    trigger: "blur"
-                                  }
-                                }
-                              },
-                              [
-                                _c("el-input", {
-                                  staticClass: "itemDS",
-                                  staticStyle: { width: "100% !important" },
-                                  attrs: {
-                                    size: "small",
-                                    placeholder: "(kode area) xxxx.xxxx.xxxx",
-                                    disabled: _vm.readonly
-                                  },
-                                  model: {
-                                    value: _vm.perusahaan.contact,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.perusahaan, "contact", $$v)
-                                    },
-                                    expression: "perusahaan.contact"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "el-row",
-                      { attrs: { gutter: 10 } },
-                      [
-                        _c(
-                          "el-col",
-                          { attrs: { md: 18 } },
-                          [
-                            _c(
-                              "el-form-item",
-                              {
-                                staticClass: "itemWarp",
-                                attrs: {
-                                  label: "ALAMAT",
-                                  prop: "alamat",
-                                  rules: {
-                                    required: true,
-                                    message: "field tidak boleh kosong",
-                                    trigger: "blur"
-                                  }
-                                }
-                              },
-                              [
-                                _c("el-input", {
-                                  staticClass: "itemDS",
-                                  staticStyle: { width: "100% !important" },
-                                  attrs: {
-                                    size: "small",
-                                    type: "textarea",
-                                    placeholder: "Alamat Perusahaan",
-                                    disabled: _vm.readonly
-                                  },
-                                  model: {
-                                    value: _vm.perusahaan.alamat,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.perusahaan, "alamat", $$v)
-                                    },
-                                    expression: "perusahaan.alamat"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _vm.show.kategori
-                      ? _c(
-                          "el-row",
-                          { attrs: { gutter: 10 } },
-                          [
-                            _c(
-                              "el-divider",
-                              { attrs: { "content-position": "left" } },
-                              [_vm._v("CONTACT PERSON")]
-                            ),
-                            _vm._v(" "),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c(
-                              "el-col",
-                              { attrs: { md: 4 } },
                               [
                                 _c(
-                                  "el-form-item",
-                                  {
-                                    staticClass: "itemWarp",
-                                    attrs: {
-                                      label: "Nama Pemohon",
-                                      prop: "pemohon"
-                                    }
-                                  },
-                                  [
-                                    _c("el-input", {
-                                      staticClass: "itemDS",
-                                      staticStyle: { width: "100% !important" },
-                                      attrs: {
-                                        size: "small",
-                                        placeholder: "Nama Pengurus"
-                                      },
-                                      model: {
-                                        value: _vm.perusahaan.pemohon,
-                                        callback: function($$v) {
-                                          _vm.$set(
-                                            _vm.perusahaan,
-                                            "pemohon",
-                                            $$v
-                                          )
-                                        },
-                                        expression: "perusahaan.pemohon"
-                                      }
-                                    })
-                                  ],
-                                  1
+                                  "option",
+                                  { attrs: { value: "Badan Usaha" } },
+                                  [_vm._v("Badan Usaha")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "perorangan" } },
+                                  [_vm._v("Perorangan")]
                                 )
-                              ],
-                              1
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-lg-2" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c(
+                              "label",
+                              { staticClass: "form-control-label tx-gray-600" },
+                              [
+                                _vm._v(
+                                  "\n                  Jenis Perusahaan:\n                  "
+                                ),
+                                _c("span", { staticClass: "tx-danger" }, [
+                                  _vm._v("*")
+                                ])
+                              ]
                             ),
                             _vm._v(" "),
                             _c(
-                              "el-col",
-                              { attrs: { md: 4 } },
-                              [
-                                _c(
-                                  "el-form-item",
+                              "select",
+                              {
+                                directives: [
                                   {
-                                    staticClass: "itemWarp",
-                                    attrs: { label: "Hp", prop: "hp" }
-                                  },
+                                    name: "model",
+                                    rawName: "v-model.trim",
+                                    value: _vm.$v.perusahaan.jenis.$model,
+                                    expression: "$v.perusahaan.jenis.$model",
+                                    modifiers: { trim: true }
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                class: {
+                                  "is-invalid": _vm.$v.perusahaan.jenis.$error
+                                },
+                                attrs: { readonly: _vm.loading.submit },
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.$set(
+                                      _vm.$v.perusahaan.jenis,
+                                      "$model",
+                                      $event.target.multiple
+                                        ? $$selectedVal
+                                        : $$selectedVal[0]
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _c("option", { attrs: { value: "PT" } }, [
+                                  _vm._v("PT")
+                                ]),
+                                _vm._v(" "),
+                                _c("option", { attrs: { value: "CV" } }, [
+                                  _vm._v("CV")
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "KELOMPOK MASYARAKAT" } },
                                   [
-                                    _c("el-input", {
-                                      staticClass: "itemDS",
-                                      staticStyle: { width: "100% !important" },
-                                      attrs: {
-                                        size: "small",
-                                        placeholder: "hp Pengurus"
-                                      },
-                                      model: {
-                                        value: _vm.perusahaan.hp,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.perusahaan, "hp", $$v)
-                                        },
-                                        expression: "perusahaan.hp"
-                                      }
-                                    })
-                                  ],
-                                  1
+                                    _vm._v(
+                                      "\n                    KELOMPOK MASYARAKAT\n                  "
+                                    )
+                                  ]
                                 )
-                              ],
-                              1
+                              ]
                             )
-                          ],
-                          1
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.steps.body[1],
-                        expression: "steps.body[1]"
-                      }
-                    ],
-                    staticStyle: { "margin-top": "20px" }
-                  },
-                  [
-                    _c(
-                      "el-row",
-                      { attrs: { gutter: 20 } },
-                      _vm._l(_vm.upload, function(u, Uindex) {
-                        return _c("el-col", { key: Uindex, attrs: { md: 6 } }, [
-                          _c("div"),
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-lg-4" }, [
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  Nama:\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.perusahaan.nama.$model,
+                                  expression: "$v.perusahaan.nama.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.perusahaan.nama.$error
+                              },
+                              attrs: {
+                                readonly: _vm.loading.submit,
+                                type: "text"
+                              },
+                              domProps: {
+                                value: _vm.$v.perusahaan.nama.$model
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.perusahaan.nama,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-lg-3" }, [
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  email:\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.perusahaan.email.$model,
+                                  expression: "$v.perusahaan.email.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.perusahaan.email.$error
+                              },
+                              attrs: {
+                                readonly: _vm.loading.submit,
+                                type: "text"
+                              },
+                              domProps: {
+                                value: _vm.$v.perusahaan.email.$model
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.perusahaan.email,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-lg-3" }, [
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  Provinsi :\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.perusahaan.provinsi.$model,
+                                  expression: "$v.perusahaan.provinsi.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.perusahaan.provinsi.$error
+                              },
+                              attrs: {
+                                readonly: _vm.loading.submit,
+                                type: "text"
+                              },
+                              domProps: {
+                                value: _vm.$v.perusahaan.provinsi.$model
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.perusahaan.provinsi,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ]),
                           _vm._v(" "),
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  Kota / Kabupaten:\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.perusahaan.kota.$model,
+                                  expression: "$v.perusahaan.kota.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.perusahaan.kota.$error
+                              },
+                              attrs: {
+                                type: "text",
+                                readonly: _vm.loading.submit
+                              },
+                              domProps: {
+                                value: _vm.$v.perusahaan.kota.$model
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.perusahaan.kota,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-lg-2" }, [
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  Kode Pos :\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.perusahaan.kode_pos.$model,
+                                  expression: "$v.perusahaan.kode_pos.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.perusahaan.kode_pos.$error
+                              },
+                              attrs: {
+                                readonly: _vm.loading.submit,
+                                type: "text"
+                              },
+                              domProps: {
+                                value: _vm.$v.perusahaan.kode_pos.$model
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.perusahaan.kode_pos,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  Telp / Hp:\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.perusahaan.contact.$model,
+                                  expression: "$v.perusahaan.contact.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.perusahaan.contact.$error
+                              },
+                              attrs: {
+                                readonly: _vm.loading.submit,
+                                type: "text"
+                              },
+                              domProps: {
+                                value: _vm.$v.perusahaan.contact.$model
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.perusahaan.contact,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-lg-3" }, [
+                          _c("div", { staticClass: "form-group" }, [
+                            _c(
+                              "label",
+                              { staticClass: "form-control-label tx-gray-600" },
+                              [
+                                _vm._v(
+                                  "\n                  Alamat:\n                  "
+                                ),
+                                _c("span", { staticClass: "tx-danger" }, [
+                                  _vm._v("*")
+                                ])
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("textarea", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.perusahaan.alamat.$model,
+                                  expression: "$v.perusahaan.alamat.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.perusahaan.alamat.$error
+                              },
+                              attrs: {
+                                readonly: _vm.loading.submit,
+                                id: "",
+                                cols: "30",
+                                rows: "5"
+                              },
+                              domProps: {
+                                value: _vm.$v.perusahaan.alamat.$model
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.perusahaan.alamat,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "el-divider",
+                        { attrs: { "content-position": "left" } },
+                        [_vm._v("Identias Akun")]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-lg-3" }, [
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  Username :\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.user.email.$model,
+                                  expression: "$v.user.email.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: { "is-invalid": _vm.$v.user.email.$error },
+                              attrs: { type: "text", readonly: "" },
+                              domProps: { value: _vm.$v.user.email.$model },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.user.email,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-lg-3" }, [
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  password:\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.$v.user.password.$model,
+                                  expression: "$v.user.password.$model",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.user.password.$error
+                              },
+                              attrs: {
+                                type: "text",
+                                readonly: _vm.loading.submit
+                              },
+                              domProps: { value: _vm.$v.user.password.$model },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.user.password,
+                                    "$model",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-lg-3" }, [
+                          _c("div", { staticClass: "form-group tx-gray-600" }, [
+                            _c("label", { staticClass: "form-control-label" }, [
+                              _vm._v(
+                                "\n                  password:\n\n                  "
+                              ),
+                              _c("span", { staticClass: "tx-danger" }, [
+                                _vm._v("*")
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.$v.user.repeatPassword.$model,
+                                  expression: "$v.user.repeatPassword.$model"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              class: {
+                                "is-invalid": _vm.$v.user.repeatPassword.$error
+                              },
+                              attrs: {
+                                readonly: _vm.loading.submit,
+                                type: "text"
+                              },
+                              domProps: {
+                                value: _vm.$v.user.repeatPassword.$model
+                              },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.$v.user.repeatPassword,
+                                    "$model",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "el-divider",
+                        { attrs: { "content-position": "left" } },
+                        [_vm._v("Kelengkapan Berkas")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-row",
+                        { attrs: { gutter: 10 } },
+                        _vm._l(_vm.upload, function(i, Index) {
+                          return _c(
+                            "el-col",
+                            { key: Index, attrs: { md: 6 } },
+                            [
+                              _c(
+                                "label",
+                                {
+                                  staticClass: "custom-file-upload",
+                                  class: i.css,
+                                  attrs: { for: i.id }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-cloud-upload"
+                                  }),
+                                  _vm._v(" "),
+                                  !i.files
+                                    ? _c("p", [_vm._v(_vm._s(i.name))])
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  i.files
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticStyle: {
+                                            background: "#c0c8dd",
+                                            position: "relative",
+                                            color: "#333",
+                                            bottom: "-25px"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "el-row",
+                                            [
+                                              _c(
+                                                "el-col",
+                                                {
+                                                  staticClass:
+                                                    "tx-left tx-bold",
+                                                  staticStyle: {
+                                                    padding:
+                                                      "15px 10px 10px 10px"
+                                                  },
+                                                  attrs: { md: 20 }
+                                                },
+                                                [_vm._v(_vm._s(i.name))]
+                                              ),
+                                              _vm._v(" "),
+                                              _c(
+                                                "el-col",
+                                                {
+                                                  staticStyle: {
+                                                    padding: "5px"
+                                                  },
+                                                  attrs: { md: 4 }
+                                                },
+                                                [
+                                                  _c("el-progress", {
+                                                    attrs: {
+                                                      width: 35,
+                                                      type: "circle",
+                                                      percentage: i.progressBar,
+                                                      color: _vm.colors
+                                                    }
+                                                  })
+                                                ],
+                                                1
+                                              )
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    : _vm._e()
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: { type: "file", id: i.id },
+                                on: {
+                                  change: function($event) {
+                                    return _vm.changeFile(Index, $event)
+                                  }
+                                }
+                              })
+                            ]
+                          )
+                        }),
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("el-divider", {
+                        attrs: { "content-position": "left" }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "el-button",
+                        {
+                          attrs: {
+                            type: "primary",
+                            loading: _vm.loading.submit
+                          },
+                          on: { click: _vm.daftar }
+                        },
+                        [_vm._v("Daftar")]
+                      )
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-col",
+                {
+                  staticClass: "hidden-lg-down",
+                  staticStyle: {
+                    background: "#48a5ea",
+                    padding: "20px",
+                    "min-height": "835px"
+                  },
+                  attrs: { md: 4 }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "block" },
+                    [
+                      _c(
+                        "center",
+                        [
                           _c(
-                            "label",
+                            "el-image",
                             {
-                              staticClass: "custom-file-upload",
-                              class: u.css,
-                              attrs: { for: u.id }
+                              staticStyle: { width: "100px", height: "auto" },
+                              attrs: {
+                                src: _vm.url.assets + "/images/logo.png"
+                              }
                             },
                             [
-                              _c("i", { staticClass: "fa fa-cloud-upload" }),
-                              _vm._v(" "),
-                              _c("div", [_vm._v(_vm._s(u.praname))]),
-                              _vm._v(" "),
-                              u.button
-                                ? _c(
-                                    "el-button",
-                                    {
-                                      attrs: { type: "primary", size: "mini" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.pratinjau(Uindex)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("Pratinjau")]
-                                  )
-                                : _vm._e()
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("input", {
-                            attrs: {
-                              type: "file",
-                              id: u.id,
-                              accept: _vm.accepts
-                            },
-                            on: {
-                              change: function($event) {
-                                return _vm.changeFile(Uindex, $event)
-                              }
-                            }
-                          })
-                        ])
-                      }),
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: _vm.steps.body[2],
-                        expression: "steps.body[2]"
-                      }
-                    ],
-                    staticStyle: { "margin-top": "30px" }
-                  },
-                  [
-                    _c(
-                      "el-row",
-                      { attrs: { gutter: 5 } },
-                      [
-                        _c("el-col", { attrs: { md: 2 } }, [_vm._v("NPWP")]),
-                        _vm._v(" "),
-                        _c("el-col", { attrs: { md: 22 } }, [
-                          _vm._v(_vm._s(_vm.perusahaan.npwp))
-                        ]),
-                        _vm._v(" "),
-                        _c("el-col", { attrs: { md: 2 } }, [_vm._v("Nama")]),
-                        _vm._v(" "),
-                        _vm.perusahaan.kategori == "Perorangan"
-                          ? _c("el-col", { attrs: { md: 22 } }, [
-                              _vm._v(_vm._s(_vm.perusahaan.nama))
-                            ])
-                          : _c("el-col", { attrs: { md: 22 } }, [
-                              _vm._v(
-                                _vm._s(_vm.perusahaan.kategori) +
-                                  ". " +
-                                  _vm._s(_vm.perusahaan.nama)
-                              )
-                            ]),
-                        _vm._v(" "),
-                        _c("el-col", { attrs: { md: 2 } }, [
-                          _vm._v("Email / Hp")
-                        ]),
-                        _vm._v(" "),
-                        _c("el-col", { attrs: { md: 22 } }, [
-                          _vm._v(
-                            _vm._s(_vm.perusahaan.email) +
-                              " / " +
-                              _vm._s(_vm.perusahaan.contact)
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("el-col", { attrs: { md: 2 } }, [_vm._v("Alamat")]),
-                        _vm._v(" "),
-                        _c("el-col", { attrs: { md: 22 } }, [
-                          _vm._v(_vm._s(_vm.perusahaan.alamat))
-                        ])
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "el-divider",
-                      { attrs: { "content-position": "left" } },
-                      [_vm._v("Berkas Perusahaan")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "el-table",
-                      {
-                        staticStyle: { width: "100%" },
-                        attrs: { data: _vm.upload, border: "" }
-                      },
-                      [
-                        _c("el-table-column", {
-                          attrs: { prop: "name", label: "" }
-                        }),
-                        _vm._v(" "),
-                        _c("el-table-column", {
-                          attrs: { prop: "nameFile", label: "" }
-                        }),
-                        _vm._v(" "),
-                        _c("el-table-column", {
-                          attrs: { label: " ", width: "120" },
-                          scopedSlots: _vm._u([
-                            {
-                              key: "default",
-                              fn: function(scope) {
-                                return [
-                                  _c(
-                                    "el-button",
-                                    {
-                                      attrs: { type: "primary", size: "small" },
-                                      on: {
-                                        click: function($event) {
-                                          return _vm.pratinjau(
-                                            scope.$index,
-                                            $event
-                                          )
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("Pratinjau")]
-                                  )
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "image-slot",
+                                  attrs: { slot: "placeholder" },
+                                  slot: "placeholder"
+                                },
+                                [
+                                  _vm._v("\n                Loading"),
+                                  _c("span", { staticClass: "dot" }, [
+                                    _vm._v("...")
+                                  ])
                                 ]
-                              }
-                            }
-                          ])
-                        })
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("hr"),
-            _vm._v(" "),
-            this.steps.active > 1
-              ? _c(
-                  "el-button",
-                  {
-                    attrs: { type: "danger" },
-                    on: { click: _vm.stepButtonPrevious }
-                  },
-                  [_vm._v("Sebelumnya")]
-                )
-              : _vm._e(),
-            _vm._v(" "),
-            _c(
-              "el-button",
-              { attrs: { type: "primary" }, on: { click: _vm.nextStep } },
-              [_vm._v(_vm._s(_vm.steps.button))]
-            )
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c("p", { staticClass: "footer-text text-center" }, [
-          _vm._v("copyright © 2020 DPMPMTSP KEPRI. All rights reserved.")
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass: "overlay-popup",
-          style: { width: _vm.widthPratinjau },
-          attrs: { id: "myNav" }
-        },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "closebtn",
-              attrs: { href: "javascript:void(0)" },
-              on: {
-                click: function($event) {
-                  return _vm.pratinjauClose()
-                }
-              }
-            },
-            [_vm._v("×")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "overlay-popup-content" }, [
-            _c("iframe", { attrs: { src: _vm.objectURL } })
-          ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          directives: [
-            {
-              name: "loading",
-              rawName: "v-loading",
-              value: _vm.termLoading,
-              expression: "termLoading"
-            }
-          ],
-          staticClass: "modal fade",
-          attrs: {
-            id: "TermAndCondition",
-            tabindex: "-1",
-            role: "dialog",
-            "aria-labelledby": "exampleModalLabel",
-            "aria-hidden": "true"
-          }
-        },
-        [
-          _c(
-            "div",
-            {
-              staticClass: "modal-dialog modal-xl",
-              attrs: { role: "document" }
-            },
-            [
-              _c("div", { staticClass: "modal-content" }, [
-                _vm._m(0),
-                _vm._v(" "),
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "modal-footer" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.Submit()
-                        }
-                      }
-                    },
-                    [_vm._v("Daftar")]
-                  )
-                ])
-              ])
-            ]
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("center", [
+                        _c(
+                          "span",
+                          {
+                            staticClass: "tx-center tx-bold tx-white tx-roboto"
+                          },
+                          [
+                            _vm._v(
+                              "Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi\n              Kepulauan Riau"
+                            )
+                          ]
+                        )
+                      ])
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("el-divider", { attrs: { "content-position": "left" } }),
+                  _vm._v(" "),
+                  _vm.$v.$error || _vm.$v.$anyError
+                    ? _c(
+                        "el-card",
+                        {
+                          staticStyle: {
+                            background: "#f6cfcf",
+                            "border-color": "#dc3545"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n          Data Field Harus Terisi\n          "
+                          ),
+                          !_vm.$v.perusahaan.npwp.minLength
+                            ? _c("p", [_vm._v("15 Digit NPWP")])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.$v.user.repeatPassword.$error
+                            ? _c("span", [
+                                _vm._v("\n            Password Tidak Sama")
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    : _vm._e()
+                ],
+                1
+              )
+            ],
+            1
           )
-        ]
+        ],
+        1
       )
-    ]
+    ],
+    1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "exampleModalLabel" } },
-        [_vm._v("Term & Condition")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "close",
-          attrs: {
-            type: "button",
-            "data-dismiss": "modal",
-            "aria-label": "Close"
-          }
-        },
-        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal-body", attrs: { id: "TermContent" } },
-      [
-        _c(
-          "div",
-          {
-            staticStyle: {
-              color: "rgb(75, 75, 75)",
-              "font-family":
-                'KohinoorDevanagari, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-              "background-color": "rgb(243, 243, 243)"
-            }
-          },
-          [
-            _vm._v(
-              "Selamat Datang di Situs Web kami! Kami berharap bahwa Anda akan menikmati pengalaman online Anda."
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          {
-            staticStyle: {
-              color: "rgb(75, 75, 75)",
-              "font-family":
-                'KohinoorDevanagari, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-              "background-color": "rgb(243, 243, 243)"
-            }
-          },
-          [
-            _c("br"),
-            _vm._v(
-              "Wyeth Nutrition Parenting Club berkomitmen untuk menjaga kepercayaan dengan pengguna Situs Web kami. Persyaratan di bawah ini mengatur penggunaan Anda atas situs web ini.\n            "
-            ),
-            _c("br"),
-            _vm._v(" \n          ")
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "ol",
-          {
-            staticStyle: {
-              "margin-bottom": "0px",
-              "padding-left": "1.25rem",
-              color: "rgb(75, 75, 75)",
-              "font-family":
-                'KohinoorDevanagari, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
-              "background-color": "rgb(243, 243, 243)"
-            }
-          },
-          [
-            _c("li", [
-              _vm._v(
-                "\n              Penggunaan yang dapat diterima\n              "
-              ),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _c("br"),
-                _vm._v(
-                  "Silakan menjelajahi Situs Web kami dengan leluasa dan, jika tersedia, kontribusi bahan untuk itu, seperti pertanyaan, posting dan konten multimedia (misalnya gambar, video).\n                "
-                ),
-                _c("br"),
-                _vm._v(" \n              ")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _vm._v(
-                  "\n                Namun, penggunaan Situs Web dan bahan yang diposting ke situs ini seharusnya bukan yang ilegal atau yang menyinggung dengan cara apapun. Anda harus berhati-hati untuk tidak:\n                "
-                ),
-                _c("br"),
-                _vm._v(" \n              ")
-              ]),
-              _vm._v(" "),
-              _c("ul", { staticStyle: { "padding-left": "1.25rem" } }, [
-                _c("li", [
-                  _vm._v("(a) melanggar hak orang lain untuk privasi;")
-                ]),
-                _vm._v(" "),
-                _c("li", [_vm._v("(b) melanggar hak kekayaan intelektual;")]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "(c) membuat pernyataan yang memfitnah (termasuk terhadap Wyeth Nutrition), berhubungan dengan pornografi, bersifat rasis atau xenofobia, mempromosikan kebencian atau menghasut kekerasan atau gangguan;"
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "(d) mengunggah file yang berisi virus atau dapat menyebabkan masalah keamanan; atau"
-                  )
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v("(e) tidak membahayakan integritas Situs Web.")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _c("br"),
-                _vm._v(
-                  "Harap dicatat bahwa Wyeth Nutrition dapat menghapus konten apapun dari Situs Web yang dipercaya mungkin ilegal atau menyinggung.\n                "
-                ),
-                _c("br"),
-                _vm._v(" \n              ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v("\n              Perlindungan Data\n              "),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _c("br"),
-                _vm._v(
-                  "Pernyataan Privasi kami berlaku untuk data pribadi atau bahan yang dibagi bersama pada Situs Web ini. Cari tahu lebih lanjut \n                "
-                ),
-                _c(
-                  "a",
-                  {
-                    staticStyle: {
-                      color: "rgb(208, 92, 76)",
-                      "touch-action": "manipulation",
-                      transition: "all 0.2s ease-in-out 0s"
-                    },
-                    attrs: {
-                      href:
-                        "https://www.parentingclub.co.id/page/privacy-policy"
-                    }
-                  },
-                  [_vm._v("di sini")]
-                ),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" \n              ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v("\n              Kekayaan Intelektual\n              "),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _vm._v(" ")
-              ]),
-              _vm._v(" "),
-              _c("ul", { staticStyle: { "padding-left": "1.25rem" } }, [
-                _c("li", [
-                  _vm._v(
-                    "\n                  3.1. Konten yang disediakan oleh Wyeth Nutrition\n                  "
-                  ),
-                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                    _c("br"),
-                    _vm._v(
-                      "Semua hak kekayaan intelektual, termasuk hak cipta dan merek dagang, bahan yang diterbitkan oleh atau atas nama Wyeth Nutrition di Situs Web (misalnya teks dan gambar) yang dimiliki oleh Wyeth Nutrition atau pemberi lisensinya.\n                    "
-                    ),
-                    _c("br"),
-                    _vm._v(" \n                  ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                    _vm._v(
-                      "\n                    Anda mungkin mereproduksi ekstrak dari Situs Web ini untuk penggunaan pribadi Anda sendiri (misalnya penggunaan non-komersial) asalkan Anda menyimpan semua hak kekayaan intelektual secara utuh dan dengan rasa hormat, termasuk pemberitahuan hak cipta yang mungkin muncul di konten tersebut (misalnya @2014 Wyeth Nutrition).\n                    "
-                    ),
-                    _c("br"),
-                    _vm._v(" \n                  ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "\n                  3.2. Konten Anda sediakan\n                  "
-                  ),
-                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                    _c("br"),
-                    _vm._v(
-                      "Anda mewakili untuk Wyeth Nutrition bahwa Anda baik sebagai penulis konten yang Anda kontribusikan ke Situs Web ini, ataupun bahwa Anda memiliki hak (yaitu: telah diberi izin oleh pemegang hak) dan mampu memberikan kontribusi atas konten tersebut (misalnya gambar, video, musik) ke Situs Web.\n                    "
-                    ),
-                    _c("br"),
-                    _vm._v(" \n                  ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                    _vm._v(
-                      "\n                    Anda setuju bahwa konten tersebut akan diperlakukan sebagai bukan rahasia dan Anda memberikan Wyeth Nutrition royalti, berkelanjutan, dan lisensi luas secara gratis untuk menggunakan (termasuk untuk mengungkapkan, mereproduksi, mentransmisikan, mempublikasikan, atau menyiarkan) konten yang Anda berikan untuk tujuan yang berkaitan dengan bisnisnya.\n                    "
-                    ),
-                    _c("br"),
-                    _vm._v(" \n                  ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                    _vm._v(
-                      "\n                    Harap dicatat bahwa Wyeth Nutrition bebas untuk memutuskan apakah menggunakan atau tidak menggunakan konten ini dan bahwa Wyeth Nutrition mungkin telah mengembangkan edisi serupa atau telah memperoleh konten tersebut dari sumber lain, dalam hal ini semua hak kekayaan intelektual di konten ini tetap ada pada Wyeth Nutrition dan pemberi lisensinya.\n                    "
-                    ),
-                    _c("br"),
-                    _vm._v(" \n                  ")
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", [
-                  _vm._v(
-                    "\n                  3.3. Kewajiban\n                  "
-                  ),
-                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                    _c("br"),
-                    _vm._v(
-                      "Sementara Wyeth Nutrition menggunakan semua upaya yang wajar untuk memastikan keakuratan dari bahan pada Situs Web kami dan untuk menghindari gangguan, kami tidak bertanggung jawab atas informasi yang tidak akurat, gangguan, penghentian atau peristiwa lain yang dapat menyebabkan Anda mengalami kerugian, baik secara langsung (misalnya kegagalan komputer) atau tidak langsung (misalnya kehilangan keuntungan). Setiap ketergantungan pada bahan-bahan dalam situs Web ini akan menjadi risiko Anda sendiri.\n                    "
-                    ),
-                    _c("br"),
-                    _vm._v(" \n                  ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                    _vm._v(
-                      "\n                    Situs Web ini mungkin berisi hubungan ke situs-situs web di luar Wyeth Nutrition. Wyeth Nutrition tidak memiliki kontrol atas situs web pihak ketiga tersebut, tidak selalu mendukung mereka dan tidak bertanggung jawab untuk mereka, termasuk untuk konten, akurasi atau fungsi mereka. Sebagai akibatnya, kami mengharapkan agar Anda berhati-hati dalam meninjau pernyataan hukum situs-situs web pihak ketiga tersebut, termasuk menjaga diri tetap mengetahui informasi mengenai perubahan atas mereka.\n                    "
-                    ),
-                    _c("br"),
-                    _vm._v(" \n                  ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                    _vm._v(
-                      '\n                    Anda dapat mengoperasikan situs pihak ketiga dan menginginkan hubungan ke Situs Web ini. Dalam hal ini, Wyeth Nutrition tidak keberatan dengan hubungan seperti itu asalkan Anda menggunakan homepage URL yang tepat dari Situs Web ini (misalnya hubungan yang tidak dalam) dan tidak menyarankan dengan cara apapun yang Anda berafiliasi dengan atau didukung oleh Wyeth Nutrition. Anda tidak harus menggunakan "framing" atau praktik serupa, dan harus memastikan bahwa hubungan ke Situs Web membuka pada jendela baru.\n                    '
-                    ),
-                    _c("br"),
-                    _vm._v(" \n                  ")
-                  ])
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v("\n              Kontak kita\n              "),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _c("br"),
-                _vm._v(
-                  "Situs ini dioperasikan oleh PT. WYETH NUTRITION SDUAENAM\n                "
-                ),
-                _c("br"),
-                _vm._v(" \n              ")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _vm._v(
-                  "\n                Jika Anda memiliki pertanyaan atau komentar tentang Situs Web, jangan ragu untuk menghubungi kami melalui (i) telepon di 080018-21028 atau (ii) surat biasa di Perkantoran Hijau Arkadia, Jl. Let Jen. TB. Simatupang Kav. 88, Jakarta 12520, Indonesia. PO BOX 5555, Jakarta 12000.\n                "
-                ),
-                _c("br"),
-                _vm._v(" \n              ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v("\n              Perubahan\n              "),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _c("br"),
-                _vm._v(
-                  "Wyeth Nutrition memiliki hak untuk membuat perubahan atas persyaratan penggunaan ini. Silakan lihat halaman ini pada setiap saat untuk meninjau persyaratan penggunaan dan informasi baru.\n                "
-                ),
-                _c("br"),
-                _vm._v(" \n              ")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v(
-                "\n              Hukum dan yurisdiksi yang mengatur\n              "
-              ),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _c("br"),
-                _vm._v(
-                  "Situs Web ini ditujukan untuk pengguna dari Indonesia saja. Wyeth Nutrition tidak membuat pernyataan bahwa produk dan konten Situs Web ini sesuai atau tersedia di lokasi selain Indonesia.\n                "
-                ),
-                _c("br"),
-                _vm._v(" \n              ")
-              ]),
-              _vm._v(" "),
-              _c("p", { staticStyle: { "margin-bottom": "1.5rem" } }, [
-                _vm._v(
-                  "Anda dan Wyeth Nutrition setuju bahwa setiap klaim atau sengketa yang berkaitan dengan situs web ini akan diatur oleh hukum Republik dan dibawa ke pengadilan dari Jakarta Selatan di Indonesia."
-                )
-              ])
-            ])
-          ]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -3905,105 +3552,123 @@ var render = function() {
     "div",
     {
       staticClass:
-        "container-fluid page-body-wrapper full-page-wrapper ht-100v mg-t-150",
-      staticStyle: { "margin-top": "150px" }
+        "align-items-center justify-content-center pd-t-50 ht-100v pd-l-100 pd-r-100",
+      staticStyle: { background: "#d0dcec" }
     },
     [
-      _c(
-        "div",
-        {
-          staticClass:
-            "content-wrapper d-flex align-items-center auth auth-bg-1 theme-one"
-        },
-        [
-          _c("div", { staticClass: "row w-100" }, [
-            _c("div", { staticClass: "col-md-8 mx-auto" }, [
-              _c(
-                "div",
-                { staticClass: "auto-form-wrapper" },
-                [
-                  _c("center", [_vm._v("DPMPTSP PROVINSI KEPRI")]),
-                  _vm._v(" "),
-                  _c("el-divider", [_vm._v("Pendaftaran Berhasil")]),
-                  _vm._v(" "),
-                  _c(
-                    "el-row",
-                    { attrs: { gutter: 20, type: "flex", justify: "center" } },
-                    [
-                      _c(
-                        "el-col",
-                        { attrs: { md: 4 } },
-                        [
-                          _c(
-                            "el-image",
-                            {
-                              attrs: {
-                                src: _vm.url.web + "/public/images/email.png"
-                              }
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass: "image-slot",
-                                  attrs: { slot: "placeholder" },
-                                  slot: "placeholder"
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                  Loading\n                  "
-                                  ),
-                                  _c("span", { staticClass: "dot" }, [
-                                    _vm._v("...")
-                                  ])
-                                ]
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-row",
-                    { attrs: { gutter: 20, type: "flex", justify: "center" } },
-                    [
-                      _c(
-                        "el-col",
-                        { staticClass: "text-center", attrs: { md: 18 } },
-                        [
-                          _c("p", [
-                            _vm._v(
-                              "Pendaftaran account anda sudah di terima, 1 step lagi untuk menyelesaikannya. silahkan login dengan email yang telah di isi sebelumnya"
+      _c("el-card", [
+        _c("div", { staticClass: "row w-100" }, [
+          _c("div", { staticClass: "col-md-8 mx-auto" }, [
+            _c(
+              "div",
+              { staticClass: "auto-form-wrapper" },
+              [
+                _c(
+                  "center",
+                  { staticClass: "tx-bold" },
+                  [
+                    _vm._v(
+                      "\n            DINAS PENANAMAN MODAL DAN PELAYANAN TERPADU SATU PINTU\n            "
+                    ),
+                    _c("BR"),
+                    _vm._v(" PROVINSI KEPULAUAN RIAU\n          ")
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("el-divider", [_vm._v("Pendaftaran Berhasil")]),
+                _vm._v(" "),
+                _c(
+                  "el-row",
+                  { attrs: { gutter: 20, type: "flex", justify: "center" } },
+                  [
+                    _c(
+                      "el-col",
+                      { attrs: { md: 4 } },
+                      [
+                        _c(
+                          "el-image",
+                          {
+                            attrs: {
+                              src: _vm.url.web + "/public/images/email.png"
+                            }
+                          },
+                          [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "image-slot",
+                                attrs: { slot: "placeholder" },
+                                slot: "placeholder"
+                              },
+                              [
+                                _vm._v(
+                                  "\n                  Loading\n                  "
+                                ),
+                                _c("span", { staticClass: "dot" }, [
+                                  _vm._v("...")
+                                ])
+                              ]
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "a",
-                            {
-                              staticClass: "btn btn-primary btn-sm",
-                              attrs: {
-                                href: "http://appkepri.com/siJempol/login'"
-                              }
-                            },
-                            [_vm._v("masuk SI-JEMPOL")]
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "el-row",
+                  { attrs: { gutter: 20, type: "flex", justify: "center" } },
+                  [
+                    _c(
+                      "el-col",
+                      { staticClass: "text-center", attrs: { md: 18 } },
+                      [
+                        _c("p", [
+                          _vm._v(
+                            "\n                Pendaftaran account anda sudah di terima, 1 step lagi untuk\n                menyelesaikannya. silahkan login dengan email yang telah di\n                isi sebelumnya\n              "
                           )
-                        ]
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-primary btn-sm",
+                            attrs: { href: _vm.url.web + "/login" }
+                          },
+                          [_vm._v("Masuk Aplikasi SI-JEMPOL")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "btn btn-success btn-sm",
+                            attrs: {
+                              target: "_blank",
+                              href:
+                                _vm.url.web +
+                                "/pdf/pendaftaran?npwp=" +
+                                _vm.npwp
+                            }
+                          },
+                          [_vm._v("Cetak Tanda Daftar akun")]
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
           ])
-        ]
-      )
-    ]
+        ])
+      ])
+    ],
+    1
   )
 }
 var staticRenderFns = []
@@ -4308,9 +3973,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _pendaftaran_vue_vue_type_template_id_4e43400c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=template&id=4e43400c& */ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&");
+/* harmony import */ var _pendaftaran_vue_vue_type_template_id_4e43400c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=template&id=4e43400c&scoped=true& */ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&scoped=true&");
 /* harmony import */ var _pendaftaran_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=script&lang=js& */ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _pendaftaran_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css& */ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css&");
+/* empty/unused harmony star reexport *//* harmony import */ var _pendaftaran_vue_vue_type_style_index_0_id_4e43400c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true& */ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -4322,11 +3987,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _pendaftaran_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _pendaftaran_vue_vue_type_template_id_4e43400c___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _pendaftaran_vue_vue_type_template_id_4e43400c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _pendaftaran_vue_vue_type_template_id_4e43400c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _pendaftaran_vue_vue_type_template_id_4e43400c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "4e43400c",
   null
   
 )
@@ -4352,35 +4017,35 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css&":
-/*!*********************************************************************************************************!*\
-  !*** ./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css& ***!
-  \*********************************************************************************************************/
+/***/ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true&":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true& ***!
+  \**********************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&scope=true&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_scope_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_4e43400c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_4e43400c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_4e43400c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_4e43400c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_4e43400c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_style_index_0_id_4e43400c_lang_css_scoped_true___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&":
-/*!********************************************************************************************!*\
-  !*** ./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c& ***!
-  \********************************************************************************************/
+/***/ "./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&scoped=true&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&scoped=true& ***!
+  \********************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_4e43400c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=template&id=4e43400c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_4e43400c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_4e43400c_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=template&id=4e43400c&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=template&id=4e43400c&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_4e43400c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_4e43400c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pendaftaran_vue_vue_type_template_id_4e43400c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

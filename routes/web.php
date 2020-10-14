@@ -16,13 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 
 Auth::routes();
+Route::get("/users/getById", "appcontrol@getById");
+Route::get("/pdf/pendaftaran", "pdfControl@pendaftaranPDF");
+Route::post("/roles/permission", "permissionControl@index");
+Route::POST("/perizinan/perusahaan", "perusahaanControl@index");
 Route::GET("/web", "appcontrol@web")->withoutMiddleware(['auth']);;
 
 Route::post("/login/submit", "appcontrol@login");
-Route::post("/master/pendaftaran", "pendaftaranControl@ToSelf");
-Route::get("/pendaftaran", "pendaftaranControl@index");
-Route::get("/pendaftaran/selesai", "pendaftaranControl@pendaftaranSelesai");
-Route::get("/users/getById", "appcontrol@getById");
+Route::post("/master/pendaftaran", "pendaftarancontrol@ToSelf");
+Route::get("/pendaftaran", "pendaftarancontrol@index");
+Route::get("/pendaftaran/selesai", "pendaftarancontrol@pendaftaranSelesai");
+
 // Route::get("/register", "appcontrol@register");
 
 Route::middleware(['auth'])->group(function () {
@@ -33,16 +37,16 @@ Route::middleware(['auth'])->group(function () {
     Route::POST("/master/opd", "opdControl@index");
     Route::POST("/master/sk", "skControl@index");
     Route::POST("/master/track", "trackControl@index");
-    Route::POST("/surat/rekomendasi", "suratRekomendasiControl@index");
+    Route::POST("/surat", "suratRekomendasiControl@index");
     Route::post("/perizinan/permohonan", "permohonanControl@index");
-    Route::POST("/perizinan/perusahaan", "perusahaanControl@index");
+
     Route::POST("/validasi", "validasiControl@index");
 
 
     Route::get("/logout", "appcontrol@logout");
     Route::post("/roles/modul", "rolesModulControl@index");
     Route::get("/roles/modul/data", "rolesModulControl@moduldata");
-    Route::post("/roles/permission", "permissionControl@index");
+
     Route::get("/roles/permission/data", "permissionControl@data");
     Route::post("/roles/role", "rolesControl@index");
     Route::post("/perusahaan/Identitas", "identitasControl@index");

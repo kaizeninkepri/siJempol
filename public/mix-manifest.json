@@ -5,6 +5,7 @@
     "/js/chunks/BOValidasi.js": "/js/chunks/BOValidasi.js",
     "/js/chunks/Ind.js": "/js/chunks/Ind.js",
     "/js/chunks/Pemohondashboard.js": "/js/chunks/Pemohondashboard.js",
+    "/js/chunks/Users.js": "/js/chunks/Users.js",
     "/js/chunks/dashboard.js": "/js/chunks/dashboard.js",
     "/js/chunks/foPermohonan.js": "/js/chunks/foPermohonan.js",
     "/js/chunks/modulForm.js": "/js/chunks/modulForm.js",
@@ -12,10 +13,10 @@
     "/js/chunks/roles.js": "/js/chunks/roles.js",
     "/js/chunks/surat.js": "/js/chunks/surat.js",
     "/js/chunks/trackBYid.js": "/js/chunks/trackBYid.js",
-    "/js/chunks/vendors~BODashboard~dashboard.js": "/js/chunks/vendors~BODashboard~dashboard.js",
+    "/js/chunks/vendors~BODashboard~Pemohondashboard~dashboard.js": "/js/chunks/vendors~BODashboard~Pemohondashboard~dashboard.js",
     "/js/chunks/vendors~Pemohondashboard.js": "/js/chunks/vendors~Pemohondashboard.js",
     "/js/chunks/vendors~Pemohondashboard~dashboard.js": "/js/chunks/vendors~Pemohondashboard~dashboard.js",
-    "/js/chunks/vendors~modulForm~pemohonPermohonan~roles~surat.js": "/js/chunks/vendors~modulForm~pemohonPermohonan~roles~surat.js",
+    "/js/chunks/vendors~Users~modulForm~pemohonPermohonan~roles~surat.js": "/js/chunks/vendors~Users~modulForm~pemohonPermohonan~roles~surat.js",
     "/js/chunks/vendors~roles.js": "/js/chunks/vendors~roles.js",
     "/js/chunks/vendors~surat.js": "/js/chunks/vendors~surat.js"
 }

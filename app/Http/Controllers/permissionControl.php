@@ -6,6 +6,7 @@ use App\mdrolesPermission;
 use App\model\mdroles;
 use App\model\mdrolesModul;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class permissionControl extends Controller
@@ -23,6 +24,8 @@ class permissionControl extends Controller
             return self::permissiondataByrolesId($r);
         } elseif ($type == 'update') {
             return self::updateData($r);
+        } elseif ($type == 'permissionById') {
+            return self::permissionById($r);
         }
     }
 
@@ -217,6 +220,15 @@ class permissionControl extends Controller
                     mdrolesPermission::insert($child);
                 }
             }
+        }
+    }
+
+    function permissionById(Request $r)
+    {
+        if (Auth::user() == null) {
+            return "guest";
+        } else {
+            return mdrolesPermission::with(['modul'])->where("role_id", Auth::user()->role_id)->get();
         }
     }
 }

@@ -2,23 +2,23 @@
 // const base = "";
 // const web = "http://panel.inilahkepri.id";
 
-// const api = "http://localhost/Lpanel";
-// const base = "Lpanel";
-// const web = "http://localhost/Lpanel";
+// const api = "http://localhost/siJempol";
+// const base = "siJempol";
+// const web = "http://localhost/siJempol";
 // const assets = "http://localhost/Resources/perusahaan";
-// const publicData = "http://localhost/Lpanel/public";
+// const publicData = "http://localhost/siJempol/public";
 
-// const api = "http://192.168.123.37/Lpanel";
-// const base = "Lpanel";
-// const web = "http://192.168.123.37/Lpanel"
-// const publicData = "http://192.168.123.37/Lpanel/public";
-// const assets = "http://192.168.123.37/Resources/perusahaan";
+// const api = "http://192.168.1.98/siJempol";
+// const base = "siJempol";
+// const web = "http://192.168.1.98/siJempol"
+// const publicData = "http://192.168.1.98/siJempol/public";
+// const assets = "http://192.168.1.98/Resources/perusahaan";
 
-const api = "http://appkepri.com/siJempol";
-const base = "siJempol";
-const web = "http://appkepri.com/siJempol"
-const publicData = "http://appkepri.com/siJempol/public";
-const assets = "http://appkepri.com/Resources/perusahaan";
+const api = "http://dpmptsp.kepriprov.go.id/siJempol";
+const base = "";
+const web = "http://dpmptsp.kepriprov.go.id/siJempol"
+const publicData = "http://dpmptsp.kepriprov.go.id/siJempol/public";
+const assets = "http://dpmptsp.kepriprov.go.id/Resources/perusahaan";
 
 
 export default {

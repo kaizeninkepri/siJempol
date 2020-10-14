@@ -6,11 +6,13 @@ import urlBase from '@/js/url';
 // import rolespermission from '@/js/components/roles/permission'
 
 const layananIzin = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/layanan/daftarIzin')
+const usersIdentitas = () => import( /* webpackChunkName: "Users" */ '@/js/components/users/identitas')
 
 
 const dashboard = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/dashboard/fo')
 const dashboardBo = () => import( /* webpackChunkName: "BODashboard" */ '@/js/components/dashboard/dashboard')
 const pemohonDashboard = () => import( /* webpackChunkName: "Pemohondashboard" */ '@/js/components/dashboard/pemohon')
+const dashboardOpd = () => import( /* webpackChunkName: "Pemohondashboard" */ '@/js/components/dashboard/opdDashboard')
 
 const permohonanDetail = () => import( /* webpackChunkName: "foPermohonan" */ '@/js/components/permohonan/detail')
 const permohonanDetailBO = () => import( /* webpackChunkName: "BOValidasi" */ '@/js/components/validasi/detail')
@@ -21,6 +23,7 @@ const rolespermission = () => import( /* webpackChunkName: "roles" */ '@/js/comp
 const rolespermissionform = () => import( /* webpackChunkName: "roles" */ '@/js/components/roles/permission_form')
 
 const trackByid = () => import( /* webpackChunkName: "trackBYid" */ '@/js/components/track/trackByid')
+const trackByForm = () => import( /* webpackChunkName: "trackBYid" */ '@/js/components/track/trackByForm')
 
 /* --------------------- PEROMOHONAN COMPONEN --------------------------*/
 
@@ -45,6 +48,11 @@ const router = new VueRouter({
     routes: [
         /* ----------UMUM---------------*/
         {
+            path: '/identitas',
+            name: 'users-identitas',
+            component: usersIdentitas,
+        },
+        {
             path: '/layanan/izin',
             name: 'layanan-izin',
             component: layananIzin,
@@ -59,6 +67,13 @@ const router = new VueRouter({
             path: '/fo/permohonan/detail/:id',
             name: 'fo-permohonan-detail',
             component: permohonanDetail,
+        },
+
+        /* ----------FROMT BACKOFFICE---------------*/
+        {
+            path: '/opd/dashboard',
+            name: 'opd-dashboard',
+            component: dashboardOpd,
         },
         /* ----------BACK OFFICE ROUTE---------------*/
         {
@@ -117,6 +132,7 @@ const router = new VueRouter({
             component: trackByid,
         },
         /* ----------PEMOHON ROUTE---------------*/
+
         {
             path: '/pemohon/pendaftaran',
             name: 'pemohon-pendaftaran',
@@ -142,8 +158,12 @@ const router = new VueRouter({
             name: 'pemohon-password-ganti',
             component: passwordGanti,
         },
-
-
+        /* ----------TRACKING ROUTE---------------*/
+        {
+            path: '/pengajuan/tracking',
+            name: 'track-form',
+            component: trackByForm,
+        },
 
     ]
 });

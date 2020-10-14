@@ -125,7 +125,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-header wd-200">
                             <ul class="list-unstyled user-profile-nav">
-                                <li><a href=""><i class="icon ion-ios-person"></i>Identitas</a></li>
+                                <li><a href="<?php echo e(url('identitas')); ?>"><i class="icon ion-ios-person"></i>Identitas</a></li>
                                 <li><a href="<?php echo e(url('logout')); ?>"><i class="icon ion-power"></i>Keluar</a></li>
                             </ul>
                         </div><!-- dropdown-menu -->
@@ -136,6 +136,7 @@
 
         <div class="br-mainpanel">
             <router-view></router-view>
+            <vue-progress-bar></vue-progress-bar>
 
         </div><!-- br-mainpanel -->
         <!-- ########## END: MAIN PANEL ########## -->

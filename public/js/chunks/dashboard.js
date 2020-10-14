@@ -376,6 +376,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1223,14 +1225,21 @@ var render = function() {
                                 fn: function(scope) {
                                   return [
                                     _c(
-                                      "el-button",
+                                      "a",
                                       {
                                         attrs: {
-                                          type: "primary",
-                                          icon: "el-icon-printer"
+                                          href: scope.row.linkPDF,
+                                          target: "_blank"
                                         }
                                       },
-                                      [_vm._v("Cetak Persyaratan")]
+                                      [
+                                        _c("i", {
+                                          staticClass: "el-icon-printer"
+                                        }),
+                                        _vm._v(
+                                          " Cetak Persyaratan\n                "
+                                        )
+                                      ]
                                     )
                                   ]
                                 }

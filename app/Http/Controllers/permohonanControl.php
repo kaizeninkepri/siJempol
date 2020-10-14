@@ -61,14 +61,12 @@ class permohonanControl extends Controller
 
     function data(Request $r)
     {
-        $start = Carbon::now()->subMonth(1)->startOfMonth()->toDateString();
+        $start = Carbon::now()->subMonth(5)->startOfMonth()->toDateString();
         $end = Carbon::now()->toDateString();
         $status = $r->get("status");
         if ($status == 'bo') {
             $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas'])
-                ->where('status', 'teknis')
                 ->where('create_on', 'online')
-                ->orwhere('status', 'keabsahan')
                 ->orderBy('created_at', 'DESC')
                 ->get();
         } else {
@@ -123,7 +121,9 @@ class permohonanControl extends Controller
     {
         $id = $r->get('id');
 
-        $dataById = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon'])
+        $dataById = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'suratpermintaan' => function ($q) {
+            $q->with(['opd'])->get();
+        }])
             ->where('permohonan_id', $id)
             ->first();
 

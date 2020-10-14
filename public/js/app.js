@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunks/" + ({"BOValidasi":"BOValidasi","Ind":"Ind","foPermohonan":"foPermohonan","trackBYid":"trackBYid","vendors~BODashboard~dashboard":"vendors~BODashboard~dashboard","BODashboard":"BODashboard","vendors~Pemohondashboard~dashboard":"vendors~Pemohondashboard~dashboard","dashboard":"dashboard","vendors~Pemohondashboard":"vendors~Pemohondashboard","Pemohondashboard":"Pemohondashboard","vendors~modulForm~pemohonPermohonan~roles~surat":"vendors~modulForm~pemohonPermohonan~roles~surat","pemohonPermohonan":"pemohonPermohonan","vendors~roles":"vendors~roles","modulForm":"modulForm","roles":"roles","vendors~surat":"vendors~surat","surat":"surat"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + ({"BOValidasi":"BOValidasi","Ind":"Ind","foPermohonan":"foPermohonan","trackBYid":"trackBYid","vendors~BODashboard~Pemohondashboard~dashboard":"vendors~BODashboard~Pemohondashboard~dashboard","BODashboard":"BODashboard","vendors~Pemohondashboard~dashboard":"vendors~Pemohondashboard~dashboard","dashboard":"dashboard","vendors~Pemohondashboard":"vendors~Pemohondashboard","Pemohondashboard":"Pemohondashboard","vendors~Users~modulForm~pemohonPermohonan~roles~surat":"vendors~Users~modulForm~pemohonPermohonan~roles~surat","Users":"Users","pemohonPermohonan":"pemohonPermohonan","vendors~roles":"vendors~roles","modulForm":"modulForm","roles":"roles","vendors~surat":"vendors~surat","surat":"surat"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://appkepri.com/siJempol/";
+/******/ 	__webpack_require__.p = "http://dpmptsp.kepriprov.go.id/siJempol/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -4112,6 +4112,527 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/v-mask/dist/v-mask.esm.js":
+/*!************************************************!*\
+  !*** ./node_modules/v-mask/dist/v-mask.esm.js ***!
+  \************************************************/
+/*! exports provided: default, VueMaskDirective, VueMaskFilter, VueMaskPlugin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VueMaskDirective", function() { return directive; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VueMaskFilter", function() { return filter; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "VueMaskPlugin", function() { return plugin; });
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+    _typeof = function (obj) {
+      return typeof obj;
+    };
+  } else {
+    _typeof = function (obj) {
+      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+  }
+
+  return _typeof(obj);
+}
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    });
+    keys.push.apply(keys, symbols);
+  }
+
+  return keys;
+}
+
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = arguments[i] != null ? arguments[i] : {};
+
+    if (i % 2) {
+      ownKeys(Object(source), true).forEach(function (key) {
+        _defineProperty(target, key, source[key]);
+      });
+    } else if (Object.getOwnPropertyDescriptors) {
+      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+    } else {
+      ownKeys(Object(source)).forEach(function (key) {
+        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+      });
+    }
+  }
+
+  return target;
+}
+
+var placeholderChar = '_';
+var strFunction = 'function';
+
+var emptyArray = [];
+function convertMaskToPlaceholder() {
+  var mask = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : emptyArray;
+  var placeholderChar$1 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : placeholderChar;
+
+  if (!isArray(mask)) {
+    throw new Error('Text-mask:convertMaskToPlaceholder; The mask property must be an array.');
+  }
+
+  if (mask.indexOf(placeholderChar$1) !== -1) {
+    throw new Error('Placeholder character must not be used as part of the mask. Please specify a character ' + 'that is not present in your mask as your placeholder character.\n\n' + "The placeholder character that was received is: ".concat(JSON.stringify(placeholderChar$1), "\n\n") + "The mask that was received is: ".concat(JSON.stringify(mask)));
+  }
+
+  return mask.map(function (char) {
+    return char instanceof RegExp ? placeholderChar$1 : char;
+  }).join('');
+}
+function isArray(value) {
+  return Array.isArray && Array.isArray(value) || value instanceof Array;
+}
+var strCaretTrap = '[]';
+function processCaretTraps(mask) {
+  var indexes = [];
+  var indexOfCaretTrap;
+
+  while (indexOfCaretTrap = mask.indexOf(strCaretTrap), indexOfCaretTrap !== -1) {
+    indexes.push(indexOfCaretTrap);
+    mask.splice(indexOfCaretTrap, 1);
+  }
+
+  return {
+    maskWithoutCaretTraps: mask,
+    indexes: indexes
+  };
+}
+
+var emptyArray$1 = [];
+var emptyString = '';
+function conformToMask() {
+  var rawValue = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : emptyString;
+  var mask = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : emptyArray$1;
+  var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+
+  if (!isArray(mask)) {
+    if (_typeof(mask) === strFunction) {
+      mask = mask(rawValue, config);
+      mask = processCaretTraps(mask).maskWithoutCaretTraps;
+    } else {
+      throw new Error('Text-mask:conformToMask; The mask property must be an array.');
+    }
+  }
+
+  var _config$guide = config.guide,
+      guide = _config$guide === void 0 ? true : _config$guide,
+      _config$previousConfo = config.previousConformedValue,
+      previousConformedValue = _config$previousConfo === void 0 ? emptyString : _config$previousConfo,
+      _config$placeholderCh = config.placeholderChar,
+      placeholderChar$1 = _config$placeholderCh === void 0 ? placeholderChar : _config$placeholderCh,
+      _config$placeholder = config.placeholder,
+      placeholder = _config$placeholder === void 0 ? convertMaskToPlaceholder(mask, placeholderChar$1) : _config$placeholder,
+      currentCaretPosition = config.currentCaretPosition,
+      keepCharPositions = config.keepCharPositions;
+  var suppressGuide = guide === false && previousConformedValue !== undefined;
+  var rawValueLength = rawValue.length;
+  var previousConformedValueLength = previousConformedValue.length;
+  var placeholderLength = placeholder.length;
+  var maskLength = mask.length;
+  var editDistance = rawValueLength - previousConformedValueLength;
+  var isAddition = editDistance > 0;
+  var indexOfFirstChange = currentCaretPosition + (isAddition ? -editDistance : 0);
+  var indexOfLastChange = indexOfFirstChange + Math.abs(editDistance);
+
+  if (keepCharPositions === true && !isAddition) {
+    var compensatingPlaceholderChars = emptyString;
+
+    for (var i = indexOfFirstChange; i < indexOfLastChange; i++) {
+      if (placeholder[i] === placeholderChar$1) {
+        compensatingPlaceholderChars += placeholderChar$1;
+      }
+    }
+
+    rawValue = rawValue.slice(0, indexOfFirstChange) + compensatingPlaceholderChars + rawValue.slice(indexOfFirstChange, rawValueLength);
+  }
+
+  var rawValueArr = rawValue.split(emptyString).map(function (char, i) {
+    return {
+      char: char,
+      isNew: i >= indexOfFirstChange && i < indexOfLastChange
+    };
+  });
+
+  for (var _i = rawValueLength - 1; _i >= 0; _i--) {
+    var char = rawValueArr[_i].char;
+
+    if (char !== placeholderChar$1) {
+      var shouldOffset = _i >= indexOfFirstChange && previousConformedValueLength === maskLength;
+
+      if (char === placeholder[shouldOffset ? _i - editDistance : _i]) {
+        rawValueArr.splice(_i, 1);
+      }
+    }
+  }
+
+  var conformedValue = emptyString;
+  var someCharsRejected = false;
+
+  placeholderLoop: for (var _i2 = 0; _i2 < placeholderLength; _i2++) {
+    var charInPlaceholder = placeholder[_i2];
+
+    if (charInPlaceholder === placeholderChar$1) {
+      if (rawValueArr.length > 0) {
+        while (rawValueArr.length > 0) {
+          var _rawValueArr$shift = rawValueArr.shift(),
+              rawValueChar = _rawValueArr$shift.char,
+              isNew = _rawValueArr$shift.isNew;
+
+          if (rawValueChar === placeholderChar$1 && suppressGuide !== true) {
+            conformedValue += placeholderChar$1;
+            continue placeholderLoop;
+          } else if (mask[_i2].test(rawValueChar)) {
+            if (keepCharPositions !== true || isNew === false || previousConformedValue === emptyString || guide === false || !isAddition) {
+              conformedValue += rawValueChar;
+            } else {
+              var rawValueArrLength = rawValueArr.length;
+              var indexOfNextAvailablePlaceholderChar = null;
+
+              for (var _i3 = 0; _i3 < rawValueArrLength; _i3++) {
+                var charData = rawValueArr[_i3];
+
+                if (charData.char !== placeholderChar$1 && charData.isNew === false) {
+                  break;
+                }
+
+                if (charData.char === placeholderChar$1) {
+                  indexOfNextAvailablePlaceholderChar = _i3;
+                  break;
+                }
+              }
+
+              if (indexOfNextAvailablePlaceholderChar !== null) {
+                conformedValue += rawValueChar;
+                rawValueArr.splice(indexOfNextAvailablePlaceholderChar, 1);
+              } else {
+                _i2--;
+              }
+            }
+
+            continue placeholderLoop;
+          } else {
+            someCharsRejected = true;
+          }
+        }
+      }
+
+      if (suppressGuide === false) {
+        conformedValue += placeholder.substr(_i2, placeholderLength);
+      }
+
+      break;
+    } else {
+      conformedValue += charInPlaceholder;
+    }
+  }
+
+  if (suppressGuide && isAddition === false) {
+    var indexOfLastFilledPlaceholderChar = null;
+
+    for (var _i4 = 0; _i4 < conformedValue.length; _i4++) {
+      if (placeholder[_i4] === placeholderChar$1) {
+        indexOfLastFilledPlaceholderChar = _i4;
+      }
+    }
+
+    if (indexOfLastFilledPlaceholderChar !== null) {
+      conformedValue = conformedValue.substr(0, indexOfLastFilledPlaceholderChar + 1);
+    } else {
+      conformedValue = emptyString;
+    }
+  }
+
+  return {
+    conformedValue: conformedValue,
+    meta: {
+      someCharsRejected: someCharsRejected
+    }
+  };
+}
+
+var NEXT_CHAR_OPTIONAL = {
+  __nextCharOptional__: true
+};
+var defaultMaskReplacers = {
+  '#': /\d/,
+  A: /[a-z]/i,
+  N: /[a-z0-9]/i,
+  '?': NEXT_CHAR_OPTIONAL,
+  X: /./
+};
+
+var stringToRegexp = function stringToRegexp(str) {
+  var lastSlash = str.lastIndexOf('/');
+  return new RegExp(str.slice(1, lastSlash), str.slice(lastSlash + 1));
+};
+
+var makeRegexpOptional = function makeRegexpOptional(charRegexp) {
+  return stringToRegexp(charRegexp.toString().replace(/.(\/)[gmiyus]{0,6}$/, function (match) {
+    return match.replace('/', '?/');
+  }));
+};
+
+var escapeIfNeeded = function escapeIfNeeded(char) {
+  return '[\\^$.|?*+()'.indexOf(char) > -1 ? "\\".concat(char) : char;
+};
+
+var charRegexp = function charRegexp(char) {
+  return new RegExp("/[".concat(escapeIfNeeded(char), "]/"));
+};
+
+var isRegexp = function isRegexp(entity) {
+  return entity instanceof RegExp;
+};
+
+var castToRegexp = function castToRegexp(char) {
+  return isRegexp(char) ? char : charRegexp(char);
+};
+
+function maskToRegExpMask(mask) {
+  var maskReplacers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultMaskReplacers;
+  return mask.map(function (char, index, array) {
+    var maskChar = maskReplacers[char] || char;
+    var previousChar = array[index - 1];
+    var previousMaskChar = maskReplacers[previousChar] || previousChar;
+
+    if (maskChar === NEXT_CHAR_OPTIONAL) {
+      return null;
+    }
+
+    if (previousMaskChar === NEXT_CHAR_OPTIONAL) {
+      return makeRegexpOptional(castToRegexp(maskChar));
+    }
+
+    return maskChar;
+  }).filter(Boolean);
+}
+
+function stringMaskToRegExpMask(stringMask) {
+  var maskReplacers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultMaskReplacers;
+  return maskToRegExpMask(stringMask.split(''), maskReplacers);
+}
+function arrayMaskToRegExpMask(arrayMask) {
+  var maskReplacers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultMaskReplacers;
+  var flattenedMask = arrayMask.map(function (part) {
+    if (part instanceof RegExp) {
+      return part;
+    }
+
+    if (typeof part === 'string') {
+      return part.split('');
+    }
+
+    return null;
+  }).filter(Boolean).reduce(function (mask, part) {
+    return mask.concat(part);
+  }, []);
+  return maskToRegExpMask(flattenedMask, maskReplacers);
+}
+
+var trigger = function trigger(el, type) {
+  var e = document.createEvent('HTMLEvents');
+  e.initEvent(type, true, true);
+  el.dispatchEvent(e);
+};
+var queryInputElementInside = function queryInputElementInside(el) {
+  return el instanceof HTMLInputElement ? el : el.querySelector('input') || el;
+};
+var isFunction = function isFunction(val) {
+  return typeof val === 'function';
+};
+var isString = function isString(val) {
+  return typeof val === 'string';
+};
+var isRegexp$1 = function isRegexp(val) {
+  return val instanceof RegExp;
+};
+
+function createOptions() {
+  var elementOptions = new Map();
+  var defaultOptions = {
+    previousValue: '',
+    mask: []
+  };
+
+  function get(el) {
+    return elementOptions.get(el) || _objectSpread2({}, defaultOptions);
+  }
+
+  function partiallyUpdate(el, newOptions) {
+    elementOptions.set(el, _objectSpread2(_objectSpread2({}, get(el)), newOptions));
+  }
+
+  function remove(el) {
+    elementOptions.delete(el);
+  }
+
+  return {
+    partiallyUpdate: partiallyUpdate,
+    remove: remove,
+    get: get
+  };
+}
+
+var options = createOptions();
+
+function triggerInputUpdate(el) {
+  trigger(el, 'input');
+}
+
+function updateValue(el) {
+  var force = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+  var value = el.value;
+
+  var _options$get = options.get(el),
+      previousValue = _options$get.previousValue,
+      mask = _options$get.mask;
+
+  var isValueChanged = value !== previousValue;
+  var isLengthIncreased = value.length > previousValue.length;
+  var isUpdateNeeded = value && isValueChanged && isLengthIncreased;
+
+  if ((force || isUpdateNeeded) && mask) {
+    var _conformToMask = conformToMask(value, mask, {
+      guide: false
+    }),
+        conformedValue = _conformToMask.conformedValue;
+
+    el.value = conformedValue;
+    triggerInputUpdate(el);
+  }
+
+  options.partiallyUpdate(el, {
+    previousValue: value
+  });
+}
+
+function updateMask(el, inputMask, maskReplacers) {
+  var mask;
+
+  if (Array.isArray(inputMask)) {
+    mask = arrayMaskToRegExpMask(inputMask, maskReplacers);
+  } else if (isFunction(inputMask)) {
+    mask = inputMask;
+  } else if (isString(inputMask) && inputMask.length > 0) {
+    mask = stringMaskToRegExpMask(inputMask, maskReplacers);
+  } else {
+    mask = inputMask;
+  }
+
+  options.partiallyUpdate(el, {
+    mask: mask
+  });
+}
+
+function extendMaskReplacers(maskReplacers) {
+  var baseMaskReplacers = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : defaultMaskReplacers;
+
+  if (maskReplacers === null || Array.isArray(maskReplacers) || _typeof(maskReplacers) !== 'object') {
+    return baseMaskReplacers;
+  }
+
+  return Object.keys(maskReplacers).reduce(function (extendedMaskReplacers, key) {
+    var value = maskReplacers[key];
+
+    if (value !== null && !(value instanceof RegExp)) {
+      return extendedMaskReplacers;
+    }
+
+    return _objectSpread2(_objectSpread2({}, extendedMaskReplacers), {}, _defineProperty({}, key, value));
+  }, baseMaskReplacers);
+}
+
+function maskToString(mask) {
+  var maskArray = Array.isArray(mask) ? mask : [mask];
+  var filteredMaskArray = maskArray.filter(function (part) {
+    return isString(part) || isRegexp$1(part);
+  });
+  return filteredMaskArray.toString();
+}
+
+function createDirective() {
+  var directiveOptions = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var instanceMaskReplacers = extendMaskReplacers(directiveOptions && directiveOptions.placeholders);
+  return {
+    bind: function bind(el, _ref) {
+      var value = _ref.value;
+      el = queryInputElementInside(el);
+      updateMask(el, value, instanceMaskReplacers);
+      updateValue(el);
+    },
+    componentUpdated: function componentUpdated(el, _ref2) {
+      var value = _ref2.value,
+          oldValue = _ref2.oldValue;
+      el = queryInputElementInside(el);
+      var isMaskChanged = isFunction(value) || maskToString(oldValue) !== maskToString(value);
+
+      if (isMaskChanged) {
+        updateMask(el, value, instanceMaskReplacers);
+      }
+
+      updateValue(el, isMaskChanged);
+    },
+    unbind: function unbind(el) {
+      el = queryInputElementInside(el);
+      options.remove(el);
+    }
+  };
+}
+var directive = createDirective();
+
+var filter = (function (value, stringMask) {
+  var mask = stringMaskToRegExpMask(stringMask);
+
+  var _conformToMask = conformToMask(value, mask, {
+    guide: false
+  }),
+      conformedValue = _conformToMask.conformedValue;
+
+  return conformedValue;
+});
+
+var plugin = (function (Vue) {
+  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+  Vue.directive('mask', createDirective(options));
+  Vue.filter('VMask', filter);
+});
+
+/* harmony default export */ __webpack_exports__["default"] = (plugin);
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-axios/dist/vue-axios.min.js":
 /*!******************************************************!*\
   !*** ./node_modules/vue-axios/dist/vue-axios.min.js ***!
@@ -4284,6 +4805,18 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 exports.default = plugin;
+
+/***/ }),
+
+/***/ "./node_modules/vue-progressbar/dist/vue-progressbar.js":
+/*!**************************************************************!*\
+  !*** ./node_modules/vue-progressbar/dist/vue-progressbar.js ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+!function(t,o){ true?module.exports=o():undefined}(this,function(){"use strict";!function(){if("undefined"!=typeof document){var t=document.head||document.getElementsByTagName("head")[0],o=document.createElement("style"),i=" .__cov-progress { opacity: 1; z-index: 999999; } ";o.type="text/css",o.styleSheet?o.styleSheet.cssText=i:o.appendChild(document.createTextNode(i)),t.appendChild(o)}}();var t="undefined"!=typeof window,r={render:function(){var t=this,o=t.$createElement;return(t._self._c||o)("div",{staticClass:"__cov-progress",style:t.style})},staticRenderFns:[],name:"VueProgress",serverCacheKey:function(){return"Progress"},computed:{style:function(){var t=this.progress,o=t.options,i=!!o.show,e=o.location,s={"background-color":o.canSuccess?o.color:o.failedColor,opacity:o.show?1:0,position:o.position};return"top"===e||"bottom"===e?("top"===e?s.top="0px":s.bottom="0px",o.inverse?s.right="0px":s.left="0px",s.width=t.percent+"%",s.height=o.thickness,s.transition=(i?"width "+o.transition.speed+", ":"")+"opacity "+o.transition.opacity):"left"!==e&&"right"!==e||("left"===e?s.left="0px":s.right="0px",o.inverse?s.top="0px":s.bottom="0px",s.height=t.percent+"%",s.width=o.thickness,s.transition=(i?"height "+o.transition.speed+", ":"")+"opacity "+o.transition.opacity),s},progress:function(){return t?window.VueProgressBarEventBus.RADON_LOADING_BAR:{percent:0,options:{canSuccess:!0,show:!1,color:"rgb(19, 91, 55)",failedColor:"red",thickness:"2px",transition:{speed:"0.2s",opacity:"0.6s",termination:300},location:"top",autoRevert:!0,inverse:!1}}}}};return{install:function(o){var t=1<arguments.length&&void 0!==arguments[1]?arguments[1]:{},i=(o.version.split(".")[0],"undefined"!=typeof window),e={$vm:null,state:{tFailColor:"",tColor:"",timer:null,cut:0},init:function(t){this.$vm=t},start:function(t){var o=this;this.$vm&&(t||(t=3e3),this.$vm.RADON_LOADING_BAR.percent=0,this.$vm.RADON_LOADING_BAR.options.show=!0,this.$vm.RADON_LOADING_BAR.options.canSuccess=!0,this.state.cut=1e4/Math.floor(t),clearInterval(this.state.timer),this.state.timer=setInterval(function(){o.increase(o.state.cut*Math.random()),95<o.$vm.RADON_LOADING_BAR.percent&&o.$vm.RADON_LOADING_BAR.options.autoFinish&&o.finish()},100))},set:function(t){this.$vm.RADON_LOADING_BAR.options.show=!0,this.$vm.RADON_LOADING_BAR.options.canSuccess=!0,this.$vm.RADON_LOADING_BAR.percent=Math.floor(t)},get:function(){return Math.floor(this.$vm.RADON_LOADING_BAR.percent)},increase:function(t){this.$vm.RADON_LOADING_BAR.percent=Math.min(99,this.$vm.RADON_LOADING_BAR.percent+Math.floor(t))},decrease:function(t){this.$vm.RADON_LOADING_BAR.percent=this.$vm.RADON_LOADING_BAR.percent-Math.floor(t)},hide:function(){var t=this;clearInterval(this.state.timer),this.state.timer=null,setTimeout(function(){t.$vm.RADON_LOADING_BAR.options.show=!1,o.nextTick(function(){setTimeout(function(){t.$vm.RADON_LOADING_BAR.percent=0},100),t.$vm.RADON_LOADING_BAR.options.autoRevert&&setTimeout(function(){t.revert()},300)})},this.$vm.RADON_LOADING_BAR.options.transition.termination)},pause:function(){clearInterval(this.state.timer)},finish:function(){this.$vm&&(this.$vm.RADON_LOADING_BAR.percent=100,this.hide())},fail:function(){this.$vm.RADON_LOADING_BAR.options.canSuccess=!1,this.$vm.RADON_LOADING_BAR.percent=100,this.hide()},setFailColor:function(t){this.$vm.RADON_LOADING_BAR.options.failedColor=t},setColor:function(t){this.$vm.RADON_LOADING_BAR.options.color=t},setLocation:function(t){this.$vm.RADON_LOADING_BAR.options.location=t},setTransition:function(t){this.$vm.RADON_LOADING_BAR.options.transition=t},tempFailColor:function(t){this.state.tFailColor=this.$vm.RADON_LOADING_BAR.options.failedColor,this.$vm.RADON_LOADING_BAR.options.failedColor=t},tempColor:function(t){this.state.tColor=this.$vm.RADON_LOADING_BAR.options.color,this.$vm.RADON_LOADING_BAR.options.color=t},tempLocation:function(t){this.state.tLocation=this.$vm.RADON_LOADING_BAR.options.location,this.$vm.RADON_LOADING_BAR.options.location=t},tempTransition:function(t){this.state.tTransition=this.$vm.RADON_LOADING_BAR.options.transition,this.$vm.RADON_LOADING_BAR.options.transition=t},revertColor:function(){this.$vm.RADON_LOADING_BAR.options.color=this.state.tColor,this.state.tColor=""},revertFailColor:function(){this.$vm.RADON_LOADING_BAR.options.failedColor=this.state.tFailColor,this.state.tFailColor=""},revertLocation:function(){this.$vm.RADON_LOADING_BAR.options.location=this.state.tLocation,this.state.tLocation=""},revertTransition:function(){this.$vm.RADON_LOADING_BAR.options.transition=this.state.tTransition,this.state.tTransition={}},revert:function(){this.$vm.RADON_LOADING_BAR.options.autoRevert&&(this.state.tColor&&this.revertColor(),this.state.tFailColor&&this.revertFailColor(),this.state.tLocation&&this.revertLocation(),!this.state.tTransition||void 0===this.state.tTransition.speed&&void 0===this.state.tTransition.opacity||this.revertTransition())},parseMeta:function(t){for(var o in t.func){var i=t.func[o];switch(i.call){case"color":switch(i.modifier){case"set":this.setColor(i.argument);break;case"temp":this.tempColor(i.argument)}break;case"fail":switch(i.modifier){case"set":this.setFailColor(i.argument);break;case"temp":this.tempFailColor(i.argument)}break;case"location":switch(i.modifier){case"set":this.setLocation(i.argument);break;case"temp":this.tempLocation(i.argument)}break;case"transition":switch(i.modifier){case"set":this.setTransition(i.argument);break;case"temp":this.tempTransition(i.argument)}}}}},s=function(t,o){for(var i,e,s=1;s<arguments.length;++s)for(i in e=arguments[s])Object.prototype.hasOwnProperty.call(e,i)&&(t[i]=e[i]);return t}({canSuccess:!0,show:!1,color:"#73ccec",position:"fixed",failedColor:"red",thickness:"2px",transition:{speed:"0.2s",opacity:"0.6s",termination:300},autoRevert:!0,location:"top",inverse:!1,autoFinish:!0},t),n=new o({data:{RADON_LOADING_BAR:{percent:0,options:s}}});i&&(window.VueProgressBarEventBus=n,e.init(n)),o.component("vue-progress-bar",r),o.prototype.$Progress=e}}});
+
 
 /***/ }),
 
@@ -21628,27 +22161,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,
   state: {
-    menu: [],
+    permission: [],
     user: []
   },
   getters: {
-    gtrsMenu: function gtrsMenu(state) {
-      return state.menu;
+    gtrspermission: function gtrspermission(state) {
+      return state.permission;
+    },
+    gtrspermissionActive: function gtrspermissionActive(state) {
+      return function (id) {
+        var a = state.permission.filter(function (p) {
+          return p.role_modul_id == id;
+        });
+        return a[0];
+      };
     },
     gtrsUser: function gtrsUser(state) {
       return state.user;
     }
   },
   mutations: {
-    menu: function menu(state, data) {
-      state.menu = data;
+    permission: function permission(state, data) {
+      state.permission = data;
     },
     user: function user(state, data) {
       state.user = data;
     }
   },
   actions: {
-    StoreMenu: function StoreMenu(_ref, data) {
+    StorePermission: function StorePermission(_ref, data) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var commit;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
@@ -21657,9 +22198,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref.commit;
                 axios__WEBPACK_IMPORTED_MODULE_3___default.a.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/roles/permission", {
-                  type: "permissiondataByrolesId"
+                  type: "permissionById"
                 }).then(function (r) {
-                  return commit('fields', r.data);
+                  return commit('permission', r.data);
                 });
 
               case 2:
@@ -21717,16 +22258,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _js_store_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/js/store.js */ "./resources/js/store.js");
-/* harmony import */ var vue_wysiwyg__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-wysiwyg */ "./node_modules/vue-wysiwyg/dist/vueWysiwyg.js");
-/* harmony import */ var vue_wysiwyg__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_wysiwyg__WEBPACK_IMPORTED_MODULE_8__);
-/* harmony import */ var vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-wysiwyg/dist/vueWysiwyg.css */ "./node_modules/vue-wysiwyg/dist/vueWysiwyg.css");
-/* harmony import */ var vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_9__);
-/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! element-ui/lib/locale/lang/en */ "./node_modules/element-ui/lib/locale/lang/en.js");
-/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var vue_events__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-events */ "./node_modules/vue-events/dist/index.js");
-/* harmony import */ var vue_events__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(vue_events__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! vue-progressbar */ "./node_modules/vue-progressbar/dist/vue-progressbar.js");
+/* harmony import */ var vue_progressbar__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(vue_progressbar__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var vue_wysiwyg__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! vue-wysiwyg */ "./node_modules/vue-wysiwyg/dist/vueWysiwyg.js");
+/* harmony import */ var vue_wysiwyg__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(vue_wysiwyg__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-wysiwyg/dist/vueWysiwyg.css */ "./node_modules/vue-wysiwyg/dist/vueWysiwyg.css");
+/* harmony import */ var vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! element-ui/lib/locale/lang/en */ "./node_modules/element-ui/lib/locale/lang/en.js");
+/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_11__);
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_12__);
+/* harmony import */ var vue_events__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue-events */ "./node_modules/vue-events/dist/index.js");
+/* harmony import */ var vue_events__WEBPACK_IMPORTED_MODULE_13___default = /*#__PURE__*/__webpack_require__.n(vue_events__WEBPACK_IMPORTED_MODULE_13__);
+/* harmony import */ var v_mask__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! v-mask */ "./node_modules/v-mask/dist/v-mask.esm.js");
 
 
 
@@ -21752,41 +22296,50 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__
 
 
 
+
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(element_ui_lib__WEBPACK_IMPORTED_MODULE_1___default.a, {
-  locale: element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_10___default.a
+  locale: element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_11___default.a
 });
 
 var pemohonPendaftaran = function pemohonPendaftaran() {
-  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaran */ "./resources/js/components/pendaftaran/pendaftaran.vue"));
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaran */ "./resources/js/components/pendaftaran/pendaftaran.vue"));
 };
 
 var pemohonPendaftaranSelesai = function pemohonPendaftaranSelesai() {
-  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaranSelesai */ "./resources/js/components/pendaftaran/pendaftaranSelesai.vue"));
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaranSelesai */ "./resources/js/components/pendaftaran/pendaftaranSelesai.vue"));
 };
 
 
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.config.ignoredElements = [/^ion-/];
+
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(v_mask__WEBPACK_IMPORTED_MODULE_14__["default"]);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_progressbar__WEBPACK_IMPORTED_MODULE_8___default.a, {
+  color: 'rgb(143, 255, 199)',
+  failedColor: 'red',
+  height: '2px'
+});
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_wysiwyg__WEBPACK_IMPORTED_MODULE_8___default.a, {}); // Vue.use(Loading);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_wysiwyg__WEBPACK_IMPORTED_MODULE_9___default.a, {}); // Vue.use(Loading);
 // Vue.use(DatePicker);
 // Vue.use(Checkbox);
 // Vue.prototype.$notify = Notification;
 
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_events__WEBPACK_IMPORTED_MODULE_12___default.a);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_events__WEBPACK_IMPORTED_MODULE_13___default.a);
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_5___default.a, axios__WEBPACK_IMPORTED_MODULE_6___default.a);
-vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuelidate__WEBPACK_IMPORTED_MODULE_11___default.a);
+vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuelidate__WEBPACK_IMPORTED_MODULE_12___default.a);
 var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
   el: '#app',
   router: _js_routes__WEBPACK_IMPORTED_MODULE_4__["default"],
   store: _js_store_js__WEBPACK_IMPORTED_MODULE_7__["default"],
   mounted: function mounted() {
     this.$store.dispatch("StoreUser/StoreUser");
+    this.$store.dispatch("StoreUser/StorePermission");
   },
   methods: {
     collpasedmenu: function collpasedmenu() {
@@ -21931,19 +22484,27 @@ __webpack_require__.r(__webpack_exports__);
 // import rolespermission from '@/js/components/roles/permission'
 
 var layananIzin = function layananIzin() {
-  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/layanan/daftarIzin */ "./resources/js/components/layanan/daftarIzin.vue"));
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~BODashboard~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/layanan/daftarIzin */ "./resources/js/components/layanan/daftarIzin.vue"));
+};
+
+var usersIdentitas = function usersIdentitas() {
+  return Promise.all(/*! import() | Users */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("Users")]).then(__webpack_require__.bind(null, /*! @/js/components/users/identitas */ "./resources/js/components/users/identitas.vue"));
 };
 
 var dashboard = function dashboard() {
-  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/fo */ "./resources/js/components/dashboard/fo.vue"));
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~BODashboard~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/fo */ "./resources/js/components/dashboard/fo.vue"));
 };
 
 var dashboardBo = function dashboardBo() {
-  return Promise.all(/*! import() | BODashboard */[__webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("BODashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/dashboard */ "./resources/js/components/dashboard/dashboard.vue"));
+  return Promise.all(/*! import() | BODashboard */[__webpack_require__.e("vendors~BODashboard~Pemohondashboard~dashboard"), __webpack_require__.e("BODashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/dashboard */ "./resources/js/components/dashboard/dashboard.vue"));
 };
 
 var pemohonDashboard = function pemohonDashboard() {
-  return Promise.all(/*! import() | Pemohondashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard"), __webpack_require__.e("Pemohondashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/pemohon */ "./resources/js/components/dashboard/pemohon.vue"));
+  return Promise.all(/*! import() | Pemohondashboard */[__webpack_require__.e("vendors~BODashboard~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard"), __webpack_require__.e("Pemohondashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/pemohon */ "./resources/js/components/dashboard/pemohon.vue"));
+};
+
+var dashboardOpd = function dashboardOpd() {
+  return Promise.all(/*! import() | Pemohondashboard */[__webpack_require__.e("vendors~BODashboard~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard"), __webpack_require__.e("Pemohondashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/opdDashboard */ "./resources/js/components/dashboard/opdDashboard.vue"));
 };
 
 var permohonanDetail = function permohonanDetail() {
@@ -21955,55 +22516,59 @@ var permohonanDetailBO = function permohonanDetailBO() {
 };
 
 var rolesmodul = function rolesmodul() {
-  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~roles"), __webpack_require__.e("modulForm"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul */ "./resources/js/components/roles/modul.vue"));
+  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~roles"), __webpack_require__.e("modulForm"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul */ "./resources/js/components/roles/modul.vue"));
 };
 
 var rolesmodulform = function rolesmodulform() {
-  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~roles"), __webpack_require__.e("modulForm"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
+  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~roles"), __webpack_require__.e("modulForm"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/modul_form */ "./resources/js/components/roles/modul_form.vue"));
 };
 
 var rolespermission = function rolespermission() {
-  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~roles"), __webpack_require__.e("modulForm"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/permission */ "./resources/js/components/roles/permission.vue"));
+  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~roles"), __webpack_require__.e("modulForm"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/permission */ "./resources/js/components/roles/permission.vue"));
 };
 
 var rolespermissionform = function rolespermissionform() {
-  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~roles"), __webpack_require__.e("modulForm"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/permission_form */ "./resources/js/components/roles/permission_form.vue"));
+  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~roles"), __webpack_require__.e("modulForm"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/roles/permission_form */ "./resources/js/components/roles/permission_form.vue"));
 };
 
 var trackByid = function trackByid() {
   return __webpack_require__.e(/*! import() | trackBYid */ "trackBYid").then(__webpack_require__.bind(null, /*! @/js/components/track/trackByid */ "./resources/js/components/track/trackByid.vue"));
 };
+
+var trackByForm = function trackByForm() {
+  return __webpack_require__.e(/*! import() | trackBYid */ "trackBYid").then(__webpack_require__.bind(null, /*! @/js/components/track/trackByForm */ "./resources/js/components/track/trackByForm.vue"));
+};
 /* --------------------- PEROMOHONAN COMPONEN --------------------------*/
 
 
 var pemohonPengajuan = function pemohonPengajuan() {
-  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pemohon/permohonan/pengajuan */ "./resources/js/components/pemohon/permohonan/pengajuan.vue"));
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pemohon/permohonan/pengajuan */ "./resources/js/components/pemohon/permohonan/pengajuan.vue"));
 };
 
 var pemohonPengajuan2 = function pemohonPengajuan2() {
-  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pemohon/permohonan/pengajuan2 */ "./resources/js/components/pemohon/permohonan/pengajuan2.vue"));
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pemohon/permohonan/pengajuan2 */ "./resources/js/components/pemohon/permohonan/pengajuan2.vue"));
 };
 
 var pemohonPendaftaran = function pemohonPendaftaran() {
-  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaran */ "./resources/js/components/pendaftaran/pendaftaran.vue"));
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaran */ "./resources/js/components/pendaftaran/pendaftaran.vue"));
 };
 /* --------------------- PEROMOHONAN COMPONEN --------------------------*/
 
 
 var suratpermintaan = function suratpermintaan() {
-  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/surat/permintaan */ "./resources/js/components/surat/permintaan.vue"));
+  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/surat/permintaan */ "./resources/js/components/surat/permintaan.vue"));
 };
 
 var suratrekomendasipermintaan = function suratrekomendasipermintaan() {
-  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/rekomendasi/detail */ "./resources/js/components/rekomendasi/detail.vue"));
+  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/rekomendasi/detail */ "./resources/js/components/rekomendasi/detail.vue"));
 };
 
 var suratrekomendasipermintaanData = function suratrekomendasipermintaanData() {
-  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/rekomendasi/data */ "./resources/js/components/rekomendasi/data.vue"));
+  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/rekomendasi/data */ "./resources/js/components/rekomendasi/data.vue"));
 };
 
 var passwordGanti = function passwordGanti() {
-  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/password/gantiPassword */ "./resources/js/components/password/gantiPassword.vue"));
+  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/password/gantiPassword */ "./resources/js/components/password/gantiPassword.vue"));
 };
 
 var indexKepuasan = function indexKepuasan() {
@@ -22018,6 +22583,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   routes: [
   /* ----------UMUM---------------*/
   {
+    path: '/identitas',
+    name: 'users-identitas',
+    component: usersIdentitas
+  }, {
     path: '/layanan/izin',
     name: 'layanan-izin',
     component: layananIzin
@@ -22031,6 +22600,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/fo/permohonan/detail/:id',
     name: 'fo-permohonan-detail',
     component: permohonanDetail
+  },
+  /* ----------FROMT BACKOFFICE---------------*/
+  {
+    path: '/opd/dashboard',
+    name: 'opd-dashboard',
+    component: dashboardOpd
   },
   /* ----------BACK OFFICE ROUTE---------------*/
   {
@@ -22101,6 +22676,12 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/password/ganti',
     name: 'pemohon-password-ganti',
     component: passwordGanti
+  },
+  /* ----------TRACKING ROUTE---------------*/
+  {
+    path: '/pengajuan/tracking',
+    name: 'track-form',
+    component: trackByForm
   }]
 });
 /* harmony default export */ __webpack_exports__["default"] = (router);
@@ -22216,21 +22797,21 @@ __webpack_require__.r(__webpack_exports__);
 // const api = "http://panel.inilahkepri.id";
 // const base = "";
 // const web = "http://panel.inilahkepri.id";
-// const api = "http://localhost/Lpanel";
-// const base = "Lpanel";
-// const web = "http://localhost/Lpanel";
+// const api = "http://localhost/siJempol";
+// const base = "siJempol";
+// const web = "http://localhost/siJempol";
 // const assets = "http://localhost/Resources/perusahaan";
-// const publicData = "http://localhost/Lpanel/public";
-// const api = "http://192.168.123.37/Lpanel";
-// const base = "Lpanel";
-// const web = "http://192.168.123.37/Lpanel"
-// const publicData = "http://192.168.123.37/Lpanel/public";
-// const assets = "http://192.168.123.37/Resources/perusahaan";
-var api = "http://appkepri.com/siJempol";
-var base = "siJempol";
-var web = "http://appkepri.com/siJempol";
-var publicData = "http://appkepri.com/siJempol/public";
-var assets = "http://appkepri.com/Resources/perusahaan";
+// const publicData = "http://localhost/siJempol/public";
+// const api = "http://192.168.1.98/siJempol";
+// const base = "siJempol";
+// const web = "http://192.168.1.98/siJempol"
+// const publicData = "http://192.168.1.98/siJempol/public";
+// const assets = "http://192.168.1.98/Resources/perusahaan";
+var api = "http://dpmptsp.kepriprov.go.id/siJempol";
+var base = "";
+var web = "http://dpmptsp.kepriprov.go.id/siJempol";
+var publicData = "http://dpmptsp.kepriprov.go.id/siJempol/public";
+var assets = "http://dpmptsp.kepriprov.go.id/Resources/perusahaan";
 /* harmony default export */ __webpack_exports__["default"] = ({
   api: api,
   base: base,
@@ -22259,8 +22840,8 @@ var assets = "http://appkepri.com/Resources/perusahaan";
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\Lpanel\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\Lpanel\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\laragon\www\siJempol\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\laragon\www\siJempol\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

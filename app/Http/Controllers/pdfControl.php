@@ -8,6 +8,7 @@ use PDF;
 use QrCode;
 use App\model\mdopdIzin;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Controllers\perusahaanControl;
 
 class pdfControl extends Controller
 {
@@ -45,5 +46,27 @@ class pdfControl extends Controller
         } else {
             return "error";
         }
+    }
+
+    function pendaftaranPDF(Request $r)
+    {
+        $npwp =
+            $npwp = new Request();
+        $npwp->replace(['npwp' => $r->get('npwp')]);
+        $perusahaan = perusahaanControl::dataBynpwp($npwp);
+        $pdf = PDF::loadView('pdf.pendaftaran',  compact('perusahaan'));
+        return $pdf->stream('pendaftaran_bukti' . '.pdf');
+        // $id = $r->get("id");
+        // if ($id = Crypt::decryptString($r->get("id"))) {
+        //     $data = mdopdIzin::with(['persyaratan', 'opd'])
+        //         ->where("opdi_id", $id)
+        //         ->get();
+        //     $p = $data[0];
+
+        //     $pdf = PDF::loadView('pdf.persyaratan', compact('p'));
+        //     return $pdf->stream($p->nama_izin . '.pdf');
+        // } else {
+        //     return "error";
+        // }
     }
 }

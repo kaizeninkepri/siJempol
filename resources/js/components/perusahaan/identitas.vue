@@ -15,7 +15,11 @@
     </div>
 
     <div class="br-pagebody">
-      <div class="br-section-wrapper" v-loading="isLoading" element-loading-text="Loading...">
+      <div
+        class="br-section-wrapper"
+        v-loading="isLoading"
+        element-loading-text="Loading..."
+      >
         <div class="row">
           <div class="col-lg-3">
             <div class="form-group">
@@ -98,7 +102,9 @@
         <div class="row">
           <hr />
           <div class="col-md-12">
-            <button type="button" class="btn btn-primary" @click="ToDatabase()">Simpan</button>
+            <button type="button" class="btn btn-primary" @click="ToDatabase()">
+              Simpan
+            </button>
           </div>
         </div>
       </div>
