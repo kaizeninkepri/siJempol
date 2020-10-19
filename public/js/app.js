@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "https://dpmptsp.kepriprov.go.id/siJempol/";
+/******/ 	__webpack_require__.p = "http://appkepri.com/siJempol/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -22807,11 +22807,16 @@ __webpack_require__.r(__webpack_exports__);
 // const web = "http://192.168.1.98/siJempol"
 // const publicData = "http://192.168.1.98/siJempol/public";
 // const assets = "http://192.168.1.98/Resources/perusahaan";
-var api = "https://dpmptsp.kepriprov.go.id/siJempol";
-var base = "";
-var web = "https://dpmptsp.kepriprov.go.id/siJempol";
-var publicData = "https://dpmptsp.kepriprov.go.id/siJempol/public";
-var assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
+var api = "http://appkepri.com/siJempol";
+var base = "siJempol";
+var web = "http://appkepri.com/siJempol";
+var publicData = "http://appkepri.com/siJempol/public";
+var assets = "http://appkepri.com/Resources/perusahaan"; // const api = "https://dpmptsp.kepriprov.go.id/siJempol";
+// const base = "";
+// const web = "https://dpmptsp.kepriprov.go.id/siJempol"
+// const publicData = "https://dpmptsp.kepriprov.go.id/siJempol/public";
+// const assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   api: api,
   base: base,

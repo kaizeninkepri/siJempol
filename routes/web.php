@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get("/users/getById", "appcontrol@getById");
+Route::get("/pdf/index", "pdfControl@index");
 Route::get("/pdf/pendaftaran", "pdfControl@pendaftaranPDF");
 Route::post("/roles/permission", "permissionControl@index");
 Route::POST("/perizinan/perusahaan", "perusahaanControl@index");

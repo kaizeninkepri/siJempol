@@ -50,10 +50,11 @@ class pdfControl extends Controller
 
     function pendaftaranPDF(Request $r)
     {
-        $npwp =
-            $npwp = new Request();
+
+        $npwp = new Request();
         $npwp->replace(['npwp' => $r->get('npwp')]);
         $perusahaan = perusahaanControl::dataBynpwp($npwp);
+
         $pdf = PDF::loadView('pdf.pendaftaran',  compact('perusahaan'));
         return $pdf->stream('pendaftaran_bukti' . '.pdf');
         // $id = $r->get("id");
