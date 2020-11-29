@@ -112,7 +112,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 80px;\n}\n.wd-100px {\r\n  width: 100px;\n}\r\n", ""]);
+exports.push([module.i, "\n.wd-20 {\n  width: 40px;\n}\n.wd-40 {\n  width: 80px;\n}\n.wd-100px {\n  width: 100px;\n}\n", ""]);
 
 // exports
 

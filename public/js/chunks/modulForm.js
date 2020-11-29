@@ -208,7 +208,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.modal-xl {\r\n  width: 1440px !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.modal-xl {\n  width: 1440px !important;\n}\n", ""]);
 
 // exports
 

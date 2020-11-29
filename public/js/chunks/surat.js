@@ -2265,7 +2265,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 80px;\n}\n.wd-100px {\r\n  width: 100px;\n}\r\n", ""]);
+exports.push([module.i, "\n.wd-20 {\n  width: 40px;\n}\n.wd-40 {\n  width: 80px;\n}\n.wd-100px {\n  width: 100px;\n}\n", ""]);
 
 // exports
 
@@ -2303,7 +2303,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.is-invalid {\r\n  background: #fdd;\n}\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 80px;\n}\n.wd-100px {\r\n  width: 100px;\n}\ntr.errorUpload td {\r\n  background-color: #d7574a;\r\n  color: white;\n}\n.inputWrapper {\r\n  height: 32px;\r\n  width: 64px;\r\n  overflow: hidden;\r\n  position: relative;\r\n  cursor: pointer;\r\n  /*Using a background color, but you can use a background image to represent a button*/\r\n  background-color: #ddf;\n}\n.fileInput {\r\n  cursor: pointer;\r\n  height: 100%;\r\n  position: absolute;\r\n  top: 0;\r\n  right: 0;\r\n  z-index: 99;\r\n  /*This makes the button huge. If you want a bigger button, increase the font size*/\r\n  font-size: 50px;\r\n  /*Opacity settings for all browsers*/\r\n  opacity: 0;\r\n  -moz-opacity: 0;\r\n  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);\n}\ninput[type=\"file\"] {\r\n  display: none;\n}\n.custom-file-upload {\r\n  background: #1479ff;\r\n  color: white;\r\n  display: inline-block;\r\n  padding: 6px 12px;\r\n  cursor: pointer;\n}\nobject,\r\niframe {\r\n  border: 3px solid #cecece;\r\n  background: #e9e9e9;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: scroll;\n}\nembed {\r\n  border: 3px solid #cecece;\r\n  background: #e9e9e9;\r\n  width: 100%;\r\n  height: 100%;\r\n  overflow: scroll;\n}\n.permintaanTelaah :hover {\r\n  background-color: #ecf5ff;\r\n  cursor: pointer;\n}\r\n", ""]);
+exports.push([module.i, "\n.is-invalid {\n  background: #fdd;\n}\n.wd-20 {\n  width: 40px;\n}\n.wd-40 {\n  width: 80px;\n}\n.wd-100px {\n  width: 100px;\n}\ntr.errorUpload td {\n  background-color: #d7574a;\n  color: white;\n}\n.inputWrapper {\n  height: 32px;\n  width: 64px;\n  overflow: hidden;\n  position: relative;\n  cursor: pointer;\n  /*Using a background color, but you can use a background image to represent a button*/\n  background-color: #ddf;\n}\n.fileInput {\n  cursor: pointer;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  right: 0;\n  z-index: 99;\n  /*This makes the button huge. If you want a bigger button, increase the font size*/\n  font-size: 50px;\n  /*Opacity settings for all browsers*/\n  opacity: 0;\n  -moz-opacity: 0;\n  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);\n}\ninput[type=\"file\"] {\n  display: none;\n}\n.custom-file-upload {\n  background: #1479ff;\n  color: white;\n  display: inline-block;\n  padding: 6px 12px;\n  cursor: pointer;\n}\nobject,\niframe {\n  border: 3px solid #cecece;\n  background: #e9e9e9;\n  width: 100%;\n  height: 100%;\n  overflow: scroll;\n}\nembed {\n  border: 3px solid #cecece;\n  background: #e9e9e9;\n  width: 100%;\n  height: 100%;\n  overflow: scroll;\n}\n.permintaanTelaah :hover {\n  background-color: #ecf5ff;\n  cursor: pointer;\n}\n", ""]);
 
 // exports
 

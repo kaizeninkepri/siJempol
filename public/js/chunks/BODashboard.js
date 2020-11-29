@@ -452,7 +452,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.bo-success {\r\n  background-color: #a8d4b9;\r\n  color: white;\r\n  font-weight: bold;\n}\n.bo-primary {\r\n  background-color: #8bbee9;\r\n  color: white;\r\n  font-weight: bold;\n}\n.bo-warning {\r\n  background-color: #ffc17a;\r\n  color: white;\r\n  font-weight: bold;\n}\n.table-custom {\r\n  width: 100%;\n}\n.table-custom td {\r\n  padding: 5px;\n}\r\n", ""]);
+exports.push([module.i, "\n.bo-success {\n  background-color: #a8d4b9;\n  color: white;\n  font-weight: bold;\n}\n.bo-primary {\n  background-color: #8bbee9;\n  color: white;\n  font-weight: bold;\n}\n.bo-warning {\n  background-color: #ffc17a;\n  color: white;\n  font-weight: bold;\n}\n.table-custom {\n  width: 100%;\n}\n.table-custom td {\n  padding: 5px;\n}\n", ""]);
 
 // exports
 

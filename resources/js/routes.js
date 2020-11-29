@@ -6,6 +6,7 @@ import urlBase from '@/js/url';
 // import rolespermission from '@/js/components/roles/permission'
 
 const layananIzin = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/layanan/daftarIzin')
+const bp2rd = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/integration/bp2rd')
 const usersIdentitas = () => import( /* webpackChunkName: "Users" */ '@/js/components/users/identitas')
 
 
@@ -56,6 +57,11 @@ const router = new VueRouter({
             path: '/layanan/izin',
             name: 'layanan-izin',
             component: layananIzin,
+        },
+        {
+            path: '/integration/bp2rd',
+            name: 'integration-bp2rd',
+            component: bp2rd,
         },
         /* ----------FROMT OFFICE UMUM---------------*/
         {

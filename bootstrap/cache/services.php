@@ -32,12 +32,13 @@
     28 => 'Laravel\\Ui\\UiServiceProvider',
     29 => 'Carbon\\Laravel\\ServiceProvider',
     30 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    31 => 'App\\Providers\\AppServiceProvider',
-    32 => 'App\\Providers\\AuthServiceProvider',
-    33 => 'App\\Providers\\EventServiceProvider',
-    34 => 'App\\Providers\\RouteServiceProvider',
-    35 => 'Laravel\\Passport\\PassportServiceProvider',
-    36 => 'Barryvdh\\DomPDF\\ServiceProvider',
+    31 => 'SimpleSoftwareIO\\QrCode\\ServiceProvider',
+    32 => 'App\\Providers\\AppServiceProvider',
+    33 => 'App\\Providers\\AuthServiceProvider',
+    34 => 'App\\Providers\\EventServiceProvider',
+    35 => 'App\\Providers\\RouteServiceProvider',
+    36 => 'Laravel\\Passport\\PassportServiceProvider',
+    37 => 'Barryvdh\\DomPDF\\ServiceProvider',
   ),
   'eager' => 
   array (
@@ -174,6 +175,7 @@
     'validator' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'validation.presence' => 'Illuminate\\Validation\\ValidationServiceProvider',
     'command.tinker' => 'Laravel\\Tinker\\TinkerServiceProvider',
+    'SimpleSoftwareIO\\QrCode\\Generator' => 'SimpleSoftwareIO\\QrCode\\ServiceProvider',
   ),
   'when' => 
   array (
@@ -214,6 +216,9 @@
     array (
     ),
     'Laravel\\Tinker\\TinkerServiceProvider' => 
+    array (
+    ),
+    'SimpleSoftwareIO\\QrCode\\ServiceProvider' => 
     array (
     ),
   ),

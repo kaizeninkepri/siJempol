@@ -297,6 +297,136 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/integration/bp2rd.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/integration/bp2rd.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
+/* harmony import */ var _js_components_dashboard_pemohon_skeleton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/components/dashboard/pemohon_skeleton */ "./resources/js/components/dashboard/pemohon_skeleton.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      page: {
+        isLoading: true
+      },
+      pencarian: {
+        kategori: null,
+        value: null
+      },
+      table: {
+        search: null,
+        data: [],
+        size: 10,
+        page: 1,
+        list: 0,
+        end: 10,
+        show: false
+      }
+    };
+  },
+  mounted: function mounted() {
+    this.page.isLoading = false;
+  },
+  created: function created() {},
+  computed: {
+    user: function user() {
+      return this.$store.state.StoreUser.user;
+    }
+  },
+  methods: {
+    getResult: function getResult() {
+      var _this = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/integration", {
+        data: this.pencarian
+      }).then(function (r) {
+        _this.table.data = r.data;
+        _this.table.show = true;
+      });
+    }
+  },
+  components: {
+    skeleton: _js_components_dashboard_pemohon_skeleton__WEBPACK_IMPORTED_MODULE_1__["default"]
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layanan/daftarIzin.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layanan/daftarIzin.vue?vue&type=script&lang=js& ***!
@@ -453,7 +583,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 80px;\n}\n.wd-100px {\r\n  width: 100px;\n}\r\n", ""]);
+exports.push([module.i, "\n.wd-20 {\n  width: 40px;\n}\n.wd-40 {\n  width: 80px;\n}\n.wd-100px {\n  width: 100px;\n}\n", ""]);
 
 // exports
 
@@ -1086,6 +1216,284 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/integration/bp2rd.vue?vue&type=template&id=f9fe52c0&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/integration/bp2rd.vue?vue&type=template&id=f9fe52c0& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { mode: "out-in", name: "fade" } }, [
+        _vm.page.isLoading
+          ? _c("div", { key: "info" }, [_c("skeleton")], 1)
+          : _c("div", { key: "warning" }, [
+              _c(
+                "div",
+                { staticClass: "br-msg-header d-flex justify-content-between" },
+                [
+                  _c("div", { staticClass: "pd-x-0 pd-t-30" }, [
+                    _c("h4", { staticClass: "tx-gray-800 mg-b-5" }, [
+                      _vm._v("PENGECEKAN PAJAK KENDARAAN BERMOTOR")
+                    ]),
+                    _vm._v(" "),
+                    _vm.user.role
+                      ? _c("p", { staticClass: "mg-b-10" }, [
+                          _vm._v(_vm._s(_vm.user.role.role))
+                        ])
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c("span", [
+                      _c("sup", { staticClass: "tx-danger mg-b-5" }, [
+                        _vm._v("*")
+                      ]),
+                      _vm._v(
+                        " Untuk Badan Usaha Nama pada Kotak Pencarian Sesuai Dengan Nama yang berada Di Kartu Nomor Pokok Wajib Pajak (NPWP)"
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("p", [
+                      _c("sup", { staticClass: "tx-danger" }, [_vm._v("*")]),
+                      _vm._v(" contoh untuk Pajak Kendaran Badan Usaha. "),
+                      _c("code", [
+                        _vm._v("PT.Example, CV.Example, yayasan Example")
+                      ])
+                    ])
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "br-pagebody" },
+                [
+                  _c(
+                    "el-card",
+                    { staticClass: "mg-b-20" },
+                    [
+                      _c(
+                        "el-row",
+                        {
+                          attrs: {
+                            gutter: 5,
+                            justify: "center",
+                            type: "flex",
+                            align: "center"
+                          }
+                        },
+                        [
+                          _c(
+                            "el-col",
+                            { attrs: { md: 3 } },
+                            [
+                              _c(
+                                "el-select",
+                                {
+                                  attrs: { placeholder: "Kategori Pencarian" },
+                                  model: {
+                                    value: _vm.pencarian.kategori,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.pencarian, "kategori", $$v)
+                                    },
+                                    expression: "pencarian.kategori"
+                                  }
+                                },
+                                [
+                                  _c("el-option", {
+                                    attrs: { label: "nama", value: "Nama" }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("el-option", {
+                                    attrs: { label: "noreg", value: "Nopol" }
+                                  })
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "el-col",
+                            { attrs: { md: 8 } },
+                            [
+                              _c("el-input", {
+                                attrs: {
+                                  placeholder:
+                                    "Ketik Nama Wajib Pajak / No Registrasi Kendaraan Bermotor",
+                                  "prefix-icon": "el-icon-search"
+                                },
+                                model: {
+                                  value: _vm.pencarian.value,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.pencarian, "value", $$v)
+                                  },
+                                  expression: "pencarian.value"
+                                }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "el-col",
+                            { attrs: { md: 3 } },
+                            [
+                              _c(
+                                "el-button",
+                                {
+                                  attrs: { type: "primary" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.getResult()
+                                    }
+                                  }
+                                },
+                                [_vm._v("Cek")]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.table.show
+                    ? _c(
+                        "el-card",
+                        [
+                          _c(
+                            "el-table",
+                            {
+                              staticStyle: { width: "100%" },
+                              attrs: {
+                                data: _vm.table.data.filter(function(data) {
+                                  return (
+                                    !_vm.table.search ||
+                                    data.value
+                                      .toLowerCase()
+                                      .includes(_vm.table.search.toLowerCase())
+                                  )
+                                })
+                              }
+                            },
+                            [
+                              _c("el-table-column", {
+                                attrs: {
+                                  type: "index",
+                                  label: "No",
+                                  width: "50"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("el-table-column", {
+                                attrs: {
+                                  prop: "nama",
+                                  label: "Nama Wajib Pajak"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("el-table-column", {
+                                attrs: { prop: "alamat", label: "alamat" }
+                              }),
+                              _vm._v(" "),
+                              _c("el-table-column", {
+                                attrs: {
+                                  prop: "nopol",
+                                  width: "120",
+                                  label: "Jumlah Izin",
+                                  align: "center"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("el-table-column", {
+                                attrs: {
+                                  prop: "tgmspajak",
+                                  label: "Tanggal Masa Pajak",
+                                  align: "center"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("el-table-column", {
+                                attrs: {
+                                  prop: "ket",
+                                  label: "Keterangan",
+                                  width: "180"
+                                },
+                                scopedSlots: _vm._u(
+                                  [
+                                    {
+                                      key: "default",
+                                      fn: function(scope) {
+                                        return [
+                                          scope.row.ket == "Valid"
+                                            ? _c("span", [
+                                                _c(
+                                                  "p",
+                                                  { staticClass: "tx-success" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(scope.row.ket)
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                            : _c("span", [
+                                                _c(
+                                                  "p",
+                                                  { staticClass: "tx-danger" },
+                                                  [
+                                                    _vm._v(
+                                                      _vm._s(scope.row.ket)
+                                                    )
+                                                  ]
+                                                )
+                                              ])
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  null,
+                                  false,
+                                  3000583944
+                                )
+                              })
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    : _vm._e()
+                ],
+                1
+              )
+            ])
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/layanan/daftarIzin.vue?vue&type=template&id=0991ddae&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/layanan/daftarIzin.vue?vue&type=template&id=0991ddae& ***!
@@ -1454,6 +1862,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pemohon_skeleton_vue_vue_type_template_id_4d711642___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_pemohon_skeleton_vue_vue_type_template_id_4d711642___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/integration/bp2rd.vue":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/integration/bp2rd.vue ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _bp2rd_vue_vue_type_template_id_f9fe52c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./bp2rd.vue?vue&type=template&id=f9fe52c0& */ "./resources/js/components/integration/bp2rd.vue?vue&type=template&id=f9fe52c0&");
+/* harmony import */ var _bp2rd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bp2rd.vue?vue&type=script&lang=js& */ "./resources/js/components/integration/bp2rd.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _bp2rd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _bp2rd_vue_vue_type_template_id_f9fe52c0___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _bp2rd_vue_vue_type_template_id_f9fe52c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/integration/bp2rd.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/integration/bp2rd.vue?vue&type=script&lang=js&":
+/*!********************************************************************************!*\
+  !*** ./resources/js/components/integration/bp2rd.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_bp2rd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./bp2rd.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/integration/bp2rd.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_bp2rd_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/integration/bp2rd.vue?vue&type=template&id=f9fe52c0&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/integration/bp2rd.vue?vue&type=template&id=f9fe52c0& ***!
+  \**************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_bp2rd_vue_vue_type_template_id_f9fe52c0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./bp2rd.vue?vue&type=template&id=f9fe52c0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/integration/bp2rd.vue?vue&type=template&id=f9fe52c0&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_bp2rd_vue_vue_type_template_id_f9fe52c0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_bp2rd_vue_vue_type_template_id_f9fe52c0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

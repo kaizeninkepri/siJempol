@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://appkepri.com/siJempol/";
+/******/ 	__webpack_require__.p = "http://localhost/siJempol/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -22487,6 +22487,10 @@ var layananIzin = function layananIzin() {
   return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~BODashboard~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/layanan/daftarIzin */ "./resources/js/components/layanan/daftarIzin.vue"));
 };
 
+var bp2rd = function bp2rd() {
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~BODashboard~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/integration/bp2rd */ "./resources/js/components/integration/bp2rd.vue"));
+};
+
 var usersIdentitas = function usersIdentitas() {
   return Promise.all(/*! import() | Users */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("Users")]).then(__webpack_require__.bind(null, /*! @/js/components/users/identitas */ "./resources/js/components/users/identitas.vue"));
 };
@@ -22590,6 +22594,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/layanan/izin',
     name: 'layanan-izin',
     component: layananIzin
+  }, {
+    path: '/integration/bp2rd',
+    name: 'integration-bp2rd',
+    component: bp2rd
   },
   /* ----------FROMT OFFICE UMUM---------------*/
   {
@@ -22807,16 +22815,16 @@ __webpack_require__.r(__webpack_exports__);
 // const web = "http://192.168.1.98/siJempol"
 // const publicData = "http://192.168.1.98/siJempol/public";
 // const assets = "http://192.168.1.98/Resources/perusahaan";
-var api = "http://appkepri.com/siJempol";
-var base = "siJempol";
-var web = "http://appkepri.com/siJempol";
-var publicData = "http://appkepri.com/siJempol/public";
-var assets = "http://appkepri.com/Resources/perusahaan"; // const api = "https://dpmptsp.kepriprov.go.id/siJempol";
-// const base = "";
-// const web = "https://dpmptsp.kepriprov.go.id/siJempol"
-// const publicData = "https://dpmptsp.kepriprov.go.id/siJempol/public";
-// const assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
-
+// const api = "http://appkepri.com/siJempol";
+// const base = "siJempol";
+// const web = "http://appkepri.com/siJempol"
+// const publicData = "http://appkepri.com/siJempol/public";
+// const assets = "http://appkepri.com/Resources/perusahaan";
+var api = "https://dpmptsp.kepriprov.go.id/testSijempol";
+var base = "testSijempol";
+var web = "https://dpmptsp.kepriprov.go.id/testSijempol";
+var publicData = "https://dpmptsp.kepriprov.go.id/testSijempol/public";
+var assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
 /* harmony default export */ __webpack_exports__["default"] = ({
   api: api,
   base: base,
@@ -22845,8 +22853,8 @@ var assets = "http://appkepri.com/Resources/perusahaan"; // const api = "https:/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\laragon\www\siJempol\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\laragon\www\siJempol\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /var/www/html/siJempol/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /var/www/html/siJempol/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -70,4 +70,15 @@
       0 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
     ),
   ),
+  'simplesoftwareio/simple-qrcode' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'SimpleSoftwareIO\\QrCode\\ServiceProvider',
+    ),
+    'aliases' => 
+    array (
+      'QrCode' => 'SimpleSoftwareIO\\QrCode\\Facade',
+    ),
+  ),
 );
