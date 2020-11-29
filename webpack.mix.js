@@ -21,7 +21,7 @@ mix.webpackConfig({
     },
     output: {
         chunkFilename: 'js/chunks/[name].js',
-        publicPath: "http://localhost/siJempol/"
+        publicPath: "https://dpmptsp.kepriprov.go.id/testSijempol/"
         // publicPath: "http://localhost/siJempol/"
     }
 });
