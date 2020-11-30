@@ -5,123 +5,62 @@
             <skeleton></skeleton>
         </div>
         <div v-else key="warning">
-            <div class="br-msg-header d-flex justify-content-between">
-                <div class="pd-x-0 pd-t-30">
-                    <h4 class="tx-gray-800 mg-b-5">Halaman Utama Pemohon</h4>
-                    <p class="mg-b-0">{{perusahaan.fullname.toUpperCase()}}</p>
-                    <p class="mg-b-0">{{perusahaan.badanusaha}}</p>
+            <div style="background:#3146A4; min-height:250px; border-top:1px solid #C8B046; color:white">
+                <div class="br-msg-header d-flex justify-content-between">
+                    <div class="pd-x-0 pd-t-30">
+                        <h4 class="tx-white-800 mg-b-5">Halaman Utama Pemohon</h4>
+                        <p class="mg-b-0">{{perusahaan.fullname.toUpperCase()}}</p>
+                        <p class="mg-b-0">{{perusahaan.badanusaha}}</p>
+                    </div>
                 </div>
             </div>
-            <div class="br-pagebody">
+            <div class="br-pagebody" style="margin-top:-80px">
                 <el-row :gutter="10">
-                    <el-col :md="18">
-                        <el-card>
-                            <div class="mg-b-10 tx-bold">PENGAJUAN JENIS IZIN LAYANAN</div>
-                            <el-autocomplete style="width:100%" v-model="state2" :fetch-suggestions="querySearch" ref="pencarianIzin" placeholder="Ketik Nama Izin Layanan" :trigger-on-focus="false" @select="handleSelect">
-                                <template slot-scope="{ item }">
-                                    <el-row>
-                                        <el-col :md="12">{{item.value}}</el-col>
-                                    </el-row>
-                                </template>
-                            </el-autocomplete>
-                        </el-card>
-                        <el-card class="mg-t-10" :body-style="{ padding: '0px' }" v-if="permohonantertunda.length <= 0">
-                            <el-row type="flex" justify="center">
-                                <el-col :md="8"> <img :src="url.assets+'/images/2658352.jpg'" class="img-fluid">
-                                    <div style="padding: 14px;">
-                                        <span class="tx-bold">Permohonan perizinan / izin belum di ajukan</span>
-                                        <div class="bottom clearfix">
-                                            <el-button type="text" class="button" @click="FocusInpencarian()">Ajukan Izin</el-button>
-                                            <a :href="url.assets+'/files/30112020.pdf'" target="_blank">Tata Cara Pengajuan Izin</a>
-                                        </div>
-                                    </div>
-                                </el-col>
-                            </el-row>
-
-                        </el-card>
-                        <el-card class="mg-t-10" v-loading="page.isLoading"  v-if="permohonantertunda.length > 0">
-                            <div class="d-flex align-items-center justify-content-between mg-b-30">
-                                <div>
-                                    <h6 class="tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1">PENGAJUAN PERMOHONAN</h6>
-                                </div>
-                                <div class="wd-230">
-                                    <el-input placeholder="Cari Data Permohonan ..." prefix-icon="el-icon-search" v-model="search"></el-input>
-                                </div>
-                            </div>
-
-                            <div class="table-responsive">
-
-                                <table class="table table-valign-middle mg-b-0 table-hover">
-                                    <tbody>
-                                        <tr v-for="(i, Index) in permohonantertunda" :key="Index">
-                                            <td>{{Index + 1}}</td>
-                                            <td>
-                                                <el-popover v-show="i.status == 'pending'" placement="top-start" title="proses" width="400" trigger="hover" content="Permohonan belum Di Kirim Ke PTSP">
-                                                    <ion-icon slot="reference" name="refresh-circle-outline" class="tx-30 tx-warning"></ion-icon>
-                                                </el-popover>
-
-                                                <el-popover v-show="i.status != 'pending' && i.status != 'tolak'" placement="top-start" title="Tracking permohonan" width="400" trigger="hover" content="Permohonan Sedang di Proses">
-                                                    <i slot="reference" class="tx-30 tx-primary ion-map"></i>
-                                                </el-popover>
-
-                                                <el-popover v-show="i.status == 'tolak'" placement="top-start" title="Permohonan di Tolak" width="400" trigger="hover" content="Permohonan Anda di Tolak terkendala pada Kelengkapan berkas">
-                                                    <ion-icon slot="reference" name="close-circle-outline" class="tx-30 tx-danger"></ion-icon>
-                                                </el-popover>
-                                            </td>
-                                            <td class="pd-l-0-force">
-                                                <span class="tx-1" style="font-size:11px">{{i.permohonan_code}}</span>
-                                                <div class="tx-bold">{{i.pemohon.nama}}</div>
-                                            </td>
-                                            <td class="pd-l-0-force">
-                                                {{i.izin.nama_izin}}
-                                                <div>{{i.opd.opd}}</div>
-                                            </td>
-                                            <td class="pd-l-0-force">
-                                                <router-link :to="{name : i.actionButton.routerName, params:{id : i.idCrypt}}" :class="i.actionButton.class" v-if="page.show">{{i.actionButton.name}}</router-link>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                    <el-col :md="{span:4, offset : 4}" :xs="{span:22, offset:1}">
+                        <el-card class="card-feature">
+                            <img :src="url.assets+'/images/files.png'" class="img-fluid">
+                            <div class="bottom clearfix">
+                                <el-button type="text" class="button" @click="FocusInpencarian()">Persyaratan</el-button>
                             </div>
                         </el-card>
                     </el-col>
-                    <el-col :md="6">
-                        <el-card class="mg-b-10">
-                            <h5 class="tx-bold">DATA PENGAJUAN PERMOHONAN</h5>
-                            <el-divider></el-divider>
-                            <div class="bg-white rounded-bottom d-flex align-items-center justify-content-between">
-                                <div class="d-flex align-items-start">
-                                    <div class="mg-l-15">
-                                        <label class="tx-uppercase tx-10 tx-medium tx-spacing-1 mg-b-0 tx-center">TERTUNDA</label>
-                                        <h6 class="tx-inverse mg-b-0 tx-lato tx-bold tx-center">{{datatertunda}}</h6>
-                                    </div>
-                                </div>
-                                <!-- d-flex -->
-                                <div class="d-flex align-items-center">
-                                    <div class="mg-l-15">
-                                        <label class="tx-uppercase tx-10 tx-medium tx-spacing-1 tx-center mg-b-0 tx-danger">TOLAK</label>
-                                        <h6 class="tx-inverse mg-b-0 tx-lato tx-bold tx-danger tx-center">{{datatolak}}</h6>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="mg-l-15">
-                                        <label class="tx-uppercase tx-10 tx-medium tx-spacing-1 mg-b-0 tx-center">PROSES</label>
-                                        <h6 class="tx-inverse mg-b-0 tx-lato tx-bold tx-center">{{dataproses}}</h6>
-                                    </div>
-                                </div>
-                                <div class="d-flex align-items-center">
-                                    <div class="mg-l-15">
-                                        <label class="tx-uppercase tx-10 tx-medium tx-spacing-1 mg-b-0 tx-center">TOTAL</label>
-                                        <h6 class="tx-inverse mg-b-0 tx-lato tx-bold tx-center">{{permohonan.length}}</h6>
-                                    </div>
-                                </div>
-                                <!-- d-flex -->
+                    <el-col :md="4" :xs="{span:22, offset:1}">
+                        <el-card class="card-feature">
+                            <img :src="url.assets+'/images/consent.png'" class="img-fluid">
+                            <div class="bottom clearfix">
+                                <el-button type="text" class="button" @click="FocusInpencarian()">Permohonan</el-button>
                             </div>
-                            <!-- d-flex -->
                         </el-card>
-                        <videoPlayer :options="playerOptions"></videoPlayer>
+                    </el-col>
+                    <el-col :md="4" :xs="{span:22, offset:1}">
+                        <el-card class="card-feature">
+                            <img :src="url.assets+'/images/information.png'" class="img-fluid">
+                            <div class="bottom clearfix">
+                                <el-button type="text" class="button" @click="FocusInpencarian()">Index Kepuasan</el-button>
+                            </div>
+                        </el-card>
+                    </el-col>
+                     <el-col :md="4" :xs="{span:22, offset:1}">
+                        <el-card class="card-feature">
+                            <img :src="url.assets+'/images/2892186.jpg'" class="img-fluid" style="width:75% !important">
+                            <div class="bottom clearfix">
+                                <el-button type="text" class="button" @click="FocusInpencarian()">Tata Cara Penggunaan</el-button>
+                            </div>
+                        </el-card>
                     </el-col>
                 </el-row>
+                <el-row class="mg-t-50">
+                    <el-col :md="{span :4, offset:4}" class="card-feature"><img :src="url.assets+'/images/Untitled.png'" class="img-fluid">
+                    </el-col>
+                    <el-col :md="12">
+                        <h5 class="tx-bold">Informasi Layanan</h5>
+                        <p class="mg-b-0">Tetap Terhubung dan Beri Tahu kami bagaimana kami dapat membantu</p>
+                        <span>- (+62) 811-7779-727 </span>
+                        <span> / (+62) 823-7017-3338 </span>
+                        <p>- dpmptsp20@gmail.com</p>
+                    </el-col>
+                </el-row>
+
             </div>
         </div>
     </transition>
@@ -155,7 +94,6 @@ export default {
                 assets: urlBase.publicData
             },
             playerOptions: {
-                width: "260%",
                 // videojs options
                 muted: true,
                 language: "en",
@@ -238,7 +176,7 @@ export default {
         },
     },
     methods: {
-        FocusInpencarian(){
+        FocusInpencarian() {
             this.$refs.pencarianIzin.focus()
             this.state2 = "izin"
         },
@@ -304,7 +242,15 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.card-feature {
+    text-align: center;
+}
+
+.card-feature img {
+    width: 50% !important;
+}
+
 .wd-20 {
     width: 40px;
 }

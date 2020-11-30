@@ -97,7 +97,7 @@
                 </a>
             </div>
         </div>
-        <div class="br-header">
+        <div class="br-header" style="border-bottom: 2px solid #C8B046">
             <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i
                         class="icon ion-navicon-round"></i></a></div>
 
