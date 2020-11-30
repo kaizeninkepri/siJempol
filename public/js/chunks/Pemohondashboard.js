@@ -356,52 +356,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -416,6 +370,9 @@ var form = function form() {
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      url: {
+        assets: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].publicData
+      },
       playerOptions: {
         width: "260%",
         // videojs options
@@ -498,6 +455,10 @@ var form = function form() {
     }
   },
   methods: {
+    FocusInpencarian: function FocusInpencarian() {
+      this.$refs.pencarianIzin.focus();
+      this.state2 = "izin";
+    },
     getperusahaan: function getperusahaan() {
       var _this = this;
 
@@ -619,7 +580,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wd-20 {\n  width: 40px;\n}\n.wd-40 {\n  width: 80px;\n}\n.wd-100px {\n  width: 100px;\n}\n.fade-enter-active,\n.fade-leave-active {\n  transition: opacity 0.5s;\n}\n.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.wd-20 {\n    width: 40px;\n}\n.wd-40 {\n    width: 80px;\n}\n.wd-100px {\n    width: 100px;\n}\n.fade-enter-active,\n.fade-leave-active {\n    transition: opacity 0.5s;\n}\n.fade-enter,\n.fade-leave-to\n\n/* .fade-leave-active below version 2.1.8 */\n    {\n    opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -1261,6 +1222,7 @@ var render = function() {
                               ]),
                               _vm._v(" "),
                               _c("el-autocomplete", {
+                                ref: "pencarianIzin",
                                 staticStyle: { width: "100%" },
                                 attrs: {
                                   "fetch-suggestions": _vm.querySearch,
@@ -1281,28 +1243,6 @@ var render = function() {
                                               "el-col",
                                               { attrs: { md: 12 } },
                                               [_vm._v(_vm._s(item.value))]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "el-col",
-                                              { attrs: { md: 12 } },
-                                              [
-                                                _c(
-                                                  "span",
-                                                  {
-                                                    staticClass: "tx-primary",
-                                                    staticStyle: {
-                                                      float: "right"
-                                                    }
-                                                  },
-                                                  [
-                                                    _vm._v(
-                                                      "Sektor " +
-                                                        _vm._s(item.opd.opd)
-                                                    )
-                                                  ]
-                                                )
-                                              ]
                                             )
                                           ],
                                           1
@@ -1323,280 +1263,423 @@ var render = function() {
                             1
                           ),
                           _vm._v(" "),
-                          _c(
-                            "el-card",
-                            {
-                              directives: [
+                          _vm.permohonantertunda.length <= 0
+                            ? _c(
+                                "el-card",
                                 {
-                                  name: "loading",
-                                  rawName: "v-loading",
-                                  value: _vm.page.isLoading,
-                                  expression: "page.isLoading"
-                                }
-                              ],
-                              staticClass: "mg-t-10"
-                            },
-                            [
-                              _c(
-                                "div",
-                                {
-                                  staticClass:
-                                    "d-flex align-items-center justify-content-between mg-b-30"
+                                  staticClass: "mg-t-10",
+                                  attrs: { "body-style": { padding: "0px" } }
                                 },
                                 [
-                                  _c("div", [
-                                    _c(
-                                      "h6",
-                                      {
-                                        staticClass:
-                                          "tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
-                                      },
-                                      [_vm._v("PENGAJUAN PERMOHONAN")]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
                                   _c(
-                                    "div",
-                                    { staticClass: "wd-230" },
+                                    "el-row",
+                                    {
+                                      attrs: { type: "flex", justify: "center" }
+                                    },
                                     [
-                                      _c("el-input", {
-                                        attrs: {
-                                          placeholder:
-                                            "Cari Data Permohonan ...",
-                                          "prefix-icon": "el-icon-search"
-                                        },
-                                        model: {
-                                          value: _vm.search,
-                                          callback: function($$v) {
-                                            _vm.search = $$v
-                                          },
-                                          expression: "search"
-                                        }
-                                      })
+                                      _c("el-col", { attrs: { md: 8 } }, [
+                                        _c("img", {
+                                          staticClass: "img-fluid",
+                                          attrs: {
+                                            src:
+                                              _vm.url.assets +
+                                              "/images/2658352.jpg"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticStyle: { padding: "14px" } },
+                                          [
+                                            _c(
+                                              "span",
+                                              { staticClass: "tx-bold" },
+                                              [
+                                                _vm._v(
+                                                  "Permohonan perizinan / izin belum di ajukan"
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              {
+                                                staticClass: "bottom clearfix"
+                                              },
+                                              [
+                                                _c(
+                                                  "el-button",
+                                                  {
+                                                    staticClass: "button",
+                                                    attrs: { type: "text" },
+                                                    on: {
+                                                      click: function($event) {
+                                                        return _vm.FocusInpencarian()
+                                                      }
+                                                    }
+                                                  },
+                                                  [_vm._v("Ajukan Izin")]
+                                                ),
+                                                _vm._v(" "),
+                                                _c(
+                                                  "a",
+                                                  {
+                                                    attrs: {
+                                                      href:
+                                                        _vm.url.assets +
+                                                        "/files/30112020.pdf",
+                                                      target: "_blank"
+                                                    }
+                                                  },
+                                                  [
+                                                    _vm._v(
+                                                      "Tata Cara Pengajuan Izin"
+                                                    )
+                                                  ]
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ]
+                                        )
+                                      ])
                                     ],
                                     1
                                   )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "table-responsive" }, [
-                                _c(
-                                  "table",
-                                  {
-                                    staticClass:
-                                      "table table-valign-middle mg-b-0 table-hover"
-                                  },
-                                  [
-                                    _c(
-                                      "tbody",
-                                      _vm._l(_vm.permohonantertunda, function(
-                                        i,
-                                        Index
-                                      ) {
-                                        return _c("tr", { key: Index }, [
-                                          _c("td", [_vm._v(_vm._s(Index + 1))]),
-                                          _vm._v(" "),
+                                ],
+                                1
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.permohonantertunda.length > 0
+                            ? _c(
+                                "el-card",
+                                {
+                                  directives: [
+                                    {
+                                      name: "loading",
+                                      rawName: "v-loading",
+                                      value: _vm.page.isLoading,
+                                      expression: "page.isLoading"
+                                    }
+                                  ],
+                                  staticClass: "mg-t-10"
+                                },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "d-flex align-items-center justify-content-between mg-b-30"
+                                    },
+                                    [
+                                      _c("div", [
+                                        _c(
+                                          "h6",
+                                          {
+                                            staticClass:
+                                              "tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
+                                          },
+                                          [_vm._v("PENGAJUAN PERMOHONAN")]
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "wd-230" },
+                                        [
+                                          _c("el-input", {
+                                            attrs: {
+                                              placeholder:
+                                                "Cari Data Permohonan ...",
+                                              "prefix-icon": "el-icon-search"
+                                            },
+                                            model: {
+                                              value: _vm.search,
+                                              callback: function($$v) {
+                                                _vm.search = $$v
+                                              },
+                                              expression: "search"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "table-responsive" },
+                                    [
+                                      _c(
+                                        "table",
+                                        {
+                                          staticClass:
+                                            "table table-valign-middle mg-b-0 table-hover"
+                                        },
+                                        [
                                           _c(
-                                            "td",
-                                            [
-                                              _c(
-                                                "el-popover",
-                                                {
-                                                  directives: [
-                                                    {
-                                                      name: "show",
-                                                      rawName: "v-show",
-                                                      value:
-                                                        i.status == "pending",
-                                                      expression:
-                                                        "i.status == 'pending'"
-                                                    }
-                                                  ],
-                                                  attrs: {
-                                                    placement: "top-start",
-                                                    title: "proses",
-                                                    width: "400",
-                                                    trigger: "hover",
-                                                    content:
-                                                      "Permohonan belum Di Kirim Ke PTSP"
-                                                  }
-                                                },
-                                                [
-                                                  _c("ion-icon", {
-                                                    staticClass:
-                                                      "tx-30 tx-warning",
-                                                    attrs: {
-                                                      slot: "reference",
-                                                      name:
-                                                        "refresh-circle-outline"
-                                                    },
-                                                    slot: "reference"
-                                                  })
-                                                ],
-                                                1
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "el-popover",
-                                                {
-                                                  directives: [
-                                                    {
-                                                      name: "show",
-                                                      rawName: "v-show",
-                                                      value:
-                                                        i.status != "pending" &&
-                                                        i.status != "tolak",
-                                                      expression:
-                                                        "i.status != 'pending' && i.status != 'tolak'"
-                                                    }
-                                                  ],
-                                                  attrs: {
-                                                    placement: "top-start",
-                                                    title:
-                                                      "Tracking permohonan",
-                                                    width: "400",
-                                                    trigger: "hover",
-                                                    content:
-                                                      "Permohonan Sedang di Proses"
-                                                  }
-                                                },
-                                                [
-                                                  _c("i", {
-                                                    staticClass:
-                                                      "tx-30 tx-primary ion-map",
-                                                    attrs: {
-                                                      slot: "reference"
-                                                    },
-                                                    slot: "reference"
-                                                  })
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "el-popover",
-                                                {
-                                                  directives: [
-                                                    {
-                                                      name: "show",
-                                                      rawName: "v-show",
-                                                      value:
-                                                        i.status == "tolak",
-                                                      expression:
-                                                        "i.status == 'tolak'"
-                                                    }
-                                                  ],
-                                                  attrs: {
-                                                    placement: "top-start",
-                                                    title:
-                                                      "Permohonan di Tolak",
-                                                    width: "400",
-                                                    trigger: "hover",
-                                                    content:
-                                                      "Permohonan Anda di Tolak terkendala pada Kelengkapan berkas"
-                                                  }
-                                                },
-                                                [
-                                                  _c("ion-icon", {
-                                                    staticClass:
-                                                      "tx-30 tx-danger",
-                                                    attrs: {
-                                                      slot: "reference",
-                                                      name:
-                                                        "close-circle-outline"
-                                                    },
-                                                    slot: "reference"
-                                                  })
-                                                ],
-                                                1
-                                              )
-                                            ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "td",
-                                            { staticClass: "pd-l-0-force" },
-                                            [
-                                              _c(
-                                                "span",
-                                                {
-                                                  staticClass: "tx-1",
-                                                  staticStyle: {
-                                                    "font-size": "11px"
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(i.permohonan_code)
-                                                  )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "div",
-                                                { staticClass: "tx-bold" },
-                                                [_vm._v(_vm._s(i.pemohon.nama))]
-                                              )
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "td",
-                                            { staticClass: "pd-l-0-force" },
-                                            [
-                                              _vm._v(
-                                                "\n                        " +
-                                                  _vm._s(i.izin.nama_izin) +
-                                                  "\n                        "
-                                              ),
-                                              _c("div", [
-                                                _vm._v(_vm._s(i.opd.opd))
-                                              ])
-                                            ]
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "td",
-                                            { staticClass: "pd-l-0-force" },
-                                            [
-                                              _vm.page.show
-                                                ? _c(
-                                                    "router-link",
-                                                    {
-                                                      class:
-                                                        i.actionButton.class,
-                                                      attrs: {
-                                                        to: {
-                                                          name:
-                                                            i.actionButton
-                                                              .routerName,
-                                                          params: {
-                                                            id: i.idCrypt
-                                                          }
-                                                        }
-                                                      }
-                                                    },
-                                                    [
-                                                      _vm._v(
-                                                        _vm._s(
-                                                          i.actionButton.name
+                                            "tbody",
+                                            _vm._l(
+                                              _vm.permohonantertunda,
+                                              function(i, Index) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: Index },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(Index + 1))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      [
+                                                        _c(
+                                                          "el-popover",
+                                                          {
+                                                            directives: [
+                                                              {
+                                                                name: "show",
+                                                                rawName:
+                                                                  "v-show",
+                                                                value:
+                                                                  i.status ==
+                                                                  "pending",
+                                                                expression:
+                                                                  "i.status == 'pending'"
+                                                              }
+                                                            ],
+                                                            attrs: {
+                                                              placement:
+                                                                "top-start",
+                                                              title: "proses",
+                                                              width: "400",
+                                                              trigger: "hover",
+                                                              content:
+                                                                "Permohonan belum Di Kirim Ke PTSP"
+                                                            }
+                                                          },
+                                                          [
+                                                            _c("ion-icon", {
+                                                              staticClass:
+                                                                "tx-30 tx-warning",
+                                                              attrs: {
+                                                                slot:
+                                                                  "reference",
+                                                                name:
+                                                                  "refresh-circle-outline"
+                                                              },
+                                                              slot: "reference"
+                                                            })
+                                                          ],
+                                                          1
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "el-popover",
+                                                          {
+                                                            directives: [
+                                                              {
+                                                                name: "show",
+                                                                rawName:
+                                                                  "v-show",
+                                                                value:
+                                                                  i.status !=
+                                                                    "pending" &&
+                                                                  i.status !=
+                                                                    "tolak",
+                                                                expression:
+                                                                  "i.status != 'pending' && i.status != 'tolak'"
+                                                              }
+                                                            ],
+                                                            attrs: {
+                                                              placement:
+                                                                "top-start",
+                                                              title:
+                                                                "Tracking permohonan",
+                                                              width: "400",
+                                                              trigger: "hover",
+                                                              content:
+                                                                "Permohonan Sedang di Proses"
+                                                            }
+                                                          },
+                                                          [
+                                                            _c("i", {
+                                                              staticClass:
+                                                                "tx-30 tx-primary ion-map",
+                                                              attrs: {
+                                                                slot:
+                                                                  "reference"
+                                                              },
+                                                              slot: "reference"
+                                                            })
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "el-popover",
+                                                          {
+                                                            directives: [
+                                                              {
+                                                                name: "show",
+                                                                rawName:
+                                                                  "v-show",
+                                                                value:
+                                                                  i.status ==
+                                                                  "tolak",
+                                                                expression:
+                                                                  "i.status == 'tolak'"
+                                                              }
+                                                            ],
+                                                            attrs: {
+                                                              placement:
+                                                                "top-start",
+                                                              title:
+                                                                "Permohonan di Tolak",
+                                                              width: "400",
+                                                              trigger: "hover",
+                                                              content:
+                                                                "Permohonan Anda di Tolak terkendala pada Kelengkapan berkas"
+                                                            }
+                                                          },
+                                                          [
+                                                            _c("ion-icon", {
+                                                              staticClass:
+                                                                "tx-30 tx-danger",
+                                                              attrs: {
+                                                                slot:
+                                                                  "reference",
+                                                                name:
+                                                                  "close-circle-outline"
+                                                              },
+                                                              slot: "reference"
+                                                            })
+                                                          ],
+                                                          1
                                                         )
-                                                      )
-                                                    ]
-                                                  )
-                                                : _vm._e()
-                                            ],
-                                            1
+                                                      ],
+                                                      1
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass: "tx-1",
+                                                            staticStyle: {
+                                                              "font-size":
+                                                                "11px"
+                                                            }
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                i.permohonan_code
+                                                              )
+                                                            )
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "tx-bold"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                i.pemohon.nama
+                                                              )
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _vm._v(
+                                                          "\n                                                " +
+                                                            _vm._s(
+                                                              i.izin.nama_izin
+                                                            ) +
+                                                            "\n                                                "
+                                                        ),
+                                                        _c("div", [
+                                                          _vm._v(
+                                                            _vm._s(i.opd.opd)
+                                                          )
+                                                        ])
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _vm.page.show
+                                                          ? _c(
+                                                              "router-link",
+                                                              {
+                                                                class:
+                                                                  i.actionButton
+                                                                    .class,
+                                                                attrs: {
+                                                                  to: {
+                                                                    name:
+                                                                      i
+                                                                        .actionButton
+                                                                        .routerName,
+                                                                    params: {
+                                                                      id:
+                                                                        i.idCrypt
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    i
+                                                                      .actionButton
+                                                                      .name
+                                                                  )
+                                                                )
+                                                              ]
+                                                            )
+                                                          : _vm._e()
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            0
                                           )
-                                        ])
-                                      }),
-                                      0
-                                    )
-                                  ]
-                                )
-                              ])
-                            ]
-                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            : _vm._e()
                         ],
                         1
                       ),
