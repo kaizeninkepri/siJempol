@@ -24,6 +24,11 @@ class pendaftarancontrol extends Controller
         $identitas = mdIdentitas::orderBy("identitas_id", 'ASC')->first();
         return view("pendaftaran", compact("identitas"));
     }
+    function penelitian()
+    {
+        $identitas = mdIdentitas::orderBy("identitas_id", 'ASC')->first();
+        return view("penelitian", compact("identitas"));
+    }
 
     function pendaftaranSelesai()
     {

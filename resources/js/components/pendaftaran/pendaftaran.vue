@@ -44,13 +44,14 @@
                     :readonly="loading.submit"
                     v-model.trim="$v.perusahaan.kategori.$model"
                     :class="{ 'is-invalid': $v.perusahaan.kategori.$error }"
+                    @change="kategoriAction()"
                   >
                     <option value="Badan Usaha">Badan Usaha</option>
                     <option value="perorangan">Perorangan</option>
                   </select>
                 </div>
               </div>
-              <div class="col-lg-2">
+              <div class="col-lg-2" v-if="jenisshow">
                 <div class="form-group">
                   <label class="form-control-label tx-gray-600">
                     Jenis Perusahaan:
@@ -336,6 +337,7 @@ export default {
       url: {
         assets: url.publicData,
       },
+      jenisshow : true,
       perusahaan: {
         npwp: null,
         perusahaan_code: null,
@@ -433,6 +435,15 @@ export default {
     },
   },
   methods: {
+    kategoriAction(){
+      if(this.perusahaan.kategori == 'perorangan'){
+        this.perusahaan.jenis = 'pt';
+        this.jenisshow = false;
+      }
+      else{
+        this.jenisshow = true
+      }
+    },
     pushToSelesai() {
       location.href =
         url.web + "/pendaftaran/selesai?npwp=" + this.perusahaan.npwp;

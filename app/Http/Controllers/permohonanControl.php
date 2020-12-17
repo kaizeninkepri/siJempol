@@ -39,7 +39,11 @@ class permohonanControl extends Controller
             return self::onlinedata($r);
         } else if ($type == 'VerifikasiFO') {
             return self::VerifikasiFO($r);
-        }
+        } else if ($type == 'PermohonanKeabsahan') {
+            return self::PermohonanKeabsahan($r);
+        } else if ($type == 'PermohonanPermintaanTelaah') {
+            return self::PermohonanPermintaanTelaah($r);
+        }        
     }
 
     /*----------------------=== GET DATA BY ===-----------------------*/
@@ -71,8 +75,7 @@ class permohonanControl extends Controller
                 ->get();
         } else {
             $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas'])
-                ->where('status', $status)
-                ->where('create_on', 'online')
+                ->whereBetween('created_at', [$start, $end])
                 ->orderBy('created_at', 'DESC')
                 ->get();
         }
@@ -297,5 +300,24 @@ class permohonanControl extends Controller
             );
             mdPermohonanPersyaratan::where('permohonan_persyaratanId', $p['permohonan_persyaratanId'])->update($toDbPersyaratan);
         }
+    }
+
+    function PermohonanKeabsahan(Request $r)
+    {
+        $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas'])
+        ->where('status', 'keabsahan')
+        ->orderBy('updated_at', 'DESC')
+        ->get();
+
+        return $dataByDate;
+    }
+    function PermohonanPermintaanTelaah(Request $r)
+    {
+        $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas', 'suratpermintaan'])
+        ->where('status', 'teknis')
+        ->orderBy('updated_at', 'DESC')
+        ->get();
+
+        return $dataByDate;
     }
 }

@@ -23,11 +23,9 @@ class pdfControl extends Controller
     function routingSlip(Request $r)
     {
         $id = $r->get("id");
-        $data = mdPermohonan::with(['opd', 'persyaratan', 'izin', 'perusahaan', 'pemohon'])
+        $p = mdPermohonan::with(['opd', 'persyaratan', 'izin', 'perusahaan', 'pemohon'])
             ->where('permohonan_id', $id)
-            ->get();
-        $p = $data[0];
-
+        ->first();
         $pdf = PDF::loadView('pdf.routingSlip', compact('p'));
         return $pdf->stream('invoice.pdf');
     }

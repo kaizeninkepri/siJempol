@@ -196,13 +196,14 @@ class permissionControl extends Controller
                 "delete" => json_encode($d['parent']['crud']['delete'])
             );
 
-            $cekParent = mdrolesPermission::where('role_permission_id', $d['parent']['permission']['role_permission_id'])->get();
-            $parentcek = count($cekParent);
-            if ($parentcek > 0) {
+            // $cekParent = mdrolesPermission::where('role_permission_id', $d['parent']['permission']['role_permission_id'])->get();
+            // $parentcek = count($cekParent);
+            if ($d['parent']['permission'] != null) {
                 mdrolesPermission::where('role_permission_id', $d['parent']['permission']['role_permission_id'])->update($parent);
             } else {
                 mdrolesPermission::insert($parent);
             }
+       
             foreach ($d['child'] as $cindex => $c) {
                 $child = array(
                     "role_id" => $roles['role_id'],
@@ -212,14 +213,16 @@ class permissionControl extends Controller
                     "update" => json_encode($c['crud']['update']),
                     "delete" => json_encode($c['crud']['delete'])
                 );
-                $cekChild =  mdrolesPermission::where('role_permission_id', $c['permission']['role_permission_id'])->get();
-                $ChildCek = count($cekChild);
-                if ($ChildCek > 0) {
+                // $cekChild =  mdrolesPermission::where('role_permission_id', $c['permission']['role_permission_id'])->get();
+                // $ChildCek = count($cekChild);
+
+                if ($c['permission'] != null) {
                     mdrolesPermission::where('role_permission_id', $c['permission']['role_permission_id'])->update($child);
                 } else {
                     mdrolesPermission::insert($child);
                 }
             }
+        
         }
     }
 

@@ -32,6 +32,8 @@ class suratRekomendasiControl extends Controller
             return self::getSuratByOpd($r);
         } elseif ($type == 'getSurat') {
             return self::getSurat($r);
+        } elseif ($type == 'getSuratByKategori') {
+            return self::getSuratByKategori($r);
         }
     }
 
@@ -144,5 +146,13 @@ class suratRekomendasiControl extends Controller
         $surat = mdsuratPermintaan::with(['opd'])->where('permohonan_id', $id)->get();
 
         return $surat;
+    }
+
+    function getSuratByKategori(Request $r)
+    {
+        $kategori = $r->get('kategori');
+        return mdsuratPermintaan::with(['opd', 'permohonan' => function ($q) {
+            $q->with('perusahaan', 'izin');
+        }])->where('kategori', $kategori)->get();
     }
 }

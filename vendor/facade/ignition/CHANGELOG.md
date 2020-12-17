@@ -2,7 +2,50 @@
 
 All notable changes to `ignition` will be documented in this file
 
-## 2.3.4 -2020-07-27
+## 2.5.3 - 2020-12-08
+
+- Use Livewire compatible compiler engine when using Livewire (#340)
+
+## 2.5.2 - 2020-11-14
+
+- fix `MakeViewVariableOptionalSolution` to disallow stream wrappers and files that do not end in ".blade.php" (#334)
+
+## 2.5.1 - 2020-11-13
+
+- add support for LiveWire component urls
+
+## 2.5.0 - 2020-10-27
+
+- add PHP 8.0-dev support
+- remove unnecessary `scrivo/highlight.php` dependency
+
+## 2.4.1 - 2020-10-14
+
+- fix copy casing
+
+## 2.4.0 - 2020-10-14
+
+- add livewire component discovery solution
+
+## 2.3.8 - 2020-10-02
+
+- Address Missing Mix Manifest Error (#317)
+
+## 2.3.7 - 2020-09-06
+
+- add loading state on share button (#309)
+- compatibility fix for L8
+
+## 2.3.6 - 2020-08-10
+
+- possible security vulnerability: bump elliptic version (#300)
+- possible XSS vulnerability: escape characters in stacktrace and exception title
+
+## 2.3.5 - 2020-08-01
+
+- catch exception in detectLineNumber for not existing blade files (#299)
+
+## 2.3.4 - 2020-07-27
 
 - fix an error that would throw a blank page when using third party extensions
 

@@ -138,16 +138,6 @@
                 <td>&nbsp; &nbsp; : &nbsp;&nbsp;</td>
                 <td>{{$perusahaan->email}}</td>
             </tr>
-            <tr>
-                <td>Nama Direktur</td>
-                <td>&nbsp; &nbsp; : &nbsp;&nbsp;</td>
-                <td>NPWP</td>
-            </tr>
-            <tr>
-                <td>Nomor Induk Kependudukan</td>
-                <td>&nbsp; &nbsp; : &nbsp;&nbsp;</td>
-                <td>NPWP</td>
-            </tr>
         </table>
         <br />
         <p>Surat ini merupakan tanda bukti pendaftaran akun Perusahaan melalui aplikasi yang sekaligus merupakan

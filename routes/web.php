@@ -27,6 +27,9 @@ Route::GET("/web", "appcontrol@web")->withoutMiddleware(['auth']);;
 Route::post("/login/submit", "appcontrol@login");
 Route::post("/master/pendaftaran", "pendaftarancontrol@ToSelf");
 Route::get("/pendaftaran", "pendaftarancontrol@index");
+Route::get("/pendaftaran/penelitian", "pendaftarancontrol@penelitian");
+Route::post("/pendaftaran/penelitian/post", "penelitianControl@index");
+Route::get("/pendaftaran/penelitian/penelitianById", "opdIzinControl@penelitianById");
 Route::get("/pendaftaran/selesai", "pendaftarancontrol@pendaftaranSelesai");
 
 // Route::get("/register", "appcontrol@register");
@@ -35,7 +38,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::POST("/opd/izin", "opdIzinControl@index");
 
-
+    Route::POST("/master/users", "userControl@index");
     Route::POST("/master/opd", "opdControl@index");
     Route::POST("/master/sk", "skControl@index");
     Route::POST("/master/track", "trackControl@index");

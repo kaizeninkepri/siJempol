@@ -22,7 +22,7 @@ class perusahaanControl extends Controller
 
     function dataall(Request $r)
     {
-        return mdperusahaan::all();
+        return mdperusahaan::orderBy('nama', 'ASC')->get();
     }
 
     public static function dataBynpwp(Request $r)

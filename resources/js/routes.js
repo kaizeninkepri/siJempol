@@ -10,11 +10,15 @@ const bp2rd = () => import( /* webpackChunkName: "dashboard" */ '@/js/components
 const usersIdentitas = () => import( /* webpackChunkName: "Users" */ '@/js/components/users/identitas')
 
 
+const perusahaanData = () => import( /* webpackChunkName: "perusahaan" */ '@/js/components/perusahaanData/data')
+
+
 const dashboard = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/dashboard/fo')
 const dashboardBo = () => import( /* webpackChunkName: "BODashboard" */ '@/js/components/dashboard/dashboard')
 const pemohonDashboard = () => import( /* webpackChunkName: "Pemohondashboard" */ '@/js/components/dashboard/pemohon')
 const dashboardOpd = () => import( /* webpackChunkName: "Pemohondashboard" */ '@/js/components/dashboard/opdDashboard')
 
+const permohonanData = () => import( /* webpackChunkName: "foPermohonan" */ '@/js/components/permohonan/data')
 const permohonanDetail = () => import( /* webpackChunkName: "foPermohonan" */ '@/js/components/permohonan/detail')
 const permohonanDetailBO = () => import( /* webpackChunkName: "BOValidasi" */ '@/js/components/validasi/detail')
 
@@ -31,6 +35,8 @@ const trackByForm = () => import( /* webpackChunkName: "trackBYid" */ '@/js/comp
 const pemohonPengajuan = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pemohon/permohonan/pengajuan')
 const pemohonPengajuan2 = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pemohon/permohonan/pengajuan2')
 const pemohonPendaftaran = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaran')
+
+const pemohonPendaftaranIzinPenelitian = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/penelitian')
 
 /* --------------------- PEROMOHONAN COMPONEN --------------------------*/
 const suratpermintaan = () => import( /* webpackChunkName: "surat" */ '@/js/components/surat/permintaan')
@@ -70,9 +76,19 @@ const router = new VueRouter({
             component: dashboard,
         },
         {
+            path: '/permohonan/data',
+            name: 'permohonan-data',
+            component: permohonanData,
+        },
+        {
             path: '/fo/permohonan/detail/:id',
             name: 'fo-permohonan-detail',
             component: permohonanDetail,
+        },
+        {
+            path: '/perusahaan',
+            name: 'perusahaan-data',
+            component: perusahaanData,
         },
 
         /* ----------FROMT BACKOFFICE---------------*/
@@ -143,6 +159,11 @@ const router = new VueRouter({
             path: '/pemohon/pendaftaran',
             name: 'pemohon-pendaftaran',
             component: pemohonPendaftaran,
+        },
+        {
+            path: '/pemohon/pendaftaran/penelitian',
+            name: 'pemohon-pendaftaran-penelitian',
+            component: pemohonPendaftaranIzinPenelitian,
         },
         {
             path: '/pemohon/dashboard',

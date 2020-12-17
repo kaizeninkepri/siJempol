@@ -23,6 +23,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import wysiwyg from "vue-wysiwyg";
 import "vue-wysiwyg/dist/vueWysiwyg.css";
 import locale from 'element-ui/lib/locale/lang/en'
+import VueSplide from '@splidejs/vue-splide';
 import ElementUI from 'element-ui'
 Vue.use(ElementUI, {
     locale
@@ -30,6 +31,7 @@ Vue.use(ElementUI, {
 
 
 const pemohonPendaftaran = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaran')
+const pemohonPendaftaranPenelitian = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/penelitian')
 const pemohonPendaftaranSelesai = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaranSelesai')
 import Vuelidate from 'vuelidate'
 import VueEvents from 'vue-events'
@@ -56,7 +58,7 @@ Vue.use(VueEvents)
 Vue.use(VueAxios, axios)
 Vue.use(Vuelidate)
 
-
+Vue.use( VueSplide );
 
 const app = new Vue({
     el: '#app',
@@ -125,6 +127,7 @@ const app = new Vue({
     },
     components: {
         pemohonPendaftaran,
+        pemohonPendaftaranPenelitian,
         pemohonPendaftaranSelesai,
     }
 

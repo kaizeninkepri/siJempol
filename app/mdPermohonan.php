@@ -98,7 +98,13 @@ class mdPermohonan extends Model
 
     function getlastjamAttribute()
     {
-        return Carbon::parse($this->updated_at)->diffForHumans();
+        $days = Carbon::parse($this->updated_at)->diffInDays();
+        if ($days < 7) {
+            return Carbon::parse($this->updated_at)->diffForHumans();
+        } else {
+            // return "andi";
+            return Carbon::parse($this->updated_at)->format('d/m/Y H:i');
+        }
     }
     function getInHumanMasukAttribute()
     {

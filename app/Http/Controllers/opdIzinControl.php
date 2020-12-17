@@ -35,4 +35,13 @@ class opdIzinControl extends Controller
 
         return $izin;
     }
+
+    function penelitianById(Request $r)
+    {
+        $izin = mdopdIzin::with('persyaratan', 'opd')
+        ->where("opdi_id", "7")
+            ->first();
+
+        return $izin;
+    }
 }

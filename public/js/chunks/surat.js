@@ -5070,7 +5070,7 @@ var render = function() {
                     "d-flex align-items-center justify-content-between"
                 },
                 [
-                  _vm.user.role && _vm.user.role.role_id == "2"
+                  _vm.user.role.role_id == "2"
                     ? _c("div", [
                         _c(
                           "h4",
@@ -5088,7 +5088,7 @@ var render = function() {
                       ])
                     : _vm._e(),
                   _vm._v(" "),
-                  _vm.user.role && _vm.user.role.role_id == "4"
+                  _vm.user.role.role_id == "4"
                     ? _c("div", [
                         _c(
                           "h4",

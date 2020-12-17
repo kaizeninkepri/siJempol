@@ -125,32 +125,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      cardData: 18,
       page: {
         isLoading: true
       },
@@ -220,6 +200,9 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    changeCard: function changeCard() {
+      this.cardData = 10;
+    },
     handleSizeChange: function handleSizeChange(val) {
       console.log("".concat(val, " items per page"));
     },
@@ -905,222 +888,232 @@ var render = function() {
                     )
                   ],
                   1
+                )
+              ],
+              1
+            )
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "el-row",
+          { staticClass: "mg-t-10" },
+          [
+            _c(
+              "el-col",
+              { attrs: { md: _vm.cardData } },
+              [
+                _c(
+                  "el-button",
+                  {
+                    on: {
+                      click: function($event) {
+                        return _vm.changeCard()
+                      }
+                    }
+                  },
+                  [_vm._v("change")]
                 ),
                 _vm._v(" "),
                 _c(
-                  "el-row",
-                  { staticClass: "mg-t-10" },
+                  "el-card",
                   [
                     _c(
-                      "el-card",
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex align-items-center justify-content-between mg-b-30"
+                      },
                       [
+                        _c("div", [
+                          _c(
+                            "h6",
+                            {
+                              staticClass:
+                                "tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
+                            },
+                            [_vm._v("PERMOHONAN IZIN / NON IZIN")]
+                          ),
+                          _vm._v(" "),
+                          _c("p", { staticClass: "mg-b-0" }, [
+                            _vm._v("Online / Walkin")
+                          ])
+                        ]),
+                        _vm._v(" "),
                         _c(
                           "div",
-                          {
-                            staticClass:
-                              "d-flex align-items-center justify-content-between mg-b-30"
-                          },
+                          { staticClass: "wd-230" },
                           [
-                            _c("div", [
-                              _c(
-                                "h6",
-                                {
-                                  staticClass:
-                                    "tx-13 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
-                                },
-                                [_vm._v("PERMOHONAN IZIN / NON IZIN")]
-                              ),
-                              _vm._v(" "),
-                              _c("p", { staticClass: "mg-b-0" }, [
-                                _vm._v("Online / Walkin")
-                              ])
-                            ]),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "wd-230" },
-                              [
-                                _c("el-input", {
-                                  attrs: {
-                                    placeholder: "Cari Data Permohonan ...",
-                                    "prefix-icon": "el-icon-search"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
+                            _c("el-input", {
+                              attrs: {
+                                placeholder: "Cari Data Permohonan ...",
+                                "prefix-icon": "el-icon-search"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "table",
+                      {
+                        staticClass:
+                          "table table-valign-middle mg-b-0 table-hover"
+                      },
+                      [
                         _c(
-                          "table",
-                          {
-                            staticClass:
-                              "table table-valign-middle mg-b-0 table-hover"
-                          },
-                          [
-                            _c(
-                              "tbody",
-                              _vm._l(
-                                _vm.permohonan.data.slice(
-                                  _vm.permohonan.list,
-                                  _vm.permohonan.end
-                                ),
-                                function(i, Index) {
-                                  return _c("tr", { key: Index }, [
-                                    _c("td", { staticClass: "pd-l-0-force" }, [
-                                      _c(
+                          "tbody",
+                          _vm._l(
+                            _vm.permohonan.data.slice(
+                              _vm.permohonan.list,
+                              _vm.permohonan.end
+                            ),
+                            function(i, Index) {
+                              return _c("tr", { key: Index }, [
+                                _c("td", { staticClass: "pd-l-0-force" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "tx-13 tx-bold mg-b-0" },
+                                    [_vm._v(_vm._s(i.perusahaan.fullname))]
+                                  ),
+                                  _vm._v(" "),
+                                  i.perusahaan.kategori != "perorangan"
+                                    ? _c(
                                         "div",
-                                        { staticClass: "tx-13 tx-bold mg-b-0" },
-                                        [_vm._v(_vm._s(i.perusahaan.fullname))]
-                                      ),
-                                      _vm._v(" "),
-                                      i.perusahaan.kategori != "perorangan"
-                                        ? _c(
-                                            "div",
-                                            {
-                                              staticClass:
-                                                "tx-12 tx-roboto mg-b-1 tx-primary"
-                                            },
-                                            [_vm._v(_vm._s(i.pemohon.nama))]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        { staticClass: "tx-12 tx-roboto" },
-                                        [
-                                          _vm._v(
-                                            _vm._s(i.pemohon.contact) +
-                                              " / " +
-                                              _vm._s(i.pemohon.email)
-                                          )
-                                        ]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", { staticClass: "pd-l-0-force" }, [
-                                      _c("div", [
-                                        _c(
-                                          "p",
-                                          {
-                                            staticClass:
-                                              "tx-13 tx-bold mg-b-0 tx-teal"
-                                          },
-                                          [_vm._v(_vm._s(i.izin.nama_izin))]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "p",
-                                          {
-                                            staticClass:
-                                              "tx-12 tx-roboto mg-b-0"
-                                          },
-                                          [
-                                            _vm._v(
-                                              _vm._s(i.opd.opd) +
-                                                " / " +
-                                                _vm._s(i.izin.kategori)
-                                            )
-                                          ]
-                                        )
-                                      ])
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", { staticClass: "pd-l-0-force" }, [
-                                      _c(
-                                        "span",
                                         {
-                                          staticClass: "tx-12 tx-roboto mg-b-0"
+                                          staticClass:
+                                            "tx-12 tx-roboto mg-b-1 tx-primary"
                                         },
-                                        [_vm._v(_vm._s(i.lastjam))]
+                                        [_vm._v(_vm._s(i.pemohon.nama))]
                                       )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", { staticClass: "pd-l-0-force" }, [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-oblong btn-sm",
-                                          class: i.createonkategori,
-                                          attrs: { type: "button" }
-                                        },
-                                        [_vm._v(_vm._s(i.create_on))]
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      { staticClass: "pd-r-0-force tx-center" },
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            attrs: {
-                                              to: {
-                                                name: "fo-permohonan-detail",
-                                                params: { id: i.permohonan_id }
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass:
-                                                "icon ion-more tx-18 lh-0"
-                                            })
-                                          ]
-                                        )
-                                      ],
-                                      1
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  _c("p", { staticClass: "tx-12 tx-roboto" }, [
+                                    _vm._v(
+                                      _vm._s(i.pemohon.contact) +
+                                        " / " +
+                                        _vm._s(i.pemohon.email)
                                     )
                                   ])
-                                }
-                              ),
-                              0
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "el-row",
-                          { attrs: { justify: "end", type: "flex" } },
-                          [
-                            _c(
-                              "el-col",
-                              { attrs: { md: 10 } },
-                              [
-                                _c("el-pagination", {
-                                  staticStyle: { float: "right" },
-                                  attrs: {
-                                    background: "",
-                                    "current-page": _vm.permohonan.page,
-                                    "page-size": _vm.permohonan.size,
-                                    "page-count": _vm.permohonan.pagecount,
-                                    layout: "total, prev, pager, next",
-                                    total: _vm.permohonan.data.length
-                                  },
-                                  on: {
-                                    "size-change": _vm.handleSizeChange,
-                                    "current-change": _vm.handleCurrentChange,
-                                    "update:currentPage": function($event) {
-                                      return _vm.$set(
-                                        _vm.permohonan,
-                                        "page",
-                                        $event
-                                      )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "pd-l-0-force" }, [
+                                  _c("div", [
+                                    _c(
+                                      "p",
+                                      {
+                                        staticClass:
+                                          "tx-13 tx-bold mg-b-0 tx-teal"
+                                      },
+                                      [_vm._v(_vm._s(i.izin.nama_izin))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      { staticClass: "tx-12 tx-roboto mg-b-0" },
+                                      [
+                                        _vm._v(
+                                          _vm._s(i.opd.opd) +
+                                            " / " +
+                                            _vm._s(i.izin.kategori)
+                                        )
+                                      ]
+                                    )
+                                  ])
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "pd-l-0-force" }, [
+                                  _c(
+                                    "span",
+                                    { staticClass: "tx-12 tx-roboto mg-b-0" },
+                                    [_vm._v(_vm._s(i.lastjam))]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticClass: "pd-l-0-force" }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-oblong btn-sm",
+                                      class: i.createonkategori,
+                                      attrs: { type: "button" }
                                     },
-                                    "update:current-page": function($event) {
-                                      return _vm.$set(
-                                        _vm.permohonan,
-                                        "page",
-                                        $event
-                                      )
-                                    }
-                                  }
-                                })
-                              ],
-                              1
-                            )
+                                    [_vm._v(_vm._s(i.create_on))]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c(
+                                  "td",
+                                  { staticClass: "pd-r-0-force tx-center" },
+                                  [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        attrs: {
+                                          to: {
+                                            name: "fo-permohonan-detail",
+                                            params: { id: i.permohonan_id }
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass:
+                                            "icon ion-more tx-18 lh-0"
+                                        })
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ])
+                            }
+                          ),
+                          0
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "el-row",
+                      { attrs: { justify: "end", type: "flex" } },
+                      [
+                        _c(
+                          "el-col",
+                          { attrs: { md: 10 } },
+                          [
+                            _c("el-pagination", {
+                              staticStyle: { float: "right" },
+                              attrs: {
+                                background: "",
+                                "current-page": _vm.permohonan.page,
+                                "page-size": _vm.permohonan.size,
+                                "page-count": _vm.permohonan.pagecount,
+                                layout: "total, prev, pager, next",
+                                total: _vm.permohonan.data.length
+                              },
+                              on: {
+                                "size-change": _vm.handleSizeChange,
+                                "current-change": _vm.handleCurrentChange,
+                                "update:currentPage": function($event) {
+                                  return _vm.$set(
+                                    _vm.permohonan,
+                                    "page",
+                                    $event
+                                  )
+                                },
+                                "update:current-page": function($event) {
+                                  return _vm.$set(
+                                    _vm.permohonan,
+                                    "page",
+                                    $event
+                                  )
+                                }
+                              }
+                            })
                           ],
                           1
                         )

@@ -3,13 +3,13 @@
     <!-- br-pageheader -->
     <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
       <div class="d-flex align-items-center justify-content-between">
-        <div v-if="user.role && user.role.role_id == '2'">
+        <div v-if="user.role.role_id == '2'">
           <h4 class="tx-gray-800 mg-b-5 tx-bold">
             PENGIRIMAN PERMINTAAN SURAT TELAAH
           </h4>
           <p class="mg-b-0">{{ user.role.role }}</p>
         </div>
-        <div v-if="user.role && user.role.role_id == '4'">
+        <div v-if="user.role.role_id == '4'">
           <h4 class="tx-gray-800 mg-b-5 tx-bold">
             PENGIRIMAN SURAT REKOMENDASI
           </h4>

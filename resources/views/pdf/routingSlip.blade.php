@@ -101,7 +101,7 @@
             </div>
             <div style="width:40%; float:right">
                 <div class="text-right">
-                    <img src="{{url('public/images/kswp.jpg')}}" width="200px">
+          
                     <br/>
                     <table class="text-right">
                         <tr>

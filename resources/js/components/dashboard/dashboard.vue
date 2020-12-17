@@ -1,456 +1,401 @@
 <template>
-  <div class="mg-t-120">
-    <div class="br-pagebody">
-      <el-row class="pd-5" :gutter="10">
-        <el-col :md="24" class="mg-b-20">
-          <el-row :gutter="10">
-            <el-col :md="6">
-              <el-card v-loading="page.isLoading">
-                <div class="pd-5 d-flex align-items-center">
-                  <ion-icon
-                    name="layers-outline"
-                    class="tx-50 tx-primary"
-                  ></ion-icon>
-                  <div class="mg-l-20">
-                    <p
-                      class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10"
-                    >
-                      Izin / Non izin
-                    </p>
-                    <p class="tx-24 tx-lato tx-bold mg-b-2 lh-1">
-                      {{ keabsahan.length }}
-                    </p>
-                    <span class="tx-11 tx-roboto tx-primary"
-                      >Validasi Keabsahan Berkas</span
-                    >
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-            <el-col :md="6">
-              <el-card v-loading="page.isLoading">
-                <div class="pd-5 d-flex align-items-center">
-                  <ion-icon
-                    name="mail-outline"
-                    class="tx-50 tx-warning"
-                  ></ion-icon>
-                  <div class="mg-l-20">
-                    <p
-                      class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10"
-                    >
-                      Permintaan Surat
-                    </p>
-                    <p class="tx-24 tx-lato tx-bold mg-b-2 lh-1">
-                      {{ teknis.length }}
-                    </p>
-                    <span class="tx-11 tx-roboto tx-warning"
-                      >Untuk OPD Teknis</span
-                    >
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-            <el-col :md="6">
-              <el-card v-loading="page.isLoading">
-                <div class="pd-5 d-flex align-items-center">
-                  <ion-icon
-                    name="mail-open-outline"
-                    class="tx-50 tx-teal"
-                  ></ion-icon>
-                  <div class="mg-l-20">
-                    <p
-                      class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10"
-                    >
-                      Balasan Surat
-                    </p>
-                    <p class="tx-24 tx-lato tx-bold mg-b-2 lh-1">
-                      {{ balasanteknis }}
-                    </p>
-                    <span class="tx-11 tx-roboto tx-teal">Dari OPD Teknis</span>
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-            <el-col :md="6">
-              <el-card v-loading="page.isLoading">
-                <div class="pd-5 d-flex align-items-center">
-                  <ion-icon
-                    name="receipt-outline"
-                    class="tx-50 tx-success"
-                  ></ion-icon>
-                  <div class="mg-l-20">
-                    <p
-                      class="tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10"
-                    >
-                      DRAFT
-                    </p>
-                    <p class="tx-24 tx-lato tx-bold mg-b-2 lh-1">0</p>
-                    <span class="tx-11 tx-roboto tx-success"
-                      >SURAT KEPUTUSAN</span
-                    >
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-          </el-row>
-          <el-row class="mg-t-10" :gutter="10">
-            <el-col :md="18">
-              <el-card style="border-radius: 8px; background: #f3f6f9">
-                <div
-                  class="d-flex align-items-center justify-content-between mg-b-30"
-                >
-                  <div>
-                    <h6
-                      class="tx-15 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
-                    >
-                      VALIDASI KEABSAHAN BERKAS PERMOHONAN
-                    </h6>
-                    <p class="mg-b-0 tx-gray-600">
-                      jumlah data {{ keabsahan.length }}
-                    </p>
-                  </div>
-                  <div class="wd-230">
-                    <el-input
-                      placeholder="Cari Data Permohonan ..."
-                      prefix-icon="el-icon-search"
-                      v-model="permohonan.search"
-                    ></el-input>
-                  </div>
-                </div>
-                <table
-                  class="table-custom table-valign-middle mg-b-0 table-hover"
-                >
-                  <tbody>
-                    <tr
-                      v-for="(i, Index) in keabsahan.slice(
-                        permohonan.list,
-                        permohonan.end
-                      )"
-                      :key="Index"
-                    >
-                      <td class="pd-l-0-force">
-                        <div class="tx-13 tx-bold mg-b-0">
-                          {{ i.perusahaan.fullname }}
-                        </div>
-                        <div
-                          class="tx-12 tx-roboto mg-b-1 tx-primary"
-                          v-if="i.perusahaan.kategori != 'perorangan'"
-                        >
-                          {{ i.pemohon.nama }}
-                        </div>
-                        <p class="tx-12 tx-roboto">
-                          {{ i.pemohon.contact }} / {{ i.pemohon.email }}
-                        </p>
-                      </td>
-                      <td class="pd-l-0-force">
-                        <div>
-                          <p class="tx-13 tx-bold mg-b-0 tx-teal">
-                            {{ i.izin.nama_izin }}
-                          </p>
-                          <p class="tx-12 tx-roboto mg-b-0">
-                            {{ i.opd.opd }} / {{ i.izin.kategori }}
-                          </p>
-                        </div>
-                      </td>
-                      <td class="pd-l-0-force">
-                        <span class="tx-12 tx-roboto mg-b-0">{{
-                          i.lastjam
-                        }}</span>
-                      </td>
-                      <td class="pd-l-0-force">
-                        <button
-                          type="button"
-                          class="btn btn-oblong btn-sm"
-                          :class="i.createonkategori"
-                        >
-                          {{ i.create_on }}
-                        </button>
-                      </td>
-                      <td class="pd-r-0-force tx-center">
-                        <router-link
-                          :to="{
-                            name: 'bo-permohonan-detail',
-                            params: { id: i.permohonan_id },
-                          }"
-                        >
-                          <i class="icon ion-more tx-18 lh-0"></i>
-                        </router-link>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <el-row justify="end" type="flex">
-                  <el-col :md="10">
-                    <el-pagination
-                      style="float: right"
-                      background
-                      @size-change="handleSizeChange"
-                      @current-change="handleCurrentChange"
-                      :current-page.sync="permohonan.page"
-                      :page-size="permohonan.size"
-                      :page-count="permohonan.pagecount"
-                      layout="total, prev, pager, next"
-                      :total="keabsahan.length"
-                    ></el-pagination>
-                  </el-col>
-                </el-row>
-              </el-card>
-
-              <el-card
-                class="mg-t-50"
-                style="border-radius: 8px; background: #f3f6f9"
-              >
-                <div
-                  class="d-flex align-items-center justify-content-between mg-b-30"
-                >
-                  <div>
-                    <h6
-                      class="tx-15 tx-uppercase tx-inverse tx-semibold tx-spacing-1"
-                    >
-                      PENGIRIMAN TELAAH TEKNIS
-                    </h6>
-                    <p class="mg-b-0 tx-gray-600">
-                      jumlah data {{ teknis.length }}
-                    </p>
-                  </div>
-                  <div class="wd-230">
-                    <el-input
-                      placeholder="Cari Data Permohonan ..."
-                      prefix-icon="el-icon-search"
-                      v-model="permohonan.search"
-                    ></el-input>
-                  </div>
-                </div>
-                <table
-                  class="table-custom table-valign-middle mg-b-0 table-hover"
-                >
-                  <tbody>
-                    <tr
-                      v-for="(i, Index) in teknis.slice(
-                        permohonan.list,
-                        permohonan.end
-                      )"
-                      :key="Index"
-                    >
-                      <td class="pd-l-0-force">
-                        <div class="tx-13 tx-bold mg-b-0">
-                          {{ i.perusahaan.fullname }}
-                        </div>
-                        <div
-                          class="tx-12 tx-roboto mg-b-1 tx-primary"
-                          v-if="i.perusahaan.kategori != 'perorangan'"
-                        >
-                          {{ i.pemohon.nama }}
-                        </div>
-                        <p class="tx-12 tx-roboto">
-                          {{ i.pemohon.contact }} / {{ i.pemohon.email }}
-                        </p>
-                      </td>
-                      <td class="pd-l-0-force">
-                        <div>
-                          <p class="tx-13 tx-bold mg-b-0 tx-teal">
-                            {{ i.izin.nama_izin }}
-                          </p>
-                          <p class="tx-12 tx-roboto mg-b-0">
-                            {{ i.opd.opd }} / {{ i.izin.kategori }}
-                          </p>
-                        </div>
-                      </td>
-                      <td class="pd-l-0-force">
-                        <span class="tx-12 tx-roboto mg-b-0">{{
-                          i.lastjam
-                        }}</span>
-                      </td>
-                      <td class="pd-l-0-force">
-                        <button
-                          type="button"
-                          class="btn btn-oblong btn-sm"
-                          :class="i.createonkategori"
-                        >
-                          {{ i.create_on }}
-                        </button>
-                      </td>
-                      <td class="pd-r-0-force tx-center">
-                        <router-link
-                          :to="{
-                            name: 'bo-surat-permintaan',
-                            params: { id: i.permohonan_id },
-                          }"
-                        >
-                          <i class="icon ion-more tx-18 lh-0"></i>
-                        </router-link>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <el-row justify="end" type="flex">
-                  <el-col :md="10">
-                    <el-pagination
-                      style="float: right"
-                      background
-                      @size-change="handleSizeChange"
-                      @current-change="handleCurrentChange"
-                      :current-page.sync="permohonan.page"
-                      :page-size="permohonan.size"
-                      :page-count="permohonan.pagecount"
-                      layout="total, prev, pager, next"
-                      :total="keabsahan.length"
-                    ></el-pagination>
-                  </el-col>
-                </el-row>
-              </el-card>
-            </el-col>
-            <el-col :md="6">
-              <el-card style="border-radius: 8px; background: #c9f7f5">
-                <h6
-                  class="tx-15 tx-uppercase tx-inverse tx-semibold tx-spacing-1 mg-b-20"
-                >
-                  FRONT OFFICE
-                </h6>
-                <div
-                  class="d-flex align-items-center mg-b-20"
-                  v-for="i in 4"
-                  :key="i"
-                >
-                  <img
-                    :src="url.assets + '/avatar/pr-01.png'"
-                    class="wd-40 rounded-circle"
-                    alt=""
-                  />
-                  <div class="mg-l-15">
-                    <div class="tx-inverse">Katherine Lumaad</div>
-                    <span class="tx-12">klumaad@themepixels.me</span>
-                  </div>
-                </div>
-              </el-card>
-            </el-col>
-          </el-row>
-        </el-col>
-      </el-row>
+<div>
+    <div class="pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30">
+        <h4 class="tx-gray-800 mg-b-5 tx-bold"></h4>
+        <p class="mg-b-0"></p>
     </div>
-  </div>
+    <div class="br-pagebody">
+        <el-row :gutter="20">
+            <el-col :md="16">
+                <el-row :gutter="10" class="">
+                    <el-col :md="24" class="mg-b-20">
+                        <el-card style="border-radius:10px">
+                            <h4 class="tx-bold tx-20">Selamat Datang !</h4>
+                            <p class="mg-b-0">Halaman Beranda Back Office</p>
+                            <p>Dinas penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau</p>
+                        </el-card>
+                    </el-col>
+                    <el-col :md="24" class="mg-b-20">
+                        <div class="d-flex align-items-center justify-content-between mg-b-5">
+                            <h5 class="tx-gray-800 tx-15 tx-bold">VERIFIKASI BERKAS MASUK
+                            </h5>
+                            <el-col :md="8" class="d-flex align-items-center justify-content-end">
+                                <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{keabsahan.data.length}}</span>
+                                <el-input class="col-md-10" size="small" v-model="keabsahan.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                            </el-col>
+                        </div>
+                        <el-card style="border-radius:10px;">
+                            <table class="table" style="min-height:620px">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama Perusahaan</th>
+                                        <th>Izin</th>
+                                        <th>Tanggal/Waktu</th>
+                                        <th>Pengaturan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(i, Index) in IzinKeabsahan.slice(keabsahan.list, keabsahan.end)" :key="Index">
+                                        <td>{{Index + 1}}</td>
+                                        <td class="pd-l-0-force">
+                                            <div class="tx-13 tx-bold mg-b-0">{{i.perusahaan.fullname}}</div>
+                                            <div class="tx-12 tx-roboto mg-b-1 tx-primary" v-if="i.perusahaan.kategori != 'perorangan'">{{i.pemohon.nama}}</div>
+                                            <p class="tx-12 tx-roboto">{{i.pemohon.contact}} / {{i.pemohon.email}}</p>
+                                        </td>
+                                        <td class="pd-l-0-force">
+                                            <div>
+                                                <p class="tx-13 tx-bold mg-b-0 tx-teal">{{i.izin.nama_izin}}</p>
+                                                <p class="tx-12 tx-roboto mg-b-0">{{i.opd.opd}} / {{i.izin.kategori}}</p>
+                                            </div>
+                                        </td>
+                                        <td class="pd-l-0-force">
+                                            <span class="tx-12 tx-roboto mg-b-0">{{i.lastjam}}</span>
+                                        </td>
+                                        <td class="pd-l-0-force">
+                                            <router-link :to="{name: 'bo-permohonan-detail', params: { id: i.permohonan_id }}">
+                                                <el-button style="background:#0488A1; color:white; border:none" size="small">Verifikasi</el-button>
+                                            </router-link>
+
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <el-row justify="end" type="flex">
+                                <el-col :md="10">
+                                    <el-pagination style="float: right" background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="keabsahan.page" :page-size="keabsahan.size" :page-count="keabsahan.pagecount" layout="total, prev, pager, next" :total="keabsahan.data.length"></el-pagination>
+                                </el-col>
+                            </el-row>
+                        </el-card>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :md="24">
+                        <div class="d-flex align-items-center justify-content-between mg-b-5">
+                            <h5 class="tx-gray-800 tx-15 tx-bold">PROSES & PERMINTAAN TELAAH TEKNIS
+                            </h5>
+                            <el-col :md="8" class="d-flex align-items-center justify-content-end">
+                                <el-tag type="danger">{{telaahTerkirim}}</el-tag> &nbsp;&nbsp;&nbsp;
+                                <el-tag type="success">{{telaahPending}}</el-tag>
+                                <el-input class="col-md-10" size="small" v-model="telaah.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                            </el-col>
+                        </div>
+
+                        <el-row :gutter="10">
+                            <splide :options="options" :slides="IzinPermintaanTelaah">
+                                <splide-slide v-for="(i, Index) in IzinPermintaanTelaah" :key="Index">
+                                    <el-col :md="24">
+                                        <el-card :body-style="{ padding: '10px', background:'#f4f7ff', minHeight:'200px'}">
+                                            <p class="mg-b-5 tx-bold">{{i.perusahaan.fullname}}</p>
+                                            <p style="min-height:80px">{{i.izin.nama_izin}}</p>
+                                            <el-row justify="space-between" type="flex">
+                                                <el-col :md="14">
+                                                    <el-tag v-if="i.suratpermintaan.length <= 0" type="danger">Surat Telaah Belum Dikirim</el-tag>
+                                                    <el-tag v-if="i.suratpermintaan.length >= 1" type="success" @click="onClickSuratTerkirim()" style="cursor:pointer">Surat Telaah Dikirim</el-tag>
+                                                </el-col>
+                                                <el-col :md="8">
+                                                    <router-link :to="{name: 'bo-surat-permintaan', params: { id: i.permohonan_id }}">
+                                                        <el-button size="small" type="primary">Upload Surat</el-button>
+                                                    </router-link>
+                                                </el-col>
+                                            </el-row>
+                                            <p class='mg-t-15'>{{i.lastjam}}</p>
+                                        </el-card>
+                                    </el-col>
+                                </splide-slide>
+                            </splide>
+                        </el-row>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="10" class="mg-t-30">
+                    <el-col :md="24">
+                        <h5 class="tx-gray-800 mg-b-15 tx-15 tx-bold">BALASAN TELAAH TEKNIS <ion-icon name="chevron-forward-outline" class="tx-primary tx-15 m-t-15"></ion-icon>
+                        </h5>
+                        <el-row :gutter="10">
+                            <splide :options="options">
+                                <splide-slide v-for="(i, Index) in 10" :key="Index">
+                                    <el-col :md="24">
+                                        <el-card :body-style="{ padding: '10px', background:'#f4f7ff'}">
+                                            <p class="mg-b-5 tx-bold">Nama Perususahaan</p>
+                                            <p>Nama Izin</p>
+                                            <p>Tanggal Masuk</p>
+                                        </el-card>
+                                    </el-col>
+                                </splide-slide>
+                            </splide>
+                        </el-row>
+                    </el-col>
+                </el-row>
+
+            </el-col>
+            <el-col :md="8">
+                <el-row :gutter="10">
+                    <el-col :md="12" class="mg-b-10">
+                        <el-card :body-style="{ padding: '10px', background:'#46B4C8', color:'white', minHeight: '120px' }">
+                            <div class="d-flex align-items-center mg-b-15">
+                                <ion-icon name="qr-code-outline" class="tx-30"></ion-icon>
+                                <div class="mg-l-20">
+                                    <p class="tx-24 tx-lato tx-bold mg-b-2 lh-1">Barcode</p>
+                                </div>
+                            </div>
+                            <center>
+                                <el-button style="background:#0488A1; color:white; border:none" @click="$refs.Barcode.onPopUp()">Cetak Barcode</el-button>
+                            </center>
+                        </el-card>
+                    </el-col>
+                    <el-col :md="12" class="mg-b-10">
+                        <el-card :body-style="{ padding: '10px', background:'#455CC7', color:'white', minHeight: '120px' }">
+                            <div class=" d-flex align-items-center mg-b-15">
+                                <ion-icon name="barcode-outline" class="tx-30"></ion-icon>
+                                <div class="mg-l-20">
+                                    <p class="tx-24 tx-lato tx-bold mg-b-2 lh-1">Checlist</p>
+                                </div>
+                            </div>
+                            <center>
+                                <el-button style="background:#122996; color:white; border:none">Cetak Checklist</el-button>
+                            </center>
+                        </el-card>
+                    </el-col>
+                    <el-col :md="12" class="mg-b-10">
+                        <el-card :body-style="{ padding: '10px', background:'#8546C8', color:'white', minHeight: '120px' }">
+                            <div class=" d-flex align-items-center">
+                                <ion-icon name="shield-checkmark-outline" class="tx-30"></ion-icon>
+                                <div class="mg-l-20">
+                                    <p class="tx-24 tx-lato tx-bold mg-b-2 lh-1">Security</p>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+                    <el-col :md="12" class="mg-b-10">
+                        <el-card :body-style="{ padding: '10px', background:'#8546C8', color:'white', minHeight: '120px' }">
+                            <div class=" d-flex align-items-center">
+                                <ion-icon name="shield-checkmark-outline" class="tx-30"></ion-icon>
+                                <div class="mg-l-20">
+                                    <p class="tx-24 tx-lato tx-bold mg-b-2 lh-1">Tracking</p>
+                                </div>
+                            </div>
+                        </el-card>
+                    </el-col>
+                </el-row>
+                <el-row>
+                    <el-col :md="24" class="mg-b-20 mg-t-20">
+                        <div class="d-flex align-items-center justify-content-between mg-b-5">
+                            <h5 class="tx-gray-800 tx-15 tx-bold">Member Front Office
+                            </h5>
+                            <el-col :md="12" class="d-flex align-items-center justify-content-end">
+                                <el-input class="col-md-10" size="small" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                            </el-col>
+                        </div>
+                        <el-card style="border-radius:10px">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Nama</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="(i, Index) in frontoffice" :key="Index">
+                                        <td>{{Index+1}}</td>
+                                        <td>{{i.email}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </el-card>
+                    </el-col>
+                </el-row>
+                <el-row :gutter="10">
+                    <el-col :md="12" class="mg-b-10">
+                        <el-card :body-style="{ padding: '10px', background:'#46B4C8', color:'white', minHeight: '120px' }">
+                            <div class="d-flex align-items-center mg-b-15">
+                                <ion-icon name="mail-unread-outline" class="tx-30"></ion-icon>
+                                <div class="mg-l-20">
+                                    <p class="tx-20 tx-lato tx-bold mg-b-2 lh-1">Surat Masuk</p>
+                                </div>
+                            </div>
+                            <center>
+                                <el-button style="background:#0488a1; color:white; border:none" @click="SuratTelaahOnClick('Surat Masuk','1')">Lihat Data</el-button>
+                            </center>
+                        </el-card>
+                    </el-col>
+                    <el-col :md="12" class="mg-b-10">
+                        <el-card :body-style="{ padding: '10px', background:'#C8B046', color:'white', minHeight: '120px' }">
+                            <div class=" d-flex align-items-center mg-b-15">
+                                <ion-icon name="mail-open-outline" class="tx-30"></ion-icon>
+                                <div class="mg-l-20">
+                                    <p class="tx-20 tx-lato tx-bold mg-b-2 lh-1">Surat Keluar</p>
+                                </div>
+                            </div>
+                            <center>
+                                <el-button style="background:#A99127; color:white; border:none"  @click="SuratTelaahOnClick('Surat Keluar','2')">Lihat Data</el-button>
+                            </center>
+                        </el-card>
+                    </el-col>
+                </el-row>
+            </el-col>
+        </el-row>
+    </div>
+    <suratTelaah ref="suratTelaah" :title="telaah.title"></suratTelaah>
+    <BarcodeData ref="Barcode" :title="barcode.title"></BarcodeData>
+
+</div>
 </template>
+
 <script>
 import urlBase from "@/js/url";
-import VideoBackground from "vue-responsive-video-background-player";
+import BarcodeData from "@/js/components/permohonan/popUpdata";
+import suratTelaah from "@/js/components/surat/modalSurat";
+import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+
+import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
+import {
+    Splide,
+    SplideSlide,
+} from '@splidejs/vue-splide';
 export default {
-  data() {
-    return {
-      page: {
-        isLoading: true,
-      },
-      url: {
-        assets: urlBase.web + "/images",
-      },
-      permohonan: {
-        data: [],
-        search: null,
-        size: 10,
-        page: 1,
-        list: 0,
-        end: 10,
-      },
-    };
-  },
-  created() {
-    this.getpermohonan();
-  },
-  mounted() {
-    this.$parent.justExpand();
-  },
-  computed: {
-    keabsahan() {
-      let result = this.permohonan.data.filter((p) => p.status == "keabsahan");
-      if (!this.permohonan.search) return result;
-
-      const filterValue = this.permohonan.search.toLowerCase();
-
-      const filter = (event) =>
-        event.permohonan_code.toLowerCase().includes(filterValue) ||
-        event.opd.opd.toLowerCase().includes(filterValue) ||
-        event.izin.nama_izin.toLowerCase().includes(filterValue) ||
-        event.pemohon.nama.toLowerCase().includes(filterValue);
-
-      return result.filter(filter);
+    components: {
+        Splide,
+        SplideSlide,
+        BarcodeData,
+        suratTelaah
     },
-    teknis() {
-      let result = this.permohonan.data.filter((p) => p.status == "teknis");
-      if (!this.permohonan.search) return result;
-
-      const filterValue = this.permohonan.search.toLowerCase();
-
-      const filter = (event) =>
-        event.permohonan_code.toLowerCase().includes(filterValue) ||
-        event.opd.opd.toLowerCase().includes(filterValue) ||
-        event.izin.nama_izin.toLowerCase().includes(filterValue) ||
-        event.pemohon.nama.toLowerCase().includes(filterValue);
-
-      return result.filter(filter);
-    },
-    balasanteknis() {
-      var total = 0;
-      this.permohonan.data.forEach((e) => {
-        if (e.status == "teknisbalas") {
-          total = total + 1;
+    data() {
+        return {
+            barcode: {
+                title: "Cetak Barcode SK"
+            },
+            keabsahan: {
+                data: [],
+                size: 5,
+                page: 1,
+                list: 0,
+                end: 5,
+                search: null,
+            },
+            telaah: {
+                title : null,
+                data: [],
+                size: 5,
+                page: 1,
+                list: 0,
+                end: 5,
+                search: null,
+            },
+            frontoffice: [],
+            options: {
+                perPage: 2,
+                gap: '0.5rem',
+            },
         }
-      });
-      return total;
     },
-  },
-  methods: {
-    handleSizeChange(val) {
-      console.log(`${val} items per page`);
-    },
-    handleCurrentChange(val) {
-      var start = Math.max(0, val - 1);
-      var end = this.permohonan.size;
-      var newstart = Math.max(0, start * end);
-      var newend = val * end;
+    computed: {
+        telaahTerkirim() {
+            var total = 0;
+            this.telaah.data.forEach((e) => {
+                if (e.suratpermintaan.length >= 1) {
+                    total = total + 1;
+                }
+            });
+            return total;
+        },
+        telaahPending() {
+            var total = 0;
+            this.telaah.data.forEach((e) => {
+                if (e.suratpermintaan.length <= 0) {
+                    total = total + 1;
+                }
+            });
+            return total;
+        },
+        IzinKeabsahan() {
+            var result = this.keabsahan.data
+            if (!this.keabsahan.search) return result;
 
-      this.permohonan.list = newstart;
-      this.permohonan.end = newend;
+            const filterValue = this.keabsahan.search.toLowerCase();
 
-      console.log(`current page: ${val}`);
+            const filter = (event) =>
+                event.perusahaan.fullname.toLowerCase().includes(filterValue) ||
+                event.permohonan_code.toLowerCase().includes(filterValue) ||
+                event.opd.opd.toLowerCase().includes(filterValue) ||
+                event.izin.nama_izin.toLowerCase().includes(filterValue) ||
+                event.pemohon.nama.toLowerCase().includes(filterValue);
+
+            return result.filter(filter);
+        },
+        IzinPermintaanTelaah() {
+            var result = this.telaah.data
+            if (!this.telaah.search) return result;
+
+            const filterValue = this.telaah.search.toLowerCase();
+
+            const filter = (event) =>
+                event.perusahaan.fullname.toLowerCase().includes(filterValue) ||
+                event.permohonan_code.toLowerCase().includes(filterValue) ||
+                event.opd.opd.toLowerCase().includes(filterValue) ||
+                event.izin.nama_izin.toLowerCase().includes(filterValue) ||
+                event.pemohon.nama.toLowerCase().includes(filterValue);
+
+            return result.filter(filter);
+        }
     },
-    getpermohonan() {
-      this.page.isLoading = true;
-      this.axios
-        .post(urlBase.web + "/perizinan/permohonan", {
-          type: "data",
-          status: "bo",
-        })
-        .then(
-          (r) => (
-            (this.permohonan.data = r.data), (this.page.isLoading = false)
-          )
-        );
+    created() {
+        this.getValidasi();
+        this.getTelaah();
+        this.getFrontOffice();
     },
-  },
-  components: {
-    "video-background": VideoBackground,
-  },
-};
+    mounted() {
+        this.$parent.justcollpasedmenu();
+    },
+    methods: {
+        SuratTelaahOnClick(a,kategori){
+            this.telaah.title = a
+            this.$refs.suratTelaah.onPopUp(kategori)
+        },
+        handleSizeChange(val) {
+            console.log(`${val} items per page`);
+        },
+        handleCurrentChange(val) {
+            var start = Math.max(0, val - 1);
+            var end = this.keabsahan.size;
+            var newstart = Math.max(0, start * end);
+            var newend = val * end;
+
+            this.keabsahan.list = newstart;
+            this.keabsahan.end = newend;
+
+            console.log(`current page: ${val}`);
+        },
+        getValidasi() {
+            this.axios
+                .post(urlBase.web + "/perizinan/permohonan", {
+                    type: "PermohonanKeabsahan",
+                })
+                .then((r) => {
+                    this.keabsahan.data = r.data
+                });
+        },
+        getTelaah() {
+            this.axios
+                .post(urlBase.web + "/perizinan/permohonan", {
+                    type: "PermohonanPermintaanTelaah",
+                })
+                .then((r) => {
+                    this.telaah.data = r.data
+                });
+        },
+        getFrontOffice() {
+            this.axios
+                .post(urlBase.web + "/master/users", {
+                    type: "dataByrole",
+                    role: "3"
+                })
+                .then((r) => {
+                    this.frontoffice = r.data
+                });
+        },
+        onClickSuratTerkirim() {
+            alert();
+        }
+    }
+}
 </script>
-<style>
-.bo-success {
-  background-color: #a8d4b9;
-  color: white;
-  font-weight: bold;
-}
-.bo-primary {
-  background-color: #8bbee9;
-  color: white;
-  font-weight: bold;
-}
-.bo-warning {
-  background-color: #ffc17a;
-  color: white;
-  font-weight: bold;
-}
-.table-custom {
-  width: 100%;
-}
-.table-custom td {
-  padding: 5px;
-}
-</style>

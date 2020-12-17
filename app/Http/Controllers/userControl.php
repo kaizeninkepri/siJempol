@@ -21,6 +21,8 @@ class userControl extends Controller
             return self::hapusUsers($r);
         } elseif ($type == 'gantipassword') {
             return self::gantipassword($r);
+        } elseif ($type == 'dataByrole') {
+            return self::dataByrole($r);
         }
     }
 
@@ -88,5 +90,10 @@ class userControl extends Controller
         $toDb = array(
             "password" => Hash::make($data['password']),
         );
+    }
+    function dataByrole(Request $r)
+    {
+        $role = $r->get('role');
+        return mdUser::where("role_id", $role)->get();
     }
 }

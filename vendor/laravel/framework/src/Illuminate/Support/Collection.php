@@ -1271,7 +1271,7 @@ class Collection implements ArrayAccess, Enumerable
             return new static(func_get_args());
         }, $this->items], $arrayableItems);
 
-        return new static(call_user_func_array('array_map', $params));
+        return new static(array_map(...$params));
     }
 
     /**
@@ -1304,6 +1304,17 @@ class Collection implements ArrayAccess, Enumerable
     public function count()
     {
         return count($this->items);
+    }
+
+    /**
+     * Count the number of items in the collection by a field or using a callback.
+     *
+     * @param  callable|string  $countBy
+     * @return static
+     */
+    public function countBy($countBy = null)
+    {
+        return new static($this->lazy()->countBy($countBy)->all());
     }
 
     /**
