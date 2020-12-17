@@ -480,12 +480,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      url: {
+        barcode: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pdf/index?type=ttdKadisBarcode'
+      },
       barcode: {
         data: [],
         size: 5,
@@ -2152,45 +2153,18 @@ var render = function() {
                                 )
                               ]),
                               _vm._v(" "),
-                              _c(
-                                "td",
-                                { staticClass: "pd-l-0-force" },
-                                [
-                                  _c(
-                                    "router-link",
-                                    {
-                                      attrs: {
-                                        to: {
-                                          name: "bo-permohonan-detail",
-                                          params: { id: i.permohonan_id }
-                                        }
-                                      }
-                                    },
-                                    [
-                                      _c(
-                                        "el-button",
-                                        {
-                                          staticStyle: {
-                                            background: "#0488A1",
-                                            color: "white",
-                                            border: "none"
-                                          },
-                                          attrs: { size: "small" }
-                                        },
-                                        [
-                                          _c("ion-icon", {
-                                            staticClass: "tx-30",
-                                            attrs: { name: "qr-code-outline" }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                ],
-                                1
-                              )
+                              _c("td", { staticClass: "pd-l-0-force" }, [
+                                _c(
+                                  "a",
+                                  {
+                                    attrs: {
+                                      href: _vm.url.barcode,
+                                      download: ""
+                                    }
+                                  },
+                                  [_vm._v("download")]
+                                )
+                              ])
                             ])
                           }
                         ),

@@ -17,6 +17,8 @@ class pdfControl extends Controller
         $type = $r->get("type");
         if ($type == 'routingSlip') {
             return self::routingSlip($r);
+        } elseif ($type == 'ttdKadisBarcode') {
+            return self::ttdkadis($r);
         }
     }
 
@@ -28,6 +30,12 @@ class pdfControl extends Controller
         ->first();
         $pdf = PDF::loadView('pdf.routingSlip', compact('p'));
         return $pdf->stream('invoice.pdf');
+    }
+
+    function ttdkadis(Request $r)
+    {
+        $qr =  QrCode::format('png')->generate('Make me into a QrCode!');
+        return response($qr)->header('Content-type', 'image/png');
     }
 
     function PersyaratanPDF(Request $r)

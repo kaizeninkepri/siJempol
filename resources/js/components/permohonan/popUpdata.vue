@@ -42,9 +42,7 @@
                                     <span class="tx-12 tx-roboto mg-b-0">{{i.lastjam}}</span>
                                 </td>
                                 <td class="pd-l-0-force">
-                                    <router-link :to="{name: 'bo-permohonan-detail', params: { id: i.permohonan_id }}">
-                                        <el-button style="background:#0488A1; color:white; border:none" size="small"> <ion-icon name="qr-code-outline" class="tx-30"></ion-icon></el-button>
-                                    </router-link>
+                                    <a :href="url.barcode" download>download</a>
 
                                 </td>
                             </tr>
@@ -70,6 +68,9 @@ import urlBase from "@/js/url";
 export default {
     data() {
         return {
+            url : {
+                barcode : urlBase.web + '/pdf/index?type=ttdKadisBarcode',
+            },
             barcode: {
                 data: [],
                 size: 5,

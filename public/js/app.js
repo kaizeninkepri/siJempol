@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://localhost/siJempol/";
+/******/ 	__webpack_require__.p = "https://dpmptsp.kepriprov.go.id/testSijempol/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -29312,11 +29312,12 @@ __webpack_require__.r(__webpack_exports__);
 // const api = "http://panel.inilahkepri.id";
 // const base = "";
 // const web = "http://panel.inilahkepri.id";
-var api = "http://localhost/siJempol";
-var base = "siJempol";
-var web = "http://localhost/siJempol";
-var assets = "http://localhost/Resources/perusahaan";
-var publicData = "http://localhost/siJempol/public"; // const api = "http://192.168.1.98/siJempol";
+// const api = "http://localhost/siJempol";
+// const base = "siJempol";
+// const web = "http://localhost/siJempol";
+// const assets = "http://localhost/Resources/perusahaan";
+// const publicData = "http://localhost/siJempol/public";
+// const api = "http://192.168.1.98/siJempol";
 // const base = "siJempol";
 // const web = "http://192.168.1.98/siJempol"
 // const publicData = "http://192.168.1.98/siJempol/public";
@@ -29326,12 +29327,11 @@ var publicData = "http://localhost/siJempol/public"; // const api = "http://192.
 // const web = "http://appkepri.com/siJempol"
 // const publicData = "http://appkepri.com/siJempol/public";
 // const assets = "http://appkepri.com/Resources/perusahaan";
-// const api = "https://dpmptsp.kepriprov.go.id/testSijempol";
-// const base = "testSijempol";
-// const web = "https://dpmptsp.kepriprov.go.id/testSijempol"
-// const publicData = "https://dpmptsp.kepriprov.go.id/testSijempol/public";
-// const assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
-
+var api = "https://dpmptsp.kepriprov.go.id/testSijempol";
+var base = "testSijempol";
+var web = "https://dpmptsp.kepriprov.go.id/testSijempol";
+var publicData = "https://dpmptsp.kepriprov.go.id/testSijempol/public";
+var assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
 /* harmony default export */ __webpack_exports__["default"] = ({
   api: api,
   base: base,
