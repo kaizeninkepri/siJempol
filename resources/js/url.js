@@ -15,17 +15,17 @@
 // const assets = "http://192.168.1.98/Resources/perusahaan";
 
 
-// const api = "http://appkepri.com/siJempol";
-// const base = "siJempol";
-// const web = "http://appkepri.com/siJempol"
-// const publicData = "http://appkepri.com/siJempol/public";
-// const assets = "http://appkepri.com/Resources/perusahaan";
+const api = "http://appkepri.com/testjempol";
+const base = "testjempol";
+const web = "http://appkepri.com/testjempol"
+const publicData = "http://appkepri.com/testjempol/public";
+const assets = "http://appkepri.com/Resources/perusahaan";
 
-const api = "https://dpmptsp.kepriprov.go.id/testSijempol";
-const base = "testSijempol";
-const web = "https://dpmptsp.kepriprov.go.id/testSijempol"
-const publicData = "https://dpmptsp.kepriprov.go.id/testSijempol/public";
-const assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
+// const api = "https://dpmptsp.kepriprov.go.id/testSijempol";
+// const base = "testSijempol";
+// const web = "https://dpmptsp.kepriprov.go.id/testSijempol"
+// const publicData = "https://dpmptsp.kepriprov.go.id/testSijempol/public";
+// const assets = "https://dpmptsp.kepriprov.go.id/Resources/perusahaan";
 
 
 export default {
