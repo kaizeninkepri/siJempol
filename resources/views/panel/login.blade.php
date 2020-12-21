@@ -42,7 +42,7 @@
 
 <body>
     <div id="app">
-        <login-form></login-form>
+        <login-form> {{ csrf_field() }}</login-form>
 {{-- 
         <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
             <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
