@@ -28975,6 +28975,10 @@ var layananIzin = function layananIzin() {
   return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/layanan/daftarIzin */ "./resources/js/components/layanan/daftarIzin.vue"));
 };
 
+var tatacaraDokumen = function tatacaraDokumen() {
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/tatacara/daftar */ "./resources/js/components/tatacara/daftar.vue"));
+};
+
 var bp2rd = function bp2rd() {
   return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/integration/bp2rd */ "./resources/js/components/integration/bp2rd.vue"));
 };
@@ -28997,6 +29001,10 @@ var dashboardBo = function dashboardBo() {
 
 var pemohonDashboard = function pemohonDashboard() {
   return Promise.all(/*! import() | Pemohondashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard"), __webpack_require__.e("Pemohondashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/pemohon */ "./resources/js/components/dashboard/pemohon.vue"));
+};
+
+var pemohonpermohonanpengajuan = function pemohonpermohonanpengajuan() {
+  return Promise.all(/*! import() | Pemohondashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~Pemohondashboard~dashboard"), __webpack_require__.e("vendors~Pemohondashboard"), __webpack_require__.e("Pemohondashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/pemohon_permohonan */ "./resources/js/components/dashboard/pemohon_permohonan.vue"));
 };
 
 var dashboardOpd = function dashboardOpd() {
@@ -29098,6 +29106,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/integration/bp2rd',
     name: 'integration-bp2rd',
     component: bp2rd
+  }, {
+    path: '/tatacara/dokumen',
+    name: 'tatacara-dokumen',
+    component: tatacaraDokumen
   },
   /* ----------FROMT OFFICE UMUM---------------*/
   {
@@ -29184,6 +29196,10 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
     path: '/pemohon/dashboard',
     name: 'pemohon-dashboard',
     component: pemohonDashboard
+  }, {
+    path: '/pemohon/permohonan/pengajuan',
+    name: 'pemohon-permohonan-pengajuan',
+    component: pemohonpermohonanpengajuan
   }, {
     path: '/pemohon/pengajuan/:id',
     name: 'pemohon-pengajuan',

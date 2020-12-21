@@ -23,7 +23,7 @@ class appcontrol extends Controller
 
     function dashboard()
     {
-        $user = Auth::user();
+        if ($user = Auth::user()) {
         if ($user->role_id == '3') { // do your magic here
             return redirect('fo/dashboard');
         } elseif ($user->role_id == '2') { // do your magic here
@@ -32,6 +32,9 @@ class appcontrol extends Controller
             return redirect('opd/dashboard');
         } else {
             return redirect('/pemohon/dashboard');
+        }
+    } else {
+            return redirect('/login');
         }
     }
 

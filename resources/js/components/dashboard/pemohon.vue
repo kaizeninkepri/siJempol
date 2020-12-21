@@ -17,36 +17,42 @@
             <div class="br-pagebody" style="margin-top:-80px">
                 <el-row :gutter="10">
                     <el-col :md="{span:4, offset : 4}" :xs="{span:22, offset:1}">
-                        <el-card class="card-feature">
-                            <img :src="url.assets+'/images/files.png'" class="img-fluid">
-                            <div class="bottom clearfix">
-                                <el-button type="text" class="button" @click="FocusInpencarian()">Persyaratan</el-button>
-                            </div>
-                        </el-card>
+                        <router-link :to="{name: 'layanan-izin'}">
+                            <el-card class="card-feature">
+                                <img :src="url.assets+'/images/files.png'" class="img-fluid">
+                                <div class="bottom clearfix">
+                                    <el-button type="text" class="button">Persyaratan</el-button>
+                                </div>
+                            </el-card>
+                        </router-link>
                     </el-col>
                     <el-col :md="4" :xs="{span:22, offset:1}">
-                        <el-card class="card-feature">
-                            <img :src="url.assets+'/images/consent.png'" class="img-fluid">
-                            <div class="bottom clearfix">
-                                <el-button type="text" class="button" @click="FocusInpencarian()">Permohonan</el-button>
-                            </div>
-                        </el-card>
+                        <router-link :to="{name: 'pemohon-permohonan-pengajuan'}">
+                            <el-card class="card-feature">
+                                <img :src="url.assets+'/images/consent.png'" class="img-fluid">
+                                <div class="bottom clearfix">
+                                    <el-button type="text" class="button">Permohonan</el-button>
+                                </div>
+                            </el-card>
+                        </router-link>
                     </el-col>
                     <el-col :md="4" :xs="{span:22, offset:1}">
                         <el-card class="card-feature">
                             <img :src="url.assets+'/images/information.png'" class="img-fluid">
                             <div class="bottom clearfix">
-                                <el-button type="text" class="button" @click="FocusInpencarian()">Index Kepuasan</el-button>
+                                <el-button type="text" class="button" @click="IndexKepuasan()">Index Kepuasan</el-button>
                             </div>
                         </el-card>
                     </el-col>
-                     <el-col :md="4" :xs="{span:22, offset:1}">
-                        <el-card class="card-feature">
-                            <img :src="url.assets+'/images/2892186.jpg'" class="img-fluid" style="width:75% !important">
-                            <div class="bottom clearfix">
-                                <el-button type="text" class="button" @click="FocusInpencarian()">Tata Cara Penggunaan</el-button>
-                            </div>
-                        </el-card>
+                    <el-col :md="4" :xs="{span:22, offset:1}">
+                        <router-link :to="{name: 'tatacara-dokumen'}">
+                            <el-card class="card-feature">
+                                <img :src="url.assets+'/images/2892186.jpg'" class="img-fluid" style="width:75% !important">
+                                <div class="bottom clearfix">
+                                    <el-button type="text" class="button">Tata Cara Penggunaan</el-button>
+                                </div>
+                            </el-card>
+                        </router-link>
                     </el-col>
                 </el-row>
                 <el-row class="mg-t-50">
@@ -176,9 +182,11 @@ export default {
         },
     },
     methods: {
-        FocusInpencarian() {
-            this.$refs.pencarianIzin.focus()
-            this.state2 = "izin"
+        IndexKepuasan() {
+            this.$alert('Masih Dalam Maintence', 'Informasi', {
+                confirmButtonText: 'OK',
+              
+            });
         },
         getperusahaan() {
             this.axios
