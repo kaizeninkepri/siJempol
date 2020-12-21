@@ -13,6 +13,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{$identitas->meta_title}}">
     <meta name="twitter:description" content="{{$identitas->meta_description}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Facebook -->
     <meta property="og:title" content="{{$identitas->meta_title}}">
@@ -33,6 +34,7 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{url('public/admin/css/bracket.css')}}">
+    
 </head>
 
 <body>
