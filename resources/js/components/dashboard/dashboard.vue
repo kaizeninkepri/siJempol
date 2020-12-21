@@ -214,7 +214,7 @@
                                 </div>
                             </div>
                             <center>
-                                <el-button style="background:#0488a1; color:white; border:none" @click="SuratTelaahOnClick('Surat Masuk','1')">Lihat Data</el-button>
+                                <el-button style="background:#0488a1; color:white; border:none" @click="SuratTelaahOnClick('Surat Masuk','2')">Lihat Data</el-button>
                             </center>
                         </el-card>
                     </el-col>
@@ -227,7 +227,7 @@
                                 </div>
                             </div>
                             <center>
-                                <el-button style="background:#A99127; color:white; border:none"  @click="SuratTelaahOnClick('Surat Keluar','2')">Lihat Data</el-button>
+                                <el-button style="background:#A99127; color:white; border:none"  @click="SuratTelaahOnClick('Surat Keluar','3')">Lihat Data</el-button>
                             </center>
                         </el-card>
                     </el-col>

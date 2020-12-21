@@ -477,20 +477,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -499,6 +485,7 @@ __webpack_require__.r(__webpack_exports__);
       page: {
         isLoading: true
       },
+      opd: [],
       table: {
         search: null,
         data: [],
@@ -514,6 +501,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.getIzin();
+    this.getopd();
   },
   computed: {
     user: function user() {
@@ -544,6 +532,16 @@ __webpack_require__.r(__webpack_exports__);
         type: "namaIzin"
       }).then(function (r) {
         _this.table.data = r.data;
+      });
+    },
+    getopd: function getopd() {
+      var _this2 = this;
+
+      this.page.isLoading = true;
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/opd", {
+        type: "dataAll"
+      }).then(function (r) {
+        _this2.opd = r.data;
       });
     }
   },
@@ -1558,6 +1556,37 @@ var render = function() {
                               })
                             ],
                             1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "el-col",
+                            { attrs: { md: 8 } },
+                            [
+                              _c(
+                                "el-select",
+                                {
+                                  attrs: { placeholder: "Select" },
+                                  model: {
+                                    value: _vm.table.search,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.table, "search", $$v)
+                                    },
+                                    expression: "table.search"
+                                  }
+                                },
+                                _vm._l(_vm.opd, function(item) {
+                                  return _c("el-option", {
+                                    key: item.opd_id,
+                                    attrs: {
+                                      label: item.opd,
+                                      value: item.opd_id
+                                    }
+                                  })
+                                }),
+                                1
+                              )
+                            ],
+                            1
                           )
                         ],
                         1
@@ -1638,7 +1667,7 @@ var render = function() {
                                           staticClass: "el-icon-printer"
                                         }),
                                         _vm._v(
-                                          " Cetak Persyaratan\n                "
+                                          " Cetak Persyaratan\n                                "
                                         )
                                       ]
                                     )

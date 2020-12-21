@@ -20,7 +20,7 @@ class opdIzinControl extends Controller
 
     function namaIzin()
     {
-        $izin = mdopdIzin::with('opd')->withCount(['persyaratan'])->get();
+        $izin = mdopdIzin::OrderBy('nama_izin', 'ASC')->with('opd')->withCount(['persyaratan'])->get();
         $izin->makeHidden(['nama_izin']);
         return $izin;
     }

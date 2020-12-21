@@ -18,7 +18,7 @@ class mdopdIzin extends Model
 
     function getvalueAttribute()
     {
-        return $this->nama_izin;
+        return ucfirst(strtolower($this->nama_izin));
     }
     function getlinkPDFAttribute()
     {

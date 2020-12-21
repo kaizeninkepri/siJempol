@@ -21,14 +21,38 @@ class appcontrol extends Controller
         return view('panel.index', compact('menu', 'identitas'));
     }
 
+    function dashboard()
+    {
+        $user = Auth::user();
+        if ($user->role_id == '3') { // do your magic here
+            return redirect('fo/dashboard');
+        } elseif ($user->role_id == '2') { // do your magic here
+            return redirect('bo/dashboard');
+        } elseif ($user->role_id == '4') { // do your magic here
+            return redirect('opd/dashboard');
+        } else {
+            return redirect('/pemohon/dashboard');
+        }
+    }
+
     function login(Request $request)
     {
 
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            // Authentication passed...
-            return redirect()->intended('fo/dashboard');
+            $user = Auth::user();
+            if ($user->role_id == '3') { // do your magic here
+                return array('code' => "200", 'url' => "fo/dashboard");
+            } elseif ($user->role_id == '2') { // do your magic here
+                return  array('code' => "200", 'url' => 'bo/dashboard');
+            } elseif ($user->role_id == '4') { // do your magic here
+                return  array('code' => "200", 'url' => 'opd/dashboard');
+            } else {
+                return  array('code' => "200", 'url' => 'pemohon/dashboard');
+            }
+        } else {
+            return  array('code' => "500");
         }
     }
     function register()
@@ -44,8 +68,9 @@ class appcontrol extends Controller
 
     function getById()
     {
-
+        if (Auth::check()) {
         return mdUsers::with(['role'])->where("id", Auth::user()->id)->first();
+         }
     }
 
     function web()

@@ -28790,6 +28790,10 @@ var pemohonPendaftaranSelesai = function pemohonPendaftaranSelesai() {
   return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/pendaftaran/pendaftaranSelesai */ "./resources/js/components/pendaftaran/pendaftaranSelesai.vue"));
 };
 
+var loginForm = function loginForm() {
+  return Promise.all(/*! import() | pemohonPermohonan */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("pemohonPermohonan")]).then(__webpack_require__.bind(null, /*! @/js/components/login/login */ "./resources/js/components/login/login.vue"));
+};
+
 
 
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.config.ignoredElements = [/^ion-/];
@@ -28875,7 +28879,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
   components: {
     pemohonPendaftaran: pemohonPendaftaran,
     pemohonPendaftaranPenelitian: pemohonPendaftaranPenelitian,
-    pemohonPendaftaranSelesai: pemohonPendaftaranSelesai
+    pemohonPendaftaranSelesai: pemohonPendaftaranSelesai,
+    loginForm: loginForm
   }
 });
 

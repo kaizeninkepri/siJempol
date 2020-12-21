@@ -37,32 +37,8 @@
 
 <body>
     <div id="app">
+        <login-form></login-form>
 
-        <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
-            <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
-                <div class="signin-logo tx-center tx-28 tx-bold tx-inverse">
-                    <span class="tx-normal">[</span> <?php echo e($identitas->login_title); ?>
-
-                    <span class="tx-normal">]</span>
-                </div>
-                <div class="tx-center mg-b-60"><?php echo e($identitas->login_subtitle); ?></div>
-                <form method="POST" action="<?php echo e(route('login')); ?>">
-                    <?php echo csrf_field(); ?>
-
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Enter your Email" name="email" />
-                    </div>
-                    <!-- form-group -->
-                    <div class="form-group">
-                        <input type="password" class="form-control" placeholder="Enter your password" name="password" />
-                        <!-- <a href class="tx-info tx-12 d-block mg-t-10">Forgot password?</a> -->
-                    </div>
-                    <!-- form-group -->
-                    <button type="submit" class="btn btn-info btn-block">Login</button>
-                </form>
-            </div>
-            <!-- login-wrapper -->
-        </div>
     </div>
     <script src="<?php echo e(url('public/js/app.js')); ?>"></script>
 </body>

@@ -33,6 +33,7 @@ Vue.use(ElementUI, {
 const pemohonPendaftaran = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaran')
 const pemohonPendaftaranPenelitian = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/penelitian')
 const pemohonPendaftaranSelesai = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaranSelesai')
+const loginForm = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/login/login')
 import Vuelidate from 'vuelidate'
 import VueEvents from 'vue-events'
 Vue.config.ignoredElements = [/^ion-/]
@@ -129,6 +130,7 @@ const app = new Vue({
         pemohonPendaftaran,
         pemohonPendaftaranPenelitian,
         pemohonPendaftaranSelesai,
+        loginForm
     }
 
 });

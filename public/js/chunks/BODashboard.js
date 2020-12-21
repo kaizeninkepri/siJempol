@@ -1864,7 +1864,7 @@ var render = function() {
                                         click: function($event) {
                                           return _vm.SuratTelaahOnClick(
                                             "Surat Masuk",
-                                            "1"
+                                            "2"
                                           )
                                         }
                                       }
@@ -1939,7 +1939,7 @@ var render = function() {
                                         click: function($event) {
                                           return _vm.SuratTelaahOnClick(
                                             "Surat Keluar",
-                                            "2"
+                                            "3"
                                           )
                                         }
                                       }
