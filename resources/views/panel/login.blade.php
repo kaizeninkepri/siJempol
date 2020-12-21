@@ -34,6 +34,7 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{url('public/admin/css/bracket.css')}}">
+    <script>window.Laravel = {csrfToken: '{{ csrf_token() }}'}</script>
     
 </head>
 
