@@ -28761,6 +28761,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+axios__WEBPACK_IMPORTED_MODULE_6___default.a.defaults.headers.common = {
+  'X-Requested-With': 'XMLHttpRequest',
+  'X-CSRF-TOKEN': window.csrf_token
+};
 vue__WEBPACK_IMPORTED_MODULE_2___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]); // import {
 //     Loading,
 //     Notification,

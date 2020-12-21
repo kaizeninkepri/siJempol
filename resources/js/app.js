@@ -11,6 +11,10 @@ import VueAxios from "vue-axios";
 import axios from "axios";
 import store from "@/js/store.js";
 
+axios.defaults.headers.common = {
+    'X-Requested-With': 'XMLHttpRequest',
+    'X-CSRF-TOKEN': window.csrf_token
+};
 Vue.use(Vuex)
 // import {
 //     Loading,
