@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 use Illuminate\Support\Facades\Auth;
 
 class permohonanControl extends Controller
@@ -43,7 +44,11 @@ class permohonanControl extends Controller
             return self::PermohonanKeabsahan($r);
         } else if ($type == 'PermohonanPermintaanTelaah') {
             return self::PermohonanPermintaanTelaah($r);
-        }        
+        } else if ($type == 'GraficByDate') {
+            return self::GraficByDate($r);
+        } else if ($type == 'CetakSerahTerima') {
+            return self::CetakSerahTerima($r);
+        }
     }
 
     /*----------------------=== GET DATA BY ===-----------------------*/
@@ -76,6 +81,7 @@ class permohonanControl extends Controller
         } else {
             $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas'])
                 ->whereBetween('created_at', [$start, $end])
+                ->where('status', 'proses')
                 ->orderBy('created_at', 'DESC')
                 ->get();
         }
@@ -318,6 +324,37 @@ class permohonanControl extends Controller
         ->orderBy('updated_at', 'DESC')
         ->get();
 
+        return $dataByDate;
+    }
+
+    function GraficByDate()
+    {
+        $day = [];
+        $start = Carbon::now()->startOfMonth()->format('Y-m-d');
+        $end = Carbon::now()->format('Y-m-d');
+        $period = CarbonPeriod::create($start, $end);
+
+        foreach ($period as $i => $date) {
+            $label[] = $date->format("d/m/Y");
+            $data[] = mdPermohonan::whereDate('created_at', $date->format('Y-m-d'))->count();
+        }
+
+        $day[] = $label;
+        $day[] = $data;
+
+        return $day;
+    }
+
+    function CetakSerahTerima(Request $r)
+    {
+        $start = Carbon::now()->subMonth(1)->startOfMonth()->toDateString();
+        $end = Carbon::now()->toDateString();
+        $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas'])
+        ->whereBetween('created_at', [$start, $end])
+            ->where('status', '!=', 'proses')
+            ->where('status', '!=', 'tolak')
+            ->orderBy('created_at', 'DESC')
+            ->get();
         return $dataByDate;
     }
 }

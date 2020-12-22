@@ -19,6 +19,8 @@ class pdfControl extends Controller
             return self::routingSlip($r);
         } elseif ($type == 'ttdKadisBarcode') {
             return self::ttdkadis($r);
+        } elseif ($type == 'PersyaratanPDF') {
+            return self::PersyaratanPDF($r);
         }
     }
 

@@ -69,7 +69,7 @@
                         </el-card>
                     </el-col>
                 </el-row>
-                <el-row>
+                <!-- <el-row>
                     <el-col :md="24">
                         <div class="d-flex align-items-center justify-content-between mg-b-5">
                             <h5 class="tx-gray-800 tx-15 tx-bold">PROSES & PERMINTAAN TELAAH TEKNIS
@@ -125,7 +125,7 @@
                             </splide>
                         </el-row>
                     </el-col>
-                </el-row>
+                </el-row> -->
 
             </el-col>
             <el-col :md="8">
@@ -245,13 +245,13 @@
 import urlBase from "@/js/url";
 import BarcodeData from "@/js/components/permohonan/popUpdata";
 import suratTelaah from "@/js/components/surat/modalSurat";
-import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+// import '@splidejs/splide/dist/css/themes/splide-default.min.css';
 
-import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
-import {
-    Splide,
-    SplideSlide,
-} from '@splidejs/vue-splide';
+// import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
+// import {
+//     Splide,
+//     SplideSlide,
+// } from '@splidejs/vue-splide';
 export default {
     components: {
         Splide,

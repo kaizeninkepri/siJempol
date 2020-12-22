@@ -14,11 +14,10 @@
     "/js/chunks/roles.js": "/js/chunks/roles.js",
     "/js/chunks/surat.js": "/js/chunks/surat.js",
     "/js/chunks/trackBYid.js": "/js/chunks/trackBYid.js",
-    "/js/chunks/vendors~BODashboard.js": "/js/chunks/vendors~BODashboard.js",
     "/js/chunks/vendors~Pemohondashboard.js": "/js/chunks/vendors~Pemohondashboard.js",
-    "/js/chunks/vendors~Pemohondashboard~dashboard.js": "/js/chunks/vendors~Pemohondashboard~dashboard.js",
     "/js/chunks/vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan.js": "/js/chunks/vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan.js",
     "/js/chunks/vendors~Users~modulForm~pemohonPermohonan~roles~surat.js": "/js/chunks/vendors~Users~modulForm~pemohonPermohonan~roles~surat.js",
-    "/js/chunks/vendors~roles.js": "/js/chunks/vendors~roles.js",
-    "/js/chunks/vendors~surat.js": "/js/chunks/vendors~surat.js"
+    "/js/chunks/vendors~dashboard.js": "/js/chunks/vendors~dashboard.js",
+    "/js/chunks/vendors~dashboard~surat.js": "/js/chunks/vendors~dashboard~surat.js",
+    "/js/chunks/vendors~roles.js": "/js/chunks/vendors~roles.js"
 }

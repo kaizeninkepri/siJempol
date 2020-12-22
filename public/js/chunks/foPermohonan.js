@@ -334,77 +334,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -599,7 +528,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.verifikasiTolak {\n  border: 1px solid#cf4436;\n\n  color: white;\n  background-color: #e74c3c;\n}\n.verifikasiTerima {\n  border: 1px solid#16a085;\n  color: white;\n  background-color: #16a085;\n}\n.overlay-popup {\n  height: 100%;\n  width: 0;\n  position: fixed;\n  z-index: 999 !important;\n  top: 0;\n  left: 0;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.9);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.overlay-popup-content {\n  position: relative;\n  top: 15%;\n  width: 100%;\n  text-align: center;\n  margin-top: 5px;\n  padding: 10px 50px 10px 50px;\n}\n.overlay-popup a {\n  padding: 8px;\n  text-decoration: none;\n  font-size: 36px;\n  color: #818181;\n  display: block;\n  transition: 0.3s;\n}\n.overlay-popup a:hover,\n.overlay-popup a:focus {\n  color: #f1f1f1;\n}\n.overlay-popup .closebtn {\n  position: absolute;\n  top: 20px;\n  right: 45px;\n  font-size: 60px;\n}\n", ""]);
+exports.push([module.i, "\n.verifikasiTolak {\n    border: 1px solid#cf4436;\n\n    color: white;\n    background-color: #e74c3c;\n}\n.verifikasiTerima {\n    border: 1px solid#16a085;\n    color: white;\n    background-color: #16a085;\n}\n.overlay-popup {\n    height: 100%;\n    width: 0;\n    position: fixed;\n    z-index: 999 !important;\n    top: 0;\n    left: 0;\n    background-color: rgb(0, 0, 0);\n    background-color: rgba(0, 0, 0, 0.9);\n    overflow-x: hidden;\n    transition: 0.5s;\n}\n.overlay-popup-content {\n    position: relative;\n    top: 15%;\n    width: 100%;\n    text-align: center;\n    margin-top: 5px;\n    padding: 10px 50px 10px 50px;\n}\n.overlay-popup a {\n    padding: 8px;\n    text-decoration: none;\n    font-size: 36px;\n    color: #818181;\n    display: block;\n    transition: 0.3s;\n}\n.overlay-popup a:hover,\n.overlay-popup a:focus {\n    color: #f1f1f1;\n}\n.overlay-popup .closebtn {\n    position: absolute;\n    top: 20px;\n    right: 45px;\n    font-size: 60px;\n}\n", ""]);
 
 // exports
 
@@ -939,7 +868,7 @@ var render = function() {
                 { staticClass: "verifikasiTolak" },
                 [
                   _vm._v(
-                    "\n      DATA PERMOHONAN BELUM DI VERIFIKASI    \n      "
+                    "\n            DATA PERMOHONAN BELUM DI VERIFIKASI    \n            "
                   ),
                   _c(
                     "el-button",
@@ -964,7 +893,7 @@ var render = function() {
                 { staticClass: "verifikasiTerima" },
                 [
                   _vm._v(
-                    "\n      DATA PERMOHONAN BELUM DI VERIFIKASI    \n      "
+                    "\n            DATA PERMOHONAN BELUM DI VERIFIKASI    \n            "
                   ),
                   _c(
                     "el-button",
@@ -989,7 +918,7 @@ var render = function() {
               staticClass:
                 "tx-uppercase tx-15 mg-t-40 pd-x-10 bd-b pd-b-10 tx-roboto tx-white-7"
             },
-            [_vm._v("\n      DATA PERUSAHAAN\n    ")]
+            [_vm._v("\n            DATA PERUSAHAAN\n        ")]
           ),
           _vm._v(" "),
           _c("nav", { staticClass: "nav br-nav-mailbox flex-column" }, [
@@ -1055,7 +984,7 @@ var render = function() {
               staticClass:
                 "tx-uppercase tx-15 mg-t-40 pd-x-10 bd-b pd-b-10 tx-roboto tx-white-7"
             },
-            [_vm._v("\n      NARAHUBUNG\n    ")]
+            [_vm._v("\n            NARAHUBUNG\n        ")]
           ),
           _vm._v(" "),
           _c("nav", { staticClass: "nav br-nav-mailbox flex-column" }, [
@@ -1105,15 +1034,24 @@ var render = function() {
       _c("div", { staticClass: "br-contentpanel" }, [
         _vm._m(0),
         _vm._v(" "),
-        _c("div", { staticClass: "pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30" }, [
-          _c("h4", { staticClass: "tx-gray-800 mg-b-5" }, [
-            _vm._v(_vm._s(_vm.permohonan.izin.nama_izin))
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "mg-b-0" }, [
-            _vm._v("Sektor " + _vm._s(_vm.permohonan.opd.opd) + ".")
-          ])
-        ]),
+        _c(
+          "div",
+          { staticClass: "pd-x-20 pd-sm-x-30 pd-t-20 pd-sm-t-30" },
+          [
+            _c("h4", { staticClass: "tx-gray-800 mg-b-5" }, [
+              _vm._v(_vm._s(_vm.permohonan.izin.nama_izin))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "mg-b-20" }, [
+              _vm._v("Sektor " + _vm._s(_vm.permohonan.opd.opd) + ".")
+            ]),
+            _vm._v(" "),
+            _c("el-button", { attrs: { type: "primary", size: "medium" } }, [
+              _vm._v("Cetak Checklist Serah Terima")
+            ])
+          ],
+          1
+        ),
         _vm._v(" "),
         _c(
           "div",
@@ -1174,9 +1112,9 @@ var render = function() {
                                     { staticClass: "tx-13 tx-bold mg-b-0" },
                                     [
                                       _vm._v(
-                                        "\n                      " +
+                                        "\n                                            " +
                                           _vm._s(i.persyaratan) +
-                                          "\n                    "
+                                          "\n                                        "
                                       )
                                     ]
                                   )
@@ -1246,7 +1184,7 @@ var render = function() {
                                           attrs: { name: "newspaper-outline" }
                                         }),
                                         _vm._v(
-                                          "   Pratinjau\n                    "
+                                          "   Pratinjau\n                                        "
                                         )
                                       ],
                                       1
@@ -1384,9 +1322,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n              " +
+                          "\n                            " +
                             _vm._s(_vm.pratinjau.title) +
-                            "\n            "
+                            "\n                        "
                         )
                       ]
                     )

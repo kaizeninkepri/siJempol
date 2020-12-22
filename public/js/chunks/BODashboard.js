@@ -12,11 +12,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
 /* harmony import */ var _js_components_permohonan_popUpdata__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/components/permohonan/popUpdata */ "./resources/js/components/permohonan/popUpdata.vue");
 /* harmony import */ var _js_components_surat_modalSurat__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/components/surat/modalSurat */ "./resources/js/components/surat/modalSurat.vue");
-/* harmony import */ var _splidejs_splide_dist_css_themes_splide_default_min_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @splidejs/splide/dist/css/themes/splide-default.min.css */ "./node_modules/@splidejs/splide/dist/css/themes/splide-default.min.css");
-/* harmony import */ var _splidejs_splide_dist_css_themes_splide_default_min_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_splidejs_splide_dist_css_themes_splide_default_min_css__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _splidejs_splide_dist_css_themes_splide_sea_green_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @splidejs/splide/dist/css/themes/splide-sea-green.min.css */ "./node_modules/@splidejs/splide/dist/css/themes/splide-sea-green.min.css");
-/* harmony import */ var _splidejs_splide_dist_css_themes_splide_sea_green_min_css__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_splidejs_splide_dist_css_themes_splide_sea_green_min_css__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _splidejs_vue_splide__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @splidejs/vue-splide */ "./node_modules/@splidejs/vue-splide/src/js/index.js");
 //
 //
 //
@@ -262,14 +257,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 
-
-
-
+ // import '@splidejs/splide/dist/css/themes/splide-default.min.css';
+// import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
+// import {
+//     Splide,
+//     SplideSlide,
+// } from '@splidejs/vue-splide';
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Splide: _splidejs_vue_splide__WEBPACK_IMPORTED_MODULE_5__["Splide"],
-    SplideSlide: _splidejs_vue_splide__WEBPACK_IMPORTED_MODULE_5__["SplideSlide"],
+    Splide: Splide,
+    SplideSlide: SplideSlide,
     BarcodeData: _js_components_permohonan_popUpdata__WEBPACK_IMPORTED_MODULE_1__["default"],
     suratTelaah: _js_components_surat_modalSurat__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
@@ -1125,347 +1123,6 @@ var render = function() {
                                     1
                                   )
                                 ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-row",
-                    [
-                      _c(
-                        "el-col",
-                        { attrs: { md: 24 } },
-                        [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                "d-flex align-items-center justify-content-between mg-b-5"
-                            },
-                            [
-                              _c(
-                                "h5",
-                                { staticClass: "tx-gray-800 tx-15 tx-bold" },
-                                [
-                                  _vm._v(
-                                    "PROSES & PERMINTAAN TELAAH TEKNIS\n                            "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "el-col",
-                                {
-                                  staticClass:
-                                    "d-flex align-items-center justify-content-end",
-                                  attrs: { md: 8 }
-                                },
-                                [
-                                  _c("el-tag", { attrs: { type: "danger" } }, [
-                                    _vm._v(_vm._s(_vm.telaahTerkirim))
-                                  ]),
-                                  _vm._v(
-                                    "    \n                                "
-                                  ),
-                                  _c("el-tag", { attrs: { type: "success" } }, [
-                                    _vm._v(_vm._s(_vm.telaahPending))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("el-input", {
-                                    staticClass: "col-md-10",
-                                    attrs: {
-                                      size: "small",
-                                      placeholder:
-                                        "Ketik Nama perusahaan / izin"
-                                    },
-                                    model: {
-                                      value: _vm.telaah.search,
-                                      callback: function($$v) {
-                                        _vm.$set(_vm.telaah, "search", $$v)
-                                      },
-                                      expression: "telaah.search"
-                                    }
-                                  })
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "el-row",
-                            { attrs: { gutter: 10 } },
-                            [
-                              _c(
-                                "splide",
-                                {
-                                  attrs: {
-                                    options: _vm.options,
-                                    slides: _vm.IzinPermintaanTelaah
-                                  }
-                                },
-                                _vm._l(_vm.IzinPermintaanTelaah, function(
-                                  i,
-                                  Index
-                                ) {
-                                  return _c(
-                                    "splide-slide",
-                                    { key: Index },
-                                    [
-                                      _c(
-                                        "el-col",
-                                        { attrs: { md: 24 } },
-                                        [
-                                          _c(
-                                            "el-card",
-                                            {
-                                              attrs: {
-                                                "body-style": {
-                                                  padding: "10px",
-                                                  background: "#f4f7ff",
-                                                  minHeight: "200px"
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _c(
-                                                "p",
-                                                {
-                                                  staticClass: "mg-b-5 tx-bold"
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(
-                                                      i.perusahaan.fullname
-                                                    )
-                                                  )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "p",
-                                                {
-                                                  staticStyle: {
-                                                    "min-height": "80px"
-                                                  }
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    _vm._s(i.izin.nama_izin)
-                                                  )
-                                                ]
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "el-row",
-                                                {
-                                                  attrs: {
-                                                    justify: "space-between",
-                                                    type: "flex"
-                                                  }
-                                                },
-                                                [
-                                                  _c(
-                                                    "el-col",
-                                                    { attrs: { md: 14 } },
-                                                    [
-                                                      i.suratpermintaan
-                                                        .length <= 0
-                                                        ? _c(
-                                                            "el-tag",
-                                                            {
-                                                              attrs: {
-                                                                type: "danger"
-                                                              }
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                "Surat Telaah Belum Dikirim"
-                                                              )
-                                                            ]
-                                                          )
-                                                        : _vm._e(),
-                                                      _vm._v(" "),
-                                                      i.suratpermintaan
-                                                        .length >= 1
-                                                        ? _c(
-                                                            "el-tag",
-                                                            {
-                                                              staticStyle: {
-                                                                cursor:
-                                                                  "pointer"
-                                                              },
-                                                              attrs: {
-                                                                type: "success"
-                                                              },
-                                                              on: {
-                                                                click: function(
-                                                                  $event
-                                                                ) {
-                                                                  return _vm.onClickSuratTerkirim()
-                                                                }
-                                                              }
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                "Surat Telaah Dikirim"
-                                                              )
-                                                            ]
-                                                          )
-                                                        : _vm._e()
-                                                    ],
-                                                    1
-                                                  ),
-                                                  _vm._v(" "),
-                                                  _c(
-                                                    "el-col",
-                                                    { attrs: { md: 8 } },
-                                                    [
-                                                      _c(
-                                                        "router-link",
-                                                        {
-                                                          attrs: {
-                                                            to: {
-                                                              name:
-                                                                "bo-surat-permintaan",
-                                                              params: {
-                                                                id:
-                                                                  i.permohonan_id
-                                                              }
-                                                            }
-                                                          }
-                                                        },
-                                                        [
-                                                          _c(
-                                                            "el-button",
-                                                            {
-                                                              attrs: {
-                                                                size: "small",
-                                                                type: "primary"
-                                                              }
-                                                            },
-                                                            [
-                                                              _vm._v(
-                                                                "Upload Surat"
-                                                              )
-                                                            ]
-                                                          )
-                                                        ],
-                                                        1
-                                                      )
-                                                    ],
-                                                    1
-                                                  )
-                                                ],
-                                                1
-                                              ),
-                                              _vm._v(" "),
-                                              _c(
-                                                "p",
-                                                { staticClass: "mg-t-15" },
-                                                [_vm._v(_vm._s(i.lastjam))]
-                                              )
-                                            ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                }),
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "el-row",
-                    { staticClass: "mg-t-30", attrs: { gutter: 10 } },
-                    [
-                      _c(
-                        "el-col",
-                        { attrs: { md: 24 } },
-                        [
-                          _c(
-                            "h5",
-                            {
-                              staticClass: "tx-gray-800 mg-b-15 tx-15 tx-bold"
-                            },
-                            [
-                              _vm._v("BALASAN TELAAH TEKNIS "),
-                              _c("ion-icon", {
-                                staticClass: "tx-primary tx-15 m-t-15",
-                                attrs: { name: "chevron-forward-outline" }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "el-row",
-                            { attrs: { gutter: 10 } },
-                            [
-                              _c(
-                                "splide",
-                                { attrs: { options: _vm.options } },
-                                _vm._l(10, function(i, Index) {
-                                  return _c(
-                                    "splide-slide",
-                                    { key: Index },
-                                    [
-                                      _c(
-                                        "el-col",
-                                        { attrs: { md: 24 } },
-                                        [
-                                          _c(
-                                            "el-card",
-                                            {
-                                              attrs: {
-                                                "body-style": {
-                                                  padding: "10px",
-                                                  background: "#f4f7ff"
-                                                }
-                                              }
-                                            },
-                                            [
-                                              _c(
-                                                "p",
-                                                {
-                                                  staticClass: "mg-b-5 tx-bold"
-                                                },
-                                                [_vm._v("Nama Perususahaan")]
-                                              ),
-                                              _vm._v(" "),
-                                              _c("p", [_vm._v("Nama Izin")]),
-                                              _vm._v(" "),
-                                              _c("p", [_vm._v("Tanggal Masuk")])
-                                            ]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    ],
-                                    1
-                                  )
-                                }),
                                 1
                               )
                             ],
@@ -2508,6 +2165,118 @@ var staticRenderFns = [
 ]
 render._withStripped = true
 
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js":
+/*!********************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/runtime/componentNormalizer.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return normalizeComponent; });
+/* globals __VUE_SSR_CONTEXT__ */
+
+// IMPORTANT: Do NOT use ES2015 features in this file (except for modules).
+// This module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle.
+
+function normalizeComponent (
+  scriptExports,
+  render,
+  staticRenderFns,
+  functionalTemplate,
+  injectStyles,
+  scopeId,
+  moduleIdentifier, /* server only */
+  shadowMode /* vue-cli only */
+) {
+  // Vue.extend constructor export interop
+  var options = typeof scriptExports === 'function'
+    ? scriptExports.options
+    : scriptExports
+
+  // render functions
+  if (render) {
+    options.render = render
+    options.staticRenderFns = staticRenderFns
+    options._compiled = true
+  }
+
+  // functional template
+  if (functionalTemplate) {
+    options.functional = true
+  }
+
+  // scopedId
+  if (scopeId) {
+    options._scopeId = 'data-v-' + scopeId
+  }
+
+  var hook
+  if (moduleIdentifier) { // server build
+    hook = function (context) {
+      // 2.3 injection
+      context =
+        context || // cached call
+        (this.$vnode && this.$vnode.ssrContext) || // stateful
+        (this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext) // functional
+      // 2.2 with runInNewContext: true
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__
+      }
+      // inject component styles
+      if (injectStyles) {
+        injectStyles.call(this, context)
+      }
+      // register component module identifier for async chunk inferrence
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier)
+      }
+    }
+    // used by ssr in case component is cached and beforeCreate
+    // never gets called
+    options._ssrRegister = hook
+  } else if (injectStyles) {
+    hook = shadowMode
+      ? function () {
+        injectStyles.call(
+          this,
+          (options.functional ? this.parent : this).$root.$options.shadowRoot
+        )
+      }
+      : injectStyles
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // for template-only hot-reload because in that case the render fn doesn't
+      // go through the normalizer
+      options._injectStyles = hook
+      // register for functional component in vue file
+      var originalRender = options.render
+      options.render = function renderWithStyleInjection (h, context) {
+        hook.call(context)
+        return originalRender(h, context)
+      }
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate
+      options.beforeCreate = existing
+        ? [].concat(existing, hook)
+        : [hook]
+    }
+  }
+
+  return {
+    exports: scriptExports,
+    options: options
+  }
+}
 
 
 /***/ }),

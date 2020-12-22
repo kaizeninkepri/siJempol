@@ -127,87 +127,17 @@
                  <tr>
                      <th width="10">NO</th>
                      <th width="300px">URAIAN</th>
-                     <th>NAMA/NOMOR</th>
-                     <th>TGL</th>
-                     <th>KET</th>
                      <th>PARAF</th>
                  </tr>
              </thead>
              <tbody>
+                 <?php $__currentLoopData = $p->persyaratan; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $index => $i): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                  <tr>
-                     <td>1</td>
-                     <td>Pemeriksaan & validasi berkas</td>
-                     <td></td>
-                     <td></td>
-                     <td></td>
+                     <td><?php echo e($index+1); ?></td>
+                     <td><?php echo e($i->persyaratan); ?></td>
                      <td></td>
                  </tr>
-                 <tr>
-                    <td>2</td>
-                    <td>Pembuatan surat permohonan rekomendasi teknis</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Penandatanganan surat permohonan</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-               
-                <tr>
-                    <td>4</td>
-                    <td>Nomor Surat Rekomendasi Teknis</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Pembuatan draf SK (legal drafting)</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Telaah legal drafting SK</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Penandatanganan SK oleh Kadis</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                
-                <tr>
-                    <td>8</td>
-                    <td>Persetujuan dan penomoran SK</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Dokumentasi arsip SK izin/non izin</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
              </tbody>
          </table>
         </div>

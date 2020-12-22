@@ -10,6 +10,7 @@ import router from '@/js/routes'
 import VueAxios from "vue-axios";
 import axios from "axios";
 import store from "@/js/store.js";
+// import VueSplide from '@splidejs/vue-splide';
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
@@ -27,12 +28,11 @@ import 'element-ui/lib/theme-chalk/index.css';
 import wysiwyg from "vue-wysiwyg";
 import "vue-wysiwyg/dist/vueWysiwyg.css";
 import locale from 'element-ui/lib/locale/lang/en'
-import VueSplide from '@splidejs/vue-splide';
+
 import ElementUI from 'element-ui'
 Vue.use(ElementUI, {
     locale
 })
-
 
 const pemohonPendaftaran = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/pendaftaran')
 const pemohonPendaftaranPenelitian = () => import( /* webpackChunkName: "pemohonPermohonan" */ '@/js/components/pendaftaran/penelitian')
@@ -46,7 +46,7 @@ Vue.use(VueMask);
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',
-    height: '2px'
+    height: '5px'
 })
 
 /**
@@ -63,7 +63,8 @@ Vue.use(VueEvents)
 Vue.use(VueAxios, axios)
 Vue.use(Vuelidate)
 
-Vue.use( VueSplide );
+// Vue.use( VueSplide );
+
 
 const app = new Vue({
     el: '#app',

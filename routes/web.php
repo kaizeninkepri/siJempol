@@ -33,6 +33,8 @@ Route::post("/pendaftaran/penelitian/post", "penelitianControl@index");
 Route::get("/pendaftaran/penelitian/penelitianById", "opdIzinControl@penelitianById");
 Route::get("/pendaftaran/selesai", "pendaftarancontrol@pendaftaranSelesai");
 
+Route::get("/grafik/permohonan", "permohonanControl@GraficByDate");
+
 // Route::get("/register", "appcontrol@register");
 
 Route::middleware(['auth'])->group(function () {

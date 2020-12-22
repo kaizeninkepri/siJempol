@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);/* (ignored) */var map = {
+@import url(https://fonts.googleapis.com/css?family=Nunito);var map = {
 	"./af": "./node_modules/moment/locale/af.js",
 	"./af.js": "./node_modules/moment/locale/af.js",
 	"./ar": "./node_modules/moment/locale/ar.js",
@@ -285,7 +285,7 @@ webpackContext.keys = function webpackContextKeys() {
 };
 webpackContext.resolve = webpackContextResolve;
 module.exports = webpackContext;
-webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";@charset "UTF-8";
+webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";/* (ignored) */@charset "UTF-8";
 
 /*!
  * Bootstrap v4.5.0 (https://getbootstrap.com/)
