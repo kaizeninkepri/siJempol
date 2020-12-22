@@ -33,6 +33,9 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="<?php echo e(url('public/admin/css/bracket.css')); ?>">
+    <script type="text/javascript">      
+        window.csrf_token = "<?php echo e(csrf_token()); ?>"
+      </script>
 </head>
 
 <body>

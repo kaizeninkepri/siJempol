@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title><?php echo e($identitas->meta_title); ?></title>
-
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <link rel="shortcut icon" href="<?php echo e(url('public/images/logo.png')); ?>" type="image/x-icon" />
     <link rel="apple-touch-icon" href="<?php echo e(url('public/images/logo.png')); ?>">
     <!-- vendor css -->
@@ -23,7 +23,9 @@
     <link rel="stylesheet" href="<?php echo e(url('public/admin/css/bracket.css')); ?>">
     <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
-
+    <script type="text/javascript">      
+        window.csrf_token = "<?php echo e(csrf_token()); ?>"
+      </script>
 </head>
 
 <body>

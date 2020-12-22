@@ -48,6 +48,7 @@
                   >
                     <option value="Badan Usaha">Badan Usaha</option>
                     <option value="perorangan">Perorangan</option>
+                    <option value="penelitian">penelitian</option>
                   </select>
                 </div>
               </div>
@@ -63,11 +64,7 @@
                     v-model.trim="$v.perusahaan.jenis.$model"
                     :class="{ 'is-invalid': $v.perusahaan.jenis.$error }"
                   >
-                    <option value="PT">PT</option>
-                    <option value="CV">CV</option>
-                    <option value="KELOMPOK MASYARAKAT">
-                      KELOMPOK MASYARAKAT
-                    </option>
+                    <option v-for="(i,Index) in KategoriBadanUsaha" :key="Index" :value="i.nama">{{i.nama}}</option>
                   </select>
                 </div>
               </div>
@@ -326,6 +323,16 @@ export default {
       loading: {
         submit: false,
       },
+      KategoriBadanUsaha :[
+        {nama  : "PT"},
+        {nama  : "CV"},
+        {nama  : "FIRMA"},
+        {nama  : "PERDDATA"},
+        {nama  : "KOMANDITER"},
+        {nama  : "NEGARA UMUM"},
+        {nama  : "YAYASAN"},
+        {nama  : "KELOMPOK MASYARAKAT"},
+      ],
       colors: [
         { color: "#f56c6c", percentage: 20 },
         { color: "#e6a23c", percentage: 40 },
@@ -435,10 +442,16 @@ export default {
     },
   },
   methods: {
+    ToPenelitianForm(){
+       window.location.href = url.web + '/pendaftaran/penelitian'
+    },
     kategoriAction(){
       if(this.perusahaan.kategori == 'perorangan'){
         this.perusahaan.jenis = 'pt';
         this.jenisshow = false;
+      }
+      else if(this.perusahaan.kategori == 'penelitian'){
+        this.ToPenelitianForm();
       }
       else{
         this.jenisshow = true

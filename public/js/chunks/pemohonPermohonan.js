@@ -1100,9 +1100,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1111,6 +1108,23 @@ __webpack_require__.r(__webpack_exports__);
       loading: {
         submit: false
       },
+      KategoriBadanUsaha: [{
+        nama: "PT"
+      }, {
+        nama: "CV"
+      }, {
+        nama: "FIRMA"
+      }, {
+        nama: "PERDDATA"
+      }, {
+        nama: "KOMANDITER"
+      }, {
+        nama: "NEGARA UMUM"
+      }, {
+        nama: "YAYASAN"
+      }, {
+        nama: "KELOMPOK MASYARAKAT"
+      }],
       colors: [{
         color: "#f56c6c",
         percentage: 20
@@ -1250,10 +1264,15 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    ToPenelitianForm: function ToPenelitianForm() {
+      window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pendaftaran/penelitian';
+    },
     kategoriAction: function kategoriAction() {
       if (this.perusahaan.kategori == 'perorangan') {
         this.perusahaan.jenis = 'pt';
         this.jenisshow = false;
+      } else if (this.perusahaan.kategori == 'penelitian') {
+        this.ToPenelitianForm();
       } else {
         this.jenisshow = true;
       }
@@ -3144,6 +3163,12 @@ var render = function() {
                                   "option",
                                   { attrs: { value: "perorangan" } },
                                   [_vm._v("Perorangan")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "option",
+                                  { attrs: { value: "penelitian" } },
+                                  [_vm._v("penelitian")]
                                 )
                               ]
                             )
@@ -3211,27 +3236,20 @@ var render = function() {
                                       }
                                     }
                                   },
-                                  [
-                                    _c("option", { attrs: { value: "PT" } }, [
-                                      _vm._v("PT")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("option", { attrs: { value: "CV" } }, [
-                                      _vm._v("CV")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
+                                  _vm._l(_vm.KategoriBadanUsaha, function(
+                                    i,
+                                    Index
+                                  ) {
+                                    return _c(
                                       "option",
                                       {
-                                        attrs: { value: "KELOMPOK MASYARAKAT" }
+                                        key: Index,
+                                        domProps: { value: i.nama }
                                       },
-                                      [
-                                        _vm._v(
-                                          "\n                    KELOMPOK MASYARAKAT\n                  "
-                                        )
-                                      ]
+                                      [_vm._v(_vm._s(i.nama))]
                                     )
-                                  ]
+                                  }),
+                                  0
                                 )
                               ])
                             ])

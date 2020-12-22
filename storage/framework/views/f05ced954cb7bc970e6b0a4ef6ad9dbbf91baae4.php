@@ -13,7 +13,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo e($identitas->meta_title); ?>">
     <meta name="twitter:description" content="<?php echo e($identitas->meta_description); ?>">
-
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <!-- Facebook -->
     <meta property="og:title" content="<?php echo e($identitas->meta_title); ?>">
     <meta property="og:description" content="<?php echo e($identitas->meta_description); ?>">
@@ -33,6 +33,9 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="<?php echo e(url('public/admin/css/bracket.css')); ?>">
+    <script type="text/javascript">      
+        window.csrf_token = "<?php echo e(csrf_token()); ?>"
+      </script>
 </head>
 
 <body>

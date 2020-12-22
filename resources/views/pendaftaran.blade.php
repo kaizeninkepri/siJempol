@@ -13,7 +13,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{$identitas->meta_title}}">
     <meta name="twitter:description" content="{{$identitas->meta_description}}">
-
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Facebook -->
     <meta property="og:title" content="{{$identitas->meta_title}}">
     <meta property="og:description" content="{{$identitas->meta_description}}">
@@ -33,11 +33,14 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{url('public/admin/css/bracket.css')}}">
+    <script type="text/javascript">      
+        window.csrf_token = "{{ csrf_token() }}"
+      </script>
 </head>
 
 <body>
     <div id="app">
-        <pemohon-pendaftaran></pemohon-pendaftaran>
+        <pemohon-pendaftaran> {{ csrf_field() }}</pemohon-pendaftaran>
     </div>
     <script src="{{url('public/js/app.js')}}"></script>
 </body>

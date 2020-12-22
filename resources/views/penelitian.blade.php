@@ -33,6 +33,9 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{url('public/admin/css/bracket.css')}}">
+    <script type="text/javascript">      
+        window.csrf_token = "{{ csrf_token() }}"
+      </script>
 </head>
 
 <body>
