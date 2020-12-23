@@ -1531,7 +1531,7 @@ var render = function() {
                                         click: function($event) {
                                           return _vm.SuratTelaahOnClick(
                                             "Surat Keluar",
-                                            "3"
+                                            "1"
                                           )
                                         }
                                       }

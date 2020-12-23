@@ -169,7 +169,7 @@
                                 </div>
                             </div>
                             <center>
-                                <el-button style="background:#A99127; color:white; border:none"  @click="SuratTelaahOnClick('Surat Keluar','3')">Lihat Data</el-button>
+                                <el-button style="background:#A99127; color:white; border:none"  @click="SuratTelaahOnClick('Surat Keluar','1')">Lihat Data</el-button>
                             </center>
                         </el-card>
                     </el-col>
