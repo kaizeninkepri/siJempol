@@ -203,8 +203,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Splide: Splide,
-    SplideSlide: SplideSlide,
     BarcodeData: _js_components_permohonan_popUpdata__WEBPACK_IMPORTED_MODULE_1__["default"],
     suratTelaah: _js_components_surat_modalSurat__WEBPACK_IMPORTED_MODULE_2__["default"]
   },

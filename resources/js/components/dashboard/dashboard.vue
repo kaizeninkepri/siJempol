@@ -190,8 +190,6 @@ import suratTelaah from "@/js/components/surat/modalSurat";
 // s
 export default {
     components: {
-        Splide,
-        SplideSlide,
         BarcodeData,
         suratTelaah
     },
