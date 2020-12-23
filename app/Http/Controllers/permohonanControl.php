@@ -348,7 +348,7 @@ class permohonanControl extends Controller
     function CetakSerahTerima(Request $r)
     {
         $start = Carbon::now()->subMonth(1)->startOfMonth()->toDateString();
-        $end = Carbon::now()->toDateString();
+        $end = date('Y-m-d', strtotime("+1 day"));
         $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas'])
         ->whereBetween('created_at', [$start, $end])
             ->where('status', '!=', 'proses')

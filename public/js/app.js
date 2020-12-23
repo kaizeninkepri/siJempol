@@ -22498,6 +22498,14 @@ __webpack_require__.r(__webpack_exports__);
  // import rolesmodul from '@/js/components/roles/modul'
 // import rolespermission from '@/js/components/roles/permission'
 
+var ikmQuestion = function ikmQuestion() {
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/ikm/question */ "./resources/js/components/ikm/question.vue"));
+};
+
+var ikmQuestionForm = function ikmQuestionForm() {
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/ikm/question_form */ "./resources/js/components/ikm/question_form.vue"));
+};
+
 var layananIzin = function layananIzin() {
   return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/layanan/daftarIzin */ "./resources/js/components/layanan/daftarIzin.vue"));
 };
@@ -22620,6 +22628,16 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   base: _js_url__WEBPACK_IMPORTED_MODULE_2__["default"].base,
   hash: false,
   routes: [
+  /* ----------IKM---------------*/
+  {
+    path: '/ikm/question',
+    name: 'ikm-question',
+    component: ikmQuestion
+  }, {
+    path: '/ikm/question/form',
+    name: 'ikm-question-form',
+    component: ikmQuestionForm
+  },
   /* ----------UMUM---------------*/
   {
     path: '/identitas',

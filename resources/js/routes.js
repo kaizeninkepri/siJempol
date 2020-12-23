@@ -5,6 +5,11 @@ import urlBase from '@/js/url';
 // import rolesmodul from '@/js/components/roles/modul'
 // import rolespermission from '@/js/components/roles/permission'
 
+const ikmQuestion = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/ikm/question')
+const ikmQuestionForm = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/ikm/question_form')
+
+
+
 const layananIzin = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/layanan/daftarIzin')
 const tatacaraDokumen = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/tatacara/daftar')
 const bp2rd = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/integration/bp2rd')
@@ -55,6 +60,17 @@ const router = new VueRouter({
     base: urlBase.base,
     hash: false,
     routes: [
+        /* ----------IKM---------------*/
+        {
+            path: '/ikm/question',
+            name: 'ikm-question',
+            component: ikmQuestion,
+        },
+        {
+            path: '/ikm/question/form',
+            name: 'ikm-question-form',
+            component: ikmQuestionForm,
+        },
         /* ----------UMUM---------------*/
         {
             path: '/identitas',
