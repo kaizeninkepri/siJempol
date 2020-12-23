@@ -69,64 +69,6 @@
                         </el-card>
                     </el-col>
                 </el-row>
-                <!-- <el-row>
-                    <el-col :md="24">
-                        <div class="d-flex align-items-center justify-content-between mg-b-5">
-                            <h5 class="tx-gray-800 tx-15 tx-bold">PROSES & PERMINTAAN TELAAH TEKNIS
-                            </h5>
-                            <el-col :md="8" class="d-flex align-items-center justify-content-end">
-                                <el-tag type="danger">{{telaahTerkirim}}</el-tag> &nbsp;&nbsp;&nbsp;
-                                <el-tag type="success">{{telaahPending}}</el-tag>
-                                <el-input class="col-md-10" size="small" v-model="telaah.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
-                            </el-col>
-                        </div>
-
-                        <el-row :gutter="10">
-                            <splide :options="options" :slides="IzinPermintaanTelaah">
-                                <splide-slide v-for="(i, Index) in IzinPermintaanTelaah" :key="Index">
-                                    <el-col :md="24">
-                                        <el-card :body-style="{ padding: '10px', background:'#f4f7ff', minHeight:'200px'}">
-                                            <p class="mg-b-5 tx-bold">{{i.perusahaan.fullname}}</p>
-                                            <p style="min-height:80px">{{i.izin.nama_izin}}</p>
-                                            <el-row justify="space-between" type="flex">
-                                                <el-col :md="14">
-                                                    <el-tag v-if="i.suratpermintaan.length <= 0" type="danger">Surat Telaah Belum Dikirim</el-tag>
-                                                    <el-tag v-if="i.suratpermintaan.length >= 1" type="success" @click="onClickSuratTerkirim()" style="cursor:pointer">Surat Telaah Dikirim</el-tag>
-                                                </el-col>
-                                                <el-col :md="8">
-                                                    <router-link :to="{name: 'bo-surat-permintaan', params: { id: i.permohonan_id }}">
-                                                        <el-button size="small" type="primary">Upload Surat</el-button>
-                                                    </router-link>
-                                                </el-col>
-                                            </el-row>
-                                            <p class='mg-t-15'>{{i.lastjam}}</p>
-                                        </el-card>
-                                    </el-col>
-                                </splide-slide>
-                            </splide>
-                        </el-row>
-                    </el-col>
-                </el-row>
-                <el-row :gutter="10" class="mg-t-30">
-                    <el-col :md="24">
-                        <h5 class="tx-gray-800 mg-b-15 tx-15 tx-bold">BALASAN TELAAH TEKNIS <ion-icon name="chevron-forward-outline" class="tx-primary tx-15 m-t-15"></ion-icon>
-                        </h5>
-                        <el-row :gutter="10">
-                            <splide :options="options">
-                                <splide-slide v-for="(i, Index) in 10" :key="Index">
-                                    <el-col :md="24">
-                                        <el-card :body-style="{ padding: '10px', background:'#f4f7ff'}">
-                                            <p class="mg-b-5 tx-bold">Nama Perususahaan</p>
-                                            <p>Nama Izin</p>
-                                            <p>Tanggal Masuk</p>
-                                        </el-card>
-                                    </el-col>
-                                </splide-slide>
-                            </splide>
-                        </el-row>
-                    </el-col>
-                </el-row> -->
-
             </el-col>
             <el-col :md="8">
                 <el-row :gutter="10">
@@ -245,13 +187,7 @@
 import urlBase from "@/js/url";
 import BarcodeData from "@/js/components/permohonan/popUpdata";
 import suratTelaah from "@/js/components/surat/modalSurat";
-// import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-
-// import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
-// import {
-//     Splide,
-//     SplideSlide,
-// } from '@splidejs/vue-splide';
+// s
 export default {
     components: {
         Splide,

@@ -22284,7 +22284,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
- // import VueSplide from '@splidejs/vue-splide';
 
 axios__WEBPACK_IMPORTED_MODULE_6___default.a.defaults.headers.common = {
   'X-Requested-With': 'XMLHttpRequest',

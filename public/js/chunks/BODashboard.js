@@ -197,72 +197,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
- // import '@splidejs/splide/dist/css/themes/splide-default.min.css';
-// import '@splidejs/splide/dist/css/themes/splide-sea-green.min.css';
-// import {
-//     Splide,
-//     SplideSlide,
-// } from '@splidejs/vue-splide';
+ // s
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {

@@ -10,7 +10,6 @@ import router from '@/js/routes'
 import VueAxios from "vue-axios";
 import axios from "axios";
 import store from "@/js/store.js";
-// import VueSplide from '@splidejs/vue-splide';
 
 axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest',
