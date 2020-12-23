@@ -71,7 +71,7 @@ class permohonanControl extends Controller
     function data(Request $r)
     {
         $start = Carbon::now()->subMonth(5)->startOfMonth()->toDateString();
-        $end = Carbon::now()->toDateString();
+        $end = date("Y-m-d");
         $status = $r->get("status");
         if ($status == 'bo') {
             $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas'])
