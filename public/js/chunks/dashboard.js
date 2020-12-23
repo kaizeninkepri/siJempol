@@ -288,7 +288,8 @@ __webpack_require__.r(__webpack_exports__);
         type: "data",
         status: "proses"
       }).then(function (r) {
-        return _this.permohonan.data = r.data, _this.page.isLoading = false;
+        _this.permohonan.data = r.data, _this.page.isLoading = false;
+        console.log(r.data);
       });
     },
     getCetakSerahTerima: function getCetakSerahTerima() {

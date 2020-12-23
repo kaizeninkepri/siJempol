@@ -222,9 +222,11 @@ export default {
                     status: "proses",
                 })
                 .then(
-                    (r) => (
-                        (this.permohonan.data = r.data), (this.page.isLoading = false)
-                    )
+                    (r) => {
+                        this.permohonan.data = r.data,
+                        this.page.isLoading = false
+                        console.log(r.data)
+                    }
                 );
         },
         getCetakSerahTerima() {
