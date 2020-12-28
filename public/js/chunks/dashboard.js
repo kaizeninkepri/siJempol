@@ -558,14 +558,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -574,63 +566,48 @@ __webpack_require__.r(__webpack_exports__);
       page: {
         isLoading: true
       },
-      opd: [],
-      table: {
-        search: null,
-        data: [],
-        size: 10,
-        page: 1,
-        list: 0,
-        end: 10
+      indikator: {
+        data: [{
+          indikator: null,
+          point: [{
+            text: null,
+            nilai: null
+          }, {
+            text: null,
+            nilai: null
+          }, {
+            text: null,
+            nilai: null
+          }, {
+            text: null,
+            nilai: null
+          }]
+        }]
       }
     };
   },
   mounted: function mounted() {
     this.page.isLoading = false;
   },
-  created: function created() {
-    this.getIzin();
-    this.getopd();
-  },
+  created: function created() {},
   computed: {
     user: function user() {
       return this.$store.state.StoreUser.user;
-    },
-    tabledata: function tabledata() {
-      return this.table.data.slice(this.table.list, this.table.end);
     }
   },
   methods: {
-    handleSizeChange: function handleSizeChange(val) {
-      console.log("".concat(val, " items per page"));
-    },
-    handleCurrentChange: function handleCurrentChange(val) {
-      var start = Math.max(0, val - 1);
-      var end = this.table.size;
-      var newstart = Math.max(0, start * end);
-      var newend = val * end;
-      this.table.list = newstart;
-      this.table.end = newend;
-      console.log("current page: ".concat(val));
-    },
-    getIzin: function getIzin() {
-      var _this = this;
-
-      this.page.isLoading = true;
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/opd/izin", {
-        type: "namaIzin"
-      }).then(function (r) {
-        _this.table.data = r.data;
-      });
+    indikatorAdd: function indikatorAdd() {
+      var AddData = this.indikator.data[0];
+      this.indikator.data.push(AddData);
     },
     getopd: function getopd() {
-      var _this2 = this;
+      var _this = this;
 
       this.page.isLoading = true;
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/opd", {
         type: "dataAll"
       }).then(function (r) {
-        _this2.opd = r.data;
+        _this.opd = r.data;
       });
     }
   },
@@ -2472,10 +2449,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284& ***!
-  \********************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&scoped=true&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&scoped=true& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2500,7 +2477,7 @@ var render = function() {
                 [
                   _c("div", { staticClass: "pd-x-0 pd-t-30" }, [
                     _c("h4", { staticClass: "tx-gray-800 mg-b-5 tx-bold" }, [
-                      _vm._v("INDEX KEPUASAN LAYANAN")
+                      _vm._v("INDIKATOR IKM")
                     ]),
                     _vm._v(" "),
                     _vm.user.role
@@ -2510,9 +2487,16 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("el-button", { attrs: { type: "primary" } }, [
-                    _vm._v("Tambah Data")
-                  ])
+                  _c(
+                    "router-link",
+                    { attrs: { to: { name: "ikm-question" } } },
+                    [
+                      _c("el-button", { attrs: { type: "warning" } }, [
+                        _vm._v("Kembali")
+                      ])
+                    ],
+                    1
+                  )
                 ],
                 1
               ),
@@ -2521,196 +2505,123 @@ var render = function() {
                 "div",
                 { staticClass: "br-pagebody" },
                 [
-                  _c(
-                    "el-card",
-                    { staticClass: "mg-b-20" },
-                    [
-                      _c(
-                        "el-row",
-                        { attrs: { gutter: 10 } },
-                        [
-                          _c(
-                            "el-col",
-                            { attrs: { md: 8 } },
-                            [
-                              _c("el-input", {
-                                attrs: {
-                                  placeholder: "Cari Nama Izin / Sektor ",
-                                  "prefix-icon": "el-icon-search"
-                                },
-                                model: {
-                                  value: _vm.table.search,
-                                  callback: function($$v) {
-                                    _vm.$set(_vm.table, "search", $$v)
-                                  },
-                                  expression: "table.search"
-                                }
-                              })
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "el-col",
-                            { attrs: { md: 8 } },
-                            [
+                  _vm._l(_vm.indikator.data, function(i, Index) {
+                    return _c(
+                      "el-card",
+                      { key: Index, staticClass: "mg-b-10" },
+                      [
+                        _c("table", { staticStyle: { width: "100%" } }, [
+                          _c("tbody", [
+                            _c("tr", [
+                              _c("td", { attrs: { valign: "top" } }, [
+                                _vm._v(_vm._s(Index + 1))
+                              ]),
+                              _vm._v(" "),
                               _c(
-                                "el-select",
-                                {
-                                  attrs: { placeholder: "Select" },
-                                  model: {
-                                    value: _vm.table.search,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.table, "search", $$v)
-                                    },
-                                    expression: "table.search"
-                                  }
-                                },
-                                _vm._l(_vm.opd, function(item) {
-                                  return _c("el-option", {
-                                    key: item.opd_id,
-                                    attrs: {
-                                      label: item.opd,
-                                      value: item.opd_id
+                                "td",
+                                { attrs: { valign: "top" } },
+                                [
+                                  _c("el-input", {
+                                    attrs: { placeholder: "Uraian Indikator" },
+                                    model: {
+                                      value: i.indikator,
+                                      callback: function($$v) {
+                                        _vm.$set(i, "indikator", $$v)
+                                      },
+                                      expression: "i.indikator"
                                     }
-                                  })
-                                }),
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "pd-l-50 pd-t-10" },
+                                    _vm._l(i.point, function(p, Pindex) {
+                                      return _c(
+                                        "el-row",
+                                        {
+                                          key: Pindex,
+                                          staticClass: "b mg-b-10",
+                                          attrs: { gutter: 10 }
+                                        },
+                                        [
+                                          _c(
+                                            "el-col",
+                                            { attrs: { md: 18 } },
+                                            [
+                                              _c("el-input", {
+                                                attrs: {
+                                                  size: "small",
+                                                  placeholder: "point Indikator"
+                                                },
+                                                model: {
+                                                  value: p.text,
+                                                  callback: function($$v) {
+                                                    _vm.$set(p, "text", $$v)
+                                                  },
+                                                  expression: "p.text"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "el-col",
+                                            { attrs: { md: 4 } },
+                                            [
+                                              _c("el-input", {
+                                                attrs: {
+                                                  size: "small",
+                                                  placeholder: "Nilai Indikator"
+                                                },
+                                                model: {
+                                                  value: p.nilai,
+                                                  callback: function($$v) {
+                                                    _vm.$set(p, "nilai", $$v)
+                                                  },
+                                                  expression: "p.nilai"
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    }),
+                                    1
+                                  )
+                                ],
                                 1
                               )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  ),
+                            ])
+                          ])
+                        ])
+                      ]
+                    )
+                  }),
                   _vm._v(" "),
                   _c(
                     "el-card",
                     [
                       _c(
-                        "el-table",
+                        "el-button",
                         {
-                          staticStyle: { width: "100%" },
-                          attrs: {
-                            data: _vm.tabledata.filter(function(data) {
-                              return (
-                                !_vm.table.search ||
-                                data.value
-                                  .toLowerCase()
-                                  .includes(_vm.table.search.toLowerCase())
-                              )
-                            })
+                          on: {
+                            click: function($event) {
+                              return _vm.indikatorAdd()
+                            }
                           }
                         },
-                        [
-                          _c("el-table-column", {
-                            attrs: { type: "index", label: "No", width: "50" }
-                          }),
-                          _vm._v(" "),
-                          _c("el-table-column", {
-                            attrs: { prop: "value", label: "Nama Izin" }
-                          }),
-                          _vm._v(" "),
-                          _c("el-table-column", {
-                            attrs: {
-                              prop: "persyaratan_count",
-                              width: "120",
-                              label: "Jumlah Izin",
-                              align: "center"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("el-table-column", {
-                            attrs: { prop: "opd.opd", label: "Sektor" }
-                          }),
-                          _vm._v(" "),
-                          _c("el-table-column", {
-                            attrs: {
-                              prop: "kategori",
-                              label: "Kategori",
-                              width: "180"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("el-table-column", {
-                            attrs: {
-                              prop: "address",
-                              label: "Aksi",
-                              width: "180"
-                            },
-                            scopedSlots: _vm._u([
-                              {
-                                key: "default",
-                                fn: function(scope) {
-                                  return [
-                                    _c(
-                                      "a",
-                                      {
-                                        attrs: {
-                                          href: scope.row.linkPDF,
-                                          target: "_blank"
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "el-icon-printer"
-                                        }),
-                                        _vm._v(
-                                          " Cetak Persyaratan\n                                "
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                }
-                              }
-                            ])
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-row",
-                        { attrs: { justify: "end", type: "flex" } },
-                        [
-                          _c(
-                            "el-col",
-                            { attrs: { md: 10 } },
-                            [
-                              _c("el-pagination", {
-                                staticStyle: { float: "right" },
-                                attrs: {
-                                  background: "",
-                                  "current-page": _vm.table.page,
-                                  "page-size": _vm.table.size,
-                                  layout: "total, prev, pager, next",
-                                  total: _vm.table.data.length
-                                },
-                                on: {
-                                  "size-change": _vm.handleSizeChange,
-                                  "current-change": _vm.handleCurrentChange,
-                                  "update:currentPage": function($event) {
-                                    return _vm.$set(_vm.table, "page", $event)
-                                  },
-                                  "update:current-page": function($event) {
-                                    return _vm.$set(_vm.table, "page", $event)
-                                  }
-                                }
-                              })
-                            ],
-                            1
-                          )
-                        ],
-                        1
+                        [_vm._v("Tambah Indikator")]
                       )
                     ],
                     1
-                  )
+                  ),
+                  _vm._v(" "),
+                  _c("pre", [_vm._v(_vm._s(_vm.indikator))])
                 ],
-                1
+                2
               )
             ])
       ])
@@ -3714,7 +3625,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _question_form_vue_vue_type_template_id_ca742284___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./question_form.vue?vue&type=template&id=ca742284& */ "./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&");
+/* harmony import */ var _question_form_vue_vue_type_template_id_ca742284_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./question_form.vue?vue&type=template&id=ca742284&scoped=true& */ "./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&scoped=true&");
 /* harmony import */ var _question_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./question_form.vue?vue&type=script&lang=js& */ "./resources/js/components/ikm/question_form.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
@@ -3726,11 +3637,11 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _question_form_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _question_form_vue_vue_type_template_id_ca742284___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _question_form_vue_vue_type_template_id_ca742284___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _question_form_vue_vue_type_template_id_ca742284_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _question_form_vue_vue_type_template_id_ca742284_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  null,
+  "ca742284",
   null
   
 )
@@ -3756,19 +3667,19 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284& ***!
-  \**************************************************************************************/
+/***/ "./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&scoped=true&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&scoped=true& ***!
+  \**************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_question_form_vue_vue_type_template_id_ca742284___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./question_form.vue?vue&type=template&id=ca742284& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_question_form_vue_vue_type_template_id_ca742284___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_question_form_vue_vue_type_template_id_ca742284_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./question_form.vue?vue&type=template&id=ca742284&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ikm/question_form.vue?vue&type=template&id=ca742284&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_question_form_vue_vue_type_template_id_ca742284_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_question_form_vue_vue_type_template_id_ca742284___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_question_form_vue_vue_type_template_id_ca742284_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

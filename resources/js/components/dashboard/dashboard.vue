@@ -16,57 +16,114 @@
                         </el-card>
                     </el-col>
                     <el-col :md="24" class="mg-b-20">
-                        <div class="d-flex align-items-center justify-content-between mg-b-5">
-                            <h5 class="tx-gray-800 tx-15 tx-bold">VERIFIKASI BERKAS MASUK
-                            </h5>
-                            <el-col :md="8" class="d-flex align-items-center justify-content-end">
-                                <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{keabsahan.data.length}}</span>
-                                <el-input class="col-md-10" size="small" v-model="keabsahan.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
-                            </el-col>
-                        </div>
-                        <el-card style="border-radius:10px;">
-                            <table class="table" style="min-height:620px">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Nama Perusahaan</th>
-                                        <th>Izin</th>
-                                        <th>Tanggal/Waktu</th>
-                                        <th>Pengaturan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(i, Index) in IzinKeabsahan.slice(keabsahan.list, keabsahan.end)" :key="Index">
-                                        <td>{{Index + 1}}</td>
-                                        <td class="pd-l-0-force">
-                                            <div class="tx-13 tx-bold mg-b-0">{{i.perusahaan.fullname}}</div>
-                                            <div class="tx-12 tx-roboto mg-b-1 tx-primary" v-if="i.perusahaan.kategori != 'perorangan'">{{i.pemohon.nama}}</div>
-                                            <p class="tx-12 tx-roboto">{{i.pemohon.contact}} / {{i.pemohon.email}}</p>
-                                        </td>
-                                        <td class="pd-l-0-force">
-                                            <div>
-                                                <p class="tx-13 tx-bold mg-b-0 tx-teal">{{i.izin.nama_izin}}</p>
-                                                <p class="tx-12 tx-roboto mg-b-0">{{i.opd.opd}} / {{i.izin.kategori}}</p>
-                                            </div>
-                                        </td>
-                                        <td class="pd-l-0-force">
-                                            <span class="tx-12 tx-roboto mg-b-0">{{i.lastjam}}</span>
-                                        </td>
-                                        <td class="pd-l-0-force">
-                                            <router-link :to="{name: 'bo-permohonan-detail', params: { id: i.permohonan_id }}">
-                                                <el-button style="background:#0488A1; color:white; border:none" size="small">Verifikasi</el-button>
-                                            </router-link>
+                        <el-tabs v-model="activeName">
+                            <el-tab-pane label="VALIDASI KEABSAHAN DOKUMEN" name="first">
+                                <div class="d-flex align-items-center justify-content-between mg-b-5">
+                                    <h5 class="tx-gray-800 tx-15 tx-bold">VERIFIKASI BERKAS MASUK
+                                    </h5>
+                                    <el-col :md="8" class="d-flex align-items-center justify-content-end">
+                                        <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{keabsahan.data.length}}</span>
+                                        <el-input class="col-md-10" size="small" v-model="keabsahan.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                                    </el-col>
+                                </div>
+                                <el-card style="border-radius:10px;">
+                                    <table class="table" style="min-height:620px">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Perusahaan</th>
+                                                <th>Izin</th>
+                                                <th>Tanggal/Waktu</th>
+                                                <th>Pengaturan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(i, Index) in IzinKeabsahan.slice(keabsahan.list, keabsahan.end)" :key="Index">
+                                                <td>{{Index + 1}}</td>
+                                                <td class="pd-l-0-force">
+                                                    <div class="tx-13 tx-bold mg-b-0">{{i.perusahaan.fullname}}</div>
+                                                    <div class="tx-12 tx-roboto mg-b-1 tx-primary" v-if="i.perusahaan.kategori != 'perorangan'">{{i.pemohon.nama}}</div>
+                                                    <p class="tx-12 tx-roboto">{{i.pemohon.contact}} / {{i.pemohon.email}}</p>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <div>
+                                                        <p class="tx-13 tx-bold mg-b-0 tx-teal">{{i.izin.nama_izin}}</p>
+                                                        <p class="tx-12 tx-roboto mg-b-0">{{i.opd.opd}} / {{i.izin.kategori}}</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <span class="tx-12 tx-roboto mg-b-0">{{i.lastjam}}</span>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <router-link :to="{name: 'bo-permohonan-detail', params: { id: i.permohonan_id }}">
+                                                        <el-button style="background:#0488A1; color:white; border:none" size="small">Verifikasi</el-button>
+                                                    </router-link>
 
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <el-row justify="end" type="flex">
-                                <el-col :md="10">
-                                    <el-pagination style="float: right" background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="keabsahan.page" :page-size="keabsahan.size" :page-count="keabsahan.pagecount" layout="total, prev, pager, next" :total="keabsahan.data.length"></el-pagination>
-                                </el-col>
-                            </el-row>
-                        </el-card>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <el-row justify="end" type="flex">
+                                        <el-col :md="10">
+                                            <el-pagination style="float: right" background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="keabsahan.page" :page-size="keabsahan.size" :page-count="keabsahan.pagecount" layout="total, prev, pager, next" :total="keabsahan.data.length"></el-pagination>
+                                        </el-col>
+                                    </el-row>
+                                </el-card>
+                            </el-tab-pane>
+                            <el-tab-pane label="PERMINTAAN TELAAH TEKNIS" name="second">
+                                <div class="d-flex align-items-center justify-content-between mg-b-5">
+                                    <h5 class="tx-gray-800 tx-15 tx-bold">PENGIRIMAN TELAAH TEKNIS
+                                    </h5>
+                                    <el-col :md="8" class="d-flex align-items-center justify-content-end">
+                                        <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{telaah.data.length}}</span>
+                                        <el-input class="col-md-10" size="small" v-model="telaah.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                                    </el-col>
+                                </div>
+                                <el-card style="border-radius:10px;">
+                                    <table class="table" style="min-height:620px">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Perusahaan</th>
+                                                <th>Izin</th>
+                                                <th>Tanggal/Waktu</th>
+                                                <th>Pengaturan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(i, Index) in IzinPermintaanTelaah.slice(telaah.list, telaah.end)" :key="Index">
+                                                <td>{{Index + 1}}</td>
+                                                <td class="pd-l-0-force">
+                                                    <div class="tx-13 tx-bold mg-b-0">{{i.perusahaan.fullname}}</div>
+                                                    <div class="tx-12 tx-roboto mg-b-1 tx-primary" v-if="i.perusahaan.kategori != 'perorangan'">{{i.pemohon.nama}}</div>
+                                                    <p class="tx-12 tx-roboto">{{i.pemohon.contact}} / {{i.pemohon.email}}</p>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <div>
+                                                        <p class="tx-13 tx-bold mg-b-0 tx-teal">{{i.izin.nama_izin}}</p>
+                                                        <p class="tx-12 tx-roboto mg-b-0">{{i.opd.opd}} / {{i.izin.kategori}}</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <span class="tx-12 tx-roboto mg-b-0">{{i.lastjam}}</span>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <router-link :to="{name: 'bo-surat-permintaan', params: { id: i.permohonan_id }}">
+                                                        <el-button style="background:#c8b046; color:white; border:none" size="small">Upload Surat</el-button>
+                                                    </router-link>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <el-row justify="end" type="flex">
+                                        <el-col :md="10">
+                                            <el-pagination style="float: right" background @size-change="handleSizeChangetelaah" @current-change="handleCurrentChangetelaah" :current-page.sync="telaah.page" :page-size="telaah.size" :page-count="telaah.pagecount" layout="total, prev, pager, next" :total="telaah.data.length"></el-pagination>
+                                        </el-col>
+                                    </el-row>
+                                </el-card>
+                            </el-tab-pane>
+                        </el-tabs>
                     </el-col>
                 </el-row>
             </el-col>
@@ -169,7 +226,7 @@
                                 </div>
                             </div>
                             <center>
-                                <el-button style="background:#A99127; color:white; border:none"  @click="SuratTelaahOnClick('Surat Keluar','1')">Lihat Data</el-button>
+                                <el-button style="background:#A99127; color:white; border:none" @click="SuratTelaahOnClick('Surat Keluar','1')">Lihat Data</el-button>
                             </center>
                         </el-card>
                     </el-col>
@@ -195,6 +252,7 @@ export default {
     },
     data() {
         return {
+            activeName: "first",
             barcode: {
                 title: "Cetak Barcode SK"
             },
@@ -207,7 +265,7 @@ export default {
                 search: null,
             },
             telaah: {
-                title : null,
+                title: null,
                 data: [],
                 size: 5,
                 page: 1,
@@ -281,7 +339,7 @@ export default {
         this.$parent.justcollpasedmenu();
     },
     methods: {
-        SuratTelaahOnClick(a,kategori){
+        SuratTelaahOnClick(a, kategori) {
             this.telaah.title = a
             this.$refs.suratTelaah.onPopUp(kategori)
         },
@@ -296,6 +354,20 @@ export default {
 
             this.keabsahan.list = newstart;
             this.keabsahan.end = newend;
+
+            console.log(`current page: ${val}`);
+        },
+        handleSizeChangetelaah(val) {
+            console.log(`${val} items per page`);
+        },
+        handleCurrentChangetelaah(val) {
+            var start = Math.max(0, val - 1);
+            var end = this.telaah.size;
+            var newstart = Math.max(0, start * end);
+            var newend = val * end;
+
+            this.telaah.list = newstart;
+            this.telaah.end = newend;
 
             console.log(`current page: ${val}`);
         },
@@ -333,3 +405,9 @@ export default {
     }
 }
 </script>
+
+<style>
+.el-tabs__item {
+    font-weight: bold;
+}
+</style>

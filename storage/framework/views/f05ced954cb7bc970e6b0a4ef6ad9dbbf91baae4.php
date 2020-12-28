@@ -40,7 +40,7 @@
 
 <body>
     <div id="app">
-        <pemohon-pendaftaran></pemohon-pendaftaran>
+        <pemohon-pendaftaran> <?php echo e(csrf_field()); ?></pemohon-pendaftaran>
     </div>
     <script src="<?php echo e(url('public/js/app.js')); ?>"></script>
 </body>

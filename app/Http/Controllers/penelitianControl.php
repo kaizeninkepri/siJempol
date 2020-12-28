@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\model\mdPenelitian;
 use App\model\mdperusahaan;
 use App\model\mdperusahaanPemohon;
 use Illuminate\Http\Request;
@@ -19,29 +20,33 @@ class penelitianControl extends Controller
 
     function insertData(Request $r)
     {
-        $data = $r->get("nama");
-        $toDBPperusahaan = array(
-            "npwp" =>  "-",
-            "kategori" => "PERORANGAN",
-            "nama" => $data['nama'],
-            "alamat" => $data['alamat'],
-            "contact" => $data['contact'],
-            "email" => $data['email'],
-            "jenis" => "mahasiswa",
-            "provinsi" => "provinsi",
-            "kota" => "kota",
+        $data = $r->get('penelitian');
+        $person = $r->get('person');
+        $waktu_mulai = date("Y-m-d", strtotime($data['waktu']));
+        $waktu_selesai = date("Y-m-d", strtotime($data['waktu']));
+        $penelitianToDB = array(
+            "judul" => $data['judul'],
+            "lokasi" => $data['lokasi'],
+            "waktu_mulai" => $waktu_mulai,
+            "waktu_selesai" => $waktu_selesai,
+            "universitas" => $data['universitas'],
+            "permohonan_nomor" => $data['permohonan_nomor'],
+            "kategori" => $data['kategori'],
+            "status" => "pending",
         );
-        $perusahaan = mdperusahaan::insert($toDBPperusahaan);
-        $perusahaan_id = DB::getPdo()->lastInsertId();
-        $toDBperusahaanPemohon = array(
-            "perusahaan_id" => $perusahaan_id,
-            "nama" => $data['nama'],
-            "contact" => $data['contact'],
-            "email" => $data['email'],
-            "identitas_no" =>  $data['identitas_no'],
-            "identitas_kategori" =>  "Nomor Induk Mahasiswa",
-            "keterangan" =>  $data,
+        $penelitianInsert = mdPenelitian::insert($penelitianToDB);
+        $penelitianId = DB::getPdo()->lastInsertId();
+
+
+        $penelitianPersonToDB = array(
+            "identitas_nomor" => $person['identitas_nomor'],
+            "nama" => $person['nama'],
+            "jenjang" => $person['jenjang'],
+            "jurusan" => $person['jurusan'],
+            "contact" => $person['contact'],
+            "identitas_kategori" => $person['identitas_kategori'],
+            "email" => $person['email'],
+            "alamat" => $person['alamat'],
         );
-        $pemohon = mdperusahaanPemohon::insert($toDBperusahaanPemohon);
     }
 }

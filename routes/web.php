@@ -40,6 +40,7 @@ Route::get("/grafik/permohonan", "permohonanControl@GraficByDate");
 Route::middleware(['auth'])->group(function () {
 
     Route::POST("/opd/izin", "opdIzinControl@index");
+    Route::POST("/master/penelitian", "penelitianControl@index");
 
     Route::POST("/master/users", "userControl@index");
     Route::POST("/master/opd", "opdControl@index");

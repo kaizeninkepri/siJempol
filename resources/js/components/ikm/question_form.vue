@@ -7,48 +7,40 @@
         <div v-else key="warning">
             <div class="br-msg-header d-flex justify-content-between">
                 <div class="pd-x-0 pd-t-30">
-                    <h4 class="tx-gray-800 mg-b-5 tx-bold">INDEX KEPUASAN LAYANAN</h4>
+                    <h4 class="tx-gray-800 mg-b-5 tx-bold">INDIKATOR IKM</h4>
                     <p class="mg-b-0" v-if="user.role">{{user.role.role}}</p>
                 </div>
-                <el-button type="primary">Tambah Data</el-button>
+                <router-link :to="{name :'ikm-question'}">
+                    <el-button type="warning">Kembali</el-button>
+                </router-link>
             </div>
             <div class="br-pagebody">
-                <el-card class="mg-b-20">
-                    <el-row :gutter="10">
-                        <el-col :md="8">
-                            <el-input placeholder="Cari Nama Izin / Sektor " prefix-icon="el-icon-search" v-model="table.search"></el-input>
-                        </el-col>
-                        <el-col :md="8">
-                            <el-select v-model="table.search" placeholder="Select">
-                                <el-option v-for="item in opd" :key="item.opd_id" :label="item.opd" :value="item.opd_id">
-                                </el-option>
-                            </el-select>
-                        </el-col>
-                    </el-row>
+                <el-card v-for="(i,Index) in indikator.data" :key="Index" class="mg-b-10">
+                    <table style="width:100%">
+                        <tbody>
+                            <tr>
+                                <td valign="top">{{Index + 1}}</td>
+                                <td valign="top">
+                                    <el-input v-model="i.indikator" placeholder="Uraian Indikator"></el-input>
+                                    <div class="pd-l-50 pd-t-10">
+                                        <el-row :gutter="10" v-for="(p,Pindex) in i.point" :key="Pindex" class="b mg-b-10">
+                                            <el-col :md="18">
+                                                <el-input v-model="p.text" size="small" placeholder="point Indikator"></el-input>
+                                            </el-col>
+                                            <el-col :md="4">
+                                                <el-input v-model="p.nilai" size="small" placeholder="Nilai Indikator"></el-input>
+                                            </el-col>
+                                        </el-row>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </el-card>
                 <el-card>
-                    <el-table :data="tabledata.filter(data => !table.search 
-                  || data.value.toLowerCase().includes(table.search.toLowerCase()) 
-                )" style="width: 100%">
-                        <el-table-column type="index" label="No" width="50"></el-table-column>
-                        <el-table-column prop="value" label="Nama Izin"></el-table-column>
-                        <el-table-column prop="persyaratan_count" width="120" label="Jumlah Izin" align="center"></el-table-column>
-                        <el-table-column prop="opd.opd" label="Sektor"></el-table-column>
-                        <el-table-column prop="kategori" label="Kategori" width="180"></el-table-column>
-                        <el-table-column prop="address" label="Aksi" width="180">
-                            <template slot-scope="scope">
-                                <a :href="scope.row.linkPDF" target="_blank">
-                                    <i class="el-icon-printer"></i> Cetak Persyaratan
-                                </a>
-                            </template>
-                        </el-table-column>
-                    </el-table>
-                    <el-row justify="end" type="flex">
-                        <el-col :md="10">
-                            <el-pagination style="float: right" background @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="table.page" :page-size="table.size" layout="total, prev, pager, next" :total="table.data.length"></el-pagination>
-                        </el-col>
-                    </el-row>
+                    <el-button @click="indikatorAdd()">Tambah Indikator</el-button>
                 </el-card>
+                <pre>{{indikator}}</pre>
             </div>
         </div>
     </transition>
@@ -64,58 +56,41 @@ export default {
             page: {
                 isLoading: true,
             },
-            opd: [],
-            table: {
-                search: null,
-                data: [],
-                size: 10,
-                page: 1,
-                list: 0,
-                end: 10,
-            },
+            indikator: {
+                data: [{
+                    indikator: null,
+                    point: [{
+                        text: null,
+                        nilai: null,
+                    }, {
+                        text: null,
+                        nilai: null,
+                    }, {
+                        text: null,
+                        nilai: null,
+                    }, {
+                        text: null,
+                        nilai: null,
+                    }]
+                }]
+            }
         };
     },
     mounted() {
         this.page.isLoading = false;
     },
     created() {
-        this.getIzin();
-        this.getopd();
     },
     computed: {
         user() {
             return this.$store.state.StoreUser.user;
         },
-        tabledata() {
-            return this.table.data.slice(this.table.list, this.table.end);
-        },
     },
     methods: {
-        handleSizeChange(val) {
-            console.log(`${val} items per page`);
+        indikatorAdd() {
+            var AddData = this.indikator.data[0]
+            this.indikator.data.push(AddData)
         },
-        handleCurrentChange(val) {
-            var start = Math.max(0, val - 1);
-            var end = this.table.size;
-            var newstart = Math.max(0, start * end);
-            var newend = val * end;
-
-            this.table.list = newstart;
-            this.table.end = newend;
-
-            console.log(`current page: ${val}`);
-        },
-        getIzin() {
-            this.page.isLoading = true;
-            this.axios
-                .post(urlBase.web + "/opd/izin", {
-                    type: "namaIzin",
-                })
-                .then((r) => {
-                    this.table.data = r.data;
-                });
-        },
-
         getopd() {
             this.page.isLoading = true;
             this.axios
@@ -132,3 +107,7 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+
+</style>

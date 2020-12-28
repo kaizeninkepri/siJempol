@@ -1517,6 +1517,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -1525,7 +1528,219 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      url: {
+        uploadImage: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/public/images/upload-image.png'
+      },
+      isLoading: false,
+      progressBar: 0,
+      penelitian: {
+        judul: null,
+        lokasi: [],
+        waktu: null,
+        universitas: null,
+        permohonan_nomor: null,
+        kategori: null
+      },
+      person: [{
+        identitas_nomor: null,
+        identitas_kategori: null,
+        nama: null,
+        jenjang: null,
+        jurusan: null,
+        contact: null,
+        email: null,
+        alamat: null,
+        status: null
+      }]
+    };
+  },
+  validations: {
+    penelitian: {
+      judul: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      lokasi: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      waktu: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      universitas: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      permohonan_nomor: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      kategori: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      }
+    },
+    person: {
+      required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"],
+      $each: {
+        identitas_kategori: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+        },
+        identitas_nomor: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+        },
+        nama: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+        },
+        jenjang: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+        },
+        jurusan: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+        },
+        contact: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+        },
+        email: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+        },
+        alamat: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+        }
+      }
+    }
+  },
+  methods: {
+    tambahAnggota: function tambahAnggota() {
+      this.person.push({
+        identitas_nomor: null,
+        identitas_kategori: null,
+        nama: null,
+        jenjang: null,
+        jurusan: null,
+        contact: null,
+        email: null,
+        alamat: null,
+        status: null
+      });
+    },
+    TODB: function TODB() {
+      this.isLoading = true;
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/penelitian", {
+        type: "insert",
+        penelitian: this.penelitian,
+        person: this.person
+      }, {
+        onUploadProgress: function (progressEvent) {
+          this.progressBar = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
+        }.bind(this)
+      }).then(function (r) {});
+    },
+    Daftar: function Daftar() {
+      this.$v.$touch();
+    }
+  }
+});
 
 /***/ }),
 
@@ -1618,6 +1833,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "\n.form-control[data-v-4e43400c] {\n  border-radius: 6px;\n}\ninput[type=\"file\"][data-v-4e43400c] {\n  display: none;\n}\n.custom-file-upload[data-v-4e43400c] {\n  border: 3px dashed #ccc;\n  display: inline-block;\n  padding: 40px 5px 5px 5px;\n  cursor: pointer;\n  width: 100%;\n  text-align: center;\n  vertical-align: middle;\n  min-height: 150px;\n}\n.custom-file-upload-error[data-v-4e43400c] {\n  border: 3px dashed red;\n}\n.custom-file-upload-success[data-v-4e43400c] {\n  border: 3px dashed green;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.el-input__inner {\n    background-color: var(--bg-color) !important;\n}\n.el-input__error {\n    color: white !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n.el-input__error ::-moz-placeholder {\n    color: #333 !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n.el-input__error :-ms-input-placeholder {\n    color: #333 !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n.el-input__error ::-ms-input-placeholder {\n    color: #333 !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n.el-input__error ::placeholder {\n    color: #333 !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n", ""]);
 
 // exports
 
@@ -1753,6 +1987,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/pendaftaran.vue?vue&type=style&index=0&id=4e43400c&lang=css&scoped=true&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./penelitian.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -4161,24 +4425,651 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass:
+        "align-items-center justify-content-center pd-t-50 ht-100v pd-l-100 pd-r-100",
+      staticStyle: { background: "#d0dcec" }
+    },
+    [
+      _vm.isLoading
+        ? _c("div", { staticClass: "progress" }, [
+            _c("div", {
+              staticClass: "progress-bar",
+              style: { width: _vm.progressBar + "%" },
+              attrs: {
+                role: "progressbar",
+                "aria-valuenow": "50",
+                "aria-valuemin": "50",
+                "aria-valuemax": "100"
+              }
+            })
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "el-card",
+        {
+          directives: [
+            {
+              name: "loading",
+              rawName: "v-loading",
+              value: _vm.isLoading,
+              expression: "isLoading"
+            }
+          ],
+          staticStyle: { "margin-top": "-3px" },
+          attrs: {
+            "element-loading-text": "Proses Pengajuan Izin penelitian ..."
+          }
+        },
+        [
+          _c("el-divider", { attrs: { "content-position": "left" } }, [
+            _vm._v("DATA PENELITIAN")
+          ]),
+          _vm._v(" "),
+          _c(
+            "el-row",
+            { staticClass: "mg-b-20", attrs: { gutter: 10 } },
+            [
+              _c(
+                "el-col",
+                { staticClass: "mg-b-8", attrs: { md: 4 } },
+                [
+                  _c("label", [_vm._v("Kategori Penelitian")]),
+                  _vm._v(" "),
+                  _c(
+                    "el-select",
+                    {
+                      class: {
+                        "el-input__error": _vm.$v.penelitian.kategori.$error
+                      },
+                      staticStyle: { width: "100%" },
+                      attrs: { placeholder: "Kategori" },
+                      model: {
+                        value: _vm.penelitian.kategori,
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.penelitian,
+                            "kategori",
+                            typeof $$v === "string" ? $$v.trim() : $$v
+                          )
+                        },
+                        expression: "penelitian.kategori"
+                      }
+                    },
+                    [
+                      _c("el-option", { attrs: { value: "mahasiswa" } }, [
+                        _vm._v("Mahasiswa")
+                      ]),
+                      _vm._v(" "),
+                      _c("el-option", { attrs: { value: "umum" } }, [
+                        _vm._v("Umum / Instansi / Riset")
+                      ])
+                    ],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-col",
+                { staticClass: "mg-b-8", attrs: { md: 5 } },
+                [
+                  _c("label", [_vm._v("Nomor Permohonan")]),
+                  _vm._v(" "),
+                  _c("el-input", {
+                    class: {
+                      "el-input__error":
+                        _vm.$v.penelitian.permohonan_nomor.$error
+                    },
+                    attrs: { placeholder: "Universitas / Instansi" },
+                    model: {
+                      value: _vm.penelitian.permohonan_nomor,
+                      callback: function($$v) {
+                        _vm.$set(
+                          _vm.penelitian,
+                          "permohonan_nomor",
+                          typeof $$v === "string" ? $$v.trim() : $$v
+                        )
+                      },
+                      expression: "penelitian.permohonan_nomor"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-col",
+                { staticClass: "mg-b-8", attrs: { md: 6 } },
+                [
+                  _c("label", [_vm._v("Universitas / Instansi")]),
+                  _vm._v(" "),
+                  _c("el-input", {
+                    class: {
+                      "el-input__error": _vm.$v.penelitian.universitas.$error
+                    },
+                    attrs: { placeholder: "Universitas / Instansi" },
+                    model: {
+                      value: _vm.penelitian.universitas,
+                      callback: function($$v) {
+                        _vm.$set(
+                          _vm.penelitian,
+                          "universitas",
+                          typeof $$v === "string" ? $$v.trim() : $$v
+                        )
+                      },
+                      expression: "penelitian.universitas"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "el-row",
+            { attrs: { gutter: 10 } },
+            [
+              _c(
+                "el-col",
+                { staticClass: "mg-b-8", attrs: { md: 10 } },
+                [
+                  _c("label", [_vm._v("Judul Penelitian")]),
+                  _vm._v(" "),
+                  _c("el-input", {
+                    class: {
+                      "el-input__error": _vm.$v.penelitian.judul.$error
+                    },
+                    attrs: { placeholder: "Judul Penelitian" },
+                    model: {
+                      value: _vm.penelitian.judul,
+                      callback: function($$v) {
+                        _vm.$set(
+                          _vm.penelitian,
+                          "judul",
+                          typeof $$v === "string" ? $$v.trim() : $$v
+                        )
+                      },
+                      expression: "penelitian.judul"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-col",
+                { attrs: { md: 8 } },
+                [
+                  _c("label", [_vm._v("Lokasi")]),
+                  _vm._v(" "),
+                  _c(
+                    "el-select",
+                    {
+                      staticClass: "mg-b-8",
+                      class: {
+                        "el-input__error": _vm.$v.penelitian.lokasi.$error
+                      },
+                      staticStyle: { width: "100%" },
+                      attrs: {
+                        multiple: "",
+                        filterable: "",
+                        "allow-create": "",
+                        "default-first-option": "",
+                        placeholder: "Lokasi Penelitian"
+                      },
+                      model: {
+                        value: _vm.penelitian.lokasi,
+                        callback: function($$v) {
+                          _vm.$set(
+                            _vm.penelitian,
+                            "lokasi",
+                            typeof $$v === "string" ? $$v.trim() : $$v
+                          )
+                        },
+                        expression: "penelitian.lokasi"
+                      }
+                    },
+                    _vm._l(_vm.penelitian.lokasi, function(item) {
+                      return _c("el-option", {
+                        key: item,
+                        attrs: { label: item, value: item }
+                      })
+                    }),
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "el-col",
+                { staticClass: "mg-b-8", attrs: { md: 6 } },
+                [
+                  _c("label", [_vm._v("Waktu Penelitian")]),
+                  _vm._v(" "),
+                  _c("el-date-picker", {
+                    class: {
+                      "el-input__error": _vm.$v.penelitian.waktu.$error
+                    },
+                    staticStyle: { width: "100%" },
+                    attrs: {
+                      type: "daterange",
+                      "range-separator": "/",
+                      "start-placeholder": "Mulai",
+                      "end-placeholder": "Selesai"
+                    },
+                    model: {
+                      value: _vm.penelitian.waktu,
+                      callback: function($$v) {
+                        _vm.$set(
+                          _vm.penelitian,
+                          "waktu",
+                          typeof $$v === "string" ? $$v.trim() : $$v
+                        )
+                      },
+                      expression: "penelitian.waktu"
+                    }
+                  })
+                ],
+                1
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _vm._l(_vm.$v.person.$each.$iter, function(p, Pindex) {
+            return _c(
+              "el-card",
+              { key: Pindex, staticClass: "mg-b-20" },
+              [
+                _c("el-divider", { attrs: { "content-position": "left" } }),
+                _vm._v(" "),
+                _c(
+                  "el-row",
+                  { staticClass: "mg-b-20", attrs: { gutter: 10 } },
+                  [
+                    _c(
+                      "el-col",
+                      { attrs: { md: 3 } },
+                      [
+                        _c(
+                          "center",
+                          [
+                            _c("el-image", {
+                              staticClass: "mg-t-30",
+                              staticStyle: { width: "100px", height: "100px" },
+                              attrs: { src: _vm.url.uploadImage, fit: "fit" }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "el-col",
+                      { attrs: { md: 20 } },
+                      [
+                        _c(
+                          "el-row",
+                          { attrs: { gutter: 10 } },
+                          [
+                            _c(
+                              "el-col",
+                              { staticClass: "mg-b-8", attrs: { md: 4 } },
+                              [
+                                _c("label", [_vm._v("Kategori Identitas")]),
+                                _vm._v(" "),
+                                _c(
+                                  "el-select",
+                                  {
+                                    class: {
+                                      "el-input__error":
+                                        p.identitas_kategori.$error
+                                    },
+                                    staticStyle: { width: "100%" },
+                                    attrs: { placeholder: "Kategori" },
+                                    model: {
+                                      value: p.identitas_kategori.$model,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          p.identitas_kategori,
+                                          "$model",
+                                          typeof $$v === "string"
+                                            ? $$v.trim()
+                                            : $$v
+                                        )
+                                      },
+                                      expression: "p.identitas_kategori.$model"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "KTP" } },
+                                      [_vm._v("Kartu Tanda Penduduk")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "NIM" } },
+                                      [_vm._v("Nomor Induk Mahasiswa")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "el-col",
+                              { staticClass: "mg-b-8", attrs: { md: 5 } },
+                              [
+                                _c("label", [_vm._v("Nomor Indentitas")]),
+                                _vm._v(" "),
+                                _c("el-input", {
+                                  class: {
+                                    "el-input__error": p.identitas_nomor.$error
+                                  },
+                                  attrs: { placeholder: "Nomor Identitas" },
+                                  model: {
+                                    value: p.identitas_nomor.$model,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        p.identitas_nomor,
+                                        "$model",
+                                        typeof $$v === "string"
+                                          ? $$v.trim()
+                                          : $$v
+                                      )
+                                    },
+                                    expression: "p.identitas_nomor.$model"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "el-col",
+                              { staticClass: "mg-b-8", attrs: { md: 5 } },
+                              [
+                                _c("label", [_vm._v("Nama")]),
+                                _vm._v(" "),
+                                _c("el-input", {
+                                  class: { "el-input__error": p.nama.$error },
+                                  attrs: { placeholder: "Nomor Identitas" },
+                                  model: {
+                                    value: p.nama.$model,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        p.nama,
+                                        "$model",
+                                        typeof $$v === "string"
+                                          ? $$v.trim()
+                                          : $$v
+                                      )
+                                    },
+                                    expression: "p.nama.$model"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "el-col",
+                              { staticClass: "mg-b-8", attrs: { md: 5 } },
+                              [
+                                _c("label", [
+                                  _vm._v("Jurusan / Fakultas / Jabatan")
+                                ]),
+                                _vm._v(" "),
+                                _c("el-input", {
+                                  class: {
+                                    "el-input__error": p.jurusan.$error
+                                  },
+                                  attrs: {
+                                    placeholder: "Jurusan / Fakultas / Kategori"
+                                  },
+                                  model: {
+                                    value: p.jurusan.$model,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        p.jurusan,
+                                        "$model",
+                                        typeof $$v === "string"
+                                          ? $$v.trim()
+                                          : $$v
+                                      )
+                                    },
+                                    expression: "p.jurusan.$model"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "el-col",
+                              { staticClass: "mg-b-8", attrs: { md: 5 } },
+                              [
+                                _c("label", [_vm._v("Jenjang Pendidikan")]),
+                                _vm._v(" "),
+                                _c(
+                                  "el-select",
+                                  {
+                                    class: {
+                                      "el-input__error": p.jenjang.$error
+                                    },
+                                    staticStyle: { width: "100%" },
+                                    attrs: { placeholder: "Kategori" },
+                                    model: {
+                                      value: p.jenjang.$model,
+                                      callback: function($$v) {
+                                        _vm.$set(
+                                          p.jenjang,
+                                          "$model",
+                                          typeof $$v === "string"
+                                            ? $$v.trim()
+                                            : $$v
+                                        )
+                                      },
+                                      expression: "p.jenjang.$model"
+                                    }
+                                  },
+                                  [
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "SLTA" } },
+                                      [_vm._v("Sekolah Lanjutan Tingkat Atas")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "D1" } },
+                                      [_vm._v("Diploma 1")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "D2" } },
+                                      [_vm._v("Diploma 2")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "D3" } },
+                                      [_vm._v("Diploma 3")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "D4" } },
+                                      [_vm._v("Diploma 4")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "S1" } },
+                                      [_vm._v("Starta 1")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "S2" } },
+                                      [_vm._v("Starta 2")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "el-option",
+                                      { attrs: { value: "S3" } },
+                                      [_vm._v("Strata 3")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-col",
+                          { staticClass: "mg-b-15", attrs: { md: 5 } },
+                          [
+                            _c("label", [_vm._v("Email")]),
+                            _vm._v(" "),
+                            _c("el-input", {
+                              class: { "el-input__error": p.email.$error },
+                              attrs: { placeholder: "Email" },
+                              model: {
+                                value: p.email.$model,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    p.email,
+                                    "$model",
+                                    typeof $$v === "string" ? $$v.trim() : $$v
+                                  )
+                                },
+                                expression: "p.email.$model"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-col",
+                          { staticClass: "mg-b-8", attrs: { md: 3 } },
+                          [
+                            _c("label", [_vm._v("Telp. / HP")]),
+                            _vm._v(" "),
+                            _c("el-input", {
+                              class: { "el-input__error": p.contact.$error },
+                              attrs: { placeholder: "Telp. / HP" },
+                              model: {
+                                value: p.contact.$model,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    p.contact,
+                                    "$model",
+                                    typeof $$v === "string" ? $$v.trim() : $$v
+                                  )
+                                },
+                                expression: "p.contact.$model"
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "el-col",
+                          { staticClass: "mg-b-8", attrs: { md: 10 } },
+                          [
+                            _c("label", [_vm._v("Alamat")]),
+                            _vm._v(" "),
+                            _c("el-input", {
+                              class: { "el-input__error": p.alamat.$error },
+                              attrs: { placeholder: "Alamat" },
+                              model: {
+                                value: p.alamat.$model,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    p.alamat,
+                                    "$model",
+                                    typeof $$v === "string" ? $$v.trim() : $$v
+                                  )
+                                },
+                                expression: "p.alamat.$model"
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ],
+              1
+            )
+          }),
+          _vm._v(" "),
+          _c(
+            "el-row",
+            { attrs: { gutter: 10, type: "flex", justify: "center" } },
+            [
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.Daftar()
+                    }
+                  }
+                },
+                [_vm._v(" Daftar")]
+              ),
+              _vm._v(" "),
+              _c(
+                "el-button",
+                {
+                  attrs: { type: "primary" },
+                  on: {
+                    click: function($event) {
+                      return _vm.tambahAnggota()
+                    }
+                  }
+                },
+                [_vm._v(" Anggota Penelitian")]
+              )
+            ],
+            1
+          )
+        ],
+        2
+      )
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "align-items-center justify-content-center pd-t-50 ht-100v pd-l-100 pd-r-100",
-        staticStyle: { background: "#d0dcec" }
-      },
-      [_c("h1", [_vm._v("afriandi")])]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -4725,7 +5616,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _penelitian_vue_vue_type_template_id_5a615543___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./penelitian.vue?vue&type=template&id=5a615543& */ "./resources/js/components/pendaftaran/penelitian.vue?vue&type=template&id=5a615543&");
 /* harmony import */ var _penelitian_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./penelitian.vue?vue&type=script&lang=js& */ "./resources/js/components/pendaftaran/penelitian.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _penelitian_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./penelitian.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -4733,7 +5626,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
   _penelitian_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _penelitian_vue_vue_type_template_id_5a615543___WEBPACK_IMPORTED_MODULE_0__["render"],
   _penelitian_vue_vue_type_template_id_5a615543___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -4762,6 +5655,22 @@ component.options.__file = "resources/js/components/pendaftaran/penelitian.vue"
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_penelitian_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./penelitian.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/penelitian.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_penelitian_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_penelitian_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./penelitian.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pendaftaran/penelitian.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_penelitian_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_penelitian_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_penelitian_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_penelitian_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_penelitian_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
