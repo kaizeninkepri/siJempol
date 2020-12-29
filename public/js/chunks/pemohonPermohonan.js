@@ -4784,11 +4784,7 @@ var render = function() {
                               model: {
                                 value: _vm.penelitian.kategori,
                                 callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.penelitian,
-                                    "kategori",
-                                    typeof $$v === "string" ? $$v.trim() : $$v
-                                  )
+                                  _vm.$set(_vm.penelitian, "kategori", $$v)
                                 },
                                 expression: "penelitian.kategori"
                               }
@@ -4828,7 +4824,7 @@ var render = function() {
                                 _vm.$set(
                                   _vm.penelitian,
                                   "permohonan_nomor",
-                                  typeof $$v === "string" ? $$v.trim() : $$v
+                                  $$v
                                 )
                               },
                               expression: "penelitian.permohonan_nomor"
@@ -4853,11 +4849,7 @@ var render = function() {
                             model: {
                               value: _vm.penelitian.universitas,
                               callback: function($$v) {
-                                _vm.$set(
-                                  _vm.penelitian,
-                                  "universitas",
-                                  typeof $$v === "string" ? $$v.trim() : $$v
-                                )
+                                _vm.$set(_vm.penelitian, "universitas", $$v)
                               },
                               expression: "penelitian.universitas"
                             }
@@ -4887,11 +4879,7 @@ var render = function() {
                             model: {
                               value: _vm.penelitian.judul,
                               callback: function($$v) {
-                                _vm.$set(
-                                  _vm.penelitian,
-                                  "judul",
-                                  typeof $$v === "string" ? $$v.trim() : $$v
-                                )
+                                _vm.$set(_vm.penelitian, "judul", $$v)
                               },
                               expression: "penelitian.judul"
                             }
@@ -4925,11 +4913,7 @@ var render = function() {
                               model: {
                                 value: _vm.penelitian.lokasi,
                                 callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.penelitian,
-                                    "lokasi",
-                                    typeof $$v === "string" ? $$v.trim() : $$v
-                                  )
+                                  _vm.$set(_vm.penelitian, "lokasi", $$v)
                                 },
                                 expression: "penelitian.lokasi"
                               }
@@ -4966,11 +4950,7 @@ var render = function() {
                             model: {
                               value: _vm.penelitian.waktu,
                               callback: function($$v) {
-                                _vm.$set(
-                                  _vm.penelitian,
-                                  "waktu",
-                                  typeof $$v === "string" ? $$v.trim() : $$v
-                                )
+                                _vm.$set(_vm.penelitian, "waktu", $$v)
                               },
                               expression: "penelitian.waktu"
                             }
@@ -4993,11 +4973,7 @@ var render = function() {
                             model: {
                               value: _vm.penelitian.email,
                               callback: function($$v) {
-                                _vm.$set(
-                                  _vm.penelitian,
-                                  "email",
-                                  typeof $$v === "string" ? $$v.trim() : $$v
-                                )
+                                _vm.$set(_vm.penelitian, "email", $$v)
                               },
                               expression: "penelitian.email"
                             }
@@ -5023,11 +4999,7 @@ var render = function() {
                             model: {
                               value: _vm.penelitian.password,
                               callback: function($$v) {
-                                _vm.$set(
-                                  _vm.penelitian,
-                                  "password",
-                                  typeof $$v === "string" ? $$v.trim() : $$v
-                                )
+                                _vm.$set(_vm.penelitian, "password", $$v)
                               },
                               expression: "penelitian.password"
                             }
@@ -5112,9 +5084,7 @@ var render = function() {
                                                 _vm.$set(
                                                   p.identitas_kategori,
                                                   "$model",
-                                                  typeof $$v === "string"
-                                                    ? $$v.trim()
-                                                    : $$v
+                                                  $$v
                                                 )
                                               },
                                               expression:
@@ -5165,9 +5135,7 @@ var render = function() {
                                               _vm.$set(
                                                 p.identitas_nomor,
                                                 "$model",
-                                                typeof $$v === "string"
-                                                  ? $$v.trim()
-                                                  : $$v
+                                                $$v
                                               )
                                             },
                                             expression:
@@ -5197,13 +5165,7 @@ var render = function() {
                                           model: {
                                             value: p.nama.$model,
                                             callback: function($$v) {
-                                              _vm.$set(
-                                                p.nama,
-                                                "$model",
-                                                typeof $$v === "string"
-                                                  ? $$v.trim()
-                                                  : $$v
-                                              )
+                                              _vm.$set(p.nama, "$model", $$v)
                                             },
                                             expression: "p.nama.$model"
                                           }
@@ -5234,13 +5196,7 @@ var render = function() {
                                           model: {
                                             value: p.jurusan.$model,
                                             callback: function($$v) {
-                                              _vm.$set(
-                                                p.jurusan,
-                                                "$model",
-                                                typeof $$v === "string"
-                                                  ? $$v.trim()
-                                                  : $$v
-                                              )
+                                              _vm.$set(p.jurusan, "$model", $$v)
                                             },
                                             expression: "p.jurusan.$model"
                                           }
@@ -5275,9 +5231,7 @@ var render = function() {
                                                 _vm.$set(
                                                   p.jenjang,
                                                   "$model",
-                                                  typeof $$v === "string"
-                                                    ? $$v.trim()
-                                                    : $$v
+                                                  $$v
                                                 )
                                               },
                                               expression: "p.jenjang.$model"
@@ -5359,13 +5313,7 @@ var render = function() {
                                       model: {
                                         value: p.email.$model,
                                         callback: function($$v) {
-                                          _vm.$set(
-                                            p.email,
-                                            "$model",
-                                            typeof $$v === "string"
-                                              ? $$v.trim()
-                                              : $$v
-                                          )
+                                          _vm.$set(p.email, "$model", $$v)
                                         },
                                         expression: "p.email.$model"
                                       }
@@ -5388,13 +5336,7 @@ var render = function() {
                                       model: {
                                         value: p.contact.$model,
                                         callback: function($$v) {
-                                          _vm.$set(
-                                            p.contact,
-                                            "$model",
-                                            typeof $$v === "string"
-                                              ? $$v.trim()
-                                              : $$v
-                                          )
+                                          _vm.$set(p.contact, "$model", $$v)
                                         },
                                         expression: "p.contact.$model"
                                       }
@@ -5417,13 +5359,7 @@ var render = function() {
                                       model: {
                                         value: p.alamat.$model,
                                         callback: function($$v) {
-                                          _vm.$set(
-                                            p.alamat,
-                                            "$model",
-                                            typeof $$v === "string"
-                                              ? $$v.trim()
-                                              : $$v
-                                          )
+                                          _vm.$set(p.alamat, "$model", $$v)
                                         },
                                         expression: "p.alamat.$model"
                                       }
