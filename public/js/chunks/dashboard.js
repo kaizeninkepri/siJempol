@@ -3086,32 +3086,34 @@ var render = function() {
                                 key: "default",
                                 fn: function(scope) {
                                   return [
-                                    _c(
-                                      "router-link",
-                                      {
-                                        staticClass:
-                                          "btn btn-primary btn-with-icon",
-                                        attrs: {
-                                          to: {
-                                            name: "pemohon-pengajuan",
-                                            params: { id: scope.row.Crypt }
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "el-button",
+                                    _vm.user.role.role_id == "5"
+                                      ? _c(
+                                          "router-link",
                                           {
+                                            staticClass:
+                                              "btn btn-primary btn-with-icon",
                                             attrs: {
-                                              type: "primary",
-                                              size: "small"
+                                              to: {
+                                                name: "pemohon-pengajuan",
+                                                params: { id: scope.row.Crypt }
+                                              }
                                             }
                                           },
-                                          [_vm._v("Pengajuan Online ")]
+                                          [
+                                            _c(
+                                              "el-button",
+                                              {
+                                                attrs: {
+                                                  type: "primary",
+                                                  size: "small"
+                                                }
+                                              },
+                                              [_vm._v("Pengajuan Online ")]
+                                            )
+                                          ],
+                                          1
                                         )
-                                      ],
-                                      1
-                                    ),
+                                      : _vm._e(),
                                     _vm._v(" "),
                                     _c(
                                       "a",

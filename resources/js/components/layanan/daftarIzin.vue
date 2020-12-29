@@ -36,7 +36,7 @@
                         <el-table-column prop="kategori" label="Kategori" width="180"></el-table-column>
                         <el-table-column prop="address" label="Aksi" width="300">
                             <template slot-scope="scope">
-                                <router-link :to="{name : 'pemohon-pengajuan', params:{'id' : scope.row.Crypt}}" class="btn btn-primary btn-with-icon">
+                                <router-link :to="{name : 'pemohon-pengajuan', params:{'id' : scope.row.Crypt}}" class="btn btn-primary btn-with-icon" v-if="user.role.role_id == '5'">
                                     <el-button type="primary" size="small">Pengajuan Online </el-button>
                                 </router-link>
                                 <a :href="scope.row.linkPDF" target="_blank">
