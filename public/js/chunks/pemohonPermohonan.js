@@ -1628,14 +1628,110 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    this.persyaratanData();
+
+    if (this.id) {
+      this.activeHeader();
+    }
+  },
   data: function data() {
     return {
+      AddAnggota: false,
+      steps: {
+        pertama: {
+          text: "tx-primary",
+          active: true
+        },
+        kedua: {
+          text: "",
+          active: false
+        },
+        ketiga: {
+          text: "",
+          active: false
+        }
+      },
       url: {
         uploadImage: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/public/images/upload-image.png'
       },
+      id: this.$route.query.id,
       isLoading: false,
       progressBar: 0,
       penelitian: {
@@ -1644,7 +1740,9 @@ __webpack_require__.r(__webpack_exports__);
         waktu: null,
         universitas: null,
         permohonan_nomor: null,
-        kategori: null
+        kategori: null,
+        email: null,
+        password: null
       },
       person: [{
         identitas_nomor: null,
@@ -1656,7 +1754,8 @@ __webpack_require__.r(__webpack_exports__);
         email: null,
         alamat: null,
         status: null
-      }]
+      }],
+      izin: []
     };
   },
   validations: {
@@ -1677,6 +1776,12 @@ __webpack_require__.r(__webpack_exports__);
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
       },
       kategori: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      email: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
+      },
+      password: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_1__["required"]
       }
     },
@@ -1725,19 +1830,56 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     TODB: function TODB() {
-      this.isLoading = true;
+      var _this = this;
+
+      this.isLoading = false;
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/penelitian", {
         type: "insert",
         penelitian: this.penelitian,
-        person: this.person
+        person: this.person,
+        persyaratan: this.izin.persyaratan
       }, {
         onUploadProgress: function (progressEvent) {
           this.progressBar = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
         }.bind(this)
-      }).then(function (r) {});
+      }).then(function (r) {
+        _this.isLoading = false;
+        window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pemohon/pengajuan/2/' + r.data; // console.log(r.data)
+      });
     },
     Daftar: function Daftar() {
       this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.TODB();
+      }
+    },
+    activeHeader: function activeHeader() {
+      this.steps.pertama.text = "tx-success";
+      this.steps.pertama.active = false;
+      this.steps.kedua.text = "tx-primary";
+      this.steps.kedua.active = true;
+
+      if (this.$route.query.v) {
+        this.steps.kedua.text = "tx-success";
+        this.steps.kedua.active = false;
+        this.steps.ketiga.text = "tx-primary";
+        this.steps.ketiga.active = true;
+      }
+    },
+    ChangeKategoriPenelitian: function ChangeKategoriPenelitian() {
+      if (this.penelitian.kategori == 'umum') {
+        this.AddAnggota = true;
+      } else {
+        this.AddAnggota = false;
+      }
+    },
+    persyaratanData: function persyaratanData() {
+      var _this2 = this;
+
+      this.axios.get(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/pendaftaran/penelitian/penelitianById").then(function (r) {
+        _this2.izin = r.data;
+      });
     }
   }
 });
@@ -4433,6 +4575,148 @@ var render = function() {
       staticStyle: { background: "#d0dcec" }
     },
     [
+      _c(
+        "el-row",
+        {
+          staticClass: "mg-b-20 pd-b-10",
+          attrs: { gutter: 10, type: "flex", justify: "center" }
+        },
+        [
+          _c(
+            "el-col",
+            {
+              staticClass: "tx-bold",
+              staticStyle: { color: "#333" },
+              attrs: { md: 24, justify: "center" }
+            },
+            [
+              _c("h4", { staticClass: "tx-center" }, [
+                _vm._v("PENGISIAN FORMULIR PERMOHONAN LAYANAN")
+              ])
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "el-row",
+        {
+          staticClass: "mg-t-10 mg-b-20 pd-b-10",
+          attrs: { gutter: 10, type: "flex", justify: "center" }
+        },
+        [
+          _c("el-col", { attrs: { md: 6 } }, [
+            _c(
+              "div",
+              { staticClass: "pd-5 d-flex align-items-center" },
+              [
+                _c("ion-icon", {
+                  staticClass: "tx-50",
+                  class: _vm.steps.pertama.text,
+                  attrs: { name: "albums-outline" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mg-l-20" }, [
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10",
+                      class: _vm.steps.pertama.text
+                    },
+                    [_vm._v("Langkah Ke - 1")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      staticClass: "tx-15 tx-lato tx-bold mg-b-2 lh-1",
+                      class: _vm.steps.pertama.text
+                    },
+                    [_vm._v("PENGISIAN FORM PENDAFTARAN")]
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("el-col", { attrs: { md: 6 } }, [
+            _c(
+              "div",
+              { staticClass: "pd-5 d-flex align-items-center" },
+              [
+                _c("ion-icon", {
+                  staticClass: "tx-50",
+                  class: _vm.steps.kedua.text,
+                  attrs: { name: "cloud-upload-outline" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mg-l-20" }, [
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10",
+                      class: _vm.steps.kedua.text
+                    },
+                    [_vm._v("Langkah ke - 2")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      staticClass: "tx-15 tx-lato tx-bold mg-b-2 lh-1",
+                      class: _vm.steps.kedua.text
+                    },
+                    [_vm._v("UNGGAH BERKAS PERSYARATAN")]
+                  )
+                ])
+              ],
+              1
+            )
+          ]),
+          _vm._v(" "),
+          _c("el-col", { attrs: { md: 6 } }, [
+            _c(
+              "div",
+              { staticClass: "pd-5 d-flex align-items-center" },
+              [
+                _c("ion-icon", {
+                  staticClass: "tx-50",
+                  class: _vm.steps.ketiga,
+                  attrs: { name: "paper-plane-outline" }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "mg-l-20" }, [
+                  _c(
+                    "p",
+                    {
+                      staticClass:
+                        "tx-10 tx-spacing-1 tx-mont tx-medium tx-uppercase mg-b-10",
+                      class: _vm.steps.ketiga.text
+                    },
+                    [_vm._v("Langkah Ke - 3")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      staticClass: "tx-15 tx-lato tx-bold mg-b-2 lh-1",
+                      class: _vm.steps.ketiga.text
+                    },
+                    [_vm._v("KIRIM FILE PERMOHONAN")]
+                  )
+                ])
+              ],
+              1
+            )
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
       _vm.isLoading
         ? _c("div", { staticClass: "progress" }, [
             _c("div", {
@@ -4465,304 +4749,327 @@ var render = function() {
           }
         },
         [
-          _c("el-divider", { attrs: { "content-position": "left" } }, [
-            _vm._v("DATA PENELITIAN")
-          ]),
-          _vm._v(" "),
-          _c(
-            "el-row",
-            { staticClass: "mg-b-20", attrs: { gutter: 10 } },
-            [
-              _c(
-                "el-col",
-                { staticClass: "mg-b-8", attrs: { md: 4 } },
+          _vm.steps.pertama.active
+            ? _c(
+                "div",
                 [
-                  _c("label", [_vm._v("Kategori Penelitian")]),
+                  _c("el-divider", { attrs: { "content-position": "left" } }, [
+                    _vm._v("DATA PENELITIAN")
+                  ]),
                   _vm._v(" "),
                   _c(
-                    "el-select",
-                    {
-                      class: {
-                        "el-input__error": _vm.$v.penelitian.kategori.$error
-                      },
-                      staticStyle: { width: "100%" },
-                      attrs: { placeholder: "Kategori" },
-                      model: {
-                        value: _vm.penelitian.kategori,
-                        callback: function($$v) {
-                          _vm.$set(
-                            _vm.penelitian,
-                            "kategori",
-                            typeof $$v === "string" ? $$v.trim() : $$v
-                          )
-                        },
-                        expression: "penelitian.kategori"
-                      }
-                    },
+                    "el-row",
+                    { staticClass: "mg-b-20", attrs: { gutter: 10 } },
                     [
-                      _c("el-option", { attrs: { value: "mahasiswa" } }, [
-                        _vm._v("Mahasiswa")
-                      ]),
+                      _c(
+                        "el-col",
+                        { staticClass: "mg-b-8", attrs: { md: 4 } },
+                        [
+                          _c("label", [_vm._v("Kategori Penelitian")]),
+                          _vm._v(" "),
+                          _c(
+                            "el-select",
+                            {
+                              class: {
+                                "el-input__error":
+                                  _vm.$v.penelitian.kategori.$error
+                              },
+                              staticStyle: { width: "100%" },
+                              attrs: { placeholder: "Kategori" },
+                              on: {
+                                change: function($event) {
+                                  return _vm.ChangeKategoriPenelitian()
+                                }
+                              },
+                              model: {
+                                value: _vm.penelitian.kategori,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.penelitian,
+                                    "kategori",
+                                    typeof $$v === "string" ? $$v.trim() : $$v
+                                  )
+                                },
+                                expression: "penelitian.kategori"
+                              }
+                            },
+                            [
+                              _c(
+                                "el-option",
+                                { attrs: { value: "mahasiswa" } },
+                                [_vm._v("Mahasiswa")]
+                              ),
+                              _vm._v(" "),
+                              _c("el-option", { attrs: { value: "umum" } }, [
+                                _vm._v("Umum / Instansi / Riset")
+                              ])
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      ),
                       _vm._v(" "),
-                      _c("el-option", { attrs: { value: "umum" } }, [
-                        _vm._v("Umum / Instansi / Riset")
-                      ])
+                      _c(
+                        "el-col",
+                        { staticClass: "mg-b-8", attrs: { md: 5 } },
+                        [
+                          _c("label", [_vm._v("Nomor Permohonan")]),
+                          _vm._v(" "),
+                          _c("el-input", {
+                            class: {
+                              "el-input__error":
+                                _vm.$v.penelitian.permohonan_nomor.$error
+                            },
+                            attrs: { placeholder: "Universitas / Instansi" },
+                            model: {
+                              value: _vm.penelitian.permohonan_nomor,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.penelitian,
+                                  "permohonan_nomor",
+                                  typeof $$v === "string" ? $$v.trim() : $$v
+                                )
+                              },
+                              expression: "penelitian.permohonan_nomor"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-col",
+                        { staticClass: "mg-b-8", attrs: { md: 6 } },
+                        [
+                          _c("label", [_vm._v("Universitas / Instansi")]),
+                          _vm._v(" "),
+                          _c("el-input", {
+                            class: {
+                              "el-input__error":
+                                _vm.$v.penelitian.universitas.$error
+                            },
+                            attrs: { placeholder: "Universitas / Instansi" },
+                            model: {
+                              value: _vm.penelitian.universitas,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.penelitian,
+                                  "universitas",
+                                  typeof $$v === "string" ? $$v.trim() : $$v
+                                )
+                              },
+                              expression: "penelitian.universitas"
+                            }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-col",
-                { staticClass: "mg-b-8", attrs: { md: 5 } },
-                [
-                  _c("label", [_vm._v("Nomor Permohonan")]),
-                  _vm._v(" "),
-                  _c("el-input", {
-                    class: {
-                      "el-input__error":
-                        _vm.$v.penelitian.permohonan_nomor.$error
-                    },
-                    attrs: { placeholder: "Universitas / Instansi" },
-                    model: {
-                      value: _vm.penelitian.permohonan_nomor,
-                      callback: function($$v) {
-                        _vm.$set(
-                          _vm.penelitian,
-                          "permohonan_nomor",
-                          typeof $$v === "string" ? $$v.trim() : $$v
-                        )
-                      },
-                      expression: "penelitian.permohonan_nomor"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-col",
-                { staticClass: "mg-b-8", attrs: { md: 6 } },
-                [
-                  _c("label", [_vm._v("Universitas / Instansi")]),
-                  _vm._v(" "),
-                  _c("el-input", {
-                    class: {
-                      "el-input__error": _vm.$v.penelitian.universitas.$error
-                    },
-                    attrs: { placeholder: "Universitas / Instansi" },
-                    model: {
-                      value: _vm.penelitian.universitas,
-                      callback: function($$v) {
-                        _vm.$set(
-                          _vm.penelitian,
-                          "universitas",
-                          typeof $$v === "string" ? $$v.trim() : $$v
-                        )
-                      },
-                      expression: "penelitian.universitas"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "el-row",
-            { attrs: { gutter: 10 } },
-            [
-              _c(
-                "el-col",
-                { staticClass: "mg-b-8", attrs: { md: 10 } },
-                [
-                  _c("label", [_vm._v("Judul Penelitian")]),
-                  _vm._v(" "),
-                  _c("el-input", {
-                    class: {
-                      "el-input__error": _vm.$v.penelitian.judul.$error
-                    },
-                    attrs: { placeholder: "Judul Penelitian" },
-                    model: {
-                      value: _vm.penelitian.judul,
-                      callback: function($$v) {
-                        _vm.$set(
-                          _vm.penelitian,
-                          "judul",
-                          typeof $$v === "string" ? $$v.trim() : $$v
-                        )
-                      },
-                      expression: "penelitian.judul"
-                    }
-                  })
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-col",
-                { attrs: { md: 8 } },
-                [
-                  _c("label", [_vm._v("Lokasi")]),
+                  ),
                   _vm._v(" "),
                   _c(
-                    "el-select",
-                    {
-                      staticClass: "mg-b-8",
-                      class: {
-                        "el-input__error": _vm.$v.penelitian.lokasi.$error
-                      },
-                      staticStyle: { width: "100%" },
-                      attrs: {
-                        multiple: "",
-                        filterable: "",
-                        "allow-create": "",
-                        "default-first-option": "",
-                        placeholder: "Lokasi Penelitian"
-                      },
-                      model: {
-                        value: _vm.penelitian.lokasi,
-                        callback: function($$v) {
-                          _vm.$set(
-                            _vm.penelitian,
-                            "lokasi",
-                            typeof $$v === "string" ? $$v.trim() : $$v
+                    "el-row",
+                    { attrs: { gutter: 10 } },
+                    [
+                      _c(
+                        "el-col",
+                        { staticClass: "mg-b-8", attrs: { md: 10 } },
+                        [
+                          _c("label", [_vm._v("Judul Penelitian")]),
+                          _vm._v(" "),
+                          _c("el-input", {
+                            class: {
+                              "el-input__error": _vm.$v.penelitian.judul.$error
+                            },
+                            attrs: { placeholder: "Judul Penelitian" },
+                            model: {
+                              value: _vm.penelitian.judul,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.penelitian,
+                                  "judul",
+                                  typeof $$v === "string" ? $$v.trim() : $$v
+                                )
+                              },
+                              expression: "penelitian.judul"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-col",
+                        { attrs: { md: 8 } },
+                        [
+                          _c("label", [_vm._v("Lokasi")]),
+                          _vm._v(" "),
+                          _c(
+                            "el-select",
+                            {
+                              staticClass: "mg-b-8",
+                              class: {
+                                "el-input__error":
+                                  _vm.$v.penelitian.lokasi.$error
+                              },
+                              staticStyle: { width: "100%" },
+                              attrs: {
+                                multiple: "",
+                                filterable: "",
+                                "allow-create": "",
+                                "default-first-option": "",
+                                placeholder: "Lokasi Penelitian"
+                              },
+                              model: {
+                                value: _vm.penelitian.lokasi,
+                                callback: function($$v) {
+                                  _vm.$set(
+                                    _vm.penelitian,
+                                    "lokasi",
+                                    typeof $$v === "string" ? $$v.trim() : $$v
+                                  )
+                                },
+                                expression: "penelitian.lokasi"
+                              }
+                            },
+                            _vm._l(_vm.penelitian.lokasi, function(item) {
+                              return _c("el-option", {
+                                key: item,
+                                attrs: { label: item, value: item }
+                              })
+                            }),
+                            1
                           )
-                        },
-                        expression: "penelitian.lokasi"
-                      }
-                    },
-                    _vm._l(_vm.penelitian.lokasi, function(item) {
-                      return _c("el-option", {
-                        key: item,
-                        attrs: { label: item, value: item }
-                      })
-                    }),
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-col",
+                        { staticClass: "mg-b-8", attrs: { md: 6 } },
+                        [
+                          _c("label", [_vm._v("Waktu Penelitian")]),
+                          _vm._v(" "),
+                          _c("el-date-picker", {
+                            class: {
+                              "el-input__error": _vm.$v.penelitian.waktu.$error
+                            },
+                            staticStyle: { width: "100%" },
+                            attrs: {
+                              type: "daterange",
+                              "range-separator": "/",
+                              "start-placeholder": "Mulai",
+                              "end-placeholder": "Selesai"
+                            },
+                            model: {
+                              value: _vm.penelitian.waktu,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.penelitian,
+                                  "waktu",
+                                  typeof $$v === "string" ? $$v.trim() : $$v
+                                )
+                              },
+                              expression: "penelitian.waktu"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-col",
+                        { attrs: { md: 4 } },
+                        [
+                          _c("label", [_vm._v("Email Account")]),
+                          _vm._v(" "),
+                          _c("el-input", {
+                            class: {
+                              "el-input__error": _vm.$v.penelitian.email.$error
+                            },
+                            attrs: { placeholder: "Email Kontak person" },
+                            model: {
+                              value: _vm.penelitian.email,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.penelitian,
+                                  "email",
+                                  typeof $$v === "string" ? $$v.trim() : $$v
+                                )
+                              },
+                              expression: "penelitian.email"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-col",
+                        { attrs: { md: 4 } },
+                        [
+                          _c("label", [_vm._v("Password Account")]),
+                          _vm._v(" "),
+                          _c("el-input", {
+                            class: {
+                              "el-input__error": _vm.$v.penelitian.email.$error
+                            },
+                            attrs: {
+                              "show-password": "",
+                              placeholder: "Email Kontak person"
+                            },
+                            model: {
+                              value: _vm.penelitian.password,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.penelitian,
+                                  "password",
+                                  typeof $$v === "string" ? $$v.trim() : $$v
+                                )
+                              },
+                              expression: "penelitian.password"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ],
                     1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "el-col",
-                { staticClass: "mg-b-8", attrs: { md: 6 } },
-                [
-                  _c("label", [_vm._v("Waktu Penelitian")]),
+                  ),
                   _vm._v(" "),
-                  _c("el-date-picker", {
-                    class: {
-                      "el-input__error": _vm.$v.penelitian.waktu.$error
-                    },
-                    staticStyle: { width: "100%" },
-                    attrs: {
-                      type: "daterange",
-                      "range-separator": "/",
-                      "start-placeholder": "Mulai",
-                      "end-placeholder": "Selesai"
-                    },
-                    model: {
-                      value: _vm.penelitian.waktu,
-                      callback: function($$v) {
-                        _vm.$set(
-                          _vm.penelitian,
-                          "waktu",
-                          typeof $$v === "string" ? $$v.trim() : $$v
-                        )
-                      },
-                      expression: "penelitian.waktu"
-                    }
-                  })
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._l(_vm.$v.person.$each.$iter, function(p, Pindex) {
-            return _c(
-              "el-card",
-              { key: Pindex, staticClass: "mg-b-20" },
-              [
-                _c("el-divider", { attrs: { "content-position": "left" } }),
-                _vm._v(" "),
-                _c(
-                  "el-row",
-                  { staticClass: "mg-b-20", attrs: { gutter: 10 } },
-                  [
-                    _c(
-                      "el-col",
-                      { attrs: { md: 3 } },
+                  _vm._l(_vm.$v.person.$each.$iter, function(p, Pindex) {
+                    return _c(
+                      "el-card",
+                      { key: Pindex, staticClass: "mg-b-20" },
                       [
-                        _c(
-                          "center",
-                          [
-                            _c("el-image", {
-                              staticClass: "mg-t-30",
-                              staticStyle: { width: "100px", height: "100px" },
-                              attrs: { src: _vm.url.uploadImage, fit: "fit" }
-                            })
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "el-col",
-                      { attrs: { md: 20 } },
-                      [
+                        _c("el-divider", {
+                          attrs: { "content-position": "left" }
+                        }),
+                        _vm._v(" "),
                         _c(
                           "el-row",
-                          { attrs: { gutter: 10 } },
+                          { staticClass: "mg-b-20", attrs: { gutter: 10 } },
                           [
                             _c(
                               "el-col",
-                              { staticClass: "mg-b-8", attrs: { md: 4 } },
+                              { attrs: { md: 3 } },
                               [
-                                _c("label", [_vm._v("Kategori Identitas")]),
-                                _vm._v(" "),
                                 _c(
-                                  "el-select",
-                                  {
-                                    class: {
-                                      "el-input__error":
-                                        p.identitas_kategori.$error
-                                    },
-                                    staticStyle: { width: "100%" },
-                                    attrs: { placeholder: "Kategori" },
-                                    model: {
-                                      value: p.identitas_kategori.$model,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          p.identitas_kategori,
-                                          "$model",
-                                          typeof $$v === "string"
-                                            ? $$v.trim()
-                                            : $$v
-                                        )
-                                      },
-                                      expression: "p.identitas_kategori.$model"
-                                    }
-                                  },
+                                  "center",
                                   [
-                                    _c(
-                                      "el-option",
-                                      { attrs: { value: "KTP" } },
-                                      [_vm._v("Kartu Tanda Penduduk")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "el-option",
-                                      { attrs: { value: "NIM" } },
-                                      [_vm._v("Nomor Induk Mahasiswa")]
-                                    )
+                                    _c("el-image", {
+                                      staticClass: "mg-t-30",
+                                      staticStyle: {
+                                        width: "100px",
+                                        height: "100px"
+                                      },
+                                      attrs: {
+                                        src: _vm.url.uploadImage,
+                                        fit: "fit"
+                                      }
+                                    })
                                   ],
                                   1
                                 )
@@ -4772,169 +5079,355 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "el-col",
-                              { staticClass: "mg-b-8", attrs: { md: 5 } },
+                              { attrs: { md: 20 } },
                               [
-                                _c("label", [_vm._v("Nomor Indentitas")]),
-                                _vm._v(" "),
-                                _c("el-input", {
-                                  class: {
-                                    "el-input__error": p.identitas_nomor.$error
-                                  },
-                                  attrs: { placeholder: "Nomor Identitas" },
-                                  model: {
-                                    value: p.identitas_nomor.$model,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        p.identitas_nomor,
-                                        "$model",
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "p.identitas_nomor.$model"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "el-col",
-                              { staticClass: "mg-b-8", attrs: { md: 5 } },
-                              [
-                                _c("label", [_vm._v("Nama")]),
-                                _vm._v(" "),
-                                _c("el-input", {
-                                  class: { "el-input__error": p.nama.$error },
-                                  attrs: { placeholder: "Nomor Identitas" },
-                                  model: {
-                                    value: p.nama.$model,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        p.nama,
-                                        "$model",
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "p.nama.$model"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "el-col",
-                              { staticClass: "mg-b-8", attrs: { md: 5 } },
-                              [
-                                _c("label", [
-                                  _vm._v("Jurusan / Fakultas / Jabatan")
-                                ]),
-                                _vm._v(" "),
-                                _c("el-input", {
-                                  class: {
-                                    "el-input__error": p.jurusan.$error
-                                  },
-                                  attrs: {
-                                    placeholder: "Jurusan / Fakultas / Kategori"
-                                  },
-                                  model: {
-                                    value: p.jurusan.$model,
-                                    callback: function($$v) {
-                                      _vm.$set(
-                                        p.jurusan,
-                                        "$model",
-                                        typeof $$v === "string"
-                                          ? $$v.trim()
-                                          : $$v
-                                      )
-                                    },
-                                    expression: "p.jurusan.$model"
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "el-col",
-                              { staticClass: "mg-b-8", attrs: { md: 5 } },
-                              [
-                                _c("label", [_vm._v("Jenjang Pendidikan")]),
-                                _vm._v(" "),
                                 _c(
-                                  "el-select",
-                                  {
-                                    class: {
-                                      "el-input__error": p.jenjang.$error
-                                    },
-                                    staticStyle: { width: "100%" },
-                                    attrs: { placeholder: "Kategori" },
-                                    model: {
-                                      value: p.jenjang.$model,
-                                      callback: function($$v) {
-                                        _vm.$set(
-                                          p.jenjang,
-                                          "$model",
-                                          typeof $$v === "string"
-                                            ? $$v.trim()
-                                            : $$v
-                                        )
-                                      },
-                                      expression: "p.jenjang.$model"
-                                    }
-                                  },
+                                  "el-row",
+                                  { attrs: { gutter: 10 } },
                                   [
                                     _c(
-                                      "el-option",
-                                      { attrs: { value: "SLTA" } },
-                                      [_vm._v("Sekolah Lanjutan Tingkat Atas")]
+                                      "el-col",
+                                      {
+                                        staticClass: "mg-b-8",
+                                        attrs: { md: 4 }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Kategori Identitas")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "el-select",
+                                          {
+                                            class: {
+                                              "el-input__error":
+                                                p.identitas_kategori.$error
+                                            },
+                                            staticStyle: { width: "100%" },
+                                            attrs: { placeholder: "Kategori" },
+                                            model: {
+                                              value:
+                                                p.identitas_kategori.$model,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  p.identitas_kategori,
+                                                  "$model",
+                                                  typeof $$v === "string"
+                                                    ? $$v.trim()
+                                                    : $$v
+                                                )
+                                              },
+                                              expression:
+                                                "p.identitas_kategori.$model"
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "KTP" } },
+                                              [_vm._v("Kartu Tanda Penduduk")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "NIM" } },
+                                              [_vm._v("Nomor Induk Mahasiswa")]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
                                     ),
                                     _vm._v(" "),
                                     _c(
-                                      "el-option",
-                                      { attrs: { value: "D1" } },
-                                      [_vm._v("Diploma 1")]
+                                      "el-col",
+                                      {
+                                        staticClass: "mg-b-8",
+                                        attrs: { md: 5 }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Nomor Indentitas")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("el-input", {
+                                          class: {
+                                            "el-input__error":
+                                              p.identitas_nomor.$error
+                                          },
+                                          attrs: {
+                                            placeholder: "Nomor Identitas"
+                                          },
+                                          model: {
+                                            value: p.identitas_nomor.$model,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                p.identitas_nomor,
+                                                "$model",
+                                                typeof $$v === "string"
+                                                  ? $$v.trim()
+                                                  : $$v
+                                              )
+                                            },
+                                            expression:
+                                              "p.identitas_nomor.$model"
+                                          }
+                                        })
+                                      ],
+                                      1
                                     ),
                                     _vm._v(" "),
                                     _c(
-                                      "el-option",
-                                      { attrs: { value: "D2" } },
-                                      [_vm._v("Diploma 2")]
+                                      "el-col",
+                                      {
+                                        staticClass: "mg-b-8",
+                                        attrs: { md: 5 }
+                                      },
+                                      [
+                                        _c("label", [_vm._v("Nama")]),
+                                        _vm._v(" "),
+                                        _c("el-input", {
+                                          class: {
+                                            "el-input__error": p.nama.$error
+                                          },
+                                          attrs: {
+                                            placeholder: "Nomor Identitas"
+                                          },
+                                          model: {
+                                            value: p.nama.$model,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                p.nama,
+                                                "$model",
+                                                typeof $$v === "string"
+                                                  ? $$v.trim()
+                                                  : $$v
+                                              )
+                                            },
+                                            expression: "p.nama.$model"
+                                          }
+                                        })
+                                      ],
+                                      1
                                     ),
                                     _vm._v(" "),
                                     _c(
-                                      "el-option",
-                                      { attrs: { value: "D3" } },
-                                      [_vm._v("Diploma 3")]
+                                      "el-col",
+                                      {
+                                        staticClass: "mg-b-8",
+                                        attrs: { md: 5 }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Jurusan / Fakultas / Jabatan")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c("el-input", {
+                                          class: {
+                                            "el-input__error": p.jurusan.$error
+                                          },
+                                          attrs: {
+                                            placeholder:
+                                              "Jurusan / Fakultas / Kategori"
+                                          },
+                                          model: {
+                                            value: p.jurusan.$model,
+                                            callback: function($$v) {
+                                              _vm.$set(
+                                                p.jurusan,
+                                                "$model",
+                                                typeof $$v === "string"
+                                                  ? $$v.trim()
+                                                  : $$v
+                                              )
+                                            },
+                                            expression: "p.jurusan.$model"
+                                          }
+                                        })
+                                      ],
+                                      1
                                     ),
                                     _vm._v(" "),
                                     _c(
-                                      "el-option",
-                                      { attrs: { value: "D4" } },
-                                      [_vm._v("Diploma 4")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "el-option",
-                                      { attrs: { value: "S1" } },
-                                      [_vm._v("Starta 1")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "el-option",
-                                      { attrs: { value: "S2" } },
-                                      [_vm._v("Starta 2")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "el-option",
-                                      { attrs: { value: "S3" } },
-                                      [_vm._v("Strata 3")]
+                                      "el-col",
+                                      {
+                                        staticClass: "mg-b-8",
+                                        attrs: { md: 5 }
+                                      },
+                                      [
+                                        _c("label", [
+                                          _vm._v("Jenjang Pendidikan")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "el-select",
+                                          {
+                                            class: {
+                                              "el-input__error":
+                                                p.jenjang.$error
+                                            },
+                                            staticStyle: { width: "100%" },
+                                            attrs: { placeholder: "Kategori" },
+                                            model: {
+                                              value: p.jenjang.$model,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  p.jenjang,
+                                                  "$model",
+                                                  typeof $$v === "string"
+                                                    ? $$v.trim()
+                                                    : $$v
+                                                )
+                                              },
+                                              expression: "p.jenjang.$model"
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "SLTA" } },
+                                              [
+                                                _vm._v(
+                                                  "Sekolah Lanjutan Tingkat Atas"
+                                                )
+                                              ]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "D1" } },
+                                              [_vm._v("Diploma 1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "D2" } },
+                                              [_vm._v("Diploma 2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "D3" } },
+                                              [_vm._v("Diploma 3")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "D4" } },
+                                              [_vm._v("Diploma 4")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "S1" } },
+                                              [_vm._v("Starta 1")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "S2" } },
+                                              [_vm._v("Starta 2")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "el-option",
+                                              { attrs: { value: "S3" } },
+                                              [_vm._v("Strata 3")]
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
                                     )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "el-col",
+                                  { staticClass: "mg-b-15", attrs: { md: 5 } },
+                                  [
+                                    _c("label", [_vm._v("Email")]),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      class: {
+                                        "el-input__error": p.email.$error
+                                      },
+                                      attrs: { placeholder: "Email" },
+                                      model: {
+                                        value: p.email.$model,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            p.email,
+                                            "$model",
+                                            typeof $$v === "string"
+                                              ? $$v.trim()
+                                              : $$v
+                                          )
+                                        },
+                                        expression: "p.email.$model"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "el-col",
+                                  { staticClass: "mg-b-8", attrs: { md: 3 } },
+                                  [
+                                    _c("label", [_vm._v("Telp. / HP")]),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      class: {
+                                        "el-input__error": p.contact.$error
+                                      },
+                                      attrs: { placeholder: "Telp. / HP" },
+                                      model: {
+                                        value: p.contact.$model,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            p.contact,
+                                            "$model",
+                                            typeof $$v === "string"
+                                              ? $$v.trim()
+                                              : $$v
+                                          )
+                                        },
+                                        expression: "p.contact.$model"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "el-col",
+                                  { staticClass: "mg-b-8", attrs: { md: 10 } },
+                                  [
+                                    _c("label", [_vm._v("Alamat")]),
+                                    _vm._v(" "),
+                                    _c("el-input", {
+                                      class: {
+                                        "el-input__error": p.alamat.$error
+                                      },
+                                      attrs: { placeholder: "Alamat" },
+                                      model: {
+                                        value: p.alamat.$model,
+                                        callback: function($$v) {
+                                          _vm.$set(
+                                            p.alamat,
+                                            "$model",
+                                            typeof $$v === "string"
+                                              ? $$v.trim()
+                                              : $$v
+                                          )
+                                        },
+                                        expression: "p.alamat.$model"
+                                      }
+                                    })
                                   ],
                                   1
                                 )
@@ -4943,92 +5436,40 @@ var render = function() {
                             )
                           ],
                           1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "el-col",
-                          { staticClass: "mg-b-15", attrs: { md: 5 } },
-                          [
-                            _c("label", [_vm._v("Email")]),
-                            _vm._v(" "),
-                            _c("el-input", {
-                              class: { "el-input__error": p.email.$error },
-                              attrs: { placeholder: "Email" },
-                              model: {
-                                value: p.email.$model,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    p.email,
-                                    "$model",
-                                    typeof $$v === "string" ? $$v.trim() : $$v
-                                  )
-                                },
-                                expression: "p.email.$model"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "el-col",
-                          { staticClass: "mg-b-8", attrs: { md: 3 } },
-                          [
-                            _c("label", [_vm._v("Telp. / HP")]),
-                            _vm._v(" "),
-                            _c("el-input", {
-                              class: { "el-input__error": p.contact.$error },
-                              attrs: { placeholder: "Telp. / HP" },
-                              model: {
-                                value: p.contact.$model,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    p.contact,
-                                    "$model",
-                                    typeof $$v === "string" ? $$v.trim() : $$v
-                                  )
-                                },
-                                expression: "p.contact.$model"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "el-col",
-                          { staticClass: "mg-b-8", attrs: { md: 10 } },
-                          [
-                            _c("label", [_vm._v("Alamat")]),
-                            _vm._v(" "),
-                            _c("el-input", {
-                              class: { "el-input__error": p.alamat.$error },
-                              attrs: { placeholder: "Alamat" },
-                              model: {
-                                value: p.alamat.$model,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    p.alamat,
-                                    "$model",
-                                    typeof $$v === "string" ? $$v.trim() : $$v
-                                  )
-                                },
-                                expression: "p.alamat.$model"
-                              }
-                            })
-                          ],
-                          1
                         )
                       ],
                       1
                     )
-                  ],
-                  1
+                  })
+                ],
+                2
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.steps.kedua.active
+            ? _c("div", [
+                _c(
+                  "table",
+                  {
+                    staticClass:
+                      "table table-bordered table-striped table table-valign-middle mg-b-0 table-hover"
+                  },
+                  [
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.izin.persyaratan, function(i, Index) {
+                        return _c("tr", { key: Index }, [
+                          _c("td", [_vm._v(_vm._s(Index + 1))]),
+                          _vm._v(" "),
+                          _c("td", [_vm._v(_vm._s(i.persyaratan))])
+                        ])
+                      }),
+                      0
+                    )
+                  ]
                 )
-              ],
-              1
-            )
-          }),
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "el-row",
@@ -5047,23 +5488,25 @@ var render = function() {
                 [_vm._v(" Daftar")]
               ),
               _vm._v(" "),
-              _c(
-                "el-button",
-                {
-                  attrs: { type: "primary" },
-                  on: {
-                    click: function($event) {
-                      return _vm.tambahAnggota()
-                    }
-                  }
-                },
-                [_vm._v(" Anggota Penelitian")]
-              )
+              _vm.AddAnggota
+                ? _c(
+                    "el-button",
+                    {
+                      attrs: { type: "primary" },
+                      on: {
+                        click: function($event) {
+                          return _vm.tambahAnggota()
+                        }
+                      }
+                    },
+                    [_vm._v(" Anggota Penelitian")]
+                  )
+                : _vm._e()
             ],
             1
           )
         ],
-        2
+        1
       )
     ],
     1

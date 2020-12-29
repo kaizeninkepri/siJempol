@@ -38,7 +38,7 @@ class appcontrol extends Controller
         }
     }
 
-    function login(Request $request)
+    public static function login(Request $request)
     {
 
         $credentials = $request->only('email', 'password');

@@ -488,7 +488,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       url: {
-        barcode: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pdf/index?type=ttdKadisBarcode'
+        barcode: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pdf/index?type=ttdKadisBarcode&permohonanId'
       },
       barcode: {
         data: [],
@@ -2362,7 +2362,8 @@ var render = function() {
                                   "a",
                                   {
                                     attrs: {
-                                      href: _vm.url.barcode,
+                                      href:
+                                        _vm.url.barcode + "=" + i.permohonan_id,
                                       download: ""
                                     }
                                   },

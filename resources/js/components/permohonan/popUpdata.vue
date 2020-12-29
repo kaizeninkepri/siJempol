@@ -42,7 +42,7 @@
                                     <span class="tx-12 tx-roboto mg-b-0">{{i.lastjam}}</span>
                                 </td>
                                 <td class="pd-l-0-force">
-                                    <a :href="url.barcode" download>download</a>
+                                    <a :href="url.barcode+'='+i.permohonan_id" download>download</a>
 
                                 </td>
                             </tr>
@@ -69,7 +69,7 @@ export default {
     data() {
         return {
             url : {
-                barcode : urlBase.web + '/pdf/index?type=ttdKadisBarcode',
+                barcode : urlBase.web + '/pdf/index?type=ttdKadisBarcode&permohonanId',
             },
             barcode: {
                 data: [],

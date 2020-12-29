@@ -132,36 +132,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      ErrorMenimbang: false,
       pratinjau: {
         preview: false,
         objectURL: null,
@@ -205,7 +180,8 @@ __webpack_require__.r(__webpack_exports__);
           value: "FO - penolakan dengan catatan",
           label: "Lainnya"
         }]
-      }]
+      }],
+      penelitian: {}
     };
   },
   mounted: function mounted() {
@@ -282,39 +258,97 @@ __webpack_require__.r(__webpack_exports__);
         type: "dataById",
         id: this.permohonan_id
       }).then(function (r) {
-        return _this.permohonan = r.data;
+        _this.permohonan = r.data;
+
+        if (_this.permohonan.izin.opdi_id == '7') {
+          _this.getPenelitianData();
+        }
       });
     },
     verifikasiBerkas: function verifikasiBerkas(kategori) {
       var _this2 = this;
 
-      this.$confirm("Verifikasi Permohonan ?", "Warning", {
-        inputType: "select",
-        confirmButtonText: "OK",
-        cancelButtonText: "Cancel",
-        type: "info"
-      }).then(function () {
-        _this2.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/validasi", {
-          type: "VerifikasiBO",
-          permohonan_id: _this2.permohonan.permohonan_id,
-          kategori: kategori,
-          data: _this2.permohonan.persyaratan,
-          perusahaan_id: _this2.permohonan.perusahaan_id
-        }).then(function (r) {
-          return _this2.$notify({
-            title: "Success",
-            message: "File Berhasil Di kirim",
-            type: "success"
+      if (this.permohonan.izin.opdi_id == '7') {
+        if (this.penelitian.menimbang == null || this.penelitian.menimbang == ' ') {
+          this.ErrorMenimbang = true;
+          this.$refs.menimbang.focus();
+          this.$message.error('Oops, Menimbang Masih Kosong');
+        } else {
+          this.$confirm("Verifikasi Permohonan ?", "Warning", {
+            inputType: "select",
+            confirmButtonText: "OK",
+            cancelButtonText: "Cancel",
+            type: "info"
+          }).then(function () {
+            _this2.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/validasi", {
+              type: "VerifikasiBO",
+              permohonan_id: _this2.permohonan.permohonan_id,
+              kategori: kategori,
+              data: _this2.permohonan.persyaratan,
+              perusahaan_id: _this2.permohonan.perusahaan_id
+            }).then(function (r) {
+              return _this2.$notify({
+                title: "Success",
+                message: "File Berhasil Di kirim",
+                type: "success"
+              });
+            }, _this2.$router.push({
+              name: "bo-dashboard"
+            }));
+          })["catch"](function () {
+            _this2.$message({
+              type: "info",
+              message: "Verifikasi di tunda sementara"
+            });
           });
-        }, _this2.$router.push({
-          name: "bo-dashboard"
-        }));
-      })["catch"](function () {
-        _this2.$message({
-          type: "info",
-          message: "Verifikasi di tunda sementara"
+        }
+      } else {
+        this.$confirm("Verifikasi Permohonan ?", "Warning", {
+          inputType: "select",
+          confirmButtonText: "OK",
+          cancelButtonText: "Cancel",
+          type: "info"
+        }).then(function () {
+          _this2.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/validasi", {
+            type: "VerifikasiBO",
+            permohonan_id: _this2.permohonan.permohonan_id,
+            kategori: kategori,
+            data: _this2.permohonan.persyaratan,
+            perusahaan_id: _this2.permohonan.perusahaan_id
+          }).then(function (r) {
+            return _this2.$notify({
+              title: "Success",
+              message: "File Berhasil Di kirim",
+              type: "success"
+            });
+          }, _this2.$router.push({
+            name: "bo-dashboard"
+          }));
+        })["catch"](function () {
+          _this2.$message({
+            type: "info",
+            message: "Verifikasi di tunda sementara"
+          });
         });
+      }
+    },
+    getPenelitianData: function getPenelitianData() {
+      var _this3 = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/penelitian", {
+        type: "getdataById",
+        id: this.permohonan_id
+      }).then(function (r) {
+        return _this3.penelitian = r.data;
       });
+    },
+    menimbangOninput: function menimbangOninput() {
+      this.ErrorMenimbang = false;
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/penelitian", {
+        type: "InsertMenimbang",
+        id: this.permohonan_id,
+        data: this.penelitian.menimbang
+      }).then(function (r) {});
     }
   }
 });
@@ -333,7 +367,26 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.verifikasiTolak {\n  border: 1px solid#cf4436;\n\n  color: white;\n  background-color: #e74c3c;\n}\n.verifikasiTerima {\n  border: 1px solid#16a085;\n  color: white;\n  background-color: #16a085;\n}\n.overlay-popup {\n  height: 100%;\n  width: 0;\n  position: fixed;\n  z-index: 999 !important;\n  top: 0;\n  left: 0;\n  background-color: rgb(0, 0, 0);\n  background-color: rgba(0, 0, 0, 0.9);\n  overflow-x: hidden;\n  transition: 0.5s;\n}\n.overlay-popup-content {\n  position: relative;\n  top: 15%;\n  width: 100%;\n  text-align: center;\n  margin-top: 5px;\n  padding: 10px 50px 10px 50px;\n}\n.overlay-popup a {\n  padding: 8px;\n  text-decoration: none;\n  font-size: 36px;\n  color: #818181;\n  display: block;\n  transition: 0.3s;\n}\n.overlay-popup a:hover,\n.overlay-popup a:focus {\n  color: #f1f1f1;\n}\n.overlay-popup .closebtn {\n  position: absolute;\n  top: 20px;\n  right: 45px;\n  font-size: 60px;\n}\n", ""]);
+exports.push([module.i, "\n.verifikasiTolak {\n    border: 1px solid#cf4436;\n\n    color: white;\n    background-color: #e74c3c;\n}\n.verifikasiTerima {\n    border: 1px solid#16a085;\n    color: white;\n    background-color: #16a085;\n}\n.overlay-popup {\n    height: 100%;\n    width: 0;\n    position: fixed;\n    z-index: 999 !important;\n    top: 0;\n    left: 0;\n    background-color: rgb(0, 0, 0);\n    background-color: rgba(0, 0, 0, 0.9);\n    overflow-x: hidden;\n    transition: 0.5s;\n}\n.overlay-popup-content {\n    position: relative;\n    top: 15%;\n    width: 100%;\n    text-align: center;\n    margin-top: 5px;\n    padding: 10px 50px 10px 50px;\n}\n.overlay-popup a {\n    padding: 8px;\n    text-decoration: none;\n    font-size: 36px;\n    color: #818181;\n    display: block;\n    transition: 0.3s;\n}\n.overlay-popup a:hover,\n.overlay-popup a:focus {\n    color: #f1f1f1;\n}\n.overlay-popup .closebtn {\n    position: absolute;\n    top: 20px;\n    right: 45px;\n    font-size: 60px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.el-input__inner {\n    background-color: var(--bg-color) !important;\n}\n.el-input__error {\n    color: white !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n.el-input__error ::-moz-placeholder {\n    color: #333 !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n.el-input__error :-ms-input-placeholder {\n    color: #333 !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n.el-input__error ::-ms-input-placeholder {\n    color: #333 !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n.el-input__error ::placeholder {\n    color: #333 !important;\n    border-radius: 5px;\n    background-color: #f6cfcf !important;\n}\n", ""]);
 
 // exports
 
@@ -349,6 +402,36 @@ exports.push([module.i, "\n.verifikasiTolak {\n  border: 1px solid#cf4436;\n\n  
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./detail.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/validasi/detail.vue?vue&type=style&index=0&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./detail.vue?vue&type=style&index=1&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -398,7 +481,7 @@ var render = function() {
                 { staticClass: "verifikasiTolak" },
                 [
                   _vm._v(
-                    "\n      DATA PERMOHONAN BELUM DI VERIFIKASI    \n      "
+                    "\n            DATA PERMOHONAN BELUM DI VERIFIKASI    \n            "
                   ),
                   _c(
                     "el-button",
@@ -423,7 +506,7 @@ var render = function() {
                 { staticClass: "verifikasiTerima" },
                 [
                   _vm._v(
-                    "\n      VERIFIKASI DAN VALIDASI BERKAS PERMOHONAN    \n      "
+                    "\n            VERIFIKASI DAN VALIDASI BERKAS PERMOHONAN    \n            "
                   ),
                   _c(
                     "el-button",
@@ -579,7 +662,7 @@ var render = function() {
                   _vm._v(_vm._s(_vm.permohonan.izin.nama_izin))
                 ]),
                 _vm._v(" "),
-                _c("p", { staticClass: "mg-b-0" }, [
+                _c("p", { staticClass: "mg-b-20" }, [
                   _vm._v("Sektor " + _vm._s(_vm.permohonan.opd.opd) + ".")
                 ])
               ]
@@ -712,7 +795,7 @@ var render = function() {
                                           attrs: { name: "newspaper-outline" }
                                         }),
                                         _vm._v(
-                                          "   Pratinjau\n                    "
+                                          "   Pratinjau\n                                        "
                                         )
                                       ],
                                       1
@@ -725,7 +808,50 @@ var render = function() {
                             0
                           )
                         ]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _vm.permohonan.izin.opdi_id == "7"
+                        ? _c(
+                            "div",
+                            [
+                              _c("el-divider"),
+                              _vm._v(" "),
+                              _c("el-input", {
+                                ref: "menimbang",
+                                class: {
+                                  "el-input__error": _vm.ErrorMenimbang
+                                },
+                                staticStyle: { width: "100%" },
+                                attrs: { placeholder: "Ketik Menimbang Surat" },
+                                on: {
+                                  input: function($event) {
+                                    return _vm.menimbangOninput()
+                                  }
+                                },
+                                model: {
+                                  value: _vm.penelitian.menimbang,
+                                  callback: function($$v) {
+                                    _vm.$set(_vm.penelitian, "menimbang", $$v)
+                                  },
+                                  expression: "penelitian.menimbang"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _c("br"),
+                              _vm._v(" "),
+                              _vm.penelitian.menimbang
+                                ? _c(
+                                    "el-button",
+                                    { attrs: { type: "primary" } },
+                                    [_vm._v("Pratinjau Surat Penelitian")]
+                                  )
+                                : _vm._e()
+                            ],
+                            1
+                          )
+                        : _vm._e()
                     ])
                   ],
                   1
@@ -1022,7 +1148,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _detail_vue_vue_type_template_id_4cbda9ea___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./detail.vue?vue&type=template&id=4cbda9ea& */ "./resources/js/components/validasi/detail.vue?vue&type=template&id=4cbda9ea&");
 /* harmony import */ var _detail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./detail.vue?vue&type=script&lang=js& */ "./resources/js/components/validasi/detail.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _detail_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./detail.vue?vue&type=style&index=0&lang=css& */ "./resources/js/components/validasi/detail.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _detail_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./detail.vue?vue&type=style&index=1&lang=css& */ "./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
 
 
 
@@ -1031,7 +1159,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_4__["default"])(
   _detail_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _detail_vue_vue_type_template_id_4cbda9ea___WEBPACK_IMPORTED_MODULE_0__["render"],
   _detail_vue_vue_type_template_id_4cbda9ea___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
@@ -1076,6 +1204,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
  /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css& ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./detail.vue?vue&type=style&index=1&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/validasi/detail.vue?vue&type=style&index=1&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_detail_vue_vue_type_style_index_1_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 

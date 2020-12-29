@@ -359,26 +359,26 @@ __webpack_require__.r(__webpack_exports__);
         label: "Terima Berkas",
         options: [{
           kategori: "terima",
-          value: "terima-fo",
+          value: "terima",
           label: "Sesuai Persyaratan"
         }]
       }, {
         label: "Penolakan Berkas",
         options: [{
           kategori: "tolak",
-          value: "FO - tidak sesuai judul persyaratan",
+          value: "tidak sesuai judul persyaratan",
           label: "Berkas Tidak Sesuai Judul Persyaratan"
         }, {
           kategori: "tolak",
-          value: "FO - Berkas Buram",
+          value: "Berkas Buram",
           label: "Berkas Tidak Jelas / dibaca"
         }, {
           kategori: "tolak",
-          value: "FO - Masa Berlaku Berkas Sudah Kadarluarsa",
+          value: "Masa Berlaku Berkas Sudah Kadarluarsa",
           label: "Masa aktif Berkas Kadarluarsa"
         }, {
           kategori: "tolak",
-          value: "FO - penolakan dengan catatan",
+          value: "penolakan dengan catatan",
           label: "Lainnya"
         }]
       }]
@@ -392,6 +392,9 @@ __webpack_require__.r(__webpack_exports__);
     this.getPermohonan();
   },
   computed: {
+    user: function user() {
+      return this.$store.state.StoreUser.user;
+    },
     VerifikasiPermohonan: function VerifikasiPermohonan() {
       var terisi = 0;
       var total = 0;

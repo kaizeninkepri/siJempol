@@ -36,7 +36,9 @@ class pdfControl extends Controller
 
     function ttdkadis(Request $r)
     {
-        $qr =  QrCode::format('png')->generate('Make me into a QrCode!');
+        $imageLogo =  url('public/image/logo.png');
+        $permohonan = mdPermohonan::where('permohonan_id', $r->get('permohonanId'))->first();
+        $qr =  QrCode::format('png')->generate($permohonan->permohonan_code);
         return response($qr)->header('Content-type', 'image/png');
     }
 

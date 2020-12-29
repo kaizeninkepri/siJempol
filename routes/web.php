@@ -32,7 +32,7 @@ Route::get("/pendaftaran/penelitian", "pendaftarancontrol@penelitian");
 Route::post("/pendaftaran/penelitian/post", "penelitianControl@index");
 Route::get("/pendaftaran/penelitian/penelitianById", "opdIzinControl@penelitianById");
 Route::get("/pendaftaran/selesai", "pendaftarancontrol@pendaftaranSelesai");
-
+Route::POST("/master/penelitian", "penelitianControl@index");
 Route::get("/grafik/permohonan", "permohonanControl@GraficByDate");
 
 // Route::get("/register", "appcontrol@register");
@@ -40,7 +40,7 @@ Route::get("/grafik/permohonan", "permohonanControl@GraficByDate");
 Route::middleware(['auth'])->group(function () {
 
     Route::POST("/opd/izin", "opdIzinControl@index");
-    Route::POST("/master/penelitian", "penelitianControl@index");
+   
 
     Route::POST("/master/users", "userControl@index");
     Route::POST("/master/opd", "opdControl@index");

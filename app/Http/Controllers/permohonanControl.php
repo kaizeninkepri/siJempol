@@ -353,6 +353,7 @@ class permohonanControl extends Controller
         ->whereBetween('created_at', [$start, $end])
             ->where('status', '!=', 'proses')
             ->where('status', '!=', 'tolak')
+            ->where('status', '!=', 'pending')
             ->orderBy('created_at', 'DESC')
             ->get();
         return $dataByDate;
