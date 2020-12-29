@@ -824,7 +824,7 @@ var render = function() {
                                 staticStyle: { width: "100%" },
                                 attrs: { placeholder: "Ketik Menimbang Surat" },
                                 on: {
-                                  input: function($event) {
+                                  blur: function($event) {
                                     return _vm.menimbangOninput()
                                   }
                                 },

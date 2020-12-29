@@ -86,7 +86,7 @@
                         </table>
                         <div v-if="permohonan.izin.opdi_id == '7'">
                             <el-divider></el-divider>
-                            <el-input v-model="penelitian.menimbang" @input="menimbangOninput()" placeholder="Ketik Menimbang Surat" style="width:100%" ref="menimbang" :class="{ 'el-input__error': ErrorMenimbang}"></el-input>
+                            <el-input v-model="penelitian.menimbang" @blur="menimbangOninput()" placeholder="Ketik Menimbang Surat" style="width:100%" ref="menimbang" :class="{ 'el-input__error': ErrorMenimbang}"></el-input>
                             <br />
                             <br />
                             <el-button type="primary" v-if="penelitian.menimbang">Pratinjau Surat Penelitian</el-button>

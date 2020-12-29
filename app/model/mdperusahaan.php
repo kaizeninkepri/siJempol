@@ -31,6 +31,8 @@ class mdperusahaan extends Model
         $kategori = Str::lower($this->kategori);
         if ($kategori == 'perorangan') {
             return $this->nama;
+        } elseif ($kategori == 'penelitian') {
+            return $this->nama;
         }
         return $this->kategori . '. ' . $this->nama;
     }
