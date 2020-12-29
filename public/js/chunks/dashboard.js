@@ -815,6 +815,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -3076,13 +3079,40 @@ var render = function() {
                             attrs: {
                               prop: "address",
                               label: "Aksi",
-                              width: "180"
+                              width: "300"
                             },
                             scopedSlots: _vm._u([
                               {
                                 key: "default",
                                 fn: function(scope) {
                                   return [
+                                    _c(
+                                      "router-link",
+                                      {
+                                        staticClass:
+                                          "btn btn-primary btn-with-icon",
+                                        attrs: {
+                                          to: {
+                                            name: "pemohon-pengajuan",
+                                            params: { id: scope.row.Crypt }
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "el-button",
+                                          {
+                                            attrs: {
+                                              type: "primary",
+                                              size: "small"
+                                            }
+                                          },
+                                          [_vm._v("Pengajuan Online ")]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
                                     _c(
                                       "a",
                                       {
