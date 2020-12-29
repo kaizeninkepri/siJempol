@@ -181,7 +181,9 @@ __webpack_require__.r(__webpack_exports__);
           label: "Lainnya"
         }]
       }],
-      penelitian: {}
+      penelitian: {
+        menimbang: null
+      }
     };
   },
   mounted: function mounted() {

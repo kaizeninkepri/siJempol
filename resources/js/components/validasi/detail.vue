@@ -176,7 +176,9 @@ export default {
                     ],
                 },
             ],
-            penelitian: {}
+            penelitian: {
+                menimbang : null
+            }
         };
     },
     mounted() {
