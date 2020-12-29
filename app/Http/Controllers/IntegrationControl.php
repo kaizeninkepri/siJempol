@@ -11,27 +11,29 @@ class IntegrationControl extends Controller
     {
         $data = $r->get('data');
         $client = new Client(['base_uri' => 'http://180.250.33.61/']);
-        $array = array('value' => 'bp1702dq', 'varcari' => 'noreq');
+        $array = array('value' => 'bp1549fy', 'varcari' => 'noreq');
         $valueName = $data['value'];
         $varcari = $data['kategori'];
         // return json_encode($array);
         $response = $client->request('POST', 'sipamor_mobile_dev/test.php', [
+        // $response = $client->request('POST', 'sipamor_mobile_dev/informasi/get_infopajak.php', [
             'auth' => [
                 '0ytr3qms-kzcs-pwj0-hqox-p76l5wyb0flo',
                 'qzslmti0-c8ki-pnql-btp7-pgrho3q4sogk'
             ],
             'headers' => [
                 'Content-Type' => 'application/json',
-                'X-Signature' => "MDJmMTdkMDAzZmM1NmZmZDRiNmI0NzNkMzhhM2E3ZjEyY2ZlMTdjMDQzZmYyMmI0OGE2YzU3MTk4NWMwOWQ2ZQ==",
+                'X-Signature' => "MGRkNWJhNzFiMTgwNjkxYWNjYmM5M2E5ZjM2ZTFjOTlhNTkwZDc4NzliYzY0MmM4OGY5NTliYmNjYzNlNGYzNw==",
+                
                 'Accept' => 'application/json',
             ],
-            'body' => json_encode(['value' => $valueName, 'varcari' => 'nama']),
+            'body' => json_encode(['value' => 'nuriah', 'varcari' => 'nama']),
         ]);
 
         $result = $response->getBody();
         // return $result;
         // return json_decode($result);
-        $potongFrom = 139 + strlen($valueName);
+        $potongFrom = 139 + strlen("nuriah");
         $newSignature =  substr($result, $potongFrom, 90);
         // return $newSignature;
 
@@ -45,14 +47,14 @@ class IntegrationControl extends Controller
             ],
             'headers' => [
                 'Content-Type' => 'application/json',
-                'X-Signature' => $newSignature,
+                'X-Signature' => "MGRkNWJhNzFiMTgwNjkxYWNjYmM5M2E5ZjM2ZTFjOTlhNTkwZDc4NzliYzY0MmM4OGY5NTliYmNjYzNlNGYzNw==",
                 'Accept' => 'application/json',
             ],
-            'body' => json_encode(['value' => $valueName, 'varcari' => 'nama']),
+            'body' => json_encode(['value' => "nuriah", 'varcari' => 'nama']),
         ]);
 
         $result = $response->getBody();
-        // return $result;
+        return $result;
         if ($result == 'null') {
             return "Data Tidak Di Temukan";
         }

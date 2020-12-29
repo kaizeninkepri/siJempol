@@ -28,7 +28,7 @@
                             <el-input placeholder="Ketik Nama Wajib Pajak / No Registrasi Kendaraan Bermotor" prefix-icon="el-icon-search" v-model="pencarian.value"></el-input>
                         </el-col>
                         <el-col :md="3">
-                            <el-button @click="getResult()" type="primary">Cek</el-button>
+                            <el-button @click="getResult()" type="primary" :disabled="!pencarian.value">Cek</el-button>
                         </el-col>
                     </el-row>
                 </el-card>
@@ -109,8 +109,7 @@ export default {
                     data: this.pencarian
                 })
                 .then((r) => {
-                    this.table.data = r.data;
-                    this.table.show = true
+                    alert(JSON.stringify(r.data))
                 });
         },
     },
