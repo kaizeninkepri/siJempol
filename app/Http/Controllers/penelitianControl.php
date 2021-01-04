@@ -53,58 +53,59 @@ class penelitianControl extends Controller
         $nourut1++;
         $permohonan_code = $code . sprintf("%05s", $nourut1);
 
+        // $perusahaan_id = $data['perusahaan_id'];
+        // $perusahaan_pemohon_id = $data['perusahaan_pemohon_id'];
+        $permohonanId = $data['permohonan_id'];
 
 
+        // $toDBPerusahaan = array(
+        //     "npwp"  => 'Penelitian-' . $permohonan_code,
+        //     "kategori"  => "perorangan",
+        //     "jenis"  => "perorangan",
+        //     "nama"  => $person[0]['nama'],
+        //     "alamat"  => $person[0]['alamat'],
+        //     "email"  => $person[0]['email'],
+        //     "contact"  => $person[0]['contact'],
+        //     "create_on"  => "online",
+        //     "provinsi"  => "kepulauan Riau",
+        // );
+        // $perusahaanInsert = mdperusahaan::insert($toDBPerusahaan);
+        // $perusahaan_id = DB::getPdo()->lastInsertId();
 
+        // $toDb = array(
+        //     "nama"           => $person[0]['nama'],
+        //     "contact"        => $person[0]['contact'],
+        //     "email"          => $person[0]['email'],
+        //     "perusahaan_id"  => $perusahaan_id,
+        //     "identitas_no"   => $person[0]['identitas_nomor'],
+        //     "identitas_kategori"   => $person[0]['identitas_kategori'],
+        // );
 
-        $toDBPerusahaan = array(
-            "npwp"  => 'Penelitian-' . $permohonan_code,
-            "kategori"  => "perorangan",
-            "jenis"  => "perorangan",
-            "nama"  => $person[0]['nama'],
-            "alamat"  => $person[0]['alamat'],
-            "email"  => $person[0]['email'],
-            "contact"  => $person[0]['contact'],
-            "create_on"  => "online",
-            "provinsi"  => "kepulauan Riau",
-        );
-        $perusahaanInsert = mdperusahaan::insert($toDBPerusahaan);
-        $perusahaan_id = DB::getPdo()->lastInsertId();
+        // mdperusahaanPemohon::insert($toDb);
+        // $perusahaan_pemohon_id = DB::getPdo()->lastInsertId();
 
-        $toDb = array(
-            "nama"           => $person[0]['nama'],
-            "contact"        => $person[0]['contact'],
-            "email"          => $person[0]['email'],
-            "perusahaan_id"  => $perusahaan_id,
-            "identitas_no"   => $person[0]['identitas_nomor'],
-            "identitas_kategori"   => $person[0]['identitas_kategori'],
-        );
+        // $toDBpermohonan = array(
+        //     "permohonan_code"   => $permohonan_code,
+        //     "perusahaan_id"     => $perusahaan_id,
+        //     "perusahaanp_id"    => $perusahaan_pemohon_id,
+        //     "opd_id"            => '15',
+        //     "opdi_id"           => "7",
+        //     "status"            => "pending",
+        //     "create_on"         => "online"
+        // );
+        // mdPermohonan::insert($toDBpermohonan);
+        // $permohonanId = DB::getPdo()->lastInsertId();
+        // $permohonanCrypt =  Crypt::encryptString($permohonanId);
 
-        mdperusahaanPemohon::insert($toDb);
-        $perusahaan_pemohon_id = DB::getPdo()->lastInsertId();
-
-        $toDBpermohonan = array(
-            "permohonan_code"   => $permohonan_code,
-            "perusahaan_id"     => $perusahaan_id,
-            "perusahaanp_id"    => $perusahaan_pemohon_id,
-            "opd_id"            => '15',
-            "opdi_id"           => "7",
-            "status"            => "pending",
-            "create_on"         => "online"
-        );
-        mdPermohonan::insert($toDBpermohonan);
-        $permohonanId = DB::getPdo()->lastInsertId();
-        $permohonanCrypt =  Crypt::encryptString($permohonanId);
-
-        foreach ($r->get('persyaratan') as $index => $p) {
-            $toDbPersyaratan = array(
-                "permohonan_id" => $permohonanId,
-                "persyaratan" => $p["persyaratan"],
-                "status" => "waiting-upload",
-                "catatan" => ""
-            );
-            mdPermohonanPersyaratan::insert($toDbPersyaratan);
-        }
+        // foreach ($r->get('persyaratan') as $index => $p) {
+        //     $toDbPersyaratan = array(
+        //         "permohonan_id" => $permohonanId,
+        //         "persyaratan" => $p["persyaratan"],
+        //         "status" => "waiting-upload",
+        //         "catatan" => ""
+        //     );
+        //     mdPermohonanPersyaratan::insert($toDbPersyaratan);
+        // }
 
         $penelitianToDB = array(
             "judul" => $data['judul'],
@@ -137,46 +138,46 @@ class penelitianControl extends Controller
         }
 
 
-        $user_id = mdUsers::max("user_id");
-        $ToDBUsers = array(
-            "email" => $data['email'],
-            "role_id" => "5",
-            "username" => $data['email'],
-            "password" => Hash::make($data['password']),
-            "perusahaan_id" => $perusahaan_id,
-            "is_active" => "true",
-            "user_id" => $user_id + 1,
-        );
-        mdUsers::insert($ToDBUsers);
-        $user_id = DB::getPdo()->lastInsertId();
+        // $user_id = mdUsers::max("user_id");
+        // $ToDBUsers = array(
+        //     "email" => $data['email'],
+        //     "role_id" => "5",
+        //     "username" => $data['email'],
+        //     "password" => Hash::make($data['password']),
+        //     "perusahaan_id" => $perusahaan_id,
+        //     "is_active" => "true",
+        //     "user_id" => $user_id + 1,
+        // );
+        // mdUsers::insert($ToDBUsers);
+        // $user_id = DB::getPdo()->lastInsertId();
 
-        // $emailLogin = new Request();
-        // $emailLogin->replace(['email' => $data['email']]);
+        // // $emailLogin = new Request();
+        // // $emailLogin->replace(['email' => $data['email']]);
 
-        $passwordLogin = new Request();
-        $passwordLogin->replace(['email' => $data['email'], 'password' => $data['password']]);
-        // $credentials = $r->only($emailLogin, $passwordLogin);
+        // $passwordLogin = new Request();
+        // $passwordLogin->replace(['email' => $data['email'], 'password' => $data['password']]);
+        // // $credentials = $r->only($emailLogin, $passwordLogin);
 
-        // if (Auth::attempt($credentials)) {
-        //     return redirect('pemohon/pengajuan/2/' . $permohonanCrypt);
-        //     // return $permohonanCrypt;
-        // }
-        // return $credentials;
+        // // if (Auth::attempt($credentials)) {
+        // //     return redirect('pemohon/pengajuan/2/' . $permohonanCrypt);
+        // //     // return $permohonanCrypt;
+        // // }
+        // // return $credentials;
 
-        $logintest = appcontrol::login($passwordLogin);
+        // $logintest = appcontrol::login($passwordLogin);
 
-        $totrack = array(
-            "permohonan_id" => $permohonanId,
-            "perusahaan_id" => $perusahaan_id,
-            "pesan" => "Pengisian Form Perizinan",
-            "step" => "1",
-            "user_id" => Auth::user()->user_id,
-            "ShowOnuser" => true,
-            "kategori" => "Pemohon",
-        );
-        mdTrack::insert($totrack);
+        // $totrack = array(
+        //     "permohonan_id" => $permohonanId,
+        //     "perusahaan_id" => $perusahaan_id,
+        //     "pesan" => "Pengisian Form Perizinan",
+        //     "step" => "1",
+        //     "user_id" => Auth::user()->user_id,
+        //     "ShowOnuser" => true,
+        //     "kategori" => "Pemohon",
+        // );
+        // mdTrack::insert($totrack);
 
-        return $permohonanCrypt;
+        // return $permohonanCrypt;
     }
 
     function getdataById(Request $r)

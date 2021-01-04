@@ -254,6 +254,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
  // s
@@ -618,10 +640,10 @@ __webpack_require__.r(__webpack_exports__);
     return {
       surat: {
         data: [],
-        size: 5,
+        size: 10,
         page: 1,
         list: 0,
-        end: 5,
+        end: 10,
         search: null
       }
     };
@@ -656,7 +678,7 @@ __webpack_require__.r(__webpack_exports__);
     resetdata: function resetdata() {
       this.surat.page = 1;
       this.surat.search = null;
-      this.surat.list = 0, this.surat.end = 5;
+      this.surat.list = 0, this.surat.end = 10;
     },
     onPopUp: function onPopUp(kategori) {
       this.resetdata();
@@ -1671,6 +1693,160 @@ var render = function() {
                                   )
                                 ],
                                 1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-tab-pane",
+                                { attrs: { label: "DRAFT SK", name: "third" } },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "d-flex align-items-center justify-content-between mg-b-5"
+                                    },
+                                    [
+                                      _c(
+                                        "h5",
+                                        {
+                                          staticClass:
+                                            "tx-gray-800 tx-15 tx-bold"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "DRAFT SK\n                                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "el-col",
+                                        {
+                                          staticClass:
+                                            "d-flex align-items-center justify-content-end",
+                                          attrs: { md: 8 }
+                                        },
+                                        [
+                                          _c("ion-icon", {
+                                            staticClass: "tx-20 tx-primary",
+                                            attrs: {
+                                              name: "document-text-outline"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            { staticClass: "tx-bold" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(_vm.telaah.data.length)
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("el-input", {
+                                            staticClass: "col-md-10",
+                                            attrs: {
+                                              size: "small",
+                                              placeholder:
+                                                "Ketik Nama perusahaan / izin"
+                                            },
+                                            model: {
+                                              value: _vm.telaah.search,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.telaah,
+                                                  "search",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "telaah.search"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "el-tab-pane",
+                                { attrs: { label: "SK", name: "four" } },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "d-flex align-items-center justify-content-between mg-b-5"
+                                    },
+                                    [
+                                      _c(
+                                        "h5",
+                                        {
+                                          staticClass:
+                                            "tx-gray-800 tx-15 tx-bold"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "SK\n                                    "
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "el-col",
+                                        {
+                                          staticClass:
+                                            "d-flex align-items-center justify-content-end",
+                                          attrs: { md: 8 }
+                                        },
+                                        [
+                                          _c("ion-icon", {
+                                            staticClass: "tx-20 tx-primary",
+                                            attrs: {
+                                              name: "document-text-outline"
+                                            }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            { staticClass: "tx-bold" },
+                                            [
+                                              _vm._v(
+                                                _vm._s(_vm.telaah.data.length)
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("el-input", {
+                                            staticClass: "col-md-10",
+                                            attrs: {
+                                              size: "small",
+                                              placeholder:
+                                                "Ketik Nama perusahaan / izin"
+                                            },
+                                            model: {
+                                              value: _vm.telaah.search,
+                                              callback: function($$v) {
+                                                _vm.$set(
+                                                  _vm.telaah,
+                                                  "search",
+                                                  $$v
+                                                )
+                                              },
+                                              expression: "telaah.search"
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
+                                  )
+                                ]
                               )
                             ],
                             1
@@ -2593,6 +2769,7 @@ var render = function() {
                                   {
                                     attrs: {
                                       type: "primary",
+                                      size: "small",
                                       icon: "el-icon-printer"
                                     }
                                   },

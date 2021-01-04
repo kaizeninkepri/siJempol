@@ -35,7 +35,7 @@
                                 <td>{{i.opd.opd}}</td>
                                 <td>{{i.permohonan.perusahaan.fullname}}</td>
                                 <td>
-                                    <el-button type="primary" icon="el-icon-printer">Cetak</el-button>
+                                    <el-button type="primary" size="small" icon="el-icon-printer">Cetak</el-button>
                                 </td>
                             </tr>
                         </tbody>
@@ -62,10 +62,10 @@ export default {
         return {
             surat: {
                 data: [],
-                size: 5,
+                size: 10,
                 page: 1,
                 list: 0,
-                end: 5,
+                end: 10,
                 search: null,
             }
         }
@@ -107,7 +107,7 @@ export default {
             this.surat.page = 1
             this.surat.search = null
             this.surat.list = 0,
-                this.surat.end = 5
+                this.surat.end = 10
         },
         onPopUp(kategori) {
 

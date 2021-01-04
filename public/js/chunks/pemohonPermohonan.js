@@ -981,125 +981,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1264,6 +1145,15 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   methods: {
+    CheckValidationEmail: function CheckValidationEmail() {
+      var _this = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/pendaftaran/validation/email", {
+        data: this.perusahaan.email
+      }).then(function (r) {
+        r.data.code == 500 ? (_this.$message.error("Email : " + r.data.text + " Sudah Terdaftar. Silahkan Gunakan Email Yang Lain"), _this.perusahaan.email = null) : null;
+      });
+    },
     ToPenelitianForm: function ToPenelitianForm() {
       window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pendaftaran/penelitian';
     },
@@ -1281,7 +1171,7 @@ __webpack_require__.r(__webpack_exports__);
       location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/pendaftaran/selesai?npwp=" + this.perusahaan.npwp;
     },
     changeFile: function changeFile(i, event) {
-      var _this = this;
+      var _this2 = this;
 
       if (this.objectURL) {
         URL.revokeObjectURL(this.objectURL);
@@ -1307,7 +1197,7 @@ __webpack_require__.r(__webpack_exports__);
       fileReader.readAsDataURL(event.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this.upload[i].files = e.target.result;
+        _this2.upload[i].files = e.target.result;
       };
     },
     CheckUpload: function CheckUpload() {
@@ -1338,7 +1228,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     UploadFIle: function UploadFIle(i) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/pendaftaran", {
         type: "UplaodFileSingle",
@@ -1349,21 +1239,21 @@ __webpack_require__.r(__webpack_exports__);
           this.upload[i].progressBar = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
         }.bind(this)
       }).then(function (r) {
-        _this2.$delete(_this2.queue, 0), _this2.ExecuteUpload();
+        _this3.$delete(_this3.queue, 0), _this3.ExecuteUpload();
       });
     },
     CheckNpwp: function CheckNpwp() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/perizinan/perusahaan", {
         type: "dataBynpwp",
         npwp: this.perusahaan.npwp
       }).then(function (r) {
         console.log(r);
-        r.data == "" ? "" : (_this3.perusahaan = r.data, _this3.$alert("Perusahaan ini Telah Melakukan Pendaftaran, Silahkan Isi Form yang telah di sediakan.", "Informasi", {
+        r.data == "" ? "" : (_this4.perusahaan = r.data, _this4.$alert("Perusahaan ini Telah Melakukan Pendaftaran, Silahkan Isi Form yang telah di sediakan.", "Informasi", {
           confirmButtonText: "OK",
           callback: function callback(action) {
-            _this3.$message({
+            _this4.$message({
               type: "info",
               message: "action: ".concat(action)
             });
@@ -1372,7 +1262,7 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     InsertDatabase: function InsertDatabase() {
-      var _this4 = this;
+      var _this5 = this;
 
       this.loading.submit = true;
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/pendaftaran", {
@@ -1380,7 +1270,7 @@ __webpack_require__.r(__webpack_exports__);
         perusahaan: this.perusahaan,
         user: this.user
       }).then(function (r) {
-        _this4.CheckUpload();
+        _this5.CheckUpload();
       });
     },
     daftar: function daftar() {
@@ -1701,6 +1591,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1742,7 +1636,8 @@ __webpack_require__.r(__webpack_exports__);
         permohonan_nomor: null,
         kategori: null,
         email: null,
-        password: null
+        password: null,
+        permohonan_id: null
       },
       person: [{
         identitas_nomor: null,
@@ -1843,16 +1738,16 @@ __webpack_require__.r(__webpack_exports__);
           this.progressBar = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
         }.bind(this)
       }).then(function (r) {
-        _this.isLoading = false;
-        window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pemohon/pengajuan/2/' + r.data; // console.log(r.data)
+        _this.isLoading = false; // window.location.href = url.web + '/pemohon/pengajuan/2/'+ r.data
+        // console.log(r.data)
       });
     },
     Daftar: function Daftar() {
-      this.$v.$touch();
-
-      if (!this.$v.$invalid) {
-        this.TODB();
-      }
+      // this.$v.$touch()
+      // if (!this.$v.$invalid) {
+      //     this.TODB();
+      // }
+      this.TODB();
     },
     activeHeader: function activeHeader() {
       this.steps.pertama.text = "tx-success";
@@ -1974,7 +1869,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.form-control[data-v-4e43400c] {\n  border-radius: 6px;\n}\ninput[type=\"file\"][data-v-4e43400c] {\n  display: none;\n}\n.custom-file-upload[data-v-4e43400c] {\n  border: 3px dashed #ccc;\n  display: inline-block;\n  padding: 40px 5px 5px 5px;\n  cursor: pointer;\n  width: 100%;\n  text-align: center;\n  vertical-align: middle;\n  min-height: 150px;\n}\n.custom-file-upload-error[data-v-4e43400c] {\n  border: 3px dashed red;\n}\n.custom-file-upload-success[data-v-4e43400c] {\n  border: 3px dashed green;\n}\n", ""]);
+exports.push([module.i, "\n.form-control[data-v-4e43400c] {\n    border-radius: 6px;\n}\ninput[type=\"file\"][data-v-4e43400c] {\n    display: none;\n}\n.custom-file-upload[data-v-4e43400c] {\n    border: 3px dashed #ccc;\n    display: inline-block;\n    padding: 40px 5px 5px 5px;\n    cursor: pointer;\n    width: 100%;\n    text-align: center;\n    vertical-align: middle;\n    min-height: 150px;\n}\n.custom-file-upload-error[data-v-4e43400c] {\n    border: 3px dashed red;\n}\n.custom-file-upload-success[data-v-4e43400c] {\n    border: 3px dashed green;\n}\n", ""]);
 
 // exports
 
@@ -3425,7 +3320,11 @@ var render = function() {
                       staticClass: "tx-roboto tx-bold tx-20",
                       staticStyle: { color: "#48a5ea" }
                     },
-                    [_vm._v("\n          IDENTITAS PERUSAHAAN\n        ")]
+                    [
+                      _vm._v(
+                        "\n                    IDENTITAS PERUSAHAAN\n                "
+                      )
+                    ]
                   ),
                   _vm._v(" "),
                   _c(
@@ -3437,7 +3336,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  Nomor Pokok Wajib Pajak:\n                  "
+                                "\n                                    Nomor Pokok Wajib Pajak:\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -3504,7 +3403,7 @@ var render = function() {
                               { staticClass: "form-control-label tx-gray-600" },
                               [
                                 _vm._v(
-                                  "\n                  Kategori:\n                  "
+                                  "\n                                    Kategori:\n                                    "
                                 ),
                                 _c("span", { staticClass: "tx-danger" }, [
                                   _vm._v("*")
@@ -3592,7 +3491,7 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                  Jenis Perusahaan:\n                  "
+                                      "\n                                    Jenis Perusahaan:\n                                    "
                                     ),
                                     _c("span", { staticClass: "tx-danger" }, [
                                       _vm._v("*")
@@ -3665,7 +3564,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  Nama:\n                  "
+                                "\n                                    Nama:\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -3716,7 +3615,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  email:\n                  "
+                                "\n                                    email:\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -3745,6 +3644,14 @@ var render = function() {
                                 value: _vm.$v.perusahaan.email.$model
                               },
                               on: {
+                                blur: [
+                                  function($event) {
+                                    return _vm.CheckValidationEmail()
+                                  },
+                                  function($event) {
+                                    return _vm.$forceUpdate()
+                                  }
+                                ],
                                 input: function($event) {
                                   if ($event.target.composing) {
                                     return
@@ -3754,9 +3661,6 @@ var render = function() {
                                     "$model",
                                     $event.target.value.trim()
                                   )
-                                },
-                                blur: function($event) {
-                                  return _vm.$forceUpdate()
                                 }
                               }
                             })
@@ -3769,7 +3673,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  Provinsi :\n                  "
+                                "\n                                    Provinsi :\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -3818,7 +3722,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  Kota / Kabupaten:\n                  "
+                                "\n                                    Kota / Kabupaten:\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -3869,7 +3773,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  Kode Pos :\n                  "
+                                "\n                                    Kode Pos :\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -3918,7 +3822,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  Telp / Hp:\n                  "
+                                "\n                                    Telp / Hp:\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -3972,7 +3876,7 @@ var render = function() {
                               { staticClass: "form-control-label tx-gray-600" },
                               [
                                 _vm._v(
-                                  "\n                  Alamat:\n                  "
+                                  "\n                                    Alamat:\n                                    "
                                 ),
                                 _c("span", { staticClass: "tx-danger" }, [
                                   _vm._v("*")
@@ -4034,7 +3938,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  Username :\n                  "
+                                "\n                                    Username :\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -4078,7 +3982,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  password:\n                  "
+                                "\n                                    password:\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -4127,7 +4031,7 @@ var render = function() {
                           _c("div", { staticClass: "form-group tx-gray-600" }, [
                             _c("label", { staticClass: "form-control-label" }, [
                               _vm._v(
-                                "\n                  password:\n\n                  "
+                                "\n                                    password:\n\n                                    "
                               ),
                               _c("span", { staticClass: "tx-danger" }, [
                                 _vm._v("*")
@@ -4331,7 +4235,9 @@ var render = function() {
                                   slot: "placeholder"
                                 },
                                 [
-                                  _vm._v("\n                Loading"),
+                                  _vm._v(
+                                    "\n                                Loading"
+                                  ),
                                   _c("span", { staticClass: "dot" }, [
                                     _vm._v("...")
                                   ])
@@ -4351,7 +4257,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi\n              Kepulauan Riau"
+                              "Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi\n                            Kepulauan Riau"
                             )
                           ]
                         )
@@ -4373,7 +4279,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n          Data Field Harus Terisi\n          "
+                            "\n                    Data Field Harus Terisi\n                    "
                           ),
                           !_vm.$v.perusahaan.npwp.minLength
                             ? _c("p", [_vm._v("15 Digit NPWP")])
@@ -4381,7 +4287,9 @@ var render = function() {
                           _vm._v(" "),
                           _vm.$v.user.repeatPassword.$error
                             ? _c("span", [
-                                _vm._v("\n            Password Tidak Sama")
+                                _vm._v(
+                                  "\n                        Password Tidak Sama"
+                                )
                               ])
                             : _vm._e()
                         ]
@@ -5002,6 +4910,32 @@ var render = function() {
                                 _vm.$set(_vm.penelitian, "password", $$v)
                               },
                               expression: "penelitian.password"
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "el-col",
+                        { attrs: { md: 4 } },
+                        [
+                          _c("label", [_vm._v("permohonan_id")]),
+                          _vm._v(" "),
+                          _c("el-input", {
+                            class: {
+                              "el-input__error": _vm.$v.penelitian.email.$error
+                            },
+                            attrs: {
+                              "show-password": "",
+                              placeholder: "Email Kontak person"
+                            },
+                            model: {
+                              value: _vm.penelitian.permohonan_id,
+                              callback: function($$v) {
+                                _vm.$set(_vm.penelitian, "permohonan_id", $$v)
+                              },
+                              expression: "penelitian.permohonan_id"
                             }
                           })
                         ],

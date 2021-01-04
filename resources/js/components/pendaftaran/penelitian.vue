@@ -86,6 +86,10 @@
                      <label>Password Account</label>
                     <el-input v-model="penelitian.password" show-password placeholder="Email Kontak person" :class="{ 'el-input__error': $v.penelitian.email.$error }"></el-input>
                 </el-col>
+                 <el-col :md="4">
+                     <label>permohonan_id</label>
+                    <el-input v-model="penelitian.permohonan_id" show-password placeholder="Email Kontak person" :class="{ 'el-input__error': $v.penelitian.email.$error }"></el-input>
+                </el-col>
             </el-row>
             <el-card v-for="(p,Pindex) in $v.person.$each.$iter" :key="Pindex" class="mg-b-20">
                 <el-divider content-position="left"></el-divider>
@@ -225,7 +229,8 @@ export default {
                 permohonan_nomor: null,
                 kategori: null,
                 email: null,
-                password: null
+                password: null,
+                permohonan_id : null,
             },
             person: [{
                 identitas_nomor: null,
@@ -330,15 +335,16 @@ export default {
                 })
                 .then((r) => {
                     this.isLoading = false
-                    window.location.href = url.web + '/pemohon/pengajuan/2/'+ r.data
+                    // window.location.href = url.web + '/pemohon/pengajuan/2/'+ r.data
                     // console.log(r.data)
                 });
         },
         Daftar() {
-            this.$v.$touch()
-            if (!this.$v.$invalid) {
-                this.TODB();
-            }
+            // this.$v.$touch()
+            // if (!this.$v.$invalid) {
+            //     this.TODB();
+            // }
+             this.TODB();
         },
         activeHeader() {
             this.steps.pertama.text = "tx-success"

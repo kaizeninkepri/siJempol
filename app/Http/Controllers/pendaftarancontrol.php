@@ -19,6 +19,25 @@ use Illuminate\Support\Facades\Hash;
 
 class pendaftarancontrol extends Controller
 {
+
+    function ValidationEmail(Request $r)
+    {
+        $data = $r->get('data');
+        $user = mdUser::where('email', $data)->first();
+
+        if ($user) {
+            return array(
+                "code" => 500,
+                "text" => "Email : " . $data . " Sudah Terdaftar. Silahkan Gunakan Email Yang Lain"
+            );
+        } else {
+            return array(
+                "code" => 200,
+                "text" => "Available"
+            );
+        }
+    }
+
     function index()
     {
         $identitas = mdIdentitas::orderBy("identitas_id", 'ASC')->first();

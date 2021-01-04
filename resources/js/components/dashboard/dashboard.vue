@@ -123,6 +123,28 @@
                                     </el-row>
                                 </el-card>
                             </el-tab-pane>
+                            <el-tab-pane label="DRAFT SK" name="third">
+                                <div class="d-flex align-items-center justify-content-between mg-b-5">
+                                    <h5 class="tx-gray-800 tx-15 tx-bold">DRAFT SK
+                                    </h5>
+                                    <el-col :md="8" class="d-flex align-items-center justify-content-end">
+                                        <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{telaah.data.length}}</span>
+                                        <el-input class="col-md-10" size="small" v-model="telaah.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                                    </el-col>
+                                </div>
+                                
+                            </el-tab-pane>
+                            <el-tab-pane label="SK" name="four">
+                                <div class="d-flex align-items-center justify-content-between mg-b-5">
+                                    <h5 class="tx-gray-800 tx-15 tx-bold">SK
+                                    </h5>
+                                    <el-col :md="8" class="d-flex align-items-center justify-content-end">
+                                        <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{telaah.data.length}}</span>
+                                        <el-input class="col-md-10" size="small" v-model="telaah.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                                    </el-col>
+                                </div>
+                                
+                            </el-tab-pane>
                         </el-tabs>
                     </el-col>
                 </el-row>

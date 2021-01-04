@@ -30,6 +30,7 @@ Route::post("/master/pendaftaran", "pendaftarancontrol@ToSelf");
 Route::get("/pendaftaran", "pendaftarancontrol@index");
 Route::get("/pendaftaran/penelitian", "pendaftarancontrol@penelitian");
 Route::post("/pendaftaran/penelitian/post", "penelitianControl@index");
+Route::post("/pendaftaran/validation/email", "pendaftarancontrol@ValidationEmail");
 Route::get("/pendaftaran/penelitian/penelitianById", "opdIzinControl@penelitianById");
 Route::get("/pendaftaran/selesai", "pendaftarancontrol@pendaftaranSelesai");
 Route::POST("/master/penelitian", "penelitianControl@index");
