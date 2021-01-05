@@ -86,10 +86,10 @@
                      <label>Password Account</label>
                     <el-input v-model="penelitian.password" show-password placeholder="Email Kontak person" :class="{ 'el-input__error': $v.penelitian.email.$error }"></el-input>
                 </el-col>
-                 <el-col :md="4">
+                 <!-- <el-col :md="4">
                      <label>permohonan_id</label>
                     <el-input v-model="penelitian.permohonan_id" show-password placeholder="Email Kontak person" :class="{ 'el-input__error': $v.penelitian.email.$error }"></el-input>
-                </el-col>
+                </el-col> -->
             </el-row>
             <el-card v-for="(p,Pindex) in $v.person.$each.$iter" :key="Pindex" class="mg-b-20">
                 <el-divider content-position="left"></el-divider>

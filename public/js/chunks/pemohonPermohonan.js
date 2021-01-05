@@ -4914,32 +4914,6 @@ var render = function() {
                           })
                         ],
                         1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "el-col",
-                        { attrs: { md: 4 } },
-                        [
-                          _c("label", [_vm._v("permohonan_id")]),
-                          _vm._v(" "),
-                          _c("el-input", {
-                            class: {
-                              "el-input__error": _vm.$v.penelitian.email.$error
-                            },
-                            attrs: {
-                              "show-password": "",
-                              placeholder: "Email Kontak person"
-                            },
-                            model: {
-                              value: _vm.penelitian.permohonan_id,
-                              callback: function($$v) {
-                                _vm.$set(_vm.penelitian, "permohonan_id", $$v)
-                              },
-                              expression: "penelitian.permohonan_id"
-                            }
-                          })
-                        ],
-                        1
                       )
                     ],
                     1
