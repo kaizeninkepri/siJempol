@@ -335,8 +335,8 @@ export default {
                 })
                 .then((r) => {
                     this.isLoading = false
-                    // window.location.href = url.web + '/pemohon/pengajuan/2/'+ r.data
-                    // console.log(r.data)
+                    window.location.href = url.web + '/pemohon/pengajuan/2/'+ r.data
+                    console.log(r.data)
                 });
         },
         Daftar() {

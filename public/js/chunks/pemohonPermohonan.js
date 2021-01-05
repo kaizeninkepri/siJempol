@@ -1738,8 +1738,9 @@ __webpack_require__.r(__webpack_exports__);
           this.progressBar = parseInt(Math.round(progressEvent.loaded * 100 / progressEvent.total));
         }.bind(this)
       }).then(function (r) {
-        _this.isLoading = false; // window.location.href = url.web + '/pemohon/pengajuan/2/'+ r.data
-        // console.log(r.data)
+        _this.isLoading = false;
+        window.location.href = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pemohon/pengajuan/2/' + r.data;
+        console.log(r.data);
       });
     },
     Daftar: function Daftar() {
