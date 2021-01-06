@@ -321,7 +321,6 @@ class permohonanControl extends Controller
     {
         $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas', 'suratpermintaan'])
             ->where('status', '=', 'teknis')
-            ->where('status', '=', 'tekniskirim')
             ->where('status', '=', 'teknisbalas')
         ->orderBy('updated_at', 'DESC')
         ->get();
