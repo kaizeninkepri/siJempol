@@ -320,9 +320,9 @@ class permohonanControl extends Controller
     function PermohonanPermintaanTelaah(Request $r)
     {
         $dataByDate = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas', 'suratpermintaan'])
-            ->where('status', '!=', 'proses')
-            ->where('status', '!=', 'tolak')
-            ->where('status', '!=', 'pending')
+            ->where('status', '=', 'teknis')
+            ->where('status', '=', 'tekniskirim')
+            ->where('status', '=', 'teknisbalas')
         ->orderBy('updated_at', 'DESC')
         ->get();
 
