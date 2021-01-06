@@ -319,7 +319,7 @@ export default {
             })
         },
         TODB() {
-            this.isLoading = false
+            this.isLoading = true
             this.axios
                 .post(url.web + "/master/penelitian", {
                     type: "insert",
@@ -340,11 +340,11 @@ export default {
                 });
         },
         Daftar() {
-            // this.$v.$touch()
-            // if (!this.$v.$invalid) {
-            //     this.TODB();
-            // }
-             this.TODB();
+            this.$v.$touch()
+            if (!this.$v.$invalid) {
+                this.TODB();
+            }
+            //  this.TODB();
         },
         activeHeader() {
             this.steps.pertama.text = "tx-success"

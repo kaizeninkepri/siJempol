@@ -1727,7 +1727,7 @@ __webpack_require__.r(__webpack_exports__);
     TODB: function TODB() {
       var _this = this;
 
-      this.isLoading = false;
+      this.isLoading = true;
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/penelitian", {
         type: "insert",
         penelitian: this.penelitian,
@@ -1744,11 +1744,12 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     Daftar: function Daftar() {
-      // this.$v.$touch()
-      // if (!this.$v.$invalid) {
-      //     this.TODB();
-      // }
-      this.TODB();
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.TODB();
+      } //  this.TODB();
+
     },
     activeHeader: function activeHeader() {
       this.steps.pertama.text = "tx-success";
