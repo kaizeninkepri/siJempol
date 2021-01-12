@@ -69,6 +69,8 @@ return array(
     'App\\mdsuratPermintaan' => $baseDir . '/app/mdsuratPermintaan.php',
     'App\\model\\mdIdentitas' => $baseDir . '/app/model/mdIdentitas.php',
     'App\\model\\mdOpd' => $baseDir . '/app/model/mdOpd.php',
+    'App\\model\\mdPenelitian' => $baseDir . '/app/model/mdPenelitian.php',
+    'App\\model\\mdPenelitianPerson' => $baseDir . '/app/model/mdPenelitianPerson.php',
     'App\\model\\mdPermohonanPersyaratan' => $baseDir . '/app/model/mdPermohonanPersyaratan.php',
     'App\\model\\mdSk' => $baseDir . '/app/model/mdSk.php',
     'App\\model\\mdTrack' => $baseDir . '/app/model/mdTrack.php',
