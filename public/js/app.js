@@ -22910,7 +22910,7 @@ __webpack_require__.r(__webpack_exports__);
 // const publicData = "http://localhost/siJempol/public";
 var api = "http://18.136.129.193/siJempol";
 var base = "siJempol";
-var web = "http://192.168.1.98/siJempol";
+var web = "http://18.136.129.193/siJempol";
 var publicData = "http://18.136.129.193/siJempol/public";
 var assets = "http://18.136.129.193/Resources/perusahaan"; // const api = "http://appkepri.com/testjempol";
 // const base = "testjempol";

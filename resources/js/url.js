@@ -10,7 +10,7 @@
 
 const api = "http://18.136.129.193/siJempol";
 const base = "siJempol";
-const web = "http://192.168.1.98/siJempol"
+const web = "http://18.136.129.193/siJempol"
 const publicData = "http://18.136.129.193/siJempol/public";
 const assets = "http://18.136.129.193/Resources/perusahaan";
 
