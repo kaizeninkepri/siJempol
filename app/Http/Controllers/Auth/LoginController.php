@@ -54,7 +54,7 @@ class LoginController extends Controller
     }
     public function showLoginForm()
     {
-
-        return view('panel.login');
+        $identitas = mdIdentitas::orderBy("identitas_id", 'ASC')->first();
+        return view('panel.login', compact('identitas'));
     }
 }
