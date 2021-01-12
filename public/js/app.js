@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://appkepri.com/siJempol/";
+/******/ 	__webpack_require__.p = "http://18.136.129.193/siJempol/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -22908,21 +22908,21 @@ __webpack_require__.r(__webpack_exports__);
 // const web = "http://localhost/siJempol";
 // const assets = "http://localhost/Resources/perusahaan";
 // const publicData = "http://localhost/siJempol/public";
-// const api = "http://192.168.1.98/siJempol";
-// const base = "siJempol";
-// const web = "http://192.168.1.98/siJempol"
-// const publicData = "http://192.168.1.98/siJempol/public";
-// const assets = "http://192.168.1.98/Resources/perusahaan";
-// const api = "http://appkepri.com/testjempol";
+var api = "http://18.136.129.193/siJempol";
+var base = "siJempol";
+var web = "http://192.168.1.98/siJempol";
+var publicData = "http://18.136.129.193/siJempol/public";
+var assets = "http://18.136.129.193/Resources/perusahaan"; // const api = "http://appkepri.com/testjempol";
 // const base = "testjempol";
 // const web = "http://appkepri.com/testjempol"
 // const publicData = "http://appkepri.com/testjempol/public";
 // const assets = "http://appkepri.com/Resources/perusahaan";
-var api = "http://appkepri.com/siJempol";
-var base = "siJempol";
-var web = "http://appkepri.com/siJempol";
-var publicData = "http://appkepri.com/siJempol/public";
-var assets = "http://appkepri.com/Resources/perusahaan"; // const api = "https://dpmptsp.kepriprov.go.id/testSijempol";
+// const api = "http://appkepri.com/siJempol";
+// const base = "siJempol";
+// const web = "http://appkepri.com/siJempol"
+// const publicData = "http://appkepri.com/siJempol/public";
+// const assets = "http://appkepri.com/Resources/perusahaan";
+// const api = "https://dpmptsp.kepriprov.go.id/testSijempol";
 // const base = "testSijempol";
 // const web = "https://dpmptsp.kepriprov.go.id/testSijempol"
 // const publicData = "https://dpmptsp.kepriprov.go.id/testSijempol/public";
