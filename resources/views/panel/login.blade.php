@@ -9,20 +9,20 @@
 
     <!-- Twitter -->
     <meta name="twitter:site" content="">
-    <meta name="twitter:creator" content="{{$identitas->meta_author}}">
+    <meta name="twitter:creator" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{$identitas->meta_title}}">
-    <meta name="twitter:description" content="{{$identitas->meta_description}}">
+    <meta name="twitter:title" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
+    <meta name="twitter:description" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Facebook -->
-    <meta property="og:title" content="{{$identitas->meta_title}}">
-    <meta property="og:description" content="{{$identitas->meta_description}}">
+    <meta property="og:title" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
+    <meta property="og:description" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
     <link rel="shortcut icon" href="{{url('public/images/logo.png')}}" type="image/x-icon" />
     <link rel="apple-touch-icon" href="{{url('public/images/logo.png')}}">
 
 
-    <title>{{$identitas->meta_title}}</title>
+    <title>Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau</title>
 
     <!-- vendor css -->
     <link href="{{url('public/admin/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
