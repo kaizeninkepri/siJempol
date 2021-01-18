@@ -125,7 +125,7 @@
                             </el-tab-pane>
                             <el-tab-pane label="DRAFT SK" name="third">
                                 <div class="d-flex align-items-center justify-content-between mg-b-5">
-                                    <h5 class="tx-gray-800 tx-15 tx-bold">DRAFT SK
+                                    <h5 class="tx-gray-800 tx-15 tx-bold">SEDANG DALAM PERBAIKAN
                                     </h5>
                                     <el-col :md="8" class="d-flex align-items-center justify-content-end">
                                         <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{telaah.data.length}}</span>
@@ -136,7 +136,7 @@
                             </el-tab-pane>
                             <el-tab-pane label="SK" name="four">
                                 <div class="d-flex align-items-center justify-content-between mg-b-5">
-                                    <h5 class="tx-gray-800 tx-15 tx-bold">SK
+                                    <h5 class="tx-gray-800 tx-15 tx-bold">SEDANG DALAM PERBAIKAN
                                     </h5>
                                     <el-col :md="8" class="d-flex align-items-center justify-content-end">
                                         <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{telaah.data.length}}</span>
@@ -144,6 +144,9 @@
                                     </el-col>
                                 </div>
                                 
+                            </el-tab-pane>
+                             <el-tab-pane label="GRAFIK" name="five">
+                                     <ChartPermohonan></ChartPermohonan>                                
                             </el-tab-pane>
                         </el-tabs>
                     </el-col>
@@ -266,11 +269,13 @@
 import urlBase from "@/js/url";
 import BarcodeData from "@/js/components/permohonan/popUpdata";
 import suratTelaah from "@/js/components/surat/modalSurat";
+import ChartPermohonan from "@/js/components/chart/permohonan"
 // s
 export default {
     components: {
         BarcodeData,
-        suratTelaah
+        suratTelaah,
+        ChartPermohonan
     },
     data() {
         return {

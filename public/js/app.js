@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "js/chunks/" + ({"BODashboard":"BODashboard","BOValidasi":"BOValidasi","Ind":"Ind","trackBYid":"trackBYid","vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan":"vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan","foPermohonan":"foPermohonan","perusahaan":"perusahaan","vendors~Pemohondashboard":"vendors~Pemohondashboard","Pemohondashboard":"Pemohondashboard","vendors~dashboard~surat":"vendors~dashboard~surat","vendors~dashboard":"vendors~dashboard","dashboard":"dashboard","vendors~Users~modulForm~pemohonPermohonan~roles~surat":"vendors~Users~modulForm~pemohonPermohonan~roles~surat","Users":"Users","pemohonPermohonan":"pemohonPermohonan","surat":"surat","vendors~roles":"vendors~roles","modulForm":"modulForm","roles":"roles"}[chunkId]||chunkId) + ".js"
+/******/ 		return __webpack_require__.p + "js/chunks/" + ({"BOValidasi":"BOValidasi","Ind":"Ind","trackBYid":"trackBYid","vendors~BODashboard~dashboard~surat":"vendors~BODashboard~dashboard~surat","vendors~BODashboard~dashboard":"vendors~BODashboard~dashboard","BODashboard":"BODashboard","vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan":"vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan","foPermohonan":"foPermohonan","perusahaan":"perusahaan","dashboard":"dashboard","vendors~Pemohondashboard":"vendors~Pemohondashboard","Pemohondashboard":"Pemohondashboard","vendors~Users~modulForm~pemohonPermohonan~roles~surat":"vendors~Users~modulForm~pemohonPermohonan~roles~surat","Users":"Users","pemohonPermohonan":"pemohonPermohonan","surat":"surat","vendors~roles":"vendors~roles","modulForm":"modulForm","roles":"roles"}[chunkId]||chunkId) + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://18.136.129.193/siJempol/";
+/******/ 	__webpack_require__.p = "http://appkepri.com/siJempol/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -22499,23 +22499,23 @@ __webpack_require__.r(__webpack_exports__);
 // import rolespermission from '@/js/components/roles/permission'
 
 var ikmQuestion = function ikmQuestion() {
-  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/ikm/question */ "./resources/js/components/ikm/question.vue"));
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/ikm/question */ "./resources/js/components/ikm/question.vue"));
 };
 
 var ikmQuestionForm = function ikmQuestionForm() {
-  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/ikm/question_form */ "./resources/js/components/ikm/question_form.vue"));
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/ikm/question_form */ "./resources/js/components/ikm/question_form.vue"));
 };
 
 var layananIzin = function layananIzin() {
-  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/layanan/daftarIzin */ "./resources/js/components/layanan/daftarIzin.vue"));
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/layanan/daftarIzin */ "./resources/js/components/layanan/daftarIzin.vue"));
 };
 
 var tatacaraDokumen = function tatacaraDokumen() {
-  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/tatacara/daftar */ "./resources/js/components/tatacara/daftar.vue"));
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/tatacara/daftar */ "./resources/js/components/tatacara/daftar.vue"));
 };
 
 var bp2rd = function bp2rd() {
-  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/integration/bp2rd */ "./resources/js/components/integration/bp2rd.vue"));
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/integration/bp2rd */ "./resources/js/components/integration/bp2rd.vue"));
 };
 
 var usersIdentitas = function usersIdentitas() {
@@ -22527,11 +22527,11 @@ var perusahaanData = function perusahaanData() {
 };
 
 var dashboard = function dashboard() {
-  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("vendors~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/fo */ "./resources/js/components/dashboard/fo.vue"));
+  return Promise.all(/*! import() | dashboard */[__webpack_require__.e("vendors~Pemohondashboard~dashboard~foPermohonan~perusahaan"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("dashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/fo */ "./resources/js/components/dashboard/fo.vue"));
 };
 
 var dashboardBo = function dashboardBo() {
-  return __webpack_require__.e(/*! import() | BODashboard */ "BODashboard").then(__webpack_require__.bind(null, /*! @/js/components/dashboard/dashboard */ "./resources/js/components/dashboard/dashboard.vue"));
+  return Promise.all(/*! import() | BODashboard */[__webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("vendors~BODashboard~dashboard"), __webpack_require__.e("BODashboard")]).then(__webpack_require__.bind(null, /*! @/js/components/dashboard/dashboard */ "./resources/js/components/dashboard/dashboard.vue"));
 };
 
 var pemohonDashboard = function pemohonDashboard() {
@@ -22603,19 +22603,19 @@ var pemohonPendaftaranIzinPenelitian = function pemohonPendaftaranIzinPenelitian
 
 
 var suratpermintaan = function suratpermintaan() {
-  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/surat/permintaan */ "./resources/js/components/surat/permintaan.vue"));
+  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/surat/permintaan */ "./resources/js/components/surat/permintaan.vue"));
 };
 
 var suratrekomendasipermintaan = function suratrekomendasipermintaan() {
-  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/rekomendasi/detail */ "./resources/js/components/rekomendasi/detail.vue"));
+  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/rekomendasi/detail */ "./resources/js/components/rekomendasi/detail.vue"));
 };
 
 var suratrekomendasipermintaanData = function suratrekomendasipermintaanData() {
-  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/rekomendasi/data */ "./resources/js/components/rekomendasi/data.vue"));
+  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/rekomendasi/data */ "./resources/js/components/rekomendasi/data.vue"));
 };
 
 var passwordGanti = function passwordGanti() {
-  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~dashboard~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/password/gantiPassword */ "./resources/js/components/password/gantiPassword.vue"));
+  return Promise.all(/*! import() | surat */[__webpack_require__.e("vendors~Users~modulForm~pemohonPermohonan~roles~surat"), __webpack_require__.e("vendors~BODashboard~dashboard~surat"), __webpack_require__.e("surat")]).then(__webpack_require__.bind(null, /*! @/js/components/password/gantiPassword */ "./resources/js/components/password/gantiPassword.vue"));
 };
 
 var indexKepuasan = function indexKepuasan() {
@@ -22908,21 +22908,21 @@ __webpack_require__.r(__webpack_exports__);
 // const web = "http://localhost/siJempol";
 // const assets = "http://localhost/Resources/perusahaan";
 // const publicData = "http://localhost/siJempol/public";
-var api = "http://18.136.129.193/siJempol";
-var base = "siJempol";
-var web = "http://18.136.129.193/siJempol";
-var publicData = "http://18.136.129.193/siJempol/public";
-var assets = "http://18.136.129.193/Resources/perusahaan"; // const api = "http://appkepri.com/testjempol";
+// const api = "http://18.136.129.193/siJempol";
+// const base = "siJempol";
+// const web = "http://18.136.129.193/siJempol"
+// const publicData = "http://18.136.129.193/siJempol/public";
+// const assets = "http://18.136.129.193/Resources/perusahaan";
+// const api = "http://appkepri.com/testjempol";
 // const base = "testjempol";
 // const web = "http://appkepri.com/testjempol"
 // const publicData = "http://appkepri.com/testjempol/public";
 // const assets = "http://appkepri.com/Resources/perusahaan";
-// const api = "http://appkepri.com/siJempol";
-// const base = "siJempol";
-// const web = "http://appkepri.com/siJempol"
-// const publicData = "http://appkepri.com/siJempol/public";
-// const assets = "http://appkepri.com/Resources/perusahaan";
-// const api = "https://dpmptsp.kepriprov.go.id/testSijempol";
+var api = "http://appkepri.com/siJempol";
+var base = "siJempol";
+var web = "http://appkepri.com/siJempol";
+var publicData = "http://appkepri.com/siJempol/public";
+var assets = "http://appkepri.com/Resources/perusahaan"; // const api = "https://dpmptsp.kepriprov.go.id/testSijempol";
 // const base = "testSijempol";
 // const web = "https://dpmptsp.kepriprov.go.id/testSijempol"
 // const publicData = "https://dpmptsp.kepriprov.go.id/testSijempol/public";

@@ -9,20 +9,20 @@
 
     <!-- Twitter -->
     <meta name="twitter:site" content="">
-    <meta name="twitter:creator" content="<?php echo e($identitas->meta_author); ?>">
+    <meta name="twitter:creator" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="<?php echo e($identitas->meta_title); ?>">
-    <meta name="twitter:description" content="<?php echo e($identitas->meta_description); ?>">
+    <meta name="twitter:title" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
+    <meta name="twitter:description" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
     <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
 
     <!-- Facebook -->
-    <meta property="og:title" content="<?php echo e($identitas->meta_title); ?>">
-    <meta property="og:description" content="<?php echo e($identitas->meta_description); ?>">
+    <meta property="og:title" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
+    <meta property="og:description" content="Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau">
     <link rel="shortcut icon" href="<?php echo e(url('public/images/logo.png')); ?>" type="image/x-icon" />
     <link rel="apple-touch-icon" href="<?php echo e(url('public/images/logo.png')); ?>">
 
 
-    <title><?php echo e($identitas->meta_title); ?></title>
+    <title>Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu Provinsi Kepulauan Riau</title>
 
     <!-- vendor css -->
     <link href="<?php echo e(url('public/admin/lib/font-awesome/css/font-awesome.css')); ?>" rel="stylesheet">
