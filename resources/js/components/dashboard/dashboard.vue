@@ -125,28 +125,111 @@
                             </el-tab-pane>
                             <el-tab-pane label="DRAFT SK" name="third">
                                 <div class="d-flex align-items-center justify-content-between mg-b-5">
-                                    <h5 class="tx-gray-800 tx-15 tx-bold">SEDANG DALAM PERBAIKAN
+                                    <h5 class="tx-gray-800 tx-15 tx-bold">DRAFT SK
                                     </h5>
                                     <el-col :md="8" class="d-flex align-items-center justify-content-end">
-                                        <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{telaah.data.length}}</span>
-                                        <el-input class="col-md-10" size="small" v-model="telaah.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                                        <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{penelitian.data.length}}</span>
+                                        <el-input class="col-md-10" size="small" v-model="penelitian.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
                                     </el-col>
                                 </div>
-                                
+                                <el-card style="border-radius:10px;">
+                                    <table class="table" style="min-height:620px">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Perusahaan</th>
+                                                <th>Izin</th>
+                                                <th>Tanggal/Waktu</th>
+                                                <th>Pengaturan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(i, Index) in IzinPenelitian.slice(penelitian.list, penelitian.end)" :key="Index">
+                                                <td>{{Index + 1}}</td>
+                                                <td class="pd-l-0-force">
+                                                    <div class="tx-13 tx-bold mg-b-0">{{i.perusahaan.fullname}}</div>
+                                                    <div class="tx-12 tx-roboto mg-b-1 tx-primary" v-if="i.perusahaan.kategori != 'perorangan'">{{i.pemohon.nama}}</div>
+                                                    <p class="tx-12 tx-roboto">{{i.pemohon.contact}} / {{i.pemohon.email}}</p>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <div>
+                                                        <p class="tx-13 tx-bold mg-b-0 tx-teal">{{i.izin.nama_izin}}</p>
+                                                        <p class="tx-12 tx-roboto mg-b-0">{{i.opd.opd}} / {{i.izin.kategori}}</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <span class="tx-12 tx-roboto mg-b-0">{{i.lastjam}}</span>
+                                                </td>
+                                                <td class="pd-l-0-force">
+
+                                                    <el-button type="success" size="small" @click="verfikasiBerkasPenelitian(i.permohonan_id, Index)">Verifikasi</el-button>
+                                                    <a :href="urlPDF+'='+i.permohonan_id" class="btn btn-sm btn-primary" target="_blank">Pratinjau</a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <el-row justify="end" type="flex">
+                                        <el-col :md="10">
+                                            <el-pagination style="float: right" background @size-change="handleSizeChangetelaah" @current-change="handleCurrentdraft" :current-page.sync="telaah.page" :page-size="telaah.size" :page-count="telaah.pagecount" layout="total, prev, pager, next" :total="telaah.data.length"></el-pagination>
+                                        </el-col>
+                                    </el-row>
+                                </el-card>
                             </el-tab-pane>
                             <el-tab-pane label="SK" name="four">
                                 <div class="d-flex align-items-center justify-content-between mg-b-5">
-                                    <h5 class="tx-gray-800 tx-15 tx-bold">SEDANG DALAM PERBAIKAN
+                                    <h5 class="tx-gray-800 tx-15 tx-bold">REKOMENDASI PENELITIAN
                                     </h5>
                                     <el-col :md="8" class="d-flex align-items-center justify-content-end">
-                                        <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{telaah.data.length}}</span>
-                                        <el-input class="col-md-10" size="small" v-model="telaah.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
+                                        <ion-icon name="document-text-outline" class="tx-20 tx-primary"></ion-icon> <span class="tx-bold">{{penelitian.data.length}}</span>
+                                        <el-input class="col-md-10" size="small" v-model="penelitian.search" placeholder="Ketik Nama perusahaan / izin"></el-input>
                                     </el-col>
                                 </div>
-                                
+                                <el-card style="border-radius:10px;">
+                                    <table class="table" style="min-height:620px">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama Perusahaan</th>
+                                                <th>Izin</th>
+                                                <th>Tanggal/Waktu</th>
+                                                <th>Pengaturan</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(i, Index) in IzinPenelitianSK.slice(penelitiansk.list, penelitiansk.end)" :key="Index">
+                                                <td>{{Index + 1}}</td>
+                                                <td class="pd-l-0-force">
+                                                    <div class="tx-13 tx-bold mg-b-0">{{i.perusahaan.fullname}}</div>
+                                                    <div class="tx-12 tx-roboto mg-b-1 tx-primary" v-if="i.perusahaan.kategori != 'perorangan'">{{i.pemohon.nama}}</div>
+                                                    <p class="tx-12 tx-roboto">{{i.pemohon.contact}} / {{i.pemohon.email}}</p>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <div>
+                                                        <p class="tx-13 tx-bold mg-b-0 tx-teal">{{i.izin.nama_izin}}</p>
+                                                        <p class="tx-12 tx-roboto mg-b-0">{{i.opd.opd}} / {{i.izin.kategori}}</p>
+                                                    </div>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <span class="tx-12 tx-roboto mg-b-0">{{i.lastjam}}</span>
+                                                </td>
+                                                <td class="pd-l-0-force">
+                                                    <a :href="urlPDF+'='+i.permohonan_id" class="btn btn-sm btn-primary" target="_blank">Cetak</a>
+
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <el-row justify="end" type="flex">
+                                        <el-col :md="10">
+                                            <el-pagination style="float: right" background @size-change="handleSizeChangetelaah" @current-change="handleCurrentChangepenelitiansk" :current-page.sync="telaah.page" :page-size="telaah.size" :page-count="telaah.pagecount" layout="total, prev, pager, next" :total="telaah.data.length"></el-pagination>
+                                        </el-col>
+                                    </el-row>
+                                </el-card>
+
                             </el-tab-pane>
-                             <el-tab-pane label="GRAFIK" name="five">
-                                     <ChartPermohonan></ChartPermohonan>                                
+                            <el-tab-pane label="GRAFIK" name="five">
+                                <ChartPermohonan></ChartPermohonan>
                             </el-tab-pane>
                         </el-tabs>
                     </el-col>
@@ -279,6 +362,7 @@ export default {
     },
     data() {
         return {
+            urlPDF: urlBase.web + '/pdf/penelitian?id',
             activeName: "first",
             barcode: {
                 title: "Cetak Barcode SK"
@@ -292,6 +376,24 @@ export default {
                 search: null,
             },
             telaah: {
+                title: null,
+                data: [],
+                size: 5,
+                page: 1,
+                list: 0,
+                end: 5,
+                search: null,
+            },
+            penelitian: {
+                title: null,
+                data: [],
+                size: 5,
+                page: 1,
+                list: 0,
+                end: 5,
+                search: null,
+            },
+            penelitiansk: {
                 title: null,
                 data: [],
                 size: 5,
@@ -341,6 +443,36 @@ export default {
 
             return result.filter(filter);
         },
+        IzinPenelitian() {
+            var result = this.penelitian.data
+            if (!this.penelitian.search) return result;
+
+            const filterValue = this.penelitian.search.toLowerCase();
+
+            const filter = (event) =>
+                event.perusahaan.fullname.toLowerCase().includes(filterValue) ||
+                event.permohonan_code.toLowerCase().includes(filterValue) ||
+                event.opd.opd.toLowerCase().includes(filterValue) ||
+                event.izin.nama_izin.toLowerCase().includes(filterValue) ||
+                event.pemohon.nama.toLowerCase().includes(filterValue);
+
+            return result.filter(filter);
+        },
+        IzinPenelitianSK() {
+            var result = this.penelitiansk.data
+            if (!this.penelitiansk.search) return result;
+
+            const filterValue = this.penelitiansk.search.toLowerCase();
+
+            const filter = (event) =>
+                event.perusahaan.fullname.toLowerCase().includes(filterValue) ||
+                event.permohonan_code.toLowerCase().includes(filterValue) ||
+                event.opd.opd.toLowerCase().includes(filterValue) ||
+                event.izin.nama_izin.toLowerCase().includes(filterValue) ||
+                event.pemohon.nama.toLowerCase().includes(filterValue);
+
+            return result.filter(filter);
+        },
         IzinPermintaanTelaah() {
             var result = this.telaah.data
             if (!this.telaah.search) return result;
@@ -361,11 +493,26 @@ export default {
         this.getValidasi();
         this.getTelaah();
         this.getFrontOffice();
+        this.getPenelitian();
+        this.getPenelitianSK();
     },
     mounted() {
         this.$parent.justcollpasedmenu();
     },
     methods: {
+        verfikasiBerkasPenelitian(i,index){
+   
+         this.axios
+                .post(urlBase.web + "/perizinan/permohonan", {
+                    type: "verifikasiPenelitian",
+                    id: i
+                })
+                .then((r) => {
+                    this.$delete(this.penelitian.data, index)
+                    this.getPenelitianSK()
+                });
+       
+        },
         SuratTelaahOnClick(a, kategori) {
             this.telaah.title = a
             this.$refs.suratTelaah.onPopUp(kategori)
@@ -398,6 +545,28 @@ export default {
 
             console.log(`current page: ${val}`);
         },
+        handleCurrentdraft(val) {
+            var start = Math.max(0, val - 1);
+            var end = this.penelitian.size;
+            var newstart = Math.max(0, start * end);
+            var newend = val * end;
+
+            this.penelitian.list = newstart;
+            this.penelitian.end = newend;
+
+            console.log(`current page: ${val}`);
+        },
+        handleCurrentChangepenelitiansk(val){
+         var start = Math.max(0, val - 1);
+            var end = this.penelitiansk.size;
+            var newstart = Math.max(0, start * end);
+            var newend = val * end;
+
+            this.penelitiansk.list = newstart;
+            this.penelitiansk.end = newend;
+
+            console.log(`current page: ${val}`);
+        },
         getValidasi() {
             this.axios
                 .post(urlBase.web + "/perizinan/permohonan", {
@@ -414,6 +583,27 @@ export default {
                 })
                 .then((r) => {
                     this.telaah.data = r.data
+                });
+        },
+        getPenelitian() {
+            this.axios
+                .post(urlBase.web + "/perizinan/permohonan", {
+                    type: "penelitianSK",
+                    kategori: "draft"
+                })
+                .then((r) => {
+                    this.penelitian.data = r.data
+                });
+        },
+        getPenelitianSK() {
+            this.axios
+                .post(urlBase.web + "/perizinan/permohonan", {
+                    type: "penelitianSK",
+                    kategori: "selesai"
+                })
+                .then((r) => {
+                    this.penelitiansk.data = r.data
+                    console.log(r.data)
                 });
         },
         getFrontOffice() {

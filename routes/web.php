@@ -21,6 +21,7 @@ Route::get("/users/getById", "appcontrol@getById");
 Route::post("/integration", "IntegrationControl@index");
 Route::get("/pdf/index", "pdfControl@index");
 Route::get("/pdf/pendaftaran", "pdfControl@pendaftaranPDF");
+Route::get("/pdf/penelitian", "pdfControl@penelitanSKPDF");
 Route::post("/roles/permission", "permissionControl@index");
 Route::POST("/perizinan/perusahaan", "perusahaanControl@index");
 Route::GET("/web", "appcontrol@web")->withoutMiddleware(['auth']);;

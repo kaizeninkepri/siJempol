@@ -192,4 +192,6 @@ class penelitianControl extends Controller
         $id = $r->get('id');
         mdPenelitian::where('permohonan_id', $id)->update(array("menimbang" => $data));
     }
+
+    
 }

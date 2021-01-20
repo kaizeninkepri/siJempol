@@ -343,6 +343,89 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -356,6 +439,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      urlPDF: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + '/pdf/penelitian?id',
       activeName: "first",
       barcode: {
         title: "Cetak Barcode SK"
@@ -369,6 +453,24 @@ __webpack_require__.r(__webpack_exports__);
         search: null
       },
       telaah: {
+        title: null,
+        data: [],
+        size: 5,
+        page: 1,
+        list: 0,
+        end: 5,
+        search: null
+      },
+      penelitian: {
+        title: null,
+        data: [],
+        size: 5,
+        page: 1,
+        list: 0,
+        end: 5,
+        search: null
+      },
+      penelitiansk: {
         title: null,
         data: [],
         size: 5,
@@ -414,6 +516,28 @@ __webpack_require__.r(__webpack_exports__);
 
       return result.filter(filter);
     },
+    IzinPenelitian: function IzinPenelitian() {
+      var result = this.penelitian.data;
+      if (!this.penelitian.search) return result;
+      var filterValue = this.penelitian.search.toLowerCase();
+
+      var filter = function filter(event) {
+        return event.perusahaan.fullname.toLowerCase().includes(filterValue) || event.permohonan_code.toLowerCase().includes(filterValue) || event.opd.opd.toLowerCase().includes(filterValue) || event.izin.nama_izin.toLowerCase().includes(filterValue) || event.pemohon.nama.toLowerCase().includes(filterValue);
+      };
+
+      return result.filter(filter);
+    },
+    IzinPenelitianSK: function IzinPenelitianSK() {
+      var result = this.penelitiansk.data;
+      if (!this.penelitiansk.search) return result;
+      var filterValue = this.penelitiansk.search.toLowerCase();
+
+      var filter = function filter(event) {
+        return event.perusahaan.fullname.toLowerCase().includes(filterValue) || event.permohonan_code.toLowerCase().includes(filterValue) || event.opd.opd.toLowerCase().includes(filterValue) || event.izin.nama_izin.toLowerCase().includes(filterValue) || event.pemohon.nama.toLowerCase().includes(filterValue);
+      };
+
+      return result.filter(filter);
+    },
     IzinPermintaanTelaah: function IzinPermintaanTelaah() {
       var result = this.telaah.data;
       if (!this.telaah.search) return result;
@@ -430,11 +554,25 @@ __webpack_require__.r(__webpack_exports__);
     this.getValidasi();
     this.getTelaah();
     this.getFrontOffice();
+    this.getPenelitian();
+    this.getPenelitianSK();
   },
   mounted: function mounted() {
     this.$parent.justcollpasedmenu();
   },
   methods: {
+    verfikasiBerkasPenelitian: function verfikasiBerkasPenelitian(i, index) {
+      var _this = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/perizinan/permohonan", {
+        type: "verifikasiPenelitian",
+        id: i
+      }).then(function (r) {
+        _this.$delete(_this.penelitian.data, index);
+
+        _this.getPenelitianSK();
+      });
+    },
     SuratTelaahOnClick: function SuratTelaahOnClick(a, kategori) {
       this.telaah.title = a;
       this.$refs.suratTelaah.onPopUp(kategori);
@@ -463,32 +601,71 @@ __webpack_require__.r(__webpack_exports__);
       this.telaah.end = newend;
       console.log("current page: ".concat(val));
     },
+    handleCurrentdraft: function handleCurrentdraft(val) {
+      var start = Math.max(0, val - 1);
+      var end = this.penelitian.size;
+      var newstart = Math.max(0, start * end);
+      var newend = val * end;
+      this.penelitian.list = newstart;
+      this.penelitian.end = newend;
+      console.log("current page: ".concat(val));
+    },
+    handleCurrentChangepenelitiansk: function handleCurrentChangepenelitiansk(val) {
+      var start = Math.max(0, val - 1);
+      var end = this.penelitiansk.size;
+      var newstart = Math.max(0, start * end);
+      var newend = val * end;
+      this.penelitiansk.list = newstart;
+      this.penelitiansk.end = newend;
+      console.log("current page: ".concat(val));
+    },
     getValidasi: function getValidasi() {
-      var _this = this;
+      var _this2 = this;
 
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/perizinan/permohonan", {
         type: "PermohonanKeabsahan"
       }).then(function (r) {
-        _this.keabsahan.data = r.data;
+        _this2.keabsahan.data = r.data;
       });
     },
     getTelaah: function getTelaah() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/perizinan/permohonan", {
         type: "PermohonanPermintaanTelaah"
       }).then(function (r) {
-        _this2.telaah.data = r.data;
+        _this3.telaah.data = r.data;
+      });
+    },
+    getPenelitian: function getPenelitian() {
+      var _this4 = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/perizinan/permohonan", {
+        type: "penelitianSK",
+        kategori: "draft"
+      }).then(function (r) {
+        _this4.penelitian.data = r.data;
+      });
+    },
+    getPenelitianSK: function getPenelitianSK() {
+      var _this5 = this;
+
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/perizinan/permohonan", {
+        type: "penelitianSK",
+        kategori: "selesai"
+      }).then(function (r) {
+        _this5.penelitiansk.data = r.data;
+        console.log(r.data);
       });
     },
     getFrontOffice: function getFrontOffice() {
-      var _this3 = this;
+      var _this6 = this;
 
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/master/users", {
         type: "dataByrole",
         role: "3"
       }).then(function (r) {
-        _this3.frontoffice = r.data;
+        _this6.frontoffice = r.data;
       });
     },
     onClickSuratTerkirim: function onClickSuratTerkirim() {
@@ -2081,7 +2258,7 @@ var render = function() {
                                         },
                                         [
                                           _vm._v(
-                                            "SEDANG DALAM PERBAIKAN\n                                    "
+                                            "DRAFT SK\n                                    "
                                           )
                                         ]
                                       ),
@@ -2106,7 +2283,9 @@ var render = function() {
                                             { staticClass: "tx-bold" },
                                             [
                                               _vm._v(
-                                                _vm._s(_vm.telaah.data.length)
+                                                _vm._s(
+                                                  _vm.penelitian.data.length
+                                                )
                                               )
                                             ]
                                           ),
@@ -2119,15 +2298,15 @@ var render = function() {
                                                 "Ketik Nama perusahaan / izin"
                                             },
                                             model: {
-                                              value: _vm.telaah.search,
+                                              value: _vm.penelitian.search,
                                               callback: function($$v) {
                                                 _vm.$set(
-                                                  _vm.telaah,
+                                                  _vm.penelitian,
                                                   "search",
                                                   $$v
                                                 )
                                               },
-                                              expression: "telaah.search"
+                                              expression: "penelitian.search"
                                             }
                                           })
                                         ],
@@ -2135,8 +2314,306 @@ var render = function() {
                                       )
                                     ],
                                     1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-card",
+                                    {
+                                      staticStyle: { "border-radius": "10px" }
+                                    },
+                                    [
+                                      _c(
+                                        "table",
+                                        {
+                                          staticClass: "table",
+                                          staticStyle: { "min-height": "620px" }
+                                        },
+                                        [
+                                          _c("thead", [
+                                            _c("tr", [
+                                              _c("th", [_vm._v("No")]),
+                                              _vm._v(" "),
+                                              _c("th", [
+                                                _vm._v("Nama Perusahaan")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("th", [_vm._v("Izin")]),
+                                              _vm._v(" "),
+                                              _c("th", [
+                                                _vm._v("Tanggal/Waktu")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("th", [_vm._v("Pengaturan")])
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "tbody",
+                                            _vm._l(
+                                              _vm.IzinPenelitian.slice(
+                                                _vm.penelitian.list,
+                                                _vm.penelitian.end
+                                              ),
+                                              function(i, Index) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: Index },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(Index + 1))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "tx-13 tx-bold mg-b-0"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                i.perusahaan
+                                                                  .fullname
+                                                              )
+                                                            )
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        i.perusahaan.kategori !=
+                                                        "perorangan"
+                                                          ? _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "tx-12 tx-roboto mg-b-1 tx-primary"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    i.pemohon
+                                                                      .nama
+                                                                  )
+                                                                )
+                                                              ]
+                                                            )
+                                                          : _vm._e(),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "p",
+                                                          {
+                                                            staticClass:
+                                                              "tx-12 tx-roboto"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                i.pemohon
+                                                                  .contact
+                                                              ) +
+                                                                " / " +
+                                                                _vm._s(
+                                                                  i.pemohon
+                                                                    .email
+                                                                )
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c("div", [
+                                                          _c(
+                                                            "p",
+                                                            {
+                                                              staticClass:
+                                                                "tx-13 tx-bold mg-b-0 tx-teal"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  i.izin
+                                                                    .nama_izin
+                                                                )
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "p",
+                                                            {
+                                                              staticClass:
+                                                                "tx-12 tx-roboto mg-b-0"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  i.opd.opd
+                                                                ) +
+                                                                  " / " +
+                                                                  _vm._s(
+                                                                    i.izin
+                                                                      .kategori
+                                                                  )
+                                                              )
+                                                            ]
+                                                          )
+                                                        ])
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "tx-12 tx-roboto mg-b-0"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(i.lastjam)
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "el-button",
+                                                          {
+                                                            attrs: {
+                                                              type: "success",
+                                                              size: "small"
+                                                            },
+                                                            on: {
+                                                              click: function(
+                                                                $event
+                                                              ) {
+                                                                return _vm.verfikasiBerkasPenelitian(
+                                                                  i.permohonan_id,
+                                                                  Index
+                                                                )
+                                                              }
+                                                            }
+                                                          },
+                                                          [_vm._v("Verifikasi")]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            staticClass:
+                                                              "btn btn-sm btn-primary",
+                                                            attrs: {
+                                                              href:
+                                                                _vm.urlPDF +
+                                                                "=" +
+                                                                i.permohonan_id,
+                                                              target: "_blank"
+                                                            }
+                                                          },
+                                                          [_vm._v("Pratinjau")]
+                                                        )
+                                                      ],
+                                                      1
+                                                    )
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            0
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "el-row",
+                                        {
+                                          attrs: {
+                                            justify: "end",
+                                            type: "flex"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "el-col",
+                                            { attrs: { md: 10 } },
+                                            [
+                                              _c("el-pagination", {
+                                                staticStyle: { float: "right" },
+                                                attrs: {
+                                                  background: "",
+                                                  "current-page":
+                                                    _vm.telaah.page,
+                                                  "page-size": _vm.telaah.size,
+                                                  "page-count":
+                                                    _vm.telaah.pagecount,
+                                                  layout:
+                                                    "total, prev, pager, next",
+                                                  total: _vm.telaah.data.length
+                                                },
+                                                on: {
+                                                  "size-change":
+                                                    _vm.handleSizeChangetelaah,
+                                                  "current-change":
+                                                    _vm.handleCurrentdraft,
+                                                  "update:currentPage": function(
+                                                    $event
+                                                  ) {
+                                                    return _vm.$set(
+                                                      _vm.telaah,
+                                                      "page",
+                                                      $event
+                                                    )
+                                                  },
+                                                  "update:current-page": function(
+                                                    $event
+                                                  ) {
+                                                    return _vm.$set(
+                                                      _vm.telaah,
+                                                      "page",
+                                                      $event
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
                                   )
-                                ]
+                                ],
+                                1
                               ),
                               _vm._v(" "),
                               _c(
@@ -2158,7 +2635,7 @@ var render = function() {
                                         },
                                         [
                                           _vm._v(
-                                            "SEDANG DALAM PERBAIKAN\n                                    "
+                                            "REKOMENDASI PENELITIAN\n                                    "
                                           )
                                         ]
                                       ),
@@ -2183,7 +2660,9 @@ var render = function() {
                                             { staticClass: "tx-bold" },
                                             [
                                               _vm._v(
-                                                _vm._s(_vm.telaah.data.length)
+                                                _vm._s(
+                                                  _vm.penelitian.data.length
+                                                )
                                               )
                                             ]
                                           ),
@@ -2196,15 +2675,15 @@ var render = function() {
                                                 "Ketik Nama perusahaan / izin"
                                             },
                                             model: {
-                                              value: _vm.telaah.search,
+                                              value: _vm.penelitian.search,
                                               callback: function($$v) {
                                                 _vm.$set(
-                                                  _vm.telaah,
+                                                  _vm.penelitian,
                                                   "search",
                                                   $$v
                                                 )
                                               },
-                                              expression: "telaah.search"
+                                              expression: "penelitian.search"
                                             }
                                           })
                                         ],
@@ -2212,8 +2691,284 @@ var render = function() {
                                       )
                                     ],
                                     1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "el-card",
+                                    {
+                                      staticStyle: { "border-radius": "10px" }
+                                    },
+                                    [
+                                      _c(
+                                        "table",
+                                        {
+                                          staticClass: "table",
+                                          staticStyle: { "min-height": "620px" }
+                                        },
+                                        [
+                                          _c("thead", [
+                                            _c("tr", [
+                                              _c("th", [_vm._v("No")]),
+                                              _vm._v(" "),
+                                              _c("th", [
+                                                _vm._v("Nama Perusahaan")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("th", [_vm._v("Izin")]),
+                                              _vm._v(" "),
+                                              _c("th", [
+                                                _vm._v("Tanggal/Waktu")
+                                              ]),
+                                              _vm._v(" "),
+                                              _c("th", [_vm._v("Pengaturan")])
+                                            ])
+                                          ]),
+                                          _vm._v(" "),
+                                          _c(
+                                            "tbody",
+                                            _vm._l(
+                                              _vm.IzinPenelitianSK.slice(
+                                                _vm.penelitiansk.list,
+                                                _vm.penelitiansk.end
+                                              ),
+                                              function(i, Index) {
+                                                return _c(
+                                                  "tr",
+                                                  { key: Index },
+                                                  [
+                                                    _c("td", [
+                                                      _vm._v(_vm._s(Index + 1))
+                                                    ]),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "div",
+                                                          {
+                                                            staticClass:
+                                                              "tx-13 tx-bold mg-b-0"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                i.perusahaan
+                                                                  .fullname
+                                                              )
+                                                            )
+                                                          ]
+                                                        ),
+                                                        _vm._v(" "),
+                                                        i.perusahaan.kategori !=
+                                                        "perorangan"
+                                                          ? _c(
+                                                              "div",
+                                                              {
+                                                                staticClass:
+                                                                  "tx-12 tx-roboto mg-b-1 tx-primary"
+                                                              },
+                                                              [
+                                                                _vm._v(
+                                                                  _vm._s(
+                                                                    i.pemohon
+                                                                      .nama
+                                                                  )
+                                                                )
+                                                              ]
+                                                            )
+                                                          : _vm._e(),
+                                                        _vm._v(" "),
+                                                        _c(
+                                                          "p",
+                                                          {
+                                                            staticClass:
+                                                              "tx-12 tx-roboto"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(
+                                                                i.pemohon
+                                                                  .contact
+                                                              ) +
+                                                                " / " +
+                                                                _vm._s(
+                                                                  i.pemohon
+                                                                    .email
+                                                                )
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c("div", [
+                                                          _c(
+                                                            "p",
+                                                            {
+                                                              staticClass:
+                                                                "tx-13 tx-bold mg-b-0 tx-teal"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  i.izin
+                                                                    .nama_izin
+                                                                )
+                                                              )
+                                                            ]
+                                                          ),
+                                                          _vm._v(" "),
+                                                          _c(
+                                                            "p",
+                                                            {
+                                                              staticClass:
+                                                                "tx-12 tx-roboto mg-b-0"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  i.opd.opd
+                                                                ) +
+                                                                  " / " +
+                                                                  _vm._s(
+                                                                    i.izin
+                                                                      .kategori
+                                                                  )
+                                                              )
+                                                            ]
+                                                          )
+                                                        ])
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "span",
+                                                          {
+                                                            staticClass:
+                                                              "tx-12 tx-roboto mg-b-0"
+                                                          },
+                                                          [
+                                                            _vm._v(
+                                                              _vm._s(i.lastjam)
+                                                            )
+                                                          ]
+                                                        )
+                                                      ]
+                                                    ),
+                                                    _vm._v(" "),
+                                                    _c(
+                                                      "td",
+                                                      {
+                                                        staticClass:
+                                                          "pd-l-0-force"
+                                                      },
+                                                      [
+                                                        _c(
+                                                          "a",
+                                                          {
+                                                            staticClass:
+                                                              "btn btn-sm btn-primary",
+                                                            attrs: {
+                                                              href:
+                                                                _vm.urlPDF +
+                                                                "=" +
+                                                                i.permohonan_id,
+                                                              target: "_blank"
+                                                            }
+                                                          },
+                                                          [_vm._v("Cetak")]
+                                                        )
+                                                      ]
+                                                    )
+                                                  ]
+                                                )
+                                              }
+                                            ),
+                                            0
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "el-row",
+                                        {
+                                          attrs: {
+                                            justify: "end",
+                                            type: "flex"
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "el-col",
+                                            { attrs: { md: 10 } },
+                                            [
+                                              _c("el-pagination", {
+                                                staticStyle: { float: "right" },
+                                                attrs: {
+                                                  background: "",
+                                                  "current-page":
+                                                    _vm.telaah.page,
+                                                  "page-size": _vm.telaah.size,
+                                                  "page-count":
+                                                    _vm.telaah.pagecount,
+                                                  layout:
+                                                    "total, prev, pager, next",
+                                                  total: _vm.telaah.data.length
+                                                },
+                                                on: {
+                                                  "size-change":
+                                                    _vm.handleSizeChangetelaah,
+                                                  "current-change":
+                                                    _vm.handleCurrentChangepenelitiansk,
+                                                  "update:currentPage": function(
+                                                    $event
+                                                  ) {
+                                                    return _vm.$set(
+                                                      _vm.telaah,
+                                                      "page",
+                                                      $event
+                                                    )
+                                                  },
+                                                  "update:current-page": function(
+                                                    $event
+                                                  ) {
+                                                    return _vm.$set(
+                                                      _vm.telaah,
+                                                      "page",
+                                                      $event
+                                                    )
+                                                  }
+                                                }
+                                              })
+                                            ],
+                                            1
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    ],
+                                    1
                                   )
-                                ]
+                                ],
+                                1
                               ),
                               _vm._v(" "),
                               _c(

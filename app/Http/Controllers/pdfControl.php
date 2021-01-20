@@ -58,6 +58,25 @@ class pdfControl extends Controller
         }
     }
 
+
+    function penelitanSKPDF(Request $r)
+    {
+        $id = $r->get("id");
+        if ($id) {
+            $p = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas', 'suratpermintaan', 'penelitian' => function ($p) {
+                $p->with(['person']);
+            }])
+                ->where("permohonan_id", $id)
+                ->first();
+
+
+            $pdf = PDF::loadView('pdf.penelitian', compact('p'));
+            return $pdf->stream($p->permohonan_code . '.pdf');
+        } else {
+            return "error";
+        }
+    }
+
     function pendaftaranPDF(Request $r)
     {
 

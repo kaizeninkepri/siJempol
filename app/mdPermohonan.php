@@ -4,6 +4,7 @@ namespace App;
 
 use App\model\mdOpd;
 use App\model\mdopdIzin;
+use App\model\mdPenelitian;
 use App\model\mdPermohonanPersyaratan;
 use App\model\mdperusahaan;
 use App\model\mdperusahaanPemohon;
@@ -137,5 +138,10 @@ class mdPermohonan extends Model
     function suratpermintaan()
     {
         return $this->hasMany(mdsuratPermintaan::class, "permohonan_id");
+    }
+
+    function penelitian()
+    {
+        return $this->hasOne(mdPenelitian::class, 'permohonan_id');
     }
 }

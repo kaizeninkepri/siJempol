@@ -48,7 +48,12 @@ class permohonanControl extends Controller
             return self::GraficByDate($r);
         } else if ($type == 'CetakSerahTerima') {
             return self::CetakSerahTerima($r);
+        } else if ($type == 'penelitianSK') {
+            return self::penelitianSK($r);
+        } else if ($type == 'verifikasiPenelitian') {
+            return self::verifikasiPenelitian($r);
         }
+        
     }
 
     /*----------------------=== GET DATA BY ===-----------------------*/
@@ -345,7 +350,25 @@ class permohonanControl extends Controller
 
         return $day;
     }
-
+    function penelitianSK(Request $r)
+    {
+        $kategori = $r->get('kategori');
+        if ($kategori == 'draft') {
+            $penelitian = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas', 'suratpermintaan'])
+            ->where('status', 'teknis')
+            ->where('opdi_id', '7')
+                ->orderBy("created_at", "DESC")
+                ->get();
+            return $penelitian;
+        } else {
+            $penelitian = mdPermohonan::with(['izin', 'perusahaan', 'opd', 'persyaratan', 'pemohon', 'petugas', 'suratpermintaan'])
+            ->where('status', 'selesai')
+            ->where('opdi_id', '7')
+                ->orderBy("created_at", "DESC")
+                ->get();
+            return $penelitian;
+        }
+    }
     function CetakSerahTerima(Request $r)
     {
         $start = Carbon::now()->subMonth(1)->startOfMonth()->toDateString();
@@ -358,5 +381,37 @@ class permohonanControl extends Controller
             ->orderBy('created_at', 'DESC')
             ->get();
         return $dataByDate;
+    }
+
+    function verifikasiPenelitian(Request $r)
+    {
+        $permohonan_id = $r->get('id');
+        $permohonan = mdPermohonan::where('permohonan_id', $permohonan_id)->first();
+        $totrack = array(
+            "permohonan_id" => $permohonan_id,
+            "perusahaan_id" => $permohonan->perusahaan_id,
+            "pesan" => "Di Verifikasi Dan Di Sahkan Oleh Kepala Bidang",
+            "step" => "5",
+            "user_id" => '0',
+            "kategori" => "BACK OFFICE",
+            "ShowOnuser" => true,
+        );
+        mdTrack::insert($totrack);
+
+        $permohonan_id = $r->get('id');
+        $permohonan = mdPermohonan::where('permohonan_id', $permohonan_id)->first();
+        $totrack = array(
+            "permohonan_id" => $permohonan_id,
+            "perusahaan_id" => $permohonan->perusahaan_id,
+            "pesan" => "Di Verifikasi Dan Di Sahkan Oleh Kepala Dinas",
+            "step" => "6",
+            "user_id" => '0',
+            "kategori" => "BACK OFFICE",
+            "ShowOnuser" => true,
+        );
+        mdTrack::insert($totrack);
+
+        $todbpermohonan = array("status" => "selesai", "updated_at" => \Carbon\Carbon::now());
+        mdPermohonan::where("permohonan_id", $permohonan_id)->update($todbpermohonan);
     }
 }
