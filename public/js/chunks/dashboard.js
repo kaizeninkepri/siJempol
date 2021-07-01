@@ -733,11 +733,13 @@ __webpack_require__.r(__webpack_exports__);
     getResult: function getResult() {
       var _this = this;
 
+      this.table.show = false;
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/integration", {
         data: this.pencarian
       }).then(function (r) {
         alert(JSON.stringify(r.data));
         _this.table.data = r.data;
+        _this.table.show = true;
       });
     }
   },
