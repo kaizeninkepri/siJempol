@@ -697,6 +697,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2857,6 +2858,14 @@ var render = function() {
                               _vm._v(" "),
                               _c("el-table-column", {
                                 attrs: {
+                                  prop: "total",
+                                  label: "Total (Rp.)",
+                                  align: "center"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("el-table-column", {
+                                attrs: {
                                   prop: "ket",
                                   label: "Keterangan",
                                   width: "180"
@@ -2897,45 +2906,6 @@ var render = function() {
                                   null,
                                   false,
                                   3000583944
-                                )
-                              }),
-                              _vm._v(" "),
-                              _c("el-table-column", {
-                                attrs: {
-                                  prop: "address",
-                                  label: "Aksi",
-                                  width: "180"
-                                },
-                                scopedSlots: _vm._u(
-                                  [
-                                    {
-                                      key: "default",
-                                      fn: function(scope) {
-                                        return [
-                                          _c(
-                                            "a",
-                                            {
-                                              attrs: {
-                                                href: scope.row.linkPDF,
-                                                target: "_blank"
-                                              }
-                                            },
-                                            [
-                                              _c("i", {
-                                                staticClass: "el-icon-printer"
-                                              }),
-                                              _vm._v(
-                                                " Cetak Persyaratan\n                                "
-                                              )
-                                            ]
-                                          )
-                                        ]
-                                      }
-                                    }
-                                  ],
-                                  null,
-                                  false,
-                                  2402508967
                                 )
                               })
                             ],
