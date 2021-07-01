@@ -41,6 +41,7 @@
                         <el-table-column prop="alamat" label="alamat"></el-table-column>
                         <el-table-column prop="nopol" width="120" label="Jumlah Izin" align="center"></el-table-column>
                         <el-table-column prop="tgmspajak" label="Tanggal Masa Pajak" align="center"></el-table-column>
+                        <el-table-column prop="total" label="Total (Rp.)" align="center"></el-table-column>
                         <el-table-column prop="ket" label="Keterangan" width="180">
                             <template slot-scope="scope">
                                 <span v-if="scope.row.ket == 'Valid'">
@@ -51,13 +52,13 @@
                                 </span>
                             </template>
                         </el-table-column>
-                        <el-table-column prop="address" label="Aksi" width="180">
+                        <!-- <el-table-column prop="address" label="Aksi" width="180">
                             <template slot-scope="scope">
                                 <a :href="scope.row.linkPDF" target="_blank">
                                     <i class="el-icon-printer"></i> Cetak Persyaratan
                                 </a>
                             </template>
-                        </el-table-column>
+                        </el-table-column> -->
                     </el-table>
                 </el-card>
             </div>
