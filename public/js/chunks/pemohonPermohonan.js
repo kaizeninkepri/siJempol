@@ -2121,7 +2121,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mg-t-30 mg-b-0" }, [
-                      _vm._v("Sistem Informasi Jemput Bola")
+                      _vm._v('"Proses Perizinan Dengan Jarimu"')
                     ]),
                     _vm._v(" "),
                     _c("p", { staticClass: "mg-t-0" }, [

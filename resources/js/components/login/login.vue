@@ -5,7 +5,7 @@
             <el-row type="flex">
                 <el-col :md="14" style="background: #267dff; color:white" class="hidden-sm-down pd-25">
                     <h3 class="tx-bold">Selamat Datang</h3>
-                    <p class="mg-t-30 mg-b-0">Sistem Informasi Jemput Bola</p>
+                    <p class="mg-t-30 mg-b-0">"Proses Perizinan Dengan Jarimu"</p>
                     <p class="mg-t-0">Layanan Perizinan Dan Non Perizinan</p>
                     <p class="mg-t-10 mg-b-0">Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu</p>
                     <p class="mg-b-30">Provinsi Kepulauan Riau</p>

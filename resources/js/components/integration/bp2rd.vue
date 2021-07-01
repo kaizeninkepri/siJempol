@@ -51,13 +51,13 @@
                                 </span>
                             </template>
                         </el-table-column>
-                        <!-- <el-table-column prop="address" label="Aksi" width="180">
+                        <el-table-column prop="address" label="Aksi" width="180">
                             <template slot-scope="scope">
                                 <a :href="scope.row.linkPDF" target="_blank">
                                     <i class="el-icon-printer"></i> Cetak Persyaratan
                                 </a>
                             </template>
-                        </el-table-column> -->
+                        </el-table-column>
                     </el-table>
                 </el-card>
             </div>
@@ -110,6 +110,7 @@ export default {
                 })
                 .then((r) => {
                     alert(JSON.stringify(r.data))
+                    this.table.data = r.data
                 });
         },
     },

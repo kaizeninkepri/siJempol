@@ -731,10 +731,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     getResult: function getResult() {
+      var _this = this;
+
       this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/integration", {
         data: this.pencarian
       }).then(function (r) {
         alert(JSON.stringify(r.data));
+        _this.table.data = r.data;
       });
     }
   },
@@ -2892,6 +2895,45 @@ var render = function() {
                                   null,
                                   false,
                                   3000583944
+                                )
+                              }),
+                              _vm._v(" "),
+                              _c("el-table-column", {
+                                attrs: {
+                                  prop: "address",
+                                  label: "Aksi",
+                                  width: "180"
+                                },
+                                scopedSlots: _vm._u(
+                                  [
+                                    {
+                                      key: "default",
+                                      fn: function(scope) {
+                                        return [
+                                          _c(
+                                            "a",
+                                            {
+                                              attrs: {
+                                                href: scope.row.linkPDF,
+                                                target: "_blank"
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "el-icon-printer"
+                                              }),
+                                              _vm._v(
+                                                " Cetak Persyaratan\n                                "
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      }
+                                    }
+                                  ],
+                                  null,
+                                  false,
+                                  2402508967
                                 )
                               })
                             ],
