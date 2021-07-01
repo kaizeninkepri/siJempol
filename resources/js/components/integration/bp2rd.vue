@@ -107,7 +107,7 @@ export default {
         getResult() {
             this.table.show = false
             this.axios
-                .post(urlBase.web + "/integration", {
+                .get('http://54.169.51.188/back/public/api/integrations/bp2rd?value=' + this.pencarian.value + '&varcari=' + this.pencarian.kategori, {
                     data: this.pencarian
                 })
                 .then((r) => {

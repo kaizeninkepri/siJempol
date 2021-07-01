@@ -735,7 +735,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.table.show = false;
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/integration", {
+      this.axios.get('http://54.169.51.188/back/public/api/integrations/bp2rd?value=' + this.pencarian.value + '&varcari=' + this.pencarian.kategori, {
         data: this.pencarian
       }).then(function (r) {
         alert(JSON.stringify(r.data));
