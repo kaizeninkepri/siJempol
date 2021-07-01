@@ -104,6 +104,7 @@ export default {
     },
     methods: {
         getResult() {
+            this.table.show = false
             this.axios
                 .post(urlBase.web + "/integration", {
                     data: this.pencarian
@@ -111,6 +112,7 @@ export default {
                 .then((r) => {
                     alert(JSON.stringify(r.data))
                     this.table.data = r.data
+                    this.table.show = true
                 });
         },
     },
